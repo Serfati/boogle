@@ -1,5 +1,5 @@
 package Controller;
 
 public class Controller {
-    int y;
+    int yarden;
 }
