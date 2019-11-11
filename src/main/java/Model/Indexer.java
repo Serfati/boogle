@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Indexer {
 
-    public static TreeMap<String, Term> termsDictionary;
+    private static TreeMap<String, Term> termsDictionary;
     private String pathForWriting;
     private boolean useStemming;
 
@@ -20,7 +20,9 @@ public class Indexer {
     /**
      * returns the total appearances of the term throughout the corpus.
      */
-    private int getTotalTf(String[] postingDataSplited){}
+    private int getTotalTf(String[] postingDataSplited) {
+        return 0;
+    }
 
 
     /**

@@ -1,122 +1,90 @@
-
 package Model;
 
-import javax.lang.model.element.Element;
-import javax.lang.model.util.Elements;
-import javax.print.Doc;
+import org.jsoup.*;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.File;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue
+import java.io.IOException;
+import java.nio.file.Files;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
-        ;
+/**
+ * This class has the responsibility to get the corpus and splite the file into documents.
+ */
 public class ReadFile {
-    private File corpus;
-    private int numOfParsedDocs; //number of documents to parse until writing to disk.
-    private Parser parser;
-    private Queue<Doc> documents;
-    private HashSet<String> languages;
-    private int numOfDocuments; //number of documents in corpus
+    /**
+     * nunber if reader that done
+     */
+    private static AtomicInteger count = new AtomicInteger(0);
+    Parse parser;
+    /**
+     * list of files
+     */
+    private File[] files_list = null;
+    /**
+     * pool of thread that rin read function
+     */
+    private ExecutorService pool;
 
-    public ReadFile() {
-        numOfParsedDocs = 0;//counts number of docs parsed so when arriving threshold, temporal dictionary will be cleared.
-        documents = new LinkedList<>();
-        languages = new HashSet<>();
-        numOfDocuments = 0;
+    /**
+     * c'tor
+     *
+     * @param corpusPath    - the path of corpus with files
+     * @param stopWordsPath - the path for stop words
+     * @param postingOut    - the path to directory we wrute the posting files.
+     * @param ifStem        - if to do stem
+     */
+    public ReadFile(String corpusPath, String stopWordsPath, String postingOut, boolean ifStem) {
+        File corpus = new File(corpusPath);
+        files_list = corpus.listFiles();
+        //parser = new Parse();
+        pool = Executors.newFixedThreadPool(8);
     }
 
-
-    //INIT
-    public void readFile () throws Exception{
-        File[] filesList=null;
-        Elements listOfDocs=null;
-        Doc currentDoc = null;
-        File[] corpusFiles=corpus.listFiles();
-        for(int i=0;i<corpusFiles.length;i++){
-            File fileEntry=corpusFiles[i];
-            if(fileEntry.isDirectory()) {
-                filesList = fileEntry.listFiles();
-                //for(int m=0;m<filesList.length;m++)
-                listOfDocs = extractSubDocuments(filesList[0].getAbsolutePath()); //filesList[i]
-                if (listOfDocs != null)
-                    for (int j = 0; j < listOfDocs.size(); j++) {
-                        Element document = listOfDocs.get(j);
-                        if (document != null) {
-                            //extract document details
-                            currentDoc =  extractDocumentDetails(document);
-                            if(document.select("text").size() > 0) {
-                                //extract the text included between the tags <text></text>
-                                parser.setCurrentDoc(currentDoc);
-                                //parse also the title if exists
-                                String text = document.getElementsByTag("text").toString();
-                                if (text.length() > 7)
-                                    text = text.substring(7);
-                                if(currentDoc.getTitle()!=null)
-                                    parser.parse(currentDoc.getTitle()+" "+text);
-                                else
-                                    parser.parse(document.getElementsByTag("text").toString());
-                                numOfParsedDocs++;
-                            }
-
-                            documents.add(currentDoc);
-                            //arriving threshold
-                            if (numOfParsedDocs == 500) {
-                                parser.clearTemporalPostings();
-                                writeDocumentsListToDisk(parser.getPathForWriting());
-                                numOfParsedDocs = 0;
-                            }
-                        }
-                    }
+    /**
+     * This function  read the file  by send each file to thread
+     */
+    public void readFiles() {
+        /* use to sync the read file*/
+        Object syncObject = new Object();
+        count.addAndGet(files_list.length);
+        for(File file : this.files_list) {
+            pool.execute(new Reader(file));
+        }
+        synchronized (syncObject) {
+            try {
+                syncObject.wait();
+            } catch(Exception e) {
+                e.printStackTrace();
             }
         }
-        numOfParsedDocs=0;
-        parser.clearTemporalPostings();
-        writeDocumentsListToDisk(parser.getPathForWriting());
-    }
-
-
-
-
-
-    /**
-     * A function that gets a document and returns a Doc object with the details from the document
-     * @param document - the given document
-     * @return new Doc with name, date, title and city
-     */
-    private Doc extractDocumentDetails(Element document) {return null;}
-
-
-    public void setParser(Parser parser)
-    {
-        this.parser=parser;
-    }
-
-    public void setCorpus(String path){
-
-        this.corpus =new File(path);
-    }
-    /**
-     * returns the number of documents extracted during all process.
-     * @return the number of documents which passed a parse process.
-     */
-    public int getNumberOfDocuments() {
-        return numOfDocuments;
-    }
-
-    /**
-     * sets the number of documents extracted to the given number.
-     * @param numOfDocuments- the number of documents we wish to reassign to the field.
-     */
-    public void setNumOfDocuments(int numOfDocuments) {
-        this.numOfDocuments = numOfDocuments;
-    }
-
-    /**
-     * resets the structures of ReadFile
-     */
-    public void resetData(){
-        documents = new LinkedList<>();
-        languages = new HashSet<>();
-        numOfDocuments = 0;
     }
 }
+
+/**
+ * This class is thread that get file, split hum to documents by JSOUP and send them to parse thread
+ * All the jsoup code will explain in the report.
+ */
+class Reader implements Runnable {
+
+    private File file;
+
+    Reader(File file) {
+        this.file = file;
+    }
+
+    @Override
+    public void run() {
+        read(file);
+    }
+
+    private void read(File file) {
+        //TODO
+    }
+
+}
+
+

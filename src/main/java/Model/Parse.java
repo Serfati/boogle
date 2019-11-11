@@ -3,7 +3,7 @@ package Model;
 import javax.print.Doc;
 import java.util.ArrayList;
 
-class Parser implements IParser {
+class Parse implements IParse {
 
     public void parse(Doc doc) {
 

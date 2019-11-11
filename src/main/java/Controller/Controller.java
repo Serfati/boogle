@@ -1,5 +1,10 @@
 package Controller;
 
+import Model.myModel;
+
 public class Controller {
-    int yarden;
+    //private field to connect the Controller to the Model
+    private myModel model;
+
+
 }

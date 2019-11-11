@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * contract for being a parser
  */
 
-interface IParser {
+interface IParse {
     /**
      * parse a document
      * @param doc given document to parse
