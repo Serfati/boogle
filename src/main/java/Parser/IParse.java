@@ -1,4 +1,4 @@
-package Model;
+package Parser;
 
 
 import javax.print.Doc;

@@ -1,12 +1,11 @@
-package Model;
+package Parser;
 
 import javax.print.Doc;
 import java.util.ArrayList;
 
-class Parse implements IParse {
+public class Parse implements IParse {
 
     public void parse(Doc doc) {
-
     }
 
     public ArrayList<String> parse(String text) {
@@ -14,7 +13,6 @@ class Parse implements IParse {
     }
 
     public void setDone(boolean done) {
-
     }
 
     public boolean isDone() {
@@ -22,10 +20,8 @@ class Parse implements IParse {
     }
 
     public void initializeStopWordsTreeAndStrategies(String path) {
-
     }
 
     public void reset() {
-
     }
 }

@@ -1,6 +1,8 @@
-package Model;
+package Structures;
 
-public class Term {
+import java.io.Serializable;
+
+public class Term implements IData, Serializable, Comparable<Term> {
 
     private String name;
     private int df; // number of documents in which the term appeared in corpus.
@@ -93,5 +95,21 @@ public class Term {
      */
     public void setCorpusTf(int tf) {
         this.corpusTf = tf;
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Term otherTerm = (Term) obj;
+        return this.name.equals(otherTerm.getName());
+    }
+
+    @Override
+    public int compareTo(Term o) {
+        return Integer.compare(o.df, this.df);
     }
 }

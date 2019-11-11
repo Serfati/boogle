@@ -1,4 +1,6 @@
-package Model;
+package Engine;
+
+import Structures.Term;
 
 import java.util.*;
 
@@ -17,12 +19,6 @@ public class Indexer {
 
     public void createInvertedIndex()throws Exception{}
 
-    /**
-     * returns the total appearances of the term throughout the corpus.
-     */
-    private int getTotalTf(String[] postingDataSplited) {
-        return 0;
-    }
 
 
     /**

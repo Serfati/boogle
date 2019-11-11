@@ -1,10 +1,12 @@
 package Controller;
 
-import Model.myModel;
+import Model.IModel;
+import View.IView;
 
 public class Controller {
     //private field to connect the Controller to the Model
-    private myModel model;
+    private IView view;
+    private IModel model;
 
 
 }

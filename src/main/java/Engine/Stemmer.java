@@ -1,4 +1,4 @@
-package Model;
+package Engine;
 
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.englishStemmer;
@@ -7,6 +7,7 @@ import org.tartarus.snowball.ext.englishStemmer;
  */
 
 public class Stemmer {
+
     SnowballStemmer stemmer;
 
     public Stemmer() {
