@@ -1,103 +1,138 @@
 package Parser;
 
-import org.apache.commons.lang.math.NumberUtils;
 import Engine.Stemmer;
 import Structures.cDocument;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
+@SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
 public class Parse implements IParse {
     Stemmer stemmer;
-    HashSet<String> stopWordSet;
-    HashMap<String, String> replacements;
-    HashMap<String, String> dates;
+    private static HashSet<String> stopWordSet;
+    private Boolean useStemming;
+    private HashMap<String, String> replacements;
+    private HashMap<String, String> dates;
+    private String pathToWrite;
     cDocument currentCDocument;
-    Boolean stem;
-    String pathToWrite;
+    private HashSet<Character> delimiters;
 
 
-    public void parse(cDocument doc) {
-        String doctext = doc.getDocText();
-        String[] words = doctext.split("\\s");
-        stemmer = new Stemmer();
-        //stemmer.getStemmer();
+    public void parse(String text) {
+        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
+    }
+
+    private void initMonthsData() {
+        dates = new HashMap<String, String>() {{
+            put("Jan", "01");
+            put("Feb", "02");
+            put("Mar", "03");
+            put("Apr", "04");
+            put("May", "05");
+            put("Jun", "06");
+            put("Jul", "0");
+            put("Aug", "08");
+            put("Sep", "09");
+            put("Oct", "10");
+            put("Nov", "11");
+            put("Dec", "12");
+            put("Sept", "09");
+            put("January", "01");
+            put("February", "02");
+            put("March", "03");
+            put("April", "04");
+            put("June", "06");
+            put("July", "07");
+            put("August", "08");
+            put("September", "09");
+            put("October", "10");
+            put("November", "11");
+            put("December", "12");
+            put("JANUARY", "01");
+            put("FEBRUARY", "02");
+            put("MARCH", "03");
+            put("APRIL", "04");
+            put("MAY", "05");
+            put("JUNE", "06");
+            put("JULY", "07");
+            put("AUGUST", "08");
+            put("SEPTEMBER", "09");
+            put("OCTOBER", "10");
+            put("NOVEMBER", "11");
+            put("DECEMBER", "12");
+        }};
+    }
+
+    public void initReplacements() {
+        replacements = new HashMap<String, String>() {{
+            put(",", "");
+            put("th", "");
+            put("$", "");
+            put("%", "");
+            put(":", "");
+        }};
+    }
+
+    private void initDelimiters() {
+        delimiters = new HashSet<Character>() {{
+            add('.');
+            add(',');
+            add(':');
+            add('!');
+            add('\"');
+            add('#');
+            add('(');
+            add(')');
+            add('[');
+            add('@');
+            add('+');
+            add(']');
+            add('|');
+            add(';');
+            add('?');
+            add('&');
+            add('\'');
+            add('*');
+            add('-');
+            add('}');
+            add('`');
+            add('/');
+            add(' ');
+            add('\n');
+            add('{');
+            add('~');
+        }};
+    }
 
 
-        for(int i = 0; i < words.length-1; i++) {
-            String word = words[i];
-            String nextWord = words[i+1];
-            String trdWord = words[i+2];
-            if (word == null)
-                return;
-
-            if (stopWordSet.contains(word))
-                return;
-
-            else if (NumberUtils.isNumber(word)) {
-                //check the next word
-                if (dates.containsKey(nextWord))
-                    months(nextWord, doc.getDocId());
-                if (NumberUtils.isNumber(trdWord) && Integer.parseInt(trdWord) < 9999)
-                    date(word+" "+nextWord+" "+trdWord, doc.getDocId());
-                else {
-                }
-
-                double wordNumber = Double.parseDouble(word);
-                if (wordNumber <= 999999 && wordNumber >= 1000)
-                    KNumber(word, doc.getDocId());
-                else if (wordNumber > 999999 && wordNumber < 1000000000) {
-                    MNumber((word), doc.getDocId());
-                }
-            }
-
-
+    public void loadStopWordsList(String path) throws IOException {
+        File f = new File(path);
+        StringBuilder allText = new StringBuilder();
+        FileReader fileReader = new FileReader(f);
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                allText.append(line).append("\n");
         }
-
-
-    }
-
-    public ArrayList<String> parse(String text) {
-        return null;
+        String[] stopWords = allText.toString().split("\n");
+        Collections.addAll(stopWordSet, stopWords);
     }
 
 
-    public void loadStopWords(String path) {
+    private String handleMonthYear(String month, String year) {
+        int monthNum = 15;
+        String newTerm = year+"-";
+        if (monthNum < 9)
+            newTerm += "0";
+        return newTerm+monthNum;
     }
 
-    public void loadDates() {
-        dates.put("July", "07");
-        dates.put("Feb", "02");
-        dates.put("July", "07");
-        dates.put("Feb", "02");
-        dates.put("July", "07");
-        dates.put("Feb", "02");
-        dates.put("MAY", "05");
-        dates.put("Feb", "02");
-    }
-
-    public void loadReplacements() {
-        replacements.put(":", "");
-        replacements.put(",", "");
-        replacements.put(".", "");
-    }
-
-    public String months(String text, String DocID) {
-        String val = "";
-        if (dates.containsKey(text)) {
-            val = dates.get(text);
-        }
-        return val;
-    }
-
-    public String date(String text, String DocID) {
-
-
-        String val = "";
-
-        return val;
-    }
 
     public void units(String text, String DocID) {
     }
@@ -105,13 +140,50 @@ public class Parse implements IParse {
     public void percents(String text, String DocID) {
     }
 
-    public void dollars(String text, String DocID) {
+    private String handleDollar(String price, boolean containsComma) {
+        Double number = Double.parseDouble(price);
+        String ans = "";
+        int multi = 1000000;
+        if (number >= multi) {
+            ans = "M";
+            number /= multi;
+        }
+        String nextWord = nextWord();
+        if (nextWord.equals("M"))
+            ans = "M";
+        else if (nextWord.equals("B")) {
+            number *= 1000;
+            ans = "M";
+        }
+        if (ans.equals("")) {
+            if (containsComma)
+                return addCommas(numberValue(number))+" Dollars";
+            else
+                return numberValue(number)+" Dollars";
+        }
+        return numberValue(number)+" "+ans+" Dollars";
     }
 
-    public void BNumber(String text, String DocID) {
+    private String addCommas(String number) {
+        String saveFraction = "";
+        if (number.indexOf('.') != -1) {
+            saveFraction = number.substring(number.indexOf('.'));
+            number = number.substring(0, number.indexOf('.'));
+        }
+        for(int i = number.length()-3; i > 0; i -= 3) {
+            number = number.substring(0, i)+","+number.substring(i);
+        }
+        return number+saveFraction;
     }
 
-    public void MNumber(String text, String DocID) {
+    private String numberValue(Double d) {
+        if (isInteger(d))
+            return ""+d.intValue();
+        return ""+d;
+    }
+
+    private boolean isInteger(double word) {
+        return word == Math.floor(word) && !Double.isInfinite(word);
     }
 
     public void letters(String text, String DocID) {
@@ -128,18 +200,16 @@ public class Parse implements IParse {
     public void setDone(boolean done) {
     }
 
-    public boolean isNumber(String n) {
-
-        return false;
-    }
     public boolean isDone() {
         return false;
     }
 
-    public void initializeStopWordsTreeAndStrategies(String path) {
+    public void reset() {
     }
 
-    public void reset() {
+    private String nextWord() {
+        String nextWord = "";
+        return nextWord;
     }
 
     public String getPathToWrite() {

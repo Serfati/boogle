@@ -2,7 +2,8 @@ package Engine;
 
 import Structures.Term;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.TreeMap;
 
 public class Indexer {
 
@@ -36,12 +37,7 @@ public class Indexer {
                 if (comparison != 0)
                     return comparison;
             }
-            if (o1.length() > o2.length())    // See note 4
-                return 1;
-            else if (o1.length() < o2.length())
-                return -1;
-            else
-                return 0;
+            return Integer.compare(o1.length(), o2.length());
         }
     }
 }

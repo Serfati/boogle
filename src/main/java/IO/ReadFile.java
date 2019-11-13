@@ -1,21 +1,23 @@
 package IO;
 
+import Engine.Indexer;
 import Parser.Parse;
 import Structures.cDocument;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.jsoup.*;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.jsoup.nodes.Document;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
-import java.util.concurrent.*;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -39,7 +41,8 @@ public class ReadFile {
      * use to sync the read file
      */
     private Object syncObject;
-    private Queue<cDocument> cDocuments;
+
+    private Queue<cDocument> documents;
 
     private HashSet<String> languages;
 
@@ -59,13 +62,8 @@ public class ReadFile {
         files_list = corpus.listFiles();
         //parser = new Parse(corpusPath,stopWordsPath,postingOut,ifStem);
         pool = Executors.newFixedThreadPool(8);
-
-        cDocuments = new LinkedList<>();
-
+        documents = new LinkedList<>();
         languages = new HashSet<>();
-
-
-
     }
 
     /**
@@ -74,32 +72,32 @@ public class ReadFile {
     public void readFiles() {
         syncObject = new Object();
         numOfDocuments.addAndGet(files_list.length);
-        for(File file : this.files_list) {
+        for(File file : this.files_list)
             pool.execute(new Reader(file));
-        }
+
         synchronized (syncObject) {
             try {
                 syncObject.wait();
             } catch(Exception e) {
                 e.printStackTrace();
-            } finally {//when all threads are done
+            } finally { //when all threads are done
                 pool.shutdown();
             }
         }
     }
 
     private void writeDocumentsListToDisk(String pathForWriting) {
-        cDocument cDocument = null;
-        if (!cDocuments.isEmpty()) {
+        if (!documents.isEmpty()) {
             StringBuilder documentsData = new StringBuilder();
-            BufferedWriter writerDocuments = null;
+            BufferedWriter writerDocuments;
             try {
-                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"/cDocuments.txt", true));
-                writerDocuments.write("doc_name:title|date|max_tf|numOfUniqueTerms|length|entities"+"\n");
+                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"\\documents.txt", true));
+                writerDocuments.write("doc_name:title|date|city|max_tf|numOfUniqueTerms|length|entities"+"\n");
 
-                while(!cDocuments.isEmpty()) {
-                    cDocument = cDocuments.poll();
-                    documentsData.append(cDocument.getDocId()+""+cDocument.getDocDate()+" "); //TODO
+                cDocument document;
+                while(!documents.isEmpty()) {
+                    document = documents.poll();
+                    documentsData.append(document.getDocId());
                     numOfDocuments.getAndIncrement();
                 }
                 writerDocuments.write(documentsData.toString());
@@ -107,32 +105,34 @@ public class ReadFile {
             } catch(Exception e) {
                 e.printStackTrace();
             }
-            cDocuments.clear();
+            documents.clear();
         }
     }
 
     public ObservableList<String> getLanguages() {
-        BufferedReader bw = null;
-        try {
-
-            bw = new BufferedReader(new FileReader(parser.getPathToWrite()+"/Languages.txt"));
-
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-
+        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
+        listOfLanguages.addAll(languages);
+        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
+        return listOfLanguages;
     }
 
 
     public void loadLanguagesToDisk(String pathForWriting) {
-        BufferedWriter bw = null;
-        try {
-            bw = new BufferedWriter(new FileWriter(pathForWriting+"/Languages.txt", true));
-            for(String lan : languages)
-                bw.write(lan);
-        } catch(IOException e) {
-            e.printStackTrace();
+        if (!languages.isEmpty()) {
+            StringBuilder languagesData = new StringBuilder();
+            BufferedWriter writeLanguages;
+            try {
+                writeLanguages = new BufferedWriter(new FileWriter(pathForWriting+"\\languages.txt", true));
+                for(Iterator<String> iterator = languages.iterator(); iterator.hasNext(); ) {
+                    String language = iterator.next();
+                    languagesData.append(language).append("\n");
+                }
+                writeLanguages.write(languagesData.toString());
+                writeLanguages.close();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            languages.clear();
         }
     }
 
@@ -145,7 +145,7 @@ public class ReadFile {
 
         File file;
 
-        public Reader(File file) {
+        Reader(File file) {
             this.file = file;
         }
 
@@ -155,27 +155,32 @@ public class ReadFile {
         }
 
         void read(File file) {
-            Document cDocument = null;
+            Document document = null;
             try {
-                cDocument = Jsoup.parse(new String(Files.readAllBytes(Objects.requireNonNull(file.listFiles())[0].toPath())));
+                document = Jsoup.parse(new String(Files.readAllBytes(Objects.requireNonNull(file.listFiles())[0].toPath())));
             } catch(IOException e) {
                 e.printStackTrace();
             }
-            assert cDocument != null;
-            Elements docElements = cDocument.getElementsByTag("DOC");   //split by DOC tag
-            cDocument = null;
+            assert document != null;
+            Elements docElements = document.getElementsByTag("DOC");//split by DOC tag
+            document = null;
             cDocument[] docToParse = new cDocument[docElements.size()];
             int placeInDoc = 0;
             for(Element element : docElements) {
                 Elements IDElement = element.getElementsByTag("DOCNO");
                 Elements TitleElement = element.getElementsByTag("TI");
-                Elements dateElement = element.getElementsByTag("DATE");
-                Elements authorElement = element.getElementsByTag("BYLINE");
                 Elements TextElement = element.getElementsByTag("TEXT");
                 Elements fElements = element.getElementsByTag("F");
+                String city = "";
                 String language = "";
                 for(Element fElement : fElements) {
-                    if (fElement.attr("P").equals("105")) {
+                    if (fElement.attr("P").equals("104")) {//city
+                        city = fElement.text();
+                        if (city.length() > 0 && Character.isLetter(city.charAt(0)))
+                            city = city.split(" ")[0].toUpperCase();
+                        else
+                            city = "";
+                    } else if (fElement.attr("P").equals("105")) {//language
                         language = fElement.text().split(" ")[0];
                         if (!(!language.equals("") && !Character.isDigit(language.charAt(0)))) {
                             language = "";
@@ -185,27 +190,16 @@ public class ReadFile {
                 String ID = IDElement.text();
                 String title = TitleElement.text();
                 String text = TextElement.text();
-                String author = authorElement.text();
-                String date = dateElement.text();
-                cDocument doc = new cDocument(ID, date, title, text, author, language);
-                cDocuments.add(doc);
-                if (language != "")
-                    languages.add(language);
-                parser.parse(doc);
-                numOfParsedDocs++;
-
-                if (numOfParsedDocs == 100) {
-                    writeDocumentsListToDisk(parser.getPathToWrite());
-                    numOfParsedDocs = 0;
-                }
+                cDocument cDoc = null;
+                //cDoc = new cDocument();
+                docToParse[placeInDoc++] = cDoc;
             }
-            //arriving threshold
             docElements.clear();
+            for(cDocument d : documents)
+                parser.parse(d.getDocText());
             numOfDocuments.getAndDecrement();
-            if (numOfDocuments.get() == 0) {
-                synchronized (syncObject) {
-                    syncObject.notify();
-                }
+            if (numOfDocuments.get() == 0) synchronized (syncObject) {
+                syncObject.notify();
             }
 
         }
