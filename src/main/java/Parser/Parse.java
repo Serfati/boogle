@@ -12,6 +12,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import static org.apache.commons.lang.StringUtils.split;
+import static org.apache.commons.lang3.StringUtils.replace;
+
 @SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
 public class Parse implements IParse {
     Stemmer stemmer;
@@ -196,6 +199,31 @@ public class Parse implements IParse {
         return s;
 
     }
+
+    /**
+     * checks if token is fracture: # '/' #.
+     *
+     * @param token : the token.
+     * @return : isFracture.
+     */
+    private boolean checkIfFracture(String token) {
+        if (token.contains("/")) {
+            token = replace(token, ",", "");
+            String[] check = split(token, "/");
+            if (check.length < 2) {
+                return false;
+            }
+            try {
+                Integer.parseInt(check[0]);
+                Integer.parseInt(check[1]);
+                return true;
+            } catch(NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
 
     public void setDone(boolean done) {
     }

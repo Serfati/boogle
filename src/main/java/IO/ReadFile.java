@@ -15,7 +15,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Objects;
+import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -123,10 +126,8 @@ public class ReadFile {
             BufferedWriter writeLanguages;
             try {
                 writeLanguages = new BufferedWriter(new FileWriter(pathForWriting+"\\languages.txt", true));
-                for(Iterator<String> iterator = languages.iterator(); iterator.hasNext(); ) {
-                    String language = iterator.next();
+                for(String language : languages)
                     languagesData.append(language).append("\n");
-                }
                 writeLanguages.write(languagesData.toString());
                 writeLanguages.close();
             } catch(Exception e) {
@@ -195,7 +196,7 @@ public class ReadFile {
                 docToParse[placeInDoc++] = cDoc;
             }
             docElements.clear();
-            for(cDocument d : documents)
+            for(cDocument d : docToParse)
                 parser.parse(d.getDocText());
             numOfDocuments.getAndDecrement();
             if (numOfDocuments.get() == 0) synchronized (syncObject) {
