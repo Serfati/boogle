@@ -26,42 +26,6 @@ public class Parse implements IParse {
     cDocument currentCDocument;
     private HashSet<Character> delimiters;
 
-
-    public void parse(String text) {
-        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
-    }
-
-
-
-    public void loadStopWordsList(String path) throws IOException {
-        File f = new File(path);
-        StringBuilder allText = new StringBuilder();
-        FileReader fileReader = new FileReader(f);
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while((line = bufferedReader.readLine()) != null)
-                allText.append(line).append("\n");
-        }
-        String[] stopWords = allText.toString().split("\n");
-        Collections.addAll(stopWordSet, stopWords);
-    }
-
-
-    private String handleMonthYear(String month, String year) {
-        int monthNum = 15;
-        String newTerm = year+"-";
-        if (monthNum < 9)
-            newTerm += "0";
-        return newTerm+monthNum;
-    }
-
-
-    public void units(String text, String DocID) {
-    }
-
-    public void percents(String text, String DocID) {
-    }
-
     private static String checkKorMorB(String number) {
         StringBuilder ans = new StringBuilder();
         ans.append(number);
@@ -73,18 +37,52 @@ public class Parse implements IParse {
             return number;
         } else if (num < 1000000) {
             num /= 1000;
-            ans.append(num+"K");
+            ans.append(num).append("K");
         } else if (num < 1000000000) {
             num /= 1000000;
-            ans.append(num+"M");
+            ans.append(num).append("M");
         } else {
             num /= 1000000000;
-            ans.append(num+"B");
+            ans.append(num).append("B");
         }
         if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
             ans.delete(ans.toString().length()-3, ans.toString().length()-1);
         }
         return ans.toString();
+    }
+
+    /**
+     * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
+     *
+     * @return a Mini Dictionary that contains all the data about the terms and the doc
+     * @since Nov 13
+     */
+    public void parse(String text) {
+
+
+        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
+
+
+    }
+
+    private String cleanTerm(String term) {
+        return "";
+    }
+
+    private String handlePercent(String term, String percentSign) {
+        return "";
+    }
+
+    private String handleMonthYear(String month, String year) {
+        return "";
+    }
+
+    private String handleMonthDay(String month, String year) {
+        return "";
+    }
+
+    private String handleWeight(String term, String unit) {
+        return "";
     }
 
     private String handleDollar(String price, boolean containsComma) {
@@ -136,15 +134,6 @@ public class Parse implements IParse {
     public void letters(String text, String DocID) {
     }
 
-    public String KNumber(String text, String DocID) {
-        double d = Double.parseDouble(text);
-        d /= 1000;
-        String s = d+"K";
-        return s;
-
-    }
-
-
     private boolean checkIfFracture(String token) {
         if (token.contains("/")) {
             token = replace(token, ",", "");
@@ -187,47 +176,19 @@ public class Parse implements IParse {
         this.pathToWrite = pathToWrite;
     }
 
-
-    private void initMonthsData() {
-        dates = new HashMap<String, String>() {{
-            put("Jan", "01");
-            put("Feb", "02");
-            put("Mar", "03");
-            put("Apr", "04");
-            put("May", "05");
-            put("Jun", "06");
-            put("Jul", "0");
-            put("Aug", "08");
-            put("Sep", "09");
-            put("Oct", "10");
-            put("Nov", "11");
-            put("Dec", "12");
-            put("Sept", "09");
-            put("January", "01");
-            put("February", "02");
-            put("March", "03");
-            put("April", "04");
-            put("June", "06");
-            put("July", "07");
-            put("August", "08");
-            put("September", "09");
-            put("October", "10");
-            put("November", "11");
-            put("December", "12");
-            put("JANUARY", "01");
-            put("FEBRUARY", "02");
-            put("MARCH", "03");
-            put("APRIL", "04");
-            put("MAY", "05");
-            put("JUNE", "06");
-            put("JULY", "07");
-            put("AUGUST", "08");
-            put("SEPTEMBER", "09");
-            put("OCTOBER", "10");
-            put("NOVEMBER", "11");
-            put("DECEMBER", "12");
-        }};
+    public void loadStopWordsList(String path) throws IOException {
+        File f = new File(path);
+        StringBuilder allText = new StringBuilder();
+        FileReader fileReader = new FileReader(f);
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                allText.append(line).append("\n");
+        }
+        String[] stopWords = allText.toString().split("\n");
+        Collections.addAll(stopWordSet, stopWords);
     }
+
 
     public void initReplacements() {
         replacements = new HashMap<String, String>() {{
@@ -267,6 +228,47 @@ public class Parse implements IParse {
             add('\n');
             add('{');
             add('~');
+        }};
+    }
+
+    private void initMonthsData() {
+        dates = new HashMap<String, String>() {{
+            put("Jan", "01");
+            put("Feb", "02");
+            put("Mar", "03");
+            put("Apr", "04");
+            put("May", "05");
+            put("Jun", "06");
+            put("Jul", "0");
+            put("Aug", "08");
+            put("Sep", "09");
+            put("Oct", "10");
+            put("Nov", "11");
+            put("Dec", "12");
+            put("Sept", "09");
+            put("January", "01");
+            put("February", "02");
+            put("March", "03");
+            put("April", "04");
+            put("June", "06");
+            put("July", "07");
+            put("August", "08");
+            put("September", "09");
+            put("October", "10");
+            put("November", "11");
+            put("December", "12");
+            put("JANUARY", "01");
+            put("FEBRUARY", "02");
+            put("MARCH", "03");
+            put("APRIL", "04");
+            put("MAY", "05");
+            put("JUNE", "06");
+            put("JULY", "07");
+            put("AUGUST", "08");
+            put("SEPTEMBER", "09");
+            put("OCTOBER", "10");
+            put("NOVEMBER", "11");
+            put("DECEMBER", "12");
         }};
     }
 }
