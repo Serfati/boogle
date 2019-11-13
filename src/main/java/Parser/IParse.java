@@ -1,6 +1,5 @@
 package Parser;
 
-
 /**
  * contract for being a parser
  */
@@ -13,12 +12,6 @@ interface IParse {
      * @return a list of tokens
      */
     void parse(String text);
-
-    /**
-     * signal that the parser is done
-     * @param done
-     */
-    void setDone(boolean done);
 
     /**
      *

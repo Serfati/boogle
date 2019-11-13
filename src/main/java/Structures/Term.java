@@ -43,7 +43,6 @@ public class Term implements IData, Serializable, Comparable<Term> {
         this.df = this.df+deltaDf;
     }
 
-
     /**
      * @return the term's name
      */
@@ -100,12 +99,6 @@ public class Term implements IData, Serializable, Comparable<Term> {
     @Override
     public int hashCode() {
         return name.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        Term otherTerm = (Term) obj;
-        return this.name.equals(otherTerm.getName());
     }
 
     @Override

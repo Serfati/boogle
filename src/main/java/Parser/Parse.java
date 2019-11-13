@@ -2,17 +2,16 @@ package Parser;
 
 import Engine.Stemmer;
 import Structures.cDocument;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 import static org.apache.commons.lang.StringUtils.split;
+import static org.apache.commons.lang.math.NumberUtils.isNumber;
 import static org.apache.commons.lang3.StringUtils.replace;
 
 @SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
@@ -23,7 +22,7 @@ public class Parse implements IParse {
     private HashMap<String, String> replacements;
     private HashMap<String, String> dates;
     private String pathToWrite;
-    cDocument currentCDocument;
+    private cDocument currentCDocument;
     private HashSet<Character> delimiters;
 
     private static String checkKorMorB(String number) {
@@ -59,14 +58,31 @@ public class Parse implements IParse {
      */
     public void parse(String text) {
 
-
         Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
 
+        LinkedList<String> wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
 
+        //list of next words from the current term
+        LinkedList<String> nextWord = new LinkedList<>();
+
+
+        String lang = currentCDocument.getDocLang();
+        int index = 0;
+        while(!wordList.isEmpty()) {
+            boolean doStemIfTermWasNotManipulated = false;
+            String term = wordList.remove();
+            cleanTerm(term);
+            if (isNumber(term))
+                nextWord.add(nextWord());
+        }
     }
 
-    private String cleanTerm(String term) {
-        return "";
+    @Override
+    public boolean isDone() {
+        return false;
+    }
+
+    public void setDone(boolean done) {
     }
 
     private String handlePercent(String term, String percentSign) {
@@ -83,6 +99,36 @@ public class Parse implements IParse {
 
     private String handleWeight(String term, String unit) {
         return "";
+    }
+
+    private String cleanTerm(String term) {
+        return "0";
+    }
+
+    public String handleLetters(String text, String DocID) {
+        return "";
+    }
+
+    public void reset() {
+    }
+
+    private String nextWord() {
+        String nextWord = "";
+        return nextWord;
+    }
+
+    public String getPathToWrite() {
+        return pathToWrite;
+    }
+
+    private String numberValue(Double d) {
+        if (isInteger(d))
+            return ""+d.intValue();
+        return ""+d;
+    }
+
+    private boolean isInteger(double word) {
+        return word == Math.floor(word) && !Double.isInfinite(word);
     }
 
     private String handleDollar(String price, boolean containsComma) {
@@ -121,17 +167,15 @@ public class Parse implements IParse {
         return number+saveFraction;
     }
 
-    private String numberValue(Double d) {
-        if (isInteger(d))
-            return ""+d.intValue();
-        return ""+d;
-    }
+    private LinkedList<String> stringToList(String[] split) {
+        LinkedList<String> wordsList = new LinkedList<>();
+        for(String word : split) {
+            word = cleanTerm(word);
 
-    private boolean isInteger(double word) {
-        return word == Math.floor(word) && !Double.isInfinite(word);
-    }
-
-    public void letters(String text, String DocID) {
+            if (!word.equals(""))
+                wordsList.add(word);
+        }
+        return wordsList;
     }
 
     private boolean checkIfFracture(String token) {
@@ -150,30 +194,6 @@ public class Parse implements IParse {
             }
         }
         return false;
-    }
-
-
-    public void setDone(boolean done) {
-    }
-
-    public boolean isDone() {
-        return false;
-    }
-
-    public void reset() {
-    }
-
-    private String nextWord() {
-        String nextWord = "";
-        return nextWord;
-    }
-
-    public String getPathToWrite() {
-        return pathToWrite;
-    }
-
-    public void setPathToWrite(String pathToWrite) {
-        this.pathToWrite = pathToWrite;
     }
 
     public void loadStopWordsList(String path) throws IOException {
