@@ -25,35 +25,10 @@ public class Parse implements IParse {
     private cDocument currentCDocument;
     private HashSet<Character> delimiters;
 
-    private static String checkKorMorB(String number) {
-        StringBuilder ans = new StringBuilder();
-        ans.append(number);
-        while(ans.toString().contains(","))
-            ans.deleteCharAt(ans.indexOf(","));
-        double num = Double.parseDouble(ans.toString());
-        ans.delete(0, ans.length());
-        if (num < 1000) {
-            return number;
-        } else if (num < 1000000) {
-            num /= 1000;
-            ans.append(num).append("K");
-        } else if (num < 1000000000) {
-            num /= 1000000;
-            ans.append(num).append("M");
-        } else {
-            num /= 1000000000;
-            ans.append(num).append("B");
-        }
-        if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
-            ans.delete(ans.toString().length()-3, ans.toString().length()-1);
-        }
-        return ans.toString();
-    }
-
     /**
      * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
      *
-     * @return a Mini Dictionary that contains all the data about the terms and the doc
+     * @return all the data about the terms and the doc
      * @since Nov 13
      */
     public void parse(String text) {
@@ -207,6 +182,31 @@ public class Parse implements IParse {
         }
         String[] stopWords = allText.toString().split("\n");
         Collections.addAll(stopWordSet, stopWords);
+    }
+
+    private String checkKorMorB(String number) {
+        StringBuilder ans = new StringBuilder();
+        ans.append(number);
+        while(ans.toString().contains(","))
+            ans.deleteCharAt(ans.indexOf(","));
+        double num = Double.parseDouble(ans.toString());
+        ans.delete(0, ans.length());
+        if (num < 1000) {
+            return number;
+        } else if (num < 1000000) {
+            num /= 1000;
+            ans.append(num).append("K");
+        } else if (num < 1000000000) {
+            num /= 1000000;
+            ans.append(num).append("M");
+        } else {
+            num /= 1000000000;
+            ans.append(num).append("B");
+        }
+        if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
+            ans.delete(ans.toString().length()-3, ans.toString().length()-1);
+        }
+        return ans.toString();
     }
 
 
