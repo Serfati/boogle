@@ -1,7 +1,8 @@
 package Parser;
 
 
-import javax.print.Doc;
+import Structures.cDocument;
+
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ interface IParse {
      * parse a document
      * @param doc given document to parse
      */
-    void parse(Doc doc);
+    void parse(cDocument doc);
 
     /**
      * parse by free text

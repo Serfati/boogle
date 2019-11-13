@@ -25,7 +25,7 @@ public class Indexer {
      * compares between two strings while ignoring upper cases.
      * meaning, two string, one in upper case and the other in lower case, will be valuated as equals.
      */
-    static class StringComparator implements Comparator<String> {
+    public static class StringComparator implements Comparator<String> {
         public int compare(String o1, String o2) {
             int comparison = 0;
             int c1, c2;
