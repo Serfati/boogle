@@ -31,6 +31,163 @@ public class Parse implements IParse {
         Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
     }
 
+
+
+    public void loadStopWordsList(String path) throws IOException {
+        File f = new File(path);
+        StringBuilder allText = new StringBuilder();
+        FileReader fileReader = new FileReader(f);
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                allText.append(line).append("\n");
+        }
+        String[] stopWords = allText.toString().split("\n");
+        Collections.addAll(stopWordSet, stopWords);
+    }
+
+
+    private String handleMonthYear(String month, String year) {
+        int monthNum = 15;
+        String newTerm = year+"-";
+        if (monthNum < 9)
+            newTerm += "0";
+        return newTerm+monthNum;
+    }
+
+
+    public void units(String text, String DocID) {
+    }
+
+    public void percents(String text, String DocID) {
+    }
+
+    private static String checkKorMorB(String number) {
+        StringBuilder ans = new StringBuilder();
+        ans.append(number);
+        while(ans.toString().contains(","))
+            ans.deleteCharAt(ans.indexOf(","));
+        double num = Double.parseDouble(ans.toString());
+        ans.delete(0, ans.length());
+        if (num < 1000) {
+            return number;
+        } else if (num < 1000000) {
+            num /= 1000;
+            ans.append(num+"K");
+        } else if (num < 1000000000) {
+            num /= 1000000;
+            ans.append(num+"M");
+        } else {
+            num /= 1000000000;
+            ans.append(num+"B");
+        }
+        if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
+            ans.delete(ans.toString().length()-3, ans.toString().length()-1);
+        }
+        return ans.toString();
+    }
+
+    private String handleDollar(String price, boolean containsComma) {
+        Double number = Double.parseDouble(price);
+        String ans = "";
+        int multi = 1000000;
+        if (number >= multi) {
+            ans = "M";
+            number /= multi;
+        }
+        String nextWord = nextWord();
+        if (nextWord.equals("M"))
+            ans = "M";
+        else if (nextWord.equals("B")) {
+            number *= 1000;
+            ans = "M";
+        }
+        if (ans.equals("")) {
+            if (containsComma)
+                return addCommas(numberValue(number))+" Dollars";
+            else
+                return numberValue(number)+" Dollars";
+        }
+        return numberValue(number)+" "+ans+" Dollars";
+    }
+
+    private String addCommas(String number) {
+        String saveFraction = "";
+        if (number.indexOf('.') != -1) {
+            saveFraction = number.substring(number.indexOf('.'));
+            number = number.substring(0, number.indexOf('.'));
+        }
+        for(int i = number.length()-3; i > 0; i -= 3) {
+            number = number.substring(0, i)+","+number.substring(i);
+        }
+        return number+saveFraction;
+    }
+
+    private String numberValue(Double d) {
+        if (isInteger(d))
+            return ""+d.intValue();
+        return ""+d;
+    }
+
+    private boolean isInteger(double word) {
+        return word == Math.floor(word) && !Double.isInfinite(word);
+    }
+
+    public void letters(String text, String DocID) {
+    }
+
+    public String KNumber(String text, String DocID) {
+        double d = Double.parseDouble(text);
+        d /= 1000;
+        String s = d+"K";
+        return s;
+
+    }
+
+
+    private boolean checkIfFracture(String token) {
+        if (token.contains("/")) {
+            token = replace(token, ",", "");
+            String[] check = split(token, "/");
+            if (check.length < 2) {
+                return false;
+            }
+            try {
+                Integer.parseInt(check[0]);
+                Integer.parseInt(check[1]);
+                return true;
+            } catch(NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+
+    public void setDone(boolean done) {
+    }
+
+    public boolean isDone() {
+        return false;
+    }
+
+    public void reset() {
+    }
+
+    private String nextWord() {
+        String nextWord = "";
+        return nextWord;
+    }
+
+    public String getPathToWrite() {
+        return pathToWrite;
+    }
+
+    public void setPathToWrite(String pathToWrite) {
+        this.pathToWrite = pathToWrite;
+    }
+
+
     private void initMonthsData() {
         dates = new HashMap<String, String>() {{
             put("Jan", "01");
@@ -111,140 +268,5 @@ public class Parse implements IParse {
             add('{');
             add('~');
         }};
-    }
-
-
-    public void loadStopWordsList(String path) throws IOException {
-        File f = new File(path);
-        StringBuilder allText = new StringBuilder();
-        FileReader fileReader = new FileReader(f);
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while((line = bufferedReader.readLine()) != null)
-                allText.append(line).append("\n");
-        }
-        String[] stopWords = allText.toString().split("\n");
-        Collections.addAll(stopWordSet, stopWords);
-    }
-
-
-    private String handleMonthYear(String month, String year) {
-        int monthNum = 15;
-        String newTerm = year+"-";
-        if (monthNum < 9)
-            newTerm += "0";
-        return newTerm+monthNum;
-    }
-
-
-    public void units(String text, String DocID) {
-    }
-
-    public void percents(String text, String DocID) {
-    }
-
-    private String handleDollar(String price, boolean containsComma) {
-        Double number = Double.parseDouble(price);
-        String ans = "";
-        int multi = 1000000;
-        if (number >= multi) {
-            ans = "M";
-            number /= multi;
-        }
-        String nextWord = nextWord();
-        if (nextWord.equals("M"))
-            ans = "M";
-        else if (nextWord.equals("B")) {
-            number *= 1000;
-            ans = "M";
-        }
-        if (ans.equals("")) {
-            if (containsComma)
-                return addCommas(numberValue(number))+" Dollars";
-            else
-                return numberValue(number)+" Dollars";
-        }
-        return numberValue(number)+" "+ans+" Dollars";
-    }
-
-    private String addCommas(String number) {
-        String saveFraction = "";
-        if (number.indexOf('.') != -1) {
-            saveFraction = number.substring(number.indexOf('.'));
-            number = number.substring(0, number.indexOf('.'));
-        }
-        for(int i = number.length()-3; i > 0; i -= 3) {
-            number = number.substring(0, i)+","+number.substring(i);
-        }
-        return number+saveFraction;
-    }
-
-    private String numberValue(Double d) {
-        if (isInteger(d))
-            return ""+d.intValue();
-        return ""+d;
-    }
-
-    private boolean isInteger(double word) {
-        return word == Math.floor(word) && !Double.isInfinite(word);
-    }
-
-    public void letters(String text, String DocID) {
-    }
-
-    public String KNumber(String text, String DocID) {
-        double d = Double.parseDouble(text);
-        d /= 1000;
-        String s = d+"K";
-        return s;
-
-    }
-
-    /**
-     * checks if token is fracture: # '/' #.
-     *
-     * @param token : the token.
-     * @return : isFracture.
-     */
-    private boolean checkIfFracture(String token) {
-        if (token.contains("/")) {
-            token = replace(token, ",", "");
-            String[] check = split(token, "/");
-            if (check.length < 2) {
-                return false;
-            }
-            try {
-                Integer.parseInt(check[0]);
-                Integer.parseInt(check[1]);
-                return true;
-            } catch(NumberFormatException e) {
-                return false;
-            }
-        }
-        return false;
-    }
-
-
-    public void setDone(boolean done) {
-    }
-
-    public boolean isDone() {
-        return false;
-    }
-
-    public void reset() {
-    }
-
-    private String nextWord() {
-        String nextWord = "";
-        return nextWord;
-    }
-
-    public String getPathToWrite() {
-        return pathToWrite;
-    }
-
-    public void setPathToWrite(String pathToWrite) {
-        this.pathToWrite = pathToWrite;
     }
 }
