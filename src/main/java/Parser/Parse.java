@@ -17,13 +17,16 @@ import static org.apache.commons.lang3.StringUtils.replace;
 @SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
 public class Parse implements IParse {
     Stemmer stemmer;
-    private static HashSet<String> stopWordSet;
+
     private Boolean useStemming;
-    private HashMap<String, String> replacements;
-    private HashMap<String, String> dates;
     private String pathToWrite;
     private cDocument currentCDocument;
+
+    private static HashSet<String> stopWordSet;
+    private HashMap<String, String> replacements;
+    private HashMap<String, String> dates;
     private HashSet<Character> delimiters;
+
 
     /**
      * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
@@ -39,7 +42,6 @@ public class Parse implements IParse {
 
         //list of next words from the current term
         LinkedList<String> nextWord = new LinkedList<>();
-
 
         String lang = currentCDocument.getDocLang();
         int index = 0;
@@ -157,9 +159,8 @@ public class Parse implements IParse {
         if (token.contains("/")) {
             token = replace(token, ",", "");
             String[] check = split(token, "/");
-            if (check.length < 2) {
+            if (check.length < 2)
                 return false;
-            }
             try {
                 Integer.parseInt(check[0]);
                 Integer.parseInt(check[1]);
@@ -171,8 +172,8 @@ public class Parse implements IParse {
         return false;
     }
 
-    public void loadStopWordsList(String path) throws IOException {
-        File f = new File(path);
+    public void loadStopWordsList(String pathOfStopWords) throws IOException {
+        File f = new File(pathOfStopWords);
         StringBuilder allText = new StringBuilder();
         FileReader fileReader = new FileReader(f);
         try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {

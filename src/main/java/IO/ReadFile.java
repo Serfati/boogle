@@ -1,7 +1,6 @@
 package IO;
 
 import Engine.Indexer;
-import Parser.Parse;
 import Structures.cDocument;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,15 +9,13 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -28,14 +25,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ReadFile {
     /**
-     * nunber if reader that done
+     * number if reader that done
      */
     private static AtomicInteger numOfDocuments = new AtomicInteger(0);
-    /**
-     * list of files
-     */
-    private File[] files_list = null;
-    private Parse parser;
+    private static AtomicInteger numOfParsedDocs = new AtomicInteger(0);
+    public BlockingQueue<cDocument> documentBuffer;
     /**
      * pool of thread that rin read function
      */
@@ -44,28 +38,21 @@ public class ReadFile {
      * use to sync the read file
      */
     private Object syncObject;
-
-    private Queue<cDocument> documents;
+    private String corpusPath;
 
     private HashSet<String> languages;
-
-    private int numOfParsedDocs;
+    private Queue<cDocument> docsToWrite;
 
 
     /**
      * c'tor
      *
      * @param corpusPath    - the path of corpus with files
-     * @param stopWordsPath - the path for stop words
-     * @param postingOut    - the path to directory we wrute the posting files.
-     * @param ifStem        - if to do stem
      */
-    public ReadFile(String corpusPath, String stopWordsPath, String postingOut, boolean ifStem) {
-        File corpus = new File(corpusPath);
-        files_list = corpus.listFiles();
-        //parser = new Parse(corpusPath,stopWordsPath,postingOut,ifStem);
-        pool = Executors.newFixedThreadPool(8);
-        documents = new LinkedList<>();
+    public ReadFile(String corpusPath, BlockingQueue<cDocument> documentBuffer) {
+        this.corpusPath = corpusPath;
+        pool = Executors.newFixedThreadPool(1);
+        docsToWrite = new LinkedList<>();
         languages = new HashSet<>();
     }
 
@@ -73,9 +60,13 @@ public class ReadFile {
      * This function  read the file  by send each file to thread
      */
     public void readFiles() {
+        File corpus = new File(corpusPath);
+        FileFilter subDirsFiller = File::isDirectory;
+        File[] files_list = corpus.listFiles(subDirsFiller);
         syncObject = new Object();
+        assert files_list != null;
         numOfDocuments.addAndGet(files_list.length);
-        for(File file : this.files_list)
+        for(File file : files_list)
             pool.execute(new Reader(file));
 
         synchronized (syncObject) {
@@ -90,17 +81,23 @@ public class ReadFile {
     }
 
     private void writeDocumentsListToDisk(String pathForWriting) {
-        if (!documents.isEmpty()) {
+        if (!docsToWrite.isEmpty()) {
             StringBuilder documentsData = new StringBuilder();
             BufferedWriter writerDocuments;
             try {
-                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"\\documents.txt", true));
-                writerDocuments.write("doc_name:title|date|city|max_tf|numOfUniqueTerms|length|entities"+"\n");
+                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"/cReview.txt", true));
+                //writerDocuments.write("[ doc_ID ] : | date | -  title  - |  lang  | max_tf | numOfUniqueTerms | length | "+"\n");
 
                 cDocument document;
-                while(!documents.isEmpty()) {
-                    document = documents.poll();
-                    documentsData.append(document.getDocId());
+                while(!docsToWrite.isEmpty()) {
+                    document = docsToWrite.poll();
+
+                    documentsData.append(document.getDocId()).append(";;")
+                            .append(document.getDocDate())
+                            .append("|").append(document.getDocTitle()).append("|").
+                            append(document.getDocLang()).append("|").append(document.getMaxFrequency()).
+                            append("|").append(document.getNumOfUniqueTerms()).append("|").
+                            append(0);
                     numOfDocuments.getAndIncrement();
                 }
                 writerDocuments.write(documentsData.toString());
@@ -108,7 +105,7 @@ public class ReadFile {
             } catch(Exception e) {
                 e.printStackTrace();
             }
-            documents.clear();
+            docsToWrite.clear();
         }
     }
 
@@ -118,25 +115,6 @@ public class ReadFile {
         FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
         return listOfLanguages;
     }
-
-
-    public void loadLanguagesToDisk(String pathForWriting) {
-        if (!languages.isEmpty()) {
-            StringBuilder languagesData = new StringBuilder();
-            BufferedWriter writeLanguages;
-            try {
-                writeLanguages = new BufferedWriter(new FileWriter(pathForWriting+"\\languages.txt", true));
-                for(String language : languages)
-                    languagesData.append(language).append("\n");
-                writeLanguages.write(languagesData.toString());
-                writeLanguages.close();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            languages.clear();
-        }
-    }
-
 
     /**
      * This class is thread that get file, split hum to cDocuments by JSOUP and send them to parse thread
@@ -163,24 +141,23 @@ public class ReadFile {
                 e.printStackTrace();
             }
             assert document != null;
-            Elements docElements = document.getElementsByTag("DOC");//split by DOC tag
-            document = null;
-            cDocument[] docToParse = new cDocument[docElements.size()];
-            int placeInDoc = 0;
+            Elements docElements = document.getElementsByTag("DOC"); //split by DOC tag
             for(Element element : docElements) {
                 Elements IDElement = element.getElementsByTag("DOCNO");
+                Elements DateElement = element.getElementsByTag("DATE1");
+                Elements unProcessedDocAuthor = element.getElementsByTag("BYLINE");
                 Elements TitleElement = element.getElementsByTag("TI");
                 Elements TextElement = element.getElementsByTag("TEXT");
                 Elements fElements = element.getElementsByTag("F");
-                String city = "";
+                String orginC = "";
                 String language = "";
                 for(Element fElement : fElements) {
-                    if (fElement.attr("P").equals("104")) {//city
-                        city = fElement.text();
-                        if (city.length() > 0 && Character.isLetter(city.charAt(0)))
-                            city = city.split(" ")[0].toUpperCase();
+                    if (fElement.attr("P").equals("104")) {//orginC
+                        orginC = fElement.text();
+                        if (orginC.length() > 0 && Character.isLetter(orginC.charAt(0)))
+                            orginC = orginC.split(" ")[0].toUpperCase();
                         else
-                            city = "";
+                            orginC = "";
                     } else if (fElement.attr("P").equals("105")) {//language
                         language = fElement.text().split(" ")[0];
                         if (!(!language.equals("") && !Character.isDigit(language.charAt(0)))) {
@@ -189,20 +166,25 @@ public class ReadFile {
                     }
                 }
                 String ID = IDElement.text();
-                String title = TitleElement.text();
-                String text = TextElement.text();
-                cDocument cDoc = null;
-                //cDoc = new cDocument();
-                docToParse[placeInDoc++] = cDoc;
+                String DATE = DateElement.text();
+                String TILTLE = TitleElement.text();
+                String TEXT = TextElement.text();
+                String author = unProcessedDocAuthor.text().replace("By ", "");
+                cDocument newDoc = new cDocument(ID, DATE, TILTLE, TEXT, orginC, author, language);
+                docsToWrite.offer(newDoc);
+            }
+
+            if (docsToWrite.size() > 500) {
+                for(cDocument d : docsToWrite)
+                    writeDocumentsListToDisk(corpusPath);
+                System.out.println("done write 500 docs");
             }
             docElements.clear();
-            for(cDocument d : docToParse)
-                parser.parse(d.getDocText());
             numOfDocuments.getAndDecrement();
             if (numOfDocuments.get() == 0) synchronized (syncObject) {
                 syncObject.notify();
             }
-
         }
     }
+
 }
