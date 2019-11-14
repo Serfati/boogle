@@ -187,20 +187,31 @@ public class Parse implements IParse {
     private String checkKorMorB(String number) {
         StringBuilder ans = new StringBuilder();
         ans.append(number);
+        String check="";//check there are only 3 digits after the dot
         while(ans.toString().contains(","))
             ans.deleteCharAt(ans.indexOf(","));
         double num = Double.parseDouble(ans.toString());
+        check= check+num;
         ans.delete(0, ans.length());
         if (num < 1000) {
             return number;
         } else if (num < 1000000) {
             num /= 1000;
+            if(check.contains(".")){
+                num=threeDigit(check);
+            }
             ans.append(num).append("K");
         } else if (num < 1000000000) {
             num /= 1000000;
+            if(check.contains(".")){
+                num=threeDigit(check);
+            }
             ans.append(num).append("M");
         } else {
             num /= 1000000000;
+            if(check.contains(".")){
+                num=threeDigit(check);
+            }
             ans.append(num).append("B");
         }
         if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
@@ -209,7 +220,26 @@ public class Parse implements IParse {
         return ans.toString();
     }
 
-
+    private double threeDigit(String check){
+        String ans="";
+        String s= ans.substring(0,1);
+        double correct;
+        while(s.equals(".")){
+            ans=ans+s;
+            check=check.substring(1);
+            s=ans.substring(0,1);
+        }
+        ans=ans+s;
+        check=check.substring(1);
+        if(check.length()<=3){
+            ans=ans+check;
+            correct= Double.parseDouble(ans);
+        } else{
+            ans=ans+check.substring(0,3);
+            correct=Double.parseDouble(ans);
+        }
+        return  correct;
+    }
     public void initReplacements() {
         replacements = new HashMap<String, String>() {{
             put(",", "");
