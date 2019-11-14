@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System.out.print("Hello Yarden Good luck!! :)\n!");
+        System.out.print("TEST STARTING..RF\n!");
 
         String cPath = "/home/serfati/Desktop/IRproject/corpus";
         BlockingQueue<cDocument> bq = new ArrayBlockingQueue<>(50);

@@ -97,7 +97,7 @@ public class ReadFile {
                             .append("|").append(document.getDocTitle()).append("|").
                             append(document.getDocLang()).append("|").append(document.getMaxFrequency()).
                             append("|").append(document.getNumOfUniqueTerms()).append("|").
-                            append(0);
+                            append("\n");
                     numOfDocuments.getAndIncrement();
                 }
                 writerDocuments.write(documentsData.toString());
