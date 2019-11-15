@@ -1,4 +1,8 @@
 # Boogle
+![Build Status](https://travis-ci.org/lemire/JavaFastPFOR.png)
+![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)
+[![GitHub](https://img.shields.io/github/license/nevoit/Automated-Messages.svg)](https://github.com/Serfati/The-LionKing-Maze/edit/master/LICENSE)
+![GitHub All Releases](https://img.shields.io/github/downloads/nevoit/Automated-Messages/total.svg)
 Our search engine was implemented with a Model-View-Controller (MVC) Architecture.
 
 The Structure:
@@ -32,7 +36,7 @@ The Model:
 Licence:
 -------------
 
-Copyright 2019 Avihai Serfati and Yarden Levy
+Copyright 2020 Avihai Serfati and Yarden Levy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
