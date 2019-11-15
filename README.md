@@ -2,8 +2,9 @@
 ![Build Status](https://travis-ci.org/lemire/JavaFastPFOR.png)
 ![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)
 [![GitHub](https://img.shields.io/github/license/nevoit/Automated-Messages.svg)](https://github.com/Serfati/The-LionKing-Maze/edit/master/LICENSE)
-![GitHub All Releases](https://img.shields.io/github/downloads/nevoit/Automated-Messages/total.svg)
-Our search engine was implemented with a Model-View-Controller (MVC) Architecture.
+
+
+- Our search engine was implemented with a Model-View-Controller (MVC) Architecture.
 
 The Structure:
 -------------
