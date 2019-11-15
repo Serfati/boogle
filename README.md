@@ -9,7 +9,7 @@
 The Structure:
 -------------
 
-1.	Select the next 'parts percentage (%), of the documents from the corpus.
+1.	Select the next parts percentage (%), of the documents from the corpus.
 2.	Send these documents to the Parser.
 3.	Optional: send the output of the Parser to the Stemmer.
 4.	Send the output to the Indexer. The Indexer will create a temporary index file for the documents from step one.
