@@ -26,6 +26,7 @@ public class Parse implements IParse {
     private HashMap<String, String> replacements;
     private HashMap<String, String> dates;
     private HashSet<Character> delimiters;
+    private HashMap<String, Double> weights;
 
 
     /**
@@ -63,19 +64,22 @@ public class Parse implements IParse {
     }
 
     private String handlePercent(String term, String percentSign) {
-        return "";
+        return term+" %";
     }
 
     private String handleMonthYear(String month, String year) {
-        return "";
+        return year+"-"+month;
     }
 
-    private String handleMonthDay(String month, String year) {
-        return "";
+    private String handleMonthDay(String day, String month) {
+        return month+"-"+day;
     }
 
     private String handleWeight(String term, String unit) {
-        return "";
+        Double parseTerm= Double.parseDouble(term);
+        parseTerm= parseTerm* weights.get(unit).doubleValue();
+        String ans= ""+parseTerm+" Kg";
+        return ans;
     }
 
     private String cleanTerm(String term) {
@@ -281,6 +285,28 @@ public class Parse implements IParse {
             add('~');
         }};
     }
+    private void convertWeightToKG (){
+        weights= new HashMap<String, Double>(){{
+            put ("Kilogram", 1.0);
+            put ("Kg", 1.0);
+            put ("kg", 1.0);
+            put ("KG", 1.0);
+            put ("KILOGRAM", 1.0);
+            put ("GRAM", 0.001);
+            put ("Gr", 0.001);
+            put ("gr",0.001);
+            put ("GR", 0.001);
+            put ("gram", 0.001);
+            put ("Gram", 0.001);
+            put ("Ton", 1000.0);
+            put ("ton", 1000.0);
+            put ("TON", 1000.0);
+            put ("T", 1000.0);
+        }};
+    }
+
+
+
 
     private void initMonthsData() {
         dates = new HashMap<String, String>() {{
