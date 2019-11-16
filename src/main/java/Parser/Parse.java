@@ -27,7 +27,8 @@ public class Parse implements IParse {
     private HashMap<String, String> dates;
     private HashSet<Character> delimiters;
     private HashMap<String, Double> weights;
-
+    private HashMap<String, String> nums;
+    private LinkedList<String> nextWord = new LinkedList<>(); //list of next words from the current term
 
     /**
      * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
@@ -40,9 +41,6 @@ public class Parse implements IParse {
         Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
 
         LinkedList<String> wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
-
-        //list of next words from the current term
-        LinkedList<String> nextWord = new LinkedList<>();
 
         String lang = currentCDocument.getDocLang();
         int index = 0;
@@ -77,7 +75,7 @@ public class Parse implements IParse {
 
     private String handleWeight(String term, String unit) {
         Double parseTerm= Double.parseDouble(term);
-        parseTerm= parseTerm* weights.get(unit).doubleValue();
+        parseTerm= parseTerm* weights.get(unit);
         String ans= ""+parseTerm+" Kg";
         return ans;
     }
@@ -94,8 +92,14 @@ public class Parse implements IParse {
     }
 
     private String nextWord() {
-        String nextWord = "";
-        return nextWord;
+        String next =nextWord.peek() ;
+        if (nums.containsKey(next))
+            return nums.get(next);
+        if(dates.containsKey(next))
+            return dates.get(next);
+        if(weights.containsKey(next))
+            return ""+ weights.get(next);//not sure what to do here- because there's kind of a func for that, also in Dollars case
+        return next;
     }
 
     public String getPathToWrite() {
@@ -305,9 +309,16 @@ public class Parse implements IParse {
         }};
     }
 
-
-
-
+    private void convertNum (){
+        nums= new HashMap<String, String>(){{
+            put ("Thousand", "K");
+            put ("thousand", "K");
+            put ("Million", "M");
+            put ("million", "M");
+            put ("Billion", "B");
+            put ("billion", "B");
+        }};
+    }
     private void initMonthsData() {
         dates = new HashMap<String, String>() {{
             put("Jan", "01");
