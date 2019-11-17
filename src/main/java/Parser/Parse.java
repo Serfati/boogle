@@ -370,12 +370,6 @@ public class Parse implements IParse, Runnable {
             } else if (queuePeek.equalsIgnoreCase("Trillion")) {
                 wordList.remove();
                 nextWord = "T";
-            } else if (queuePeek.equalsIgnoreCase("Minutes")) {
-                wordList.remove();
-                nextWord = "Min";
-            } else if (queuePeek.equalsIgnoreCase("Seconds")) {
-                wordList.remove();
-                nextWord = "Sec";
             } else if (queuePeek.equalsIgnoreCase("Tons")) {
                 wordList.remove();
                 nextWord = "Ton";

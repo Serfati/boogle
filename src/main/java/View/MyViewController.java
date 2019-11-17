@@ -19,7 +19,6 @@ public class MyViewController {
     public MenuItem solve_MenuItem;
 
     @FXML
-
     public javafx.scene.image.ImageView icon_sound;
     public javafx.scene.image.ImageView icon_partSolution;
     public javafx.scene.image.ImageView icon_fullSolution;
