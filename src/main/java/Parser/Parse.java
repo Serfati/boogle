@@ -9,48 +9,68 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
 
 import static org.apache.commons.lang.StringUtils.split;
 import static org.apache.commons.lang.math.NumberUtils.isNumber;
 import static org.apache.commons.lang3.StringUtils.replace;
 
 @SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
-public class Parse implements IParse {
-    Stemmer stemmer;
+public class Parse implements IParse, Runnable {
 
+
+    private static final Map<String, String> DATE_FORMAT_REGEXPS = new HashMap<String, String>() {{
+        put("^\\d{8}$", "yyyyMMdd");
+        put("^\\d{1,2}-\\d{1,2}-\\d{4}$", "dd-MM-yyyy");
+        put("^\\d{4}-\\d{1,2}-\\d{1,2}$", "yyyy-MM-dd");
+        put("^\\d{1,2}/\\d{1,2}/\\d{4}$", "MM/dd/yyyy");
+        put("^\\d{4}/\\d{1,2}/\\d{1,2}$", "yyyy/MM/dd");
+        put("^\\d{1,2}\\s[a-z]{3}\\s\\d{4}$", "dd MMM yyyy");
+        put("^\\d{1,2}\\s[a-z]{4,}\\s\\d{4}$", "dd MMMM yyyy");
+        put("^\\d{12}$", "yyyyMMddHHmm");
+        put("^\\d{8}\\s\\d{4}$", "yyyyMMdd HHmm");
+        put("^\\d{1,2}-\\d{1,2}-\\d{4}\\s\\d{1,2}:\\d{2}$", "dd-MM-yyyy HH:mm");
+        put("^\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{2}$", "yyyy-MM-dd HH:mm");
+        put("^\\d{1,2}/\\d{1,2}/\\d{4}\\s\\d{1,2}:\\d{2}$", "MM/dd/yyyy HH:mm");
+        put("^\\d{4}/\\d{1,2}/\\d{1,2}\\s\\d{1,2}:\\d{2}$", "yyyy/MM/dd HH:mm");
+        put("^\\d{1,2}\\s[a-z]{3}\\s\\d{4}\\s\\d{1,2}:\\d{2}$", "dd MMM yyyy HH:mm");
+        put("^\\d{1,2}\\s[a-z]{4,}\\s\\d{4}\\s\\d{1,2}:\\d{2}$", "dd MMMM yyyy HH:mm");
+        put("^\\d{14}$", "yyyyMMddHHmmss");
+        put("^\\d{8}\\s\\d{6}$", "yyyyMMdd HHmmss");
+        put("^\\d{1,2}-\\d{1,2}-\\d{4}\\s\\d{1,2}:\\d{2}:\\d{2}$", "dd-MM-yyyy HH:mm:ss");
+        put("^\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{2}:\\d{2}$", "yyyy-MM-dd HH:mm:ss");
+        put("^\\d{1,2}/\\d{1,2}/\\d{4}\\s\\d{1,2}:\\d{2}:\\d{2}$", "MM/dd/yyyy HH:mm:ss");
+        put("^\\d{4}/\\d{1,2}/\\d{1,2}\\s\\d{1,2}:\\d{2}:\\d{2}$", "yyyy/MM/dd HH:mm:ss");
+        put("^\\d{1,2}\\s[a-z]{3}\\s\\d{4}\\s\\d{1,2}:\\d{2}:\\d{2}$", "dd MMM yyyy HH:mm:ss");
+        put("^\\d{1,2}\\s[a-z]{4,}\\s\\d{4}\\s\\d{1,2}:\\d{2}:\\d{2}$", "dd MMMM yyyy HH:mm:ss");
+    }};
+    private Stemmer stemmer;
     private Boolean useStemming;
-    private String pathToWrite;
     private cDocument currentCDocument;
-
     private static HashSet<String> stopWordSet;
+    private BlockingQueue<cDocument> sourceDocumentsQueue;
+
+
     private HashMap<String, String> replacements;
-    private HashMap<String, String> dates;
+    private LinkedList<String> wordList;
     private HashSet<Character> delimiters;
     private HashMap<String, Double> weights;
     private HashMap<String, String> nums;
-    private LinkedList<String> nextWord = new LinkedList<>(); //list of next words from the current term
+    private HashMap<String, String> monthsData;
 
     /**
-     * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
-     *
-     * @return all the data about the terms and the doc
-     * @since Nov 13
+     * Determine SimpleDateFormat pattern matching with the given date string. Returns null if
+     * format is unknown. You can simply extend DateUtil with more formats if needed.
+     * @param dateString The date string to determine the SimpleDateFormat pattern for.
+     * @return The matching SimpleDateFormat pattern, or null if format is unknown.
      */
-    public void parse(String text) {
-
-        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
-
-        LinkedList<String> wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
-
-        String lang = currentCDocument.getDocLang();
-        int index = 0;
-        while(!wordList.isEmpty()) {
-            boolean doStemIfTermWasNotManipulated = false;
-            String term = wordList.remove();
-            cleanTerm(term);
-            if (isNumber(term))
-                nextWord.add(nextWord());
+    private static String determineDateFormat(String dateString) {
+        for(String regexp : DATE_FORMAT_REGEXPS.keySet()) {
+            if (dateString.toLowerCase().matches(regexp)) {
+                return DATE_FORMAT_REGEXPS.get(regexp);
+            }
         }
+        return null; // Unknown format.
     }
 
     @Override
@@ -91,19 +111,33 @@ public class Parse implements IParse {
     public void reset() {
     }
 
-    private String nextWord() {
-        String next =nextWord.peek() ;
-        if (nums.containsKey(next))
-            return nums.get(next);
-        if(dates.containsKey(next))
-            return dates.get(next);
-        if(weights.containsKey(next))
-            return ""+ weights.get(next);//not sure what to do here- because there's kind of a func for that, also in Dollars case
-        return next;
-    }
+    /**
+     * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
+     *
+     * @return all the data about the terms and the doc
+     * @since Nov 13
+     */
+    public void parse(String text) {
 
-    public String getPathToWrite() {
-        return pathToWrite;
+        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
+
+        LinkedList<String> nextWord = new LinkedList<>();
+
+        wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
+
+        String lang = currentCDocument.getDocLang();
+        int index = 0;
+        while(!wordList.isEmpty()) {
+            boolean doStemIfTermWasNotManipulated = false;
+            String term = wordList.remove();
+            cleanTerm(term);
+            if (isNumber(term)) {
+                nextWord.add(nextWord());
+                if (nextWord.peekFirst().contains("-")) {
+                }
+            }
+            //else if (isMonth(nextWord.peekFirst())
+        }
     }
 
     private String numberValue(Double d) {
@@ -180,17 +214,12 @@ public class Parse implements IParse {
         return false;
     }
 
-    public void loadStopWordsList(String pathOfStopWords) throws IOException {
-        File f = new File(pathOfStopWords);
-        StringBuilder allText = new StringBuilder();
-        FileReader fileReader = new FileReader(f);
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while((line = bufferedReader.readLine()) != null)
-                allText.append(line).append("\n");
+    public void run() {
+        try {
+            parse(currentCDocument.getDocText());
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-        String[] stopWords = allText.toString().split("\n");
-        Collections.addAll(stopWordSet, stopWords);
     }
 
     private String checkKorMorB(String number) {
@@ -319,8 +348,72 @@ public class Parse implements IParse {
             put ("billion", "B");
         }};
     }
+
+    /**
+     * Checks if the next word is one of certain rules given to the parser
+     *
+     * @return returns a string according to the rules
+     */
+    private String nextWord() {
+        String nextWord = "";
+        if (!wordList.isEmpty()) {
+            String queuePeek = wordList.peek();
+            if (queuePeek.equalsIgnoreCase("Thousand")) {
+                wordList.remove();
+                nextWord = "K";
+            } else if (queuePeek.equalsIgnoreCase("Million")) {
+                wordList.remove();
+                nextWord = "M";
+            } else if (queuePeek.equalsIgnoreCase("Billion")) {
+                wordList.remove();
+                nextWord = "B";
+            } else if (queuePeek.equalsIgnoreCase("Trillion")) {
+                wordList.remove();
+                nextWord = "T";
+            } else if (queuePeek.equalsIgnoreCase("Minutes")) {
+                wordList.remove();
+                nextWord = "Min";
+            } else if (queuePeek.equalsIgnoreCase("Seconds")) {
+                wordList.remove();
+                nextWord = "Sec";
+            } else if (queuePeek.equalsIgnoreCase("Tons")) {
+                wordList.remove();
+                nextWord = "Ton";
+            } else if (queuePeek.equalsIgnoreCase("Grams")) {
+                wordList.remove();
+                nextWord = "Gram";
+            } else if (queuePeek.equalsIgnoreCase("percent") || queuePeek.equalsIgnoreCase("percentage")) {
+                wordList.remove();
+                nextWord = "%";
+            } else if (queuePeek.equalsIgnoreCase("Dollars")) {
+                wordList.remove();
+                nextWord = "Dollars";
+            } else if (queuePeek.contains("-")) {
+                wordList.remove();
+                nextWord = queuePeek;
+            }
+        }
+        return nextWord;
+    }
+
+    public void loadStopWordsList(String pathOfStopWords) throws IOException {
+
+        File f = new File(pathOfStopWords);
+        StringBuilder allText = new StringBuilder();
+        FileReader fileReader = new FileReader(f);
+        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+            String line;
+            while((line = bufferedReader.readLine()) != null)
+                allText.append(line).append("\n");
+            String[] stopWords = allText.toString().split("\n");
+            Collections.addAll(stopWordSet, stopWords);
+        } catch(IOException e) {
+            System.out.println("stopwords file not found in the specified path. running without stopwords");
+        }
+    }
+
     private void initMonthsData() {
-        dates = new HashMap<String, String>() {{
+        monthsData = new HashMap<String, String>() {{
             put("Jan", "01");
             put("Feb", "02");
             put("Mar", "03");

@@ -3,11 +3,11 @@ package View;
 import Controller.Controller;
 
 
-public class View implements IView {
+public class MyView implements IView {
 
     private Controller controller;
 
-    public View(Controller controller) {
+    public MyView(Controller controller) {
         this.controller = controller;
     }
 

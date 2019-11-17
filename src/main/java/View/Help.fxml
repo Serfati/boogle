@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="500.0"
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="View.HelpController">
+    <VBox prefHeight="500.0" prefWidth="700.0">
+        <TabPane prefHeight="478.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE">
+            <Tab text="How to run?">
+                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <Label fx:id="newWindowLabel" alignment="TOP_LEFT" text="Label">
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </Label>
+                </ScrollPane>
+            </Tab>
+            <Tab text="MenuBar's options">
+                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <Label fx:id="MenuBar" text="Label">
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </Label>
+                </ScrollPane>
+            </Tab>
+            <Tab text="Buttons">
+                <ScrollPane hbarPolicy="NEVER">
+                    <GridPane prefHeight="420.0" prefWidth="686.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0"
+                                               prefWidth="73.0"/>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="613.0" minWidth="10.0"
+                                               prefWidth="613.0"/>
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="93.0" minHeight="10.0" prefHeight="86.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="105.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="88.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="69.0"
+                                            vgrow="SOMETIMES"/>
+                            <RowConstraints maxHeight="76.0" minHeight="10.0" prefHeight="70.0"
+                                            vgrow="SOMETIMES"/>
+                        </rowConstraints>
+                        <ImageView fx:id="soundImage" fitHeight="60.0" fitWidth="60.0"
+                                   pickOnBounds="true" preserveRatio="true"
+                                   GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                        <ImageView fx:id="newSearchImage" fitHeight="60.0" fitWidth="60.0"
+                                   layoutX="17.0" layoutY="25.0" pickOnBounds="true"
+                                   preserveRatio="true" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+                        <ImageView fx:id="getHintImage" fitHeight="60.0" fitWidth="60.0"
+                                   layoutX="17.0" layoutY="115.0" pickOnBounds="true"
+                                   preserveRatio="true" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+                        <ImageView fx:id="solveImage" fitHeight="60.0" fitWidth="60.0"
+                                   layoutX="17.0" layoutY="204.0" pickOnBounds="true"
+                                   preserveRatio="true" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
+                        <Label fx:id="soundLabel" text="Label" GridPane.columnIndex="1"
+                               GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
+                        <Label fx:id="newLabel" text="Label" GridPane.columnIndex="1"
+                               GridPane.halignment="LEFT" GridPane.rowIndex="1"
+                               GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
+                        <Label fx:id="getHintLabel" text="Label" GridPane.columnIndex="1"
+                               GridPane.halignment="LEFT" GridPane.rowIndex="2"
+                               GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets bottom="20.0" left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
+                        <Label fx:id="solveLabel" text="Label" GridPane.columnIndex="1"
+                               GridPane.halignment="LEFT" GridPane.rowIndex="3"
+                               GridPane.valignment="TOP">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
+                        <ImageView fx:id="soundImage1" fitHeight="60.0" fitWidth="60.0"
+                                   layoutX="17.0" layoutY="27.0" pickOnBounds="true"
+                                   preserveRatio="true" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets/>
+                            </GridPane.margin>
+                        </ImageView>
+                        <Label fx:id="resetZoomLabel" layoutX="93.0" layoutY="304.0"
+                               text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT"
+                               GridPane.rowIndex="4" GridPane.valignment="TOP">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Label>
+                        <ImageView fx:id="resetZoomImage" fitHeight="60.0" fitWidth="60.0"
+                                   layoutX="17.0" layoutY="306.0" pickOnBounds="true"
+                                   preserveRatio="true" GridPane.halignment="CENTER"
+                                   GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
+                    </GridPane>
+                </ScrollPane>
+            </Tab>
+            <Tab text="Extras">
+                <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <Label fx:id="extraLabel" text="Label">
+                        <padding>
+                            <Insets left="10.0"/>
+                        </padding>
+                    </Label>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+        <Button fx:id="OK" alignment="CENTER" mnemonicParsing="false" onAction="#close" prefWidth="70.0"
+                text="OK">
+            <VBox.margin>
+                <Insets bottom="5.0" left="260.0" top="5.0"/>
+            </VBox.margin>
+        </Button>
+    </VBox>
+</AnchorPane>

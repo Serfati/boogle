@@ -1,20 +1,16 @@
 package IO;
 
-import Engine.Indexer;
 import Structures.cDocument;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
 import java.nio.file.Files;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Objects;
-import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -24,46 +20,30 @@ import java.util.concurrent.atomic.AtomicInteger;
  * This class has the responsibility to get the corpus and splite the file into cDocuments.
  */
 public class ReadFile {
-    /**
-     * number if reader that done
-     */
+    /* number if reader that done */
     private static AtomicInteger numOfDocuments = new AtomicInteger(0);
-    private static AtomicInteger numOfParsedDocs = new AtomicInteger(0);
-    public BlockingQueue<cDocument> documentBuffer;
-    /**
-     * pool of thread that rin read function
-     */
-    private ExecutorService pool;
-    /**
-     * use to sync the read file
-     */
-    private Object syncObject;
+    /* use to sync the read file */
+    private final Object syncObject = new Object();
     private String corpusPath;
-
-    private HashSet<String> languages;
-    private Queue<cDocument> docsToWrite;
+    private BlockingQueue<cDocument> documentBuffer;
+    /* pool of thread that rin read function */
+    private ExecutorService pool;
 
 
     /**
      * c'tor
-     *
      * @param corpusPath    - the path of corpus with files
      */
     public ReadFile(String corpusPath, BlockingQueue<cDocument> documentBuffer) {
         this.corpusPath = corpusPath;
-        pool = Executors.newFixedThreadPool(1);
-        docsToWrite = new LinkedList<>();
-        languages = new HashSet<>();
+        pool = Executors.newFixedThreadPool(4);
     }
 
-    /**
-     * This function  read the file  by send each file to thread
-     */
+    /* This function  read the file  by send each file to thread */
     public void readFiles() {
         File corpus = new File(corpusPath);
         FileFilter subDirsFiller = File::isDirectory;
         File[] files_list = corpus.listFiles(subDirsFiller);
-        syncObject = new Object();
         assert files_list != null;
         numOfDocuments.addAndGet(files_list.length);
         for(File file : files_list)
@@ -80,54 +60,13 @@ public class ReadFile {
         }
     }
 
-    private void writeDocumentsListToDisk(String pathForWriting) {
-        if (!docsToWrite.isEmpty()) {
-            StringBuilder documentsData = new StringBuilder();
-            BufferedWriter writerDocuments;
-            try {
-                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"/cReview.txt", true));
-                //writerDocuments.write("[ doc_ID ] : | date | -  title  - |  lang  | max_tf | numOfUniqueTerms | length | "+"\n");
-
-                cDocument document;
-                while(!docsToWrite.isEmpty()) {
-                    document = docsToWrite.poll();
-
-                    documentsData.append(document.getDocId()).append(";;")
-                            .append(document.getDocDate())
-                            .append("|").append(document.getDocTitle()).append("|").
-                            append(document.getDocLang()).append("|").append(document.getMaxFrequency()).
-                            append("|").append(document.getNumOfUniqueTerms()).append("|").
-                            append("\n");
-                    numOfDocuments.getAndIncrement();
-                }
-                writerDocuments.write(documentsData.toString());
-                writerDocuments.close();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-            docsToWrite.clear();
-        }
-    }
-
-    public ObservableList<String> getLanguages() {
-        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
-        listOfLanguages.addAll(languages);
-        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
-        return listOfLanguages;
-    }
-
-    /**
-     * This class is thread that get file, split hum to cDocuments by JSOUP and send them to parse thread
-     * All the jsoup code will esplain in the report.
-     */
+    /* This class is thread that get file, split hum to cDocuments by JSOUP and send them to parse thread
+     * All the jsoup code will esplain in the report.*/
     class Reader implements Runnable {
-
         File file;
-
         Reader(File file) {
             this.file = file;
         }
-
         @Override
         public void run() {
             read(file);
@@ -171,13 +110,13 @@ public class ReadFile {
                 String TEXT = TextElement.text();
                 String author = unProcessedDocAuthor.text().replace("By ", "");
                 cDocument newDoc = new cDocument(ID, DATE, TILTLE, TEXT, orginC, author, language);
-                docsToWrite.offer(newDoc);
+                documentBuffer.offer(newDoc);
             }
 
-            if (docsToWrite.size() > 500) {
-                for(cDocument d : docsToWrite)
-                    writeDocumentsListToDisk(corpusPath);
-                System.out.println("done write 500 docs");
+            if (documentBuffer.size() > 500) {
+                for(cDocument d : documentBuffer)
+                    //writeDocumentsListToDisk(corpusPath);
+                    System.out.println("done parse 500 docs");
             }
             docElements.clear();
             numOfDocuments.getAndDecrement();
@@ -186,5 +125,42 @@ public class ReadFile {
             }
         }
     }
+
+
+//    private void writeDocumentsListToDisk(String pathForWriting) {
+//        if (!docsToWrite.isEmpty()) {
+//            StringBuilder documentsData = new StringBuilder();
+//            BufferedWriter writerDocuments;
+//            try {
+//                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"/cReview.txt", true));
+//                //writerDocuments.write("[ doc_ID ] : | date | -  title  - |  lang  | max_tf | numOfUniqueTerms | length | "+"\n");
+//
+//                cDocument document;
+//                while(!docsToWrite.isEmpty()) {
+//                    document = docsToWrite.poll();
+//
+//                    documentsData.append(document.getDocId()).append(";;")
+//                            .append(document.getDocDate())
+//                            .append("|").append(document.getDocTitle()).append("|").
+//                            append(document.getDocLang()).append("|").append(document.getMaxFrequency()).
+//                            append("|").append(document.getNumOfUniqueTerms()).append("|").
+//                            append("\n");
+//                    numOfDocuments.getAndIncrement();
+//                }
+//                writerDocuments.write(documentsData.toString());
+//                writerDocuments.close();
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//            docsToWrite.clear();
+//        }
+//    }
+
+//    public ObservableList<String> getLanguages() {
+//        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
+//        listOfLanguages.addAll(languages);
+//        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
+//        return listOfLanguages;
+//    }
 
 }
