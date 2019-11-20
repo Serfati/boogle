@@ -1,12 +1,15 @@
 package Engine;
 
+import Structures.MiniDictionary;
 import Structures.Term;
 
 import java.util.Comparator;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Indexer {
-
+    private ConcurrentLinkedDeque<MiniDictionary> miniDicList;
     private static TreeMap<String, Term> termsDictionary;
     private String pathForWriting;
     private boolean useStemming;
@@ -18,7 +21,9 @@ public class Indexer {
     }
 
 
-    public void createInvertedIndex()throws Exception{}
+    public void createInvertedIndex()throws Exception{
+
+    }
 
 
 

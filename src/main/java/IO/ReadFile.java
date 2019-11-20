@@ -79,6 +79,7 @@ public class ReadFile {
             } catch(IOException e) {
                 e.printStackTrace();
             }
+            int placeinArray = 0;
             assert document != null;
             Elements docElements = document.getElementsByTag("DOC"); //split by DOC tag
             for(Element element : docElements) {
@@ -111,12 +112,17 @@ public class ReadFile {
                 String author = unProcessedDocAuthor.text().replace("By ", "");
                 cDocument newDoc = new cDocument(ID, DATE, TILTLE, TEXT, orginC, author, language);
                 documentBuffer.offer(newDoc);
+                //docsToparse[placeinArray++] = newDoc;
+
             }
 
             if (documentBuffer.size() > 500) {
                 for(cDocument d : documentBuffer)
+                    parse(d.getDocText());
                     //writeDocumentsListToDisk(corpusPath);
-                    System.out.println("done parse 500 docs");
+                    //System.out.println("done parse 500 docs");
+
+
             }
             docElements.clear();
             numOfDocuments.getAndDecrement();

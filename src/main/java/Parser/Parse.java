@@ -1,6 +1,7 @@
 package Parser;
 
 import Engine.Stemmer;
+import Structures.MiniDictionary;
 import Structures.cDocument;
 import org.apache.commons.lang3.StringUtils;
 
@@ -66,9 +67,8 @@ public class Parse implements IParse, Runnable {
      */
     private static String determineDateFormat(String dateString) {
         for(String regexp : DATE_FORMAT_REGEXPS.keySet()) {
-            if (dateString.toLowerCase().matches(regexp)) {
+            if (dateString.toLowerCase().matches(regexp))
                 return DATE_FORMAT_REGEXPS.get(regexp);
-            }
         }
         return null; // Unknown format.
     }
@@ -119,7 +119,7 @@ public class Parse implements IParse, Runnable {
      */
     public void parse(String text) {
 
-        Map<String, Double> entitiesDiscoveredInDoc = new HashMap<>();
+        MiniDictionary entitiesDiscoveredInDoc = MiniDictionary;
 
         LinkedList<String> nextWord = new LinkedList<>();
 
@@ -131,12 +131,76 @@ public class Parse implements IParse, Runnable {
             boolean doStemIfTermWasNotManipulated = false;
             String term = wordList.remove();
             cleanTerm(term);
-            if (isNumber(term)) {
+            if(isNumber(term)) {
                 nextWord.add(nextWord());
-                if (nextWord.peekFirst().contains("-")) {
+                if (nextWord.peekFirst().contains("-") && isRangeNumbers(term + "" + nextWord.poll()) && !wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.pollFirst());
+
+                    term += " " + nextWord.pollLast();
+
+                    if (checkIfFracture(term)) {
+                        term += " " + nextWord.pollLast();
+                    }
+                } else if (isMonth(nextWord.peekFirst()) && isInteger(Double.parseDouble(term)) && !wordList.isEmpty()) {
+                    String day = nextWord.pollFirst();
+                    term = handleMonthDay(day, term);
+
+                    if (!wordList.isEmpty()) {
+                        nextWord.add(wordList.pollFirst());
+                        if (nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()))
+                            nextWord.addFirst(day);
+                    }
+
+                } else if (nextWord.peekFirst().equalsIgnoreCase("Dollars")) {
+                    nextWord.pollFirst();
+                    term = handleDollar(term, term.contains(","));
+                } else if (nextWord.peekFirst().equalsIgnoreCase("percent") || nextWord.peekFirst().equalsIgnoreCase("percentage") || nextWord.peekFirst().equals("%")) {
+                    term += "%";
+                } else if (nextWord.peekFirst().equalsIgnoreCase("Ton") || nextWord.peekFirst().equalsIgnoreCase("Gram")) {
+                    term = handleWeight(term, nextWord.pollFirst());
+                }
+                else if ( isInteger(Double.parseDouble(nextWord.peekFirst()))){
+
+                }
+
+            }else{
+
+
+            }
+            if (term.length()>=1 && isNumber(term.substring(1))) {
+                if (term.charAt(0) == '$') {
+                    term = handleDollar(term.substring(1).replace(",", ""), term.contains(","));
                 }
             }
-            //else if (isMonth(nextWord.peekFirst())
+            else if (term.length() >= 1 && isNumber(term.substring(0, term.length() - 1))) {
+                if (!term.substring(0, term.length() - 1).equals("%")) {
+                    nextWord.addFirst(nextWord());
+                    if (term.substring(term.length() - 1).equals("m") && nextWord.peekFirst().equals("Dollars"))
+                        term = numberValue(Double.parseDouble(term.substring(0, term.length() - 1).replace(",",""))) + " M " + nextWord.pollFirst();
+                }
+            }
+
+
+
+            else if (isMonth(term) ){
+                if (!wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.poll());
+                    if (isNumber(nextWord.peekFirst())) {
+                        term = handleMonthYear(term, nextWord.pollFirst());
+                    }
+                }
+            }
+            else if (term.equalsIgnoreCase("between")) {
+
+            }
+
+            if(useStemming && !stopWordSet.contains(term)) {
+                stemmer.add(term);
+                minidic.add(term);
+            }
+
+
+
         }
     }
 
@@ -145,11 +209,15 @@ public class Parse implements IParse, Runnable {
             return ""+d.intValue();
         return ""+d;
     }
-
     private boolean isInteger(double word) {
         return word == Math.floor(word) && !Double.isInfinite(word);
     }
+//            else if (term.length() >= 2 && isNumber(term.substring(0, term.length() - 2))) {
+////                nextWord.addFirst(nextWord());
+////                if (nextWord.peekFirst().equals("Dollars"))
+////                    term = numberValue(term.substring(0, term.length() - 2).replace(",","") * 1000) + " M " + nextWord.pollFirst();
 
+    //            }
     private String handleDollar(String price, boolean containsComma) {
         Double number = Double.parseDouble(price);
         String ans = "";
