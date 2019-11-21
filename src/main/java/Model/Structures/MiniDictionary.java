@@ -1,4 +1,4 @@
-package Structures;
+package Model.Structures;
 
 import java.util.HashMap;
 import java.util.LinkedList;

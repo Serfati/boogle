@@ -1,6 +1,6 @@
-package IO;
+package Model.IO;
 
-import Structures.cDocument;
+import Model.Structures.cDocument;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

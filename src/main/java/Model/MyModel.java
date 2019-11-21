@@ -1,9 +1,9 @@
 package Model;
 
 
-import Engine.Indexer;
-import IO.ReadFile;
-import Parser.Parse;
+import Model.Engine.Indexer;
+import Model.IO.ReadFile;
+import Model.Parser.Parse;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 

@@ -1,8 +1,9 @@
-package Parser;
+package Model.Parser;
 
 import Model.MyModel;
-import Structures.MiniDictionary;
-import Structures.cDocument;
+import Model.Stemmer.Stemmer;
+import Model.Structures.MiniDictionary;
+import Model.Structures.cDocument;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -285,6 +286,10 @@ public class Parse implements IParse, Callable<MiniDictionary> {
             }
         }
         return miniDic;
+    }
+
+    private boolean isRangeNumbers(String s) {
+        return true;
     }
 
     private boolean checkIfFracture(String token) {

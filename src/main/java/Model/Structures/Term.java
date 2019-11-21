@@ -1,4 +1,4 @@
-package Structures;
+package Model.Structures;
 
 import java.io.Serializable;
 

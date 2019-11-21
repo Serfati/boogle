@@ -1,4 +1,4 @@
-package Structures;
+package Model.Structures;
 
 public interface IData {
 

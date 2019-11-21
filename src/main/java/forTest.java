@@ -1,5 +1,5 @@
-import IO.ReadFile;
-import Structures.cDocument;
+import Model.IO.ReadFile;
+import Model.Structures.cDocument;
 import net.sf.extjwnl.JWNLException;
 import net.sf.extjwnl.data.IndexWord;
 import net.sf.extjwnl.data.POS;

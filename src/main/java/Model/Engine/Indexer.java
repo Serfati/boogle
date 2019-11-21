@@ -1,6 +1,6 @@
-package Engine;
+package Model.Engine;
 
-import Structures.MiniDictionary;
+import Model.Structures.MiniDictionary;
 import javafx.util.Pair;
 
 import java.util.Comparator;

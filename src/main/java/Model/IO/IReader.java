@@ -1,4 +1,4 @@
-package IO;
+package Model.IO;
 
 public interface IReader {
     /**
