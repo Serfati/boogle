@@ -1,6 +1,6 @@
 package Model;
 
-import Controller.Controller;
+
 import Engine.Indexer;
 import IO.ReadFile;
 import Parser.Parse;
@@ -13,30 +13,52 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Observable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
-public class Model {
+public class MyModel extends Observable implements IModel {
     public static HashSet<String> stopWordSet;
-    private static Logger logger = LogManager.getLogger(Model.class);
+    private static Logger logger = LogManager.getLogger(MyModel.class);
     private ReadFile rf;
     private Indexer indexer;
     private Parse parser;
-    private Controller controller;
+    private ExecutorService threadPool = Executors.newCachedThreadPool();
+    private boolean isFinished;
 
-    public Model(ReadFile rf, Indexer indexer, Parse parser) {
+    public MyModel(ReadFile rf, Indexer indexer, Parse parser) {
         this.rf = rf;
         this.indexer = indexer;
-        this.parser = parser;
         logger.info("ctor of myModel");
     }
 
-    public Model() {
+    //ctor
+    public MyModel() {
+        isFinished = false;
     }
 
-    public void setController(Controller controller) {
-        this.controller = controller;
+
+    @Override
+    public void loadDic(File file) {
+
     }
 
+    @Override
+    public void saveDic(File file) {
+
+    }
+
+    @Override
+    public void closeModel() {
+        threadPool.shutdown();
+        System.out.println("Close Model");
+    }
+
+    @Override
+    public boolean isFinish() {
+        return isFinished;
+    }
 
     public void loadStopWordsList(String pathOfStopWords) throws IOException {
 

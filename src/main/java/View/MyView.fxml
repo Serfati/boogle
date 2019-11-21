@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#KeyPressed" onKeyTyped="#KeyPressed"
@@ -45,46 +42,47 @@
                 <javafx.scene.control.MenuBar prefWidth="700.0">
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction= text="New"/>-->
-                            <!--</items>-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem fx:id="solve_MenuItem" disable="true"-->
-                            <!--mnemonicParsing="false" onAction=-->
-                            <!--text="Solve"/>-->
-                            <!--</items>-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"-->
-                            <!--mnemonicParsing="false" onAction=-->
-                            <!--text="Save"/>-->
-                            <!--</items>-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction=""-->
-                            <!--text="Load"/>-->
-                            <!--</items>-->
-                            <!--</javafx.scene.control.Menu>-->
-                            <!--<javafx.scene.control.Menu mnemonicParsing="false" text="Options">-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction=""-->
-                            <!--text="Properties"/>-->
-                            <!--</items>-->
-                            <!--</javafx.scene.control.Menu>-->
-                            <!--<javafx.scene.control.Menu mnemonicParsing="false" text="Exit">-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction=""-->
-                            <!--text="Exit"/>-->
-                            <!--</items>-->
-                            <!--</javafx.scene.control.Menu>-->
-                            <!--<javafx.scene.control.Menu mnemonicParsing="false" text="Help">-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction="" text="Help"-->
-                            <!--/>-->
-                            <!--</items>-->
-                            <!--</javafx.scene.control.Menu>-->
-                            <!--<javafx.scene.control.Menu mnemonicParsing="false" text="About">-->
-                            <!--<items>-->
-                            <!--<javafx.scene.control.MenuItem mnemonicParsing="false" onAction="" text="About"/>-->
-                            <!--</items>-->
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="New search"/>
+                            </items>
+                            <items>
+                                <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
+                                                               mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Save"/>
+                            </items>
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Load"/>
+                            </items>
+
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Exit"/>
+                            </items>
+
+
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
+
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"/>
+                            </items>
+
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="About">
+
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
+                            </items>
+
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Exit">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Exit"/>
+                            </items>
+
 
                         </javafx.scene.control.Menu>
                     </menus>
@@ -99,7 +97,7 @@
                     </HBox.margin>
                 </ImageView>
 
-                <ImageView fx:id="icon_makeNewMaze" fitHeight="70.0" fitWidth="70.0">
+                <ImageView fx:id="icon_make" fitHeight="70.0" fitWidth="70.0">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>

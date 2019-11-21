@@ -1,7 +1,7 @@
 package View;
 
-import Controller.Controller;
+import ViewModel.MyViewModel;
 
 public interface IView {
-    void setController(Controller controller);
+    void setViewModel(MyViewModel viewModel);
 }

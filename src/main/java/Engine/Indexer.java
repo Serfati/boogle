@@ -1,29 +1,44 @@
 package Engine;
 
 import Structures.MiniDictionary;
-import Structures.Term;
+import javafx.util.Pair;
 
 import java.util.Comparator;
-import java.util.TreeMap;
+import java.util.HashMap;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class Indexer {
-    private ConcurrentLinkedDeque<MiniDictionary> miniDicList;
-    private static TreeMap<String, Term> termsDictionary;
-    private String pathForWriting;
-    private boolean useStemming;
+public class Indexer implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
+    private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
 
-    public Indexer() {
-        termsDictionary = new TreeMap<>(new StringComparator());
-        pathForWriting = null;
-        useStemming=false;
+    public Indexer(ConcurrentLinkedDeque<MiniDictionary> minidic) {
+        m_miniDicList = minidic;
+    }
+
+    /**
+     * this class creates a temporary posting in a HashMap containing all data of MiniDictionay's sent
+     *
+     * @return an hash map representing all data of mini dics
+     */
+    @Override
+    public HashMap<String, Pair<Integer, StringBuilder>> call() {
+        HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
+        if (m_miniDicList != null) {
+            for(MiniDictionary miniDic : m_miniDicList)
+                for(String word : miniDic.listOfWords())
+                    if (toReturn.containsKey(word)) {
+
+                    } else {
+
+                    }
+
+
+        }
+        return toReturn;
     }
 
 
-    public void createInvertedIndex()throws Exception{
 
-    }
 
 
 

@@ -2,6 +2,7 @@ package Structures;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class MiniDictionary {
 
@@ -23,5 +24,25 @@ public class MiniDictionary {
 
     public MiniDictionary() {
 
+    }
+
+    private int containsKey(String word) {
+        String upper = word.toUpperCase();
+        String lower = word.toLowerCase();
+        if (termsOfDoc.containsKey(upper))
+            return 1;
+        if (termsOfDoc.containsKey(lower))
+            return 2;
+        if (!Character.isLetter(word.charAt(0)) && termsOfDoc.containsKey(word))
+            return 3;
+        return 0;
+    }
+
+    public Set<String> listOfWords() {
+        return termsOfDoc.keySet();
+    }
+
+    public int size() {
+        return termsOfDoc.size();
     }
 }

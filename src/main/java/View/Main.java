@@ -1,7 +1,8 @@
 package View;
 
-import Controller.Controller;
-import Model.Model;
+
+import Model.MyModel;
+import ViewModel.MyViewModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,20 +18,21 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Model model = new Model();
-
+        MyModel model = new MyModel();
+        MyViewModel myViewModel = new MyViewModel(model);
+        model.addObserver(myViewModel);
+        //------------------------------
         primaryStage.setTitle("BOOGLE");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource("MyView.fxml").openStream());
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
         primaryStage.setScene(scene);
-
-        View view = fxmlLoader.getController();
-        Controller controller = new Controller();
-
-        model.setController(controller);
-        view.setController(controller);
-
+        primaryStage.setResizable(false);
+        //------------------------------
+        MyViewController myViewController = fxmlLoader.getController();
+        myViewController.setViewModel(myViewModel);
+        //------------------------------
         primaryStage.show();
     }
 }
