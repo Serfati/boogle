@@ -10,11 +10,18 @@ public class MiniDictionary {
     private int maxFreq;
     private String lang;
     private String maxFreqWord;
+    private String m_title;
 
-    public MiniDictionary(String docNo, String lang) {
-        this.termsOfDoc = new HashMap<>();
-        this.docNo = docNo;
-        this.lang = lang;
+    public MiniDictionary(String name, String city, String title, String docLang) {
+        docNo = name;
+        termsOfDoc = new HashMap<>();
+        maxFreq = 0;
+        lang = docLang;
+        maxFreqWord = "";
+        m_title = title;
+    }
+
+    public MiniDictionary() {
 
     }
 }

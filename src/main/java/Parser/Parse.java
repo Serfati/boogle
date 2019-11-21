@@ -1,25 +1,27 @@
 package Parser;
 
-import Engine.Stemmer;
+import Model.Model;
 import Structures.MiniDictionary;
 import Structures.cDocument;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Map;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 
 import static org.apache.commons.lang.StringUtils.split;
 import static org.apache.commons.lang.math.NumberUtils.isNumber;
 import static org.apache.commons.lang3.StringUtils.replace;
 
 @SuppressWarnings({"UNUSED", "MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
-public class Parse implements IParse, Runnable {
+public class Parse implements IParse, Callable<MiniDictionary> {
 
-
+    private static Logger logger = LogManager.getLogger(Parse.class);
     private static final Map<String, String> DATE_FORMAT_REGEXPS = new HashMap<String, String>() {{
         put("^\\d{8}$", "yyyyMMdd");
         put("^\\d{1,2}-\\d{1,2}-\\d{4}$", "dd-MM-yyyy");
@@ -48,9 +50,8 @@ public class Parse implements IParse, Runnable {
     private Stemmer stemmer;
     private Boolean useStemming;
     private cDocument currentCDocument;
-    private static HashSet<String> stopWordSet;
-    private BlockingQueue<cDocument> sourceDocumentsQueue;
 
+    private BlockingQueue<cDocument> sourceDocumentsQueue;
 
     private HashMap<String, String> replacements;
     private LinkedList<String> wordList;
@@ -59,13 +60,14 @@ public class Parse implements IParse, Runnable {
     private HashMap<String, String> nums;
     private HashMap<String, String> monthsData;
 
-    /**
-     * Determine SimpleDateFormat pattern matching with the given date string. Returns null if
-     * format is unknown. You can simply extend DateUtil with more formats if needed.
-     * @param dateString The date string to determine the SimpleDateFormat pattern for.
-     * @return The matching SimpleDateFormat pattern, or null if format is unknown.
-     */
-    private static String determineDateFormat(String dateString) {
+
+    public Parse(cDocument corpus_doc, boolean stm) {
+        this.currentCDocument = corpus_doc;
+        this.useStemming = stm;
+        this.stemmer = new Stemmer();
+    }
+
+    public static String determineDateFormat(String dateString) {
         for(String regexp : DATE_FORMAT_REGEXPS.keySet()) {
             if (dateString.toLowerCase().matches(regexp))
                 return DATE_FORMAT_REGEXPS.get(regexp);
@@ -73,42 +75,13 @@ public class Parse implements IParse, Runnable {
         return null; // Unknown format.
     }
 
-    @Override
-    public boolean isDone() {
-        return false;
-    }
-
-    public void setDone(boolean done) {
-    }
-
-    private String handlePercent(String term, String percentSign) {
-        return term+" %";
-    }
-
-    private String handleMonthYear(String month, String year) {
-        return year+"-"+month;
-    }
-
-    private String handleMonthDay(String day, String month) {
-        return month+"-"+day;
-    }
-
-    private String handleWeight(String term, String unit) {
-        Double parseTerm= Double.parseDouble(term);
-        parseTerm= parseTerm* weights.get(unit);
-        String ans= ""+parseTerm+" Kg";
-        return ans;
-    }
-
-    private String cleanTerm(String term) {
-        return "0";
-    }
-
-    public String handleLetters(String text, String DocID) {
-        return "";
-    }
-
-    public void reset() {
+    public MiniDictionary call() {
+        try {
+            return parse();
+        } catch(Exception e) {
+            logger.error("PARSE :: DOC FAILD : a thread prosses - call()");
+        }
+        return new MiniDictionary();
     }
 
     /**
@@ -117,9 +90,9 @@ public class Parse implements IParse, Runnable {
      * @return all the data about the terms and the doc
      * @since Nov 13
      */
-    public void parse(String text) {
+    public MiniDictionary parse() {
 
-        MiniDictionary entitiesDiscoveredInDoc = MiniDictionary;
+        MiniDictionary miniDic = new MiniDictionary(currentCDocument.getDocId(), currentCDocument.getDocOrgin(), currentCDocument.getDocTitle(), currentCDocument.getDocLang());
 
         LinkedList<String> nextWord = new LinkedList<>();
 
@@ -141,6 +114,8 @@ public class Parse implements IParse, Runnable {
                     if (checkIfFracture(term)) {
                         term += " " + nextWord.pollLast();
                     }
+
+                    //handleMonthDay
                 } else if (isMonth(nextWord.peekFirst()) && isInteger(Double.parseDouble(term)) && !wordList.isEmpty()) {
                     String day = nextWord.pollFirst();
                     term = handleMonthDay(day, term);
@@ -158,8 +133,7 @@ public class Parse implements IParse, Runnable {
                     term += "%";
                 } else if (nextWord.peekFirst().equalsIgnoreCase("Ton") || nextWord.peekFirst().equalsIgnoreCase("Gram")) {
                     term = handleWeight(term, nextWord.pollFirst());
-                }
-                else if ( isInteger(Double.parseDouble(nextWord.peekFirst()))){
+                } else if ( isInteger(Double.parseDouble(nextWord.peekFirst()))){
 
                 }
 
@@ -167,21 +141,19 @@ public class Parse implements IParse, Runnable {
 
 
             }
+            // START WITH $ SIGN
             if (term.length()>=1 && isNumber(term.substring(1))) {
                 if (term.charAt(0) == '$') {
                     term = handleDollar(term.substring(1).replace(",", ""), term.contains(","));
                 }
-            }
-            else if (term.length() >= 1 && isNumber(term.substring(0, term.length() - 1))) {
+            } else if (term.length() >= 1 && isNumber(term.substring(0, term.length() - 1))) {
                 if (!term.substring(0, term.length() - 1).equals("%")) {
                     nextWord.addFirst(nextWord());
                     if (term.substring(term.length() - 1).equals("m") && nextWord.peekFirst().equals("Dollars"))
                         term = numberValue(Double.parseDouble(term.substring(0, term.length() - 1).replace(",",""))) + " M " + nextWord.pollFirst();
                 }
             }
-
-
-
+            //handleMonthYear
             else if (isMonth(term) ){
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.poll());
@@ -190,18 +162,78 @@ public class Parse implements IParse, Runnable {
                     }
                 }
             }
+
+            //HANDLE RANGES (BETWEEN AND)
             else if (term.equalsIgnoreCase("between")) {
 
             }
 
-            if(useStemming && !stopWordSet.contains(term)) {
-                stemmer.add(term);
-                minidic.add(term);
+
+            while(!nextWord.isEmpty()) {
+                String s = nextWord.pollLast();
+                if (s != null && !s.equals(""))
+                    wordList.addFirst(s);
+
             }
 
-
-
+            if (!Model.stopWordSet.contains(term.toLowerCase())) {
+                if (doStemIfTermWasNotManipulated) {
+                    stemmer.getStemmer().setCurrent(term);
+                    if (stemmer.getStemmer().stem())
+                        term = stemmer.getStemmer().getCurrent();
+                }
+                //miniDic.addWord(term);
+            }
         }
+        return miniDic;
+    }
+
+    private boolean isMonth(String term) {
+        return monthsData.containsKey(term);
+    }
+
+    @Override
+    public boolean isDone() {
+        return false;
+    }
+
+    @Override
+    public void reset() {
+
+    }
+
+    private String cleanTerm(String term) {
+        if (!term.equals("")) {
+            if (!(term.charAt(term.length()-1) == '%')) {
+                int i = term.length()-1;
+                while(i >= 0 && !Character.isLetterOrDigit(term.charAt(i))) {
+                    term = term.substring(0, i);
+                    i--;
+                }
+            }
+            if (term.length() > 1 && !(term.charAt(0) == '$') && !isNumber(term)) {
+                while(term.length() > 0 && !Character.isLetterOrDigit(term.charAt(0))) {
+                    term = term.substring(1);
+                }
+            }
+        }
+        return term;
+    }
+
+    public String handleLetters(String text, String DocID) {
+        return "";
+    }
+
+    private String handlePercent(String term, String percentSign) {
+        return term+" %";
+    }
+
+    private String handleMonthYear(String month, String year) {
+        return year+"-"+month;
+    }
+
+    private String handleMonthDay(String day, String month) {
+        return month+"-"+day;
     }
 
     private String numberValue(Double d) {
@@ -212,12 +244,7 @@ public class Parse implements IParse, Runnable {
     private boolean isInteger(double word) {
         return word == Math.floor(word) && !Double.isInfinite(word);
     }
-//            else if (term.length() >= 2 && isNumber(term.substring(0, term.length() - 2))) {
-////                nextWord.addFirst(nextWord());
-////                if (nextWord.peekFirst().equals("Dollars"))
-////                    term = numberValue(term.substring(0, term.length() - 2).replace(",","") * 1000) + " M " + nextWord.pollFirst();
 
-    //            }
     private String handleDollar(String price, boolean containsComma) {
         Double number = Double.parseDouble(price);
         String ans = "";
@@ -265,6 +292,13 @@ public class Parse implements IParse, Runnable {
         return wordsList;
     }
 
+    private String handleWeight(String term, String unit) {
+        Double parseTerm = Double.parseDouble(term);
+        parseTerm = parseTerm * weights.get(unit);
+        String ans = ""+parseTerm+" Kg";
+        return ans;
+    }
+
     private boolean checkIfFracture(String token) {
         if (token.contains("/")) {
             token = replace(token, ",", "");
@@ -276,21 +310,35 @@ public class Parse implements IParse, Runnable {
                 Integer.parseInt(check[1]);
                 return true;
             } catch(NumberFormatException e) {
+                logger.error("NumberFormatException in PARSE :: checkIfFracture ");
                 return false;
             }
         }
         return false;
     }
 
-    public void run() {
-        try {
-            parse(currentCDocument.getDocText());
-        } catch(Exception e) {
-            e.printStackTrace();
+    private double threeDigit(String check) {
+        String ans = "";
+        String s = ans.substring(0, 1);
+        double correct;
+        while(s.equals(".")) {
+            ans = ans+s;
+            check = check.substring(1);
+            s = ans.substring(0, 1);
         }
+        ans = ans+s;
+        check = check.substring(1);
+        if (check.length() <= 3) {
+            ans = ans+check;
+            correct = Double.parseDouble(ans);
+        } else {
+            ans = ans+check.substring(0, 3);
+            correct = Double.parseDouble(ans);
+        }
+        return correct;
     }
 
-    private String checkKorMorB(String number) {
+    private String handleNumber(String number) {
         StringBuilder ans = new StringBuilder();
         ans.append(number);
         String check="";//check there are only 3 digits after the dot
@@ -326,97 +374,6 @@ public class Parse implements IParse, Runnable {
         return ans.toString();
     }
 
-    private double threeDigit(String check){
-        String ans="";
-        String s= ans.substring(0,1);
-        double correct;
-        while(s.equals(".")){
-            ans=ans+s;
-            check=check.substring(1);
-            s=ans.substring(0,1);
-        }
-        ans=ans+s;
-        check=check.substring(1);
-        if(check.length()<=3){
-            ans=ans+check;
-            correct= Double.parseDouble(ans);
-        } else{
-            ans=ans+check.substring(0,3);
-            correct=Double.parseDouble(ans);
-        }
-        return  correct;
-    }
-    public void initReplacements() {
-        replacements = new HashMap<String, String>() {{
-            put(",", "");
-            put("th", "");
-            put("$", "");
-            put("%", "");
-            put(":", "");
-        }};
-    }
-
-    private void initDelimiters() {
-        delimiters = new HashSet<Character>() {{
-            add('.');
-            add(',');
-            add(':');
-            add('!');
-            add('\"');
-            add('#');
-            add('(');
-            add(')');
-            add('[');
-            add('@');
-            add('+');
-            add(']');
-            add('|');
-            add(';');
-            add('?');
-            add('&');
-            add('\'');
-            add('*');
-            add('-');
-            add('}');
-            add('`');
-            add('/');
-            add(' ');
-            add('\n');
-            add('{');
-            add('~');
-        }};
-    }
-    private void convertWeightToKG (){
-        weights= new HashMap<String, Double>(){{
-            put ("Kilogram", 1.0);
-            put ("Kg", 1.0);
-            put ("kg", 1.0);
-            put ("KG", 1.0);
-            put ("KILOGRAM", 1.0);
-            put ("GRAM", 0.001);
-            put ("Gr", 0.001);
-            put ("gr",0.001);
-            put ("GR", 0.001);
-            put ("gram", 0.001);
-            put ("Gram", 0.001);
-            put ("Ton", 1000.0);
-            put ("ton", 1000.0);
-            put ("TON", 1000.0);
-            put ("T", 1000.0);
-        }};
-    }
-
-    private void convertNum (){
-        nums= new HashMap<String, String>(){{
-            put ("Thousand", "K");
-            put ("thousand", "K");
-            put ("Million", "M");
-            put ("million", "M");
-            put ("Billion", "B");
-            put ("billion", "B");
-        }};
-    }
-
     /**
      * Checks if the next word is one of certain rules given to the parser
      *
@@ -450,28 +407,15 @@ public class Parse implements IParse, Runnable {
             } else if (queuePeek.equalsIgnoreCase("Dollars")) {
                 wordList.remove();
                 nextWord = "Dollars";
+            } else if (monthsData.containsKey(queuePeek)) {
+                wordList.remove();
+                nextWord = queuePeek;
             } else if (queuePeek.contains("-")) {
                 wordList.remove();
                 nextWord = queuePeek;
             }
         }
         return nextWord;
-    }
-
-    public void loadStopWordsList(String pathOfStopWords) throws IOException {
-
-        File f = new File(pathOfStopWords);
-        StringBuilder allText = new StringBuilder();
-        FileReader fileReader = new FileReader(f);
-        try (BufferedReader bufferedReader = new BufferedReader(fileReader)) {
-            String line;
-            while((line = bufferedReader.readLine()) != null)
-                allText.append(line).append("\n");
-            String[] stopWords = allText.toString().split("\n");
-            Collections.addAll(stopWordSet, stopWords);
-        } catch(IOException e) {
-            System.out.println("stopwords file not found in the specified path. running without stopwords");
-        }
     }
 
     private void initMonthsData() {
