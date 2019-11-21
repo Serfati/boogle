@@ -1,6 +1,9 @@
 package Model.IO;
 
+import Model.Engine.Indexer;
 import Model.Structures.cDocument;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -156,11 +159,11 @@ public class ReadFile {
 //        }
 //    }
 
-//    public ObservableList<String> getLanguages() {
-//        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
-//        listOfLanguages.addAll(languages);
-//        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
-//        return listOfLanguages;
-//    }
+    public ObservableList<String> getLanguages() {
+        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
+        //listOfLanguages.addAll(languages);
+        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
+        return listOfLanguages;
+    }
 
 }

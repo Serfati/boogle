@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -23,14 +24,25 @@ public class Main extends Application {
         primaryStage.setTitle("BOOGLE");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getResource("MyView.fxml").openStream());
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 800, 700);
         scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
         //------------------------------
         MyViewController myViewController = fxmlLoader.getController();
         myViewController.setViewModel(myViewModel);
+        myViewModel.addObserver(myViewController);
         //------------------------------
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, myViewController::KeyPressed);
+
+        primaryStage.setScene(scene);
+        SetStageCloseEvent(primaryStage, myViewController);
         primaryStage.show();
+        //------------------------------//
+    }
+
+    private void SetStageCloseEvent(Stage primaryStage, MyViewController myViewController) {
+        primaryStage.setOnCloseRequest(windowEvent -> {
+            myViewController.exitCorrectly();
+            windowEvent.consume();
+        });
     }
 }

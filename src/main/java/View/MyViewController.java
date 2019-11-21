@@ -2,12 +2,16 @@ package View;
 
 import ViewModel.MyViewModel;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.DirectoryChooser;
@@ -15,29 +19,33 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MyViewController {
+public class MyViewController implements IView, Observer, Initializable {
+
+    //IMAGES
+    public javafx.scene.image.ImageView icon_startSearch;
+    public javafx.scene.image.ImageView icon_partSolution;
+    public javafx.scene.image.ImageView icon_fullSolution;
+    public javafx.scene.image.ImageView icon_makeNewMaze;
+    public javafx.scene.image.ImageView icon_zoomImageView;
+    public javafx.scene.image.ImageView icon_sound;
 
     public Label lbl_statusBar;
     public MenuItem save_MenuItem;
     public MenuItem solve_MenuItem;
 
-
-    public javafx.scene.image.ImageView icon_make;
     @FXML
     private java.awt.TextField txtfld_corpus_location;
     private java.awt.TextField txtfld_stopwords_location;
-    public javafx.scene.image.ImageView icon_sound;
-    public javafx.scene.image.ImageView icon_partSolution;
-    public javafx.scene.image.ImageView icon_fullSolution;
+
     private java.awt.TextField txtfld_output_location;
-    public javafx.scene.image.ImageView icon_zoomImageView;
     public javafx.scene.control.ScrollPane ScrollPane;
     public java.awt.Button btn_corpus_browse;
     public java.awt.Button btn_stopwords_browse;
@@ -55,19 +63,61 @@ public class MyViewController {
     private Stage stageNewGameController;
     private MyViewModel myViewModel;
 
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initLogo();
+        initImages();
     }
 
-    private void initLogo() {
+    private void initImages() {
+        File file = new File("resources/icon_new.png");
+        Image image = new Image(file.toURI().toString());
+        icon_startSearch.setImage(image);
+        setClick(icon_startSearch);
+
+        file = new File("resources/icon_new.png");
+        image = new Image(file.toURI().toString());
+        icon_makeNewMaze.setImage(image);
+        setClick(icon_makeNewMaze);
+
+        file = new File("resources/icon_new.png");
+        image = new Image(file.toURI().toString());
+        icon_partSolution.setImage(image);
+        setClick(icon_partSolution);
+
+        file = new File("resources/icon_new.png");
+        image = new Image(file.toURI().toString());
+        icon_fullSolution.setImage(image);
+        setClick(icon_fullSolution);
+
+        file = new File("resources/icon_new.png");
+        image = new Image(file.toURI().toString());
+        icon_zoomImageView.setImage(image);
+        setClick(icon_zoomImageView);
+
+        file = new File("resources/icon_new.png");
+        image = new Image(file.toURI().toString());
+        icon_sound.setImage(image);
+        setClick(icon_sound);
 
     }
+
+    private void setClick(javafx.scene.image.ImageView icon) {
+        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            help();
+            event.consume();
+        });
+    }
+
 
     public void scrollInOut(ScrollEvent scrollEvent) {
     }
 
     public void KeyPressed(KeyEvent keyEvent) {
-
+        if (!myViewModel.isFinish())
+            exitCorrectly();
+        else
+            lbl_statusBar.setText("If you want to search again just type");
+        keyEvent.consume();
     }
 
     public void setViewModel(MyViewModel myViewModel) {
@@ -100,7 +150,7 @@ public class MyViewController {
 
     public void browseStopwordsLocation(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Output Location");
+        fileChooser.setTitle("Stopwords Location");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         File corpusDir = fileChooser.showOpenDialog(new Stage());
         if (null != corpusDir) { //directory chosen
@@ -117,7 +167,7 @@ public class MyViewController {
         exitCorrectly();
     }
 
-    private void exitCorrectly() {
+    void exitCorrectly() {
         Alert alert = new Alert(Alert.AlertType.NONE);
         ButtonType leaveButton = new ButtonType("Leave", ButtonBar.ButtonData.YES);
         ButtonType stayButton = new ButtonType("Stay", ButtonBar.ButtonData.NO);
@@ -179,5 +229,10 @@ public class MyViewController {
         alert.setTitle("Error Alert");
         alert.setContentText("Exception!");
         alert.show();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
     }
 }

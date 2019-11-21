@@ -19,8 +19,6 @@ public class MyViewModel extends Observable implements Observer {
         if (o == model) {
             if (arg != null) {
                 String argument = (String) arg;
-                if (argument.equals("SOMTHING"))
-                    System.out.println("dosomthing");
             }
             setChanged();
             notifyObservers(arg);

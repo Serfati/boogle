@@ -18,6 +18,11 @@ import static org.apache.commons.lang.StringUtils.split;
 import static org.apache.commons.lang.math.NumberUtils.isNumber;
 import static org.apache.commons.lang3.StringUtils.replace;
 
+/**
+ * Callable.
+ * Takes Documents, tokenizes and parses them.
+ */
+
 public class Parse implements IParse, Callable<MiniDictionary> {
 
     private static Logger logger = LogManager.getLogger(Parse.class);

@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#KeyPressed" onKeyTyped="#KeyPressed"
-            onScroll="#scrollInOut" xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="View.MyViewController">
+            onScroll="#scrollInOut" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="View.MyViewController">
     <left>
         <VBox prefHeight="200.0" prefWidth="20.0" spacing="5.0" BorderPane.alignment="CENTER">
             <padding>
@@ -28,11 +28,23 @@
     </left>
     <bottom>
         <VBox BorderPane.alignment="CENTER">
-            <Label fx:id="lbl_statusBar" text="Status bar">
-                <VBox.margin>
-                    <Insets left="10.0"/>
-                </VBox.margin>
-            </Label>
+            <children>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints maxWidth="130.0" minWidth="140.0" prefWidth="130.0"/>
+                        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints/>
+                        <RowConstraints/>
+                    </rowConstraints>
+                </GridPane>
+                <Label fx:id="lbl_statusBar" text="Status bar">
+                    <VBox.margin>
+                        <Insets left="10.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
         </VBox>
     </bottom>
     <top>
@@ -43,46 +55,45 @@
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
-                                                               text="New search"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="New"/>
+                            </items>
+                            <items>
+                                <javafx.scene.control.MenuItem fx:id="solve_MenuItem" disable="true"
+                                                               mnemonicParsing="false" onAction="#help"
+                                                               text="Solve"/>
                             </items>
                             <items>
                                 <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#exitButton"
+                                                               mnemonicParsing="false" onAction="#help"
                                                                text="Save"/>
                             </items>
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
                                                                text="Load"/>
                             </items>
-
-                            <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
-                                                               text="Exit"/>
-                            </items>
-
-
                         </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
-
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Options">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
+                                                               text="Properties"/>
                             </items>
-
-                        </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" text="About">
-
-                            <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
-                            </items>
-
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Exit">
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
                                                                text="Exit"/>
                             </items>
-
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"
+                                />
+                            </items>
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="About">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
+                            </items>
 
                         </javafx.scene.control.Menu>
                     </menus>
@@ -97,7 +108,7 @@
                     </HBox.margin>
                 </ImageView>
 
-                <ImageView fx:id="icon_make" fitHeight="70.0" fitWidth="70.0">
+                <ImageView fx:id="icon_makeNewMaze" fitHeight="70.0" fitWidth="70.0">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
@@ -129,10 +140,6 @@
     </top>
     <center>
         <Pane layoutX="80.0" BorderPane.alignment="CENTER">
-            <children>
-                <ScrollPane fx:id="ScrollPane">
-                </ScrollPane>
-            </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
             </padding>

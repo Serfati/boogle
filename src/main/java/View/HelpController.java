@@ -13,6 +13,7 @@ public class HelpController implements Initializable {
     public javafx.scene.control.Label MenuBar;
     public javafx.scene.control.Button OK;
     public javafx.scene.image.ImageView soundImage;
+    public javafx.scene.image.ImageView soundImage1;
     public javafx.scene.image.ImageView newSearchImage;
     public javafx.scene.image.ImageView getHintImage;
     public javafx.scene.image.ImageView solveImage;
@@ -56,19 +57,19 @@ public class HelpController implements Initializable {
 
     private void initImages() {
 
-        File file = new File("resources/icon_search.png");
+        File file = new File("resources/icon_new.png");
         Image image = new Image(file.toURI().toString());
         soundImage.setImage(image);
 
-        file = new File("resources/icon_docs.png");
+        file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
         getHintImage.setImage(image);
 
-        file = new File("resources/icon_dic.png");
+        file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
         solveImage.setImage(image);
 
-        file = new File("resources/icon_account.png");
+        file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
         newSearchImage.setImage(image);
     }
