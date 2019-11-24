@@ -4,7 +4,6 @@ package Model;
 import Model.Engine.Indexer;
 import Model.IO.ReadFile;
 import Model.Parser.Parse;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import java.io.File;
@@ -16,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class MyModel extends Observable implements IModel {
     public static HashSet<String> stopWordSet;
-    private static Logger logger = LogManager.getLogger(MyModel.class);
+    private final Logger logger = Logger.getLogger(MyModel.class);
     public static Parse myDocumentsParser;
     private static MyModel singleton = null;
     private ReadFile myFileReader;

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -30,31 +31,36 @@ import java.util.ResourceBundle;
 public class MyViewController implements IView, Observer, Initializable {
 
     //IMAGES
-    public javafx.scene.image.ImageView icon_startSearch;
-    public javafx.scene.image.ImageView icon_partSolution;
-    public javafx.scene.image.ImageView icon_fullSolution;
-    public javafx.scene.image.ImageView icon_makeNewMaze;
-    public javafx.scene.image.ImageView icon_zoomImageView;
-    public javafx.scene.image.ImageView icon_sound;
+    public ImageView icon_startSearch;
+    public ImageView icon_partSolution;
+    public ImageView icon_fullSolution;
+    public ImageView icon_makeNewMaze;
+    public ImageView icon_zoomImageView;
+    public ImageView icon_sound;
 
     public Label lbl_statusBar;
     public MenuItem save_MenuItem;
     public MenuItem solve_MenuItem;
 
     @FXML
-    private java.awt.TextField txtfld_corpus_location;
-    private java.awt.TextField txtfld_stopwords_location;
+    public TextField txtfld_corpus_location;
+    @FXML
+    public TextField txtfld_stopwords_location;
+    @FXML
+    public TextField txtfld_output_location;
 
-    private java.awt.TextField txtfld_output_location;
-    public javafx.scene.control.ScrollPane ScrollPane;
-    public java.awt.Button btn_corpus_browse;
-    public java.awt.Button btn_stopwords_browse;
-    public java.awt.Button btn_output_browse;
-    public java.awt.Button btn_reset;
-    public java.awt.Button btn_load_dictionary;
-    private java.awt.Button btn_display_dictionary;
-    public java.awt.Button view_search;
+    public ScrollPane ScrollPane;
+    public Button btn_corpus_browse;
+    public Button btn_stopwords_browse;
+    public Button btn_output_browse;
+    public Button btn_reset;
+    public Button btn_load_dictionary;
+    public Button btn_display_dictionary;
+    public Button view_search;
+    public Button btn_genereate_index;
+    @FXML
     private ChoiceBox choiceBox_languages;
+    @FXML
     private CheckBox chkbox_use_stemming;
     public CheckBox chkbox_memory_saver;
     public BorderPane root_pane;
@@ -66,7 +72,12 @@ public class MyViewController implements IView, Observer, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initImages();
+        Tooltip tooltip = new Tooltip();
+        tooltip.setText("");
+        chkbox_memory_saver.setTooltip(tooltip);
+        view_search.setDisable(true);
     }
+
 
     private void initImages() {
         File file = new File("resources/icon_new.png");
@@ -128,6 +139,10 @@ public class MyViewController implements IView, Observer, Initializable {
         return chkbox_use_stemming.isSelected();
     }
 
+    public void generateIndex(ActionEvent actionEvent) {
+
+    }
+
     public void browseCorpusLocation(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Corpus Location");
@@ -158,9 +173,15 @@ public class MyViewController implements IView, Observer, Initializable {
         }
     }
 
-    public void reset(ActionEvent actionEvent) {
-        btn_display_dictionary.setEnabled(false);
-        choiceBox_languages.setDisable(true);
+    private void handleNewDictionary(Alert result) {
+        if (result.getAlertType() == Alert.AlertType.ERROR) {
+            result.showAndWait();
+        } else {
+            result.show();
+            btn_reset.setDisable(false);
+            btn_display_dictionary.setDisable(false);
+            view_search.setDisable(false);
+        }
     }
 
     public void exitButton() {
@@ -229,6 +250,11 @@ public class MyViewController implements IView, Observer, Initializable {
         alert.setTitle("Error Alert");
         alert.setContentText("Exception!");
         alert.show();
+    }
+
+    public void reset(ActionEvent actionEvent) {
+        btn_display_dictionary.setDisable(true);
+        choiceBox_languages.setDisable(true);
     }
 
     @Override

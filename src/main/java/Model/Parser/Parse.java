@@ -4,8 +4,6 @@ import Model.MyModel;
 import Model.Stemmer.Stemmer;
 import Model.Structures.MiniDictionary;
 import Model.Structures.cDocument;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import java.util.HashMap;
@@ -14,9 +12,9 @@ import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 
-import static org.apache.commons.lang.StringUtils.split;
-import static org.apache.commons.lang.math.NumberUtils.isNumber;
 import static org.apache.commons.lang3.StringUtils.replace;
+import static org.apache.commons.lang3.StringUtils.split;
+import static org.apache.commons.lang3.math.NumberUtils.isNumber;
 
 /**
  * Callable.
@@ -25,7 +23,7 @@ import static org.apache.commons.lang3.StringUtils.replace;
 
 public class Parse implements IParse, Callable<MiniDictionary> {
 
-    private static Logger logger = LogManager.getLogger(Parse.class);
+    private final Logger logger = Logger.getLogger(Parse.class);
     private static final Map<String, String> DATE_FORMAT_REGEXPS = new HashMap<String, String>() {{
         put("^\\d{8}$", "yyyyMMdd");
         put("^\\d{1,2}-\\d{1,2}-\\d{4}$", "dd-MM-yyyy");
@@ -201,7 +199,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
 
         LinkedList<String> nextWord = new LinkedList<>();
 
-        wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
+        wordList = stringToList(split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
 
         String lang = currentCDocument.getDocLang();
         int index = 0;
@@ -308,7 +306,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                 Integer.parseInt(check[1]);
                 return true;
             } catch(NumberFormatException e) {
-                logger.error("NumberFormatException in PARSE :: checkIfFracture ");
+                //logger.error("NumberFormatException in PARSE :: checkIfFracture ");
                 return false;
             }
         }
