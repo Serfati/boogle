@@ -9,8 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
+/**
+ * class for the program main run
+ */
 public class Main extends Application {
 
+    /**
+     * The main function that runs the entire program
+     *
+     * @param args - ignored
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -32,7 +40,6 @@ public class Main extends Application {
         myViewModel.addObserver(myViewController);
         //------------------------------//
         scene.addEventFilter(KeyEvent.KEY_PRESSED, myViewController::KeyPressed);
-
         primaryStage.setScene(scene);
         SetStageCloseEvent(primaryStage, myViewController);
         primaryStage.show();

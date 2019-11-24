@@ -1,5 +1,6 @@
 package View;
 
+import Model.Structures.MiniDictionary;
 import ViewModel.MyViewModel;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -13,12 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.stage.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,86 +26,84 @@ import java.util.ResourceBundle;
 
 public class MyViewController implements IView, Observer, Initializable {
 
-    //IMAGES
-    public ImageView icon_startSearch;
+    @FXML
     public ImageView icon_3;
+    public ImageView boogle_logo;
     public ImageView icon_4;
     public ImageView icon_2;
     public ImageView icon5;
-    public ImageView icon_1;
-
+    @FXML
     public Label lbl_statusBar;
+    public TableView<MiniDictionary> table_showDic;
     public MenuItem save_MenuItem;
     public MenuItem load_MenuItem;
+    public TableColumn<MiniDictionary, String> tableCol_term;
+    public TableColumn<MiniDictionary, Number> tableCol_count;
+    public TextField txtfld_output_location;
 
     @FXML
     public TextField txtfld_corpus_location;
-    @FXML
     public TextField txtfld_stopwords_location;
+    public CheckBox checkbox_memory_saver;
     @FXML
-    public TextField txtfld_output_location;
-
-    public ScrollPane ScrollPane;
     public Button btn_corpus_browse;
+    public Button btn_show_dictionary;
+    public Button btn_generate_index;
     public Button btn_stopwords_browse;
     public Button btn_output_browse;
     public Button btn_reset;
     public Button btn_load_dictionary;
-    public Button btn_display_dictionary;
-    public Button view_search;
-    public Button btn_genereate_index;
-    @FXML
-    private ChoiceBox choiceBox_languages;
-    @FXML
-    private CheckBox chkbox_use_stemming;
-    public CheckBox chkbox_memory_saver;
-    public BorderPane root_pane;
-    public ScrollPane scrollPane;
-    private String soundOnOff;
-    private Stage stageNewGameController;
     private MyViewModel myViewModel;
+    @FXML
+    private CheckBox checkbox_use_stemming;
 
+    public void setViewModel(MyViewModel myViewModel) {
+        this.myViewModel = myViewModel;
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initImages();
         Tooltip tooltip = new Tooltip();
         tooltip.setText("");
-        chkbox_memory_saver.setTooltip(tooltip);
-        view_search.setDisable(true);
+        checkbox_memory_saver.setTooltip(tooltip);
     }
 
-
     private void initImages() {
-        File file = new File("resources/icon_new.png");
+        File file = new File("resources/logo.jpg");
         Image image = new Image(file.toURI().toString());
-        icon_startSearch.setImage(image);
-        setClick(icon_startSearch);
-
-        file = new File("resources/icon_new.png");
-        image = new Image(file.toURI().toString());
         icon_2.setImage(image);
         setClick(icon_2);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/SaveResult.jpg");
         image = new Image(file.toURI().toString());
         icon_3.setImage(image);
         setClick(icon_3);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/searchGif.gif");
         image = new Image(file.toURI().toString());
         icon_4.setImage(image);
         setClick(icon_4);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/start.png");
         image = new Image(file.toURI().toString());
         icon5.setImage(image);
         setClick(icon5);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/end.png");
         image = new Image(file.toURI().toString());
-        icon_1.setImage(image);
-        setClick(icon_1);
+        boogle_logo.setImage(image);
+        setClick(boogle_logo);
 
+    }
+
+    /**
+     * This function starts the process of parse and index the dictionary
+     */
+    public void onStartClick() {
+        if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
+            MyAlert.showAlert(javafx.scene.control.Alert.AlertType.ERROR, "paths cannot be empty");
+        else
+            myViewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
 
     private void setClick(javafx.scene.image.ImageView icon) {
@@ -119,68 +113,63 @@ public class MyViewController implements IView, Observer, Initializable {
         });
     }
 
-
-    public void scrollInOut(ScrollEvent scrollEvent) {
+    /**
+     * transfers a request to show the dictionary of the current indexing
+     */
+    public void showDictionaryClick() {
+        myViewModel.showDictionary();
     }
 
     public void KeyPressed(KeyEvent keyEvent) {
         if (!myViewModel.isFinish())
-            exitCorrectly();
+            lbl_statusBar.setText("running...");
         else
             lbl_statusBar.setText("If you want to search again just type");
         keyEvent.consume();
     }
 
-    public void setViewModel(MyViewModel myViewModel) {
-        this.myViewModel = myViewModel;
-    }
-
     public boolean isUseStemming() {
-        return chkbox_use_stemming.isSelected();
+        return checkbox_use_stemming.isSelected();
     }
 
     public void generateIndex(ActionEvent actionEvent) {
 
     }
 
-    public void browseCorpusLocation(ActionEvent actionEvent) {
+    public void browseCorpusClick(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Corpus Location");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         File corpusDir = directoryChooser.showDialog(new Stage());
-        if (null != corpusDir) { //directory chosen
+        if (null != corpusDir)  //directory chosen
             txtfld_corpus_location.setText(corpusDir.getAbsolutePath());
-        }
     }
 
-    public void browseOutputLocation(ActionEvent actionEvent) {
+    public void browseOutputClick(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Output Location");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         File corpusDir = directoryChooser.showDialog(new Stage());
-        if (null != corpusDir) { //directory chosen
+        if (null != corpusDir)  //directory chosen
             txtfld_output_location.setText(corpusDir.getAbsolutePath());
-        }
     }
 
-    public void browseStopwordsLocation(ActionEvent actionEvent) {
+    public void browseStopwordsClick(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Stopwords Location");
+        fileChooser.setTitle("Stopwords file Location");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
         File corpusDir = fileChooser.showOpenDialog(new Stage());
-        if (null != corpusDir) { //directory chosen
+        if (null != corpusDir)  //directory chosen
             txtfld_stopwords_location.setText(corpusDir.getAbsolutePath());
-        }
     }
 
     private void handleNewDictionary(Alert result) {
-        if (result.getAlertType() == Alert.AlertType.ERROR) {
+        if (result.getAlertType() == Alert.AlertType.ERROR)
             result.showAndWait();
-        } else {
+        else {
             result.show();
             btn_reset.setDisable(false);
-            btn_display_dictionary.setDisable(false);
-            view_search.setDisable(false);
+            btn_show_dictionary.setDisable(false);
         }
     }
 
@@ -195,9 +184,9 @@ public class MyViewController implements IView, Observer, Initializable {
         alert.getButtonTypes().setAll(stayButton, leaveButton);
         alert.setContentText("Are you sure you want to exit??");
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == leaveButton) {
+        if (result.isPresent() && result.get() == leaveButton)
             Platform.exit();
-        } else
+        else
             alert.close();
     }
 
@@ -253,12 +242,100 @@ public class MyViewController implements IView, Observer, Initializable {
     }
 
     public void reset(ActionEvent actionEvent) {
-        btn_display_dictionary.setDisable(true);
-        choiceBox_languages.setDisable(true);
+        btn_show_dictionary.setDisable(true);
+        //choiceBox_languages.setDisable(true);
     }
 
     @Override
     public void update(Observable o, Object arg) {
+        if (o != myViewModel) {
+            return;
+        }
+        if (arg != null) {
+            String argument = (String) arg;
 
+        }
     }
+
+    public void saveDictionary(ActionEvent event) {
+        int[] choose = {0};
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        alert.setTitle("Save Dictionary");
+        alert.setContentText("Which Dictionary do you want to save?");
+        ButtonType okButton = new ButtonType("Current", ButtonBar.ButtonData.YES);
+        ButtonType noButton = new ButtonType("Original", ButtonBar.ButtonData.NO);
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(okButton, noButton, cancelButton);
+        alert.showAndWait().ifPresent(type -> {
+            if (type == okButton) //Current
+                choose[0] = 1;
+            else if (type == noButton)  //Original
+                choose[0] = 2;
+        });
+        if (choose[0] == 0) {
+            lbl_statusBar.setText("Save was canceled");
+            return;
+        }
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a directory to save the Dictionary in");
+        File filePath = new File("./dictionaries/");
+        if (!filePath.exists())
+            filePath.mkdir();
+        fileChooser.setInitialDirectory(filePath);
+        fileChooser.setInitialFileName("myDictionary;"+myViewModel.getClass());
+        File file = fileChooser.showSaveDialog(new PopupWindow() {
+        });
+
+        if (file != null) {
+            if (choose[0] == 1) {
+                myViewModel.saveDictionary(file); //TODO need special method
+                lbl_statusBar.setText("Current dictionary saved");
+            } else {
+                myViewModel.saveDictionary(file);
+                lbl_statusBar.setText("Original dictionary saved");
+            }
+        }
+        event.consume();
+    }
+
+    /**
+     * transfers to the view model a load dictionary request
+     */
+    public void loadDictionary(ActionEvent event) {
+        System.out.println("loadFile");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a dictionary to load");
+        File filePath = new File("./dictionaries/");
+        if (!filePath.exists())
+            filePath.mkdir();
+        fileChooser.setInitialDirectory(filePath);
+
+        File file = fileChooser.showOpenDialog(new PopupWindow() {
+        });
+        if (file != null && file.exists() && !file.isDirectory()) {
+            myViewModel.loadDictionary(file, checkbox_use_stemming.isSelected());
+            lbl_statusBar.setText("Loaded "+file.getName());
+
+        } else
+            MyAlert.showAlert(Alert.AlertType.ERROR, "Please choose a vaild destination");
+        event.consume();
+    }
+
+    public void onAction_Property() {
+        try {
+            Stage stage = new Stage();
+            stage.setTitle("Properties");
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            Parent root = fxmlLoader.load(getClass().getResource("MyPropertiesView.fxml").openStream());
+            Scene scene = new Scene(root, 400, 370);
+            scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
+            stage.setScene(scene);
+//            PropertiesViewController propertiesViewController = fxmlLoader.getController();
+//            propertiesViewController.setStage(stage);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch(Exception ignored) {
+        }
+    }
+
 }

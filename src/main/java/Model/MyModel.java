@@ -12,16 +12,16 @@ import java.util.Observable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+/**
+ * This class is from MVVM architecture.
+ */
 public class MyModel extends Observable implements IModel {
     public static HashSet<String> stopWordSet;
     private final Logger logger = Logger.getLogger(MyModel.class);
     public static Parse myDocumentsParser;
-    private static MyModel singleton = null;
     private ReadFile myFileReader;
     private Indexer myIndexer;
     private Boolean useStemming;
-    private Boolean useSemantic;
     private ExecutorService threadPool = Executors.newCachedThreadPool();
     private boolean isFinished;
 
@@ -31,24 +31,15 @@ public class MyModel extends Observable implements IModel {
 //        myDocumentsParser = new Parse();
 //        myFileReader=new ReadFile();
         useStemming = false;
-        useSemantic = false;
-    }
-
-    public static MyModel getInstance() {
-        if (singleton == null)
-            singleton = new MyModel();
-        return singleton;
-
-    }
-
-
-    @Override
-    public void loadDic(File file) {
-
     }
 
     @Override
     public void saveDic(File file) {
+
+    }
+
+    @Override
+    public void startIndexing(String pathOfDocs, String destinationPath, boolean stm) {
 
     }
 
@@ -61,6 +52,17 @@ public class MyModel extends Observable implements IModel {
     @Override
     public boolean isFinish() {
         return isFinished;
+    }
+
+    @Override
+    public void showDictionary() {
+
+    }
+
+    @Override
+    public void loadDictionary(File file, boolean stem) {
+
+
     }
 
 }

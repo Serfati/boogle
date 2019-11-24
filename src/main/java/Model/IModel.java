@@ -3,12 +3,16 @@ package Model;
 import java.io.File;
 
 public interface IModel {
-    void closeModel();
 
-    void loadDic(File file);
+    void startIndexing(String pathOfDocs, String destinationPath, boolean stm);
+
+    void closeModel();
 
     void saveDic(File file);
 
     boolean isFinish();
 
+    void showDictionary();
+
+    void loadDictionary(File file, boolean stem);
 }

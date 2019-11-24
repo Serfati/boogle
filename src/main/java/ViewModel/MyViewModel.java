@@ -1,6 +1,7 @@
 package ViewModel;
 
 import Model.IModel;
+import javafx.application.Platform;
 
 import java.io.File;
 import java.util.Observable;
@@ -8,21 +9,41 @@ import java.util.Observer;
 
 public class MyViewModel extends Observable implements Observer {
     private IModel model;
-    private boolean isRunning = true;
 
+    /**
+     * constructs a view model by holding a model
+     *
+     * @param model the model of the MVVM
+     */
     public MyViewModel(IModel model) {
         this.model = model;
     }
 
-    @Override
+    /**
+     * this function is called when the model raises a flag that something has changed
+     * @param o - who changed
+     * @param arg - the change
+     */
     public void update(Observable o, Object arg) {
-        if (o == model) {
-            if (arg != null) {
-                String argument = (String) arg;
-            }
+        if (o ==model){
             setChanged();
             notifyObservers(arg);
         }
+    }
+
+    /**
+     * transfers to the model a show dictionary request
+     */
+    public void showDictionary() {
+        Platform.runLater(() -> model.showDictionary());
+    }
+
+    public void loadDictionary(File file, boolean stem) {
+        Platform.runLater(() -> model.loadDictionary(file, stem));
+    }
+
+    public void saveDictionary(File file) {
+        model.saveDic(file);
     }
 
     public void closeModel() {
@@ -30,15 +51,10 @@ public class MyViewModel extends Observable implements Observer {
     }
 
     public boolean isFinish() {
-        return model.isFinish();
+        return false;
     }
 
-    public void loadDic(File file) {
-        model.loadDic(file);
-    }
+    public void onStartClick(String text, String text1, boolean selected) {
 
-    public void saveDic(File file) {
-        model.saveDic(file);
     }
-
 }
