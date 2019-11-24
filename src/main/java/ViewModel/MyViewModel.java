@@ -25,15 +25,13 @@ public class MyViewModel extends Observable implements Observer {
      * @param arg - the change
      */
     public void update(Observable o, Object arg) {
-        if (o ==model){
+        if (o == model){
             setChanged();
             notifyObservers(arg);
         }
     }
 
-    /**
-     * transfers to the model a show dictionary request
-     */
+    /* transfers to the model a show dictionary request*/
     public void showDictionary() {
         Platform.runLater(() -> model.showDictionary());
     }
@@ -54,7 +52,8 @@ public class MyViewModel extends Observable implements Observer {
         return false;
     }
 
-    public void onStartClick(String text, String text1, boolean selected) {
-
+    public void onStartClick(String pathOfDocs, String destinationPath, boolean stm) {
+        Platform.runLater(() -> model.startIndexing(pathOfDocs, destinationPath,stm));
     }
+
 }

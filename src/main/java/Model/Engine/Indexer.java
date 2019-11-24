@@ -17,7 +17,6 @@ public class Indexer implements Callable<HashMap<String, Pair<Integer, StringBui
 
     /**
      * this class creates a temporary posting in a HashMap containing all data of MiniDictionay's sent
-     *
      * @return an hash map representing all data of mini dics
      */
     @Override

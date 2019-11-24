@@ -9,9 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-/**
- * class for the program main run
- */
+/* class for the program main run */
 public class Main extends Application {
 
     /**

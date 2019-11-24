@@ -3,6 +3,7 @@ package View;
 import Model.Structures.MiniDictionary;
 import ViewModel.MyViewModel;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +20,9 @@ import javafx.stage.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class MyViewController implements IView, Observer, Initializable {
 
@@ -57,6 +57,12 @@ public class MyViewController implements IView, Observer, Initializable {
     @FXML
     private CheckBox checkbox_use_stemming;
 
+
+    /**
+     * constructor of view, connect the view to the viewModel
+     *
+     * @param myViewModel the view model of the MVVM
+     */
     public void setViewModel(MyViewModel myViewModel) {
         this.myViewModel = myViewModel;
     }
@@ -101,7 +107,7 @@ public class MyViewController implements IView, Observer, Initializable {
      */
     public void onStartClick() {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
-            MyAlert.showAlert(javafx.scene.control.Alert.AlertType.ERROR, "paths cannot be empty");
+            MyAlert.showAlert(javafx.scene.control.Alert.AlertType.ERROR, "path can not be empty");
         else
             myViewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
@@ -282,7 +288,10 @@ public class MyViewController implements IView, Observer, Initializable {
         if (!filePath.exists())
             filePath.mkdir();
         fileChooser.setInitialDirectory(filePath);
-        fileChooser.setInitialFileName("myDictionary;"+myViewModel.getClass());
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM mm:HH");
+        String formattedDate = myDateObj.format(myFormatObj);
+        fileChooser.setInitialFileName("myDictionary;"+formattedDate);
         File file = fileChooser.showSaveDialog(new PopupWindow() {
         });
 
@@ -319,6 +328,9 @@ public class MyViewController implements IView, Observer, Initializable {
         } else
             MyAlert.showAlert(Alert.AlertType.ERROR, "Please choose a vaild destination");
         event.consume();
+    }
+
+    private void showDictionary(ObservableList<LinkedList> records){
     }
 
     public void onAction_Property() {
