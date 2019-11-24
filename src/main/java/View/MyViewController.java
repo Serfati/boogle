@@ -32,15 +32,15 @@ public class MyViewController implements IView, Observer, Initializable {
 
     //IMAGES
     public ImageView icon_startSearch;
-    public ImageView icon_partSolution;
-    public ImageView icon_fullSolution;
-    public ImageView icon_makeNewMaze;
-    public ImageView icon_zoomImageView;
-    public ImageView icon_sound;
+    public ImageView icon_3;
+    public ImageView icon_4;
+    public ImageView icon_2;
+    public ImageView icon5;
+    public ImageView icon_1;
 
     public Label lbl_statusBar;
     public MenuItem save_MenuItem;
-    public MenuItem solve_MenuItem;
+    public MenuItem load_MenuItem;
 
     @FXML
     public TextField txtfld_corpus_location;
@@ -87,28 +87,28 @@ public class MyViewController implements IView, Observer, Initializable {
 
         file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
-        icon_makeNewMaze.setImage(image);
-        setClick(icon_makeNewMaze);
+        icon_2.setImage(image);
+        setClick(icon_2);
 
         file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
-        icon_partSolution.setImage(image);
-        setClick(icon_partSolution);
+        icon_3.setImage(image);
+        setClick(icon_3);
 
         file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
-        icon_fullSolution.setImage(image);
-        setClick(icon_fullSolution);
+        icon_4.setImage(image);
+        setClick(icon_4);
 
         file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
-        icon_zoomImageView.setImage(image);
-        setClick(icon_zoomImageView);
+        icon5.setImage(image);
+        setClick(icon5);
 
         file = new File("resources/icon_new.png");
         image = new Image(file.toURI().toString());
-        icon_sound.setImage(image);
-        setClick(icon_sound);
+        icon_1.setImage(image);
+        setClick(icon_1);
 
     }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#KeyPressed" onKeyTyped="#KeyPressed"
-            onScroll="#scrollInOut" xmlns="http://javafx.com/javafx/8.0.121" fx:controller="View.MyViewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root_pane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.121"
+            fx:controller="View.MyViewController">
     <left>
         <VBox prefHeight="200.0" prefWidth="20.0" spacing="5.0" BorderPane.alignment="CENTER">
             <padding>
@@ -54,86 +54,63 @@
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="New"/>
-                            </items>
-                            <items>
-                                <javafx.scene.control.MenuItem fx:id="solve_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#help"
-                                                               text="Solve"/>
-                            </items>
-                            <items>
-                                <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#help"
-                                                               text="Save"/>
-                            </items>
-                            <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
-                                                               text="Load"/>
+                                                               text="New Search"/>
+                                <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
+                                                               mnemonicParsing="false" onAction="#help" text="Load"/>
+                                <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
+                                                               mnemonicParsing="false" onAction="#help" text="Save"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Load"/>
                             </items>
                         </javafx.scene.control.Menu>
+
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Options">
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
                                                                text="Properties"/>
                             </items>
                         </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
-                            <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"
-                                />
-                            </items>
-                        </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" text="About">
-                            <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
-                            </items>
-                        </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" text="Exit">
-                            <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
-                                                               text="Exit"/>
-                            </items>
-                        </javafx.scene.control.Menu>
+
+                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#help" text="Help"/>
+
+                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#About" text="About"/>
+
+                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#exitButton" text="Exit"/>
+
                     </menus>
                 </javafx.scene.control.MenuBar>
             </children>
-
             <HBox>
-
-                <ImageView fx:id="icon_sound" fitHeight="70.0" fitWidth="70.0">
+                <ImageView fx:id="icon_1" fitHeight="70.0" fitWidth="70.0">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </ImageView>
 
-                <ImageView fx:id="icon_makeNewMaze" fitHeight="70.0" fitWidth="70.0">
+                <ImageView fx:id="icon_2" fitHeight="70.0" fitWidth="70.0">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </ImageView>
 
-                <ImageView fx:id="icon_partSolution" fitHeight="70.0" fitWidth="70.0" visible="false">
+                <ImageView fx:id="icon_3" fitHeight="70.0" fitWidth="70.0" visible="false">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </ImageView>
 
-                <ImageView fx:id="icon_fullSolution" fitHeight="70.0" fitWidth="70.0" visible="false">
+                <ImageView fx:id="icon_4" fitHeight="70.0" fitWidth="70.0" visible="false">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </ImageView>
-                <ImageView fx:id="icon_zoomImageView" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true"
+                <ImageView fx:id="icon5" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true"
                            preserveRatio="true">
                     <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </ImageView>
-
-
             </HBox>
-
-
         </VBox>
     </top>
     <center>
