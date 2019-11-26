@@ -31,10 +31,10 @@ public class NERPipelineDemo {
         // props.setProperty("ner.docdate.useFixedDate", "2019-01-01");
 
         // only run rules based NER
-        // props.setProperty("ner.rulesOnly", "true");
+        //props.setProperty("ner.rulesOnly", "true");
 
         // only run statistical NER
-        // props.setProperty("ner.statisticalOnly", "true");
+        //props.setProperty("ner.statisticalOnly", "true");
 
         // set up pipeline
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);

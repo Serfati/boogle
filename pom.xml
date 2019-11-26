@@ -52,7 +52,7 @@
     <!-- ********************************** -->
 
     <dependencies>
-        <!-- main library CORENLP dependency -->
+        <!-- main library coreNLP dependency -->
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
@@ -63,7 +63,7 @@
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
             <version>3.9.2</version>
-            <classifier>models-english</classifier>
+            <classifier>models</classifier>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
@@ -92,6 +92,18 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20180813</version>
+        </dependency>
+        <!--  https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <version>1.7.25</version>
         </dependency>
     </dependencies>
     <!-- ********************************** -->
