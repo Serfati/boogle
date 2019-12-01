@@ -39,7 +39,7 @@ public class NERPipelineDemo {
         // set up pipeline
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
         // make an example document
-        CoreDocument doc = new CoreDocument("Joe Smith is from Seattle.");
+        CoreDocument doc = new CoreDocument("At the beginning of the 20th century, the world’s tiger population was estimated at 100,000, even though they had been hunted for at least a thousand years. Tigers were prized as trophies and as a source of skins for expensive coats. They were also killed on the grounds that they posed a danger to humans. As the century drew to a close, only 5,000 to 7,500 were left in the wild, and captive tigers may now outnumber wild one");
         // annotate the document
         pipeline.annotate(doc);
         // view results
