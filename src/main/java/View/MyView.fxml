@@ -1,120 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root_pane" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.121"
-            fx:controller="View.MyViewController">
-    <left>
-        <VBox prefHeight="200.0" prefWidth="20.0" spacing="5.0" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-            </padding>
-            <children>
-                <GridPane>
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    </rowConstraints>
-                </GridPane>
-            </children>
-        </VBox>
-    </left>
-    <bottom>
-        <VBox BorderPane.alignment="CENTER">
-            <children>
-                <GridPane>
-                    <columnConstraints>
-                        <ColumnConstraints maxWidth="130.0" minWidth="140.0" prefWidth="130.0"/>
-                        <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                    </rowConstraints>
-                </GridPane>
-                <Label fx:id="lbl_statusBar" text="Status bar">
-                    <VBox.margin>
-                        <Insets left="10.0"/>
-                    </VBox.margin>
-                </Label>
-            </children>
-        </VBox>
-    </bottom>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="View.MyViewController">
     <top>
-        <VBox BorderPane.alignment="CENTER">
+        <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
                 <javafx.scene.control.MenuBar prefWidth="700.0">
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
-                                                               text="New Search"/>
+                                                               text="Load corpus"/>
+                                <MenuItem mnemonicParsing="false" onAction="#help" text="Go to seach tab"/>
                                 <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
                                                                mnemonicParsing="false" onAction="#help" text="Load"/>
                                 <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
                                                                mnemonicParsing="false" onAction="#help" text="Save"/>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Load"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Exit"/>
                             </items>
                         </javafx.scene.control.Menu>
-
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Options">
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
                                                                text="Properties"/>
                             </items>
                         </javafx.scene.control.Menu>
-
                         <javafx.scene.control.Menu mnemonicParsing="false" onAction="#help" text="Help"/>
-
                         <javafx.scene.control.Menu mnemonicParsing="false" onAction="#About" text="About"/>
-
                         <javafx.scene.control.Menu mnemonicParsing="false" onAction="#exitButton" text="Exit"/>
-
                     </menus>
                 </javafx.scene.control.MenuBar>
+                <HBox>
+                    <ImageView fx:id="boogle_logo" fitHeight="90.0" fitWidth="272.0" visible="false">
+                        <HBox.margin>
+                            <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
+                        </HBox.margin>
+                    </ImageView>
+
+                    <ImageView fx:id="icon_2" fitHeight="50.0" fitWidth="50.0">
+                        <HBox.margin>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                        </HBox.margin>
+                    </ImageView>
+                    <ImageView fx:id="icon_3" fitHeight="50.0" fitWidth="50.0" visible="false">
+                        <HBox.margin>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                        </HBox.margin>
+                    </ImageView>
+                    <ImageView fx:id="icon_4" fitHeight="50.0" fitWidth="50.0" visible="false">
+                        <HBox.margin>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                        </HBox.margin>
+                    </ImageView>
+                    <ImageView fx:id="icon5" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <HBox.margin>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                        </HBox.margin>
+                    </ImageView>
+                </HBox>
             </children>
-            <HBox>
-                <ImageView fx:id="icon_1" fitHeight="70.0" fitWidth="70.0">
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
-                    </HBox.margin>
-                </ImageView>
-
-                <ImageView fx:id="icon_2" fitHeight="70.0" fitWidth="70.0">
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
-                    </HBox.margin>
-                </ImageView>
-
-                <ImageView fx:id="icon_3" fitHeight="70.0" fitWidth="70.0" visible="false">
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
-                    </HBox.margin>
-                </ImageView>
-
-                <ImageView fx:id="icon_4" fitHeight="70.0" fitWidth="70.0" visible="false">
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
-                    </HBox.margin>
-                </ImageView>
-                <ImageView fx:id="icon5" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
-                    </HBox.margin>
-                </ImageView>
-            </HBox>
         </VBox>
     </top>
     <center>
-        <GridPane BorderPane.alignment="CENTER">
+        <GridPane prefHeight="15.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -126,80 +78,71 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <children>
-                <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
-                <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                       GridPane.valignment="CENTER"/>
-                <CheckBox fx:id="chkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
-                          GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
-                <TextField fx:id="txtfld_corpus_location" promptText="Corpus Folder Location" GridPane.columnIndex="1"/>
-                <TextField fx:id="txtfld_output_location" promptText="Output Folder Location" GridPane.columnIndex="1"
-                           GridPane.rowIndex="2"/>
-                <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusLocation" text="Browse"
-                        GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
-                <Button fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputLocation" text="Browse"
-                        GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
-                <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                       GridPane.valignment="CENTER"/>
-                <TextField fx:id="txtfld_stopwords_location" promptText="Stopwords File Location"
-                           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                <CheckBox fx:id="chkbox_memory_saver" accessibleHelp="Sacrifices performance to consume less memory"
-                          disable="true" mnemonicParsing="false" text="Memory Saver (see Readme)" visible="false"
-                          GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                          GridPane.valignment="CENTER"/>
-                <Button fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsLocation"
-                        text="Browse" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                        GridPane.valignment="CENTER"/>
-            </children>
+            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+            <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                   GridPane.valignment="CENTER"/>
+            <CheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
+                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                      GridPane.valignment="CENTER"/>
+            <TextField fx:id="txtfld_corpus_location" promptText="Corpus Folder Location" GridPane.columnIndex="1"/>
+            <TextField fx:id="txtfld_output_location" promptText="Output Folder Location" GridPane.columnIndex="1"
+                       GridPane.rowIndex="2"/>
+            <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
+            <Button fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
+            <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                   GridPane.valignment="CENTER"/>
+            <TextField fx:id="txtfld_stopwords_location" promptText="Stopwords File Location" GridPane.columnIndex="1"
+                       GridPane.rowIndex="1"/>
+            <CheckBox fx:id="checkbox_memory_saver" accessibleHelp="Sacrifices performance to consume less memory"
+                      disable="true" mnemonicParsing="false" text="Memory Saver (see Readme)" visible="false"
+                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                      GridPane.valignment="CENTER"/>
+            <Button fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                    GridPane.valignment="CENTER"/>
         </GridPane>
     </center>
     <bottom>
-        <VBox alignment="CENTER" prefHeight="57.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <children>
-                <HBox alignment="CENTER" prefHeight="33.0" prefWidth="600.0">
-                    <children>
-                        <Button fx:id="btn_reset" disable="true" mnemonicParsing="false" onAction="#reset" text="Reset">
-                            <HBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                            </HBox.margin>
-                        </Button>
-                        <Button fx:id="btn_genereate_index" mnemonicParsing="false" onAction="#generateIndex"
-                                text="Generate Index">
-                            <HBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                            </HBox.margin>
-                        </Button>
-                        <Button fx:id="btn_display_dictionary" disable="true" mnemonicParsing="false"
-                                onAction="#generateIndex" text="Display Dictionary">
-                            <HBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                            </HBox.margin>
-                        </Button>
-                        <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#generateIndex"
-                                text="Load Dictionary">
-                            <HBox.margin>
-                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-            </children>
+        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="274.0" prefWidth="100.0">
+                <placeholder>
+                    <Label text="Press 'Show Dictionary' to see data "/>
+                </placeholder>
+                <columns>
+                    <TableColumn fx:id="tableCol_term" prefWidth="284.0" text="Term"/>
+                    <TableColumn fx:id="tableCol_count" prefWidth="316.0" text="Number of appearances"/>
+                </columns>
+            </TableView>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
+                <Button fx:id="btn_reset" disable="true" mnemonicParsing="false" onAction="#reset" text="Reset">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btn_generate_index" mnemonicParsing="false" onAction="#generateIndex"
+                        text="Generate Index">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false" onAction="#generateIndex"
+                        text="Show Dictionary">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#generateIndex"
+                        text="Load Dictionary">
+                    <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
             <opaqueInsets>
                 <Insets/>
             </opaqueInsets>
         </VBox>
     </bottom>
-    <right>
-        <GridPane minWidth="20.0" prefWidth="20.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-        </GridPane>
-    </right>
 </BorderPane>

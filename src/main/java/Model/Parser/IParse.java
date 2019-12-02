@@ -18,10 +18,10 @@ interface IParse {
      *
      * @return true if the parser is done
      */
-    boolean isDone();
+    //boolean isDone();
 
     /**
      * free all the structures in the class
      */
-    void reset();
+    //void reset();
 }

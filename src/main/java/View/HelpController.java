@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 public class HelpController implements Initializable {
     public javafx.scene.control.Label newWindowLabel;
+    public javafx.scene.control.Label newWindowLabe2;
     public javafx.scene.control.Label MenuBar;
     public javafx.scene.control.Button OK;
     public javafx.scene.image.ImageView soundImage;

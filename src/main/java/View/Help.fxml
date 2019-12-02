@@ -68,7 +68,7 @@
                                 <Insets left="10.0"/>
                             </GridPane.margin>
                         </Label>
-                        <Label fx:id="newWindowLabel" text="Label" GridPane.columnIndex="1"
+                        <Label fx:id="newWindowLabel2" text="Label" GridPane.columnIndex="1"
                                GridPane.halignment="LEFT" GridPane.rowIndex="1"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>

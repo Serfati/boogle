@@ -6,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 /* class for the program main run */
@@ -37,7 +36,6 @@ public class Main extends Application {
         myViewController.setViewModel(myViewModel);
         myViewModel.addObserver(myViewController);
         //------------------------------//
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, myViewController::KeyPressed);
         primaryStage.setScene(scene);
         SetStageCloseEvent(primaryStage, myViewController);
         primaryStage.show();

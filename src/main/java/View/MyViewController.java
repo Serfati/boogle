@@ -1,6 +1,6 @@
 package View;
 
-import Model.Structures.MiniDictionary;
+import Model.Structures.ShowDictionaryRecord;
 import ViewModel.MyViewModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
 
@@ -22,7 +21,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class MyViewController implements IView, Observer, Initializable {
 
@@ -34,11 +36,11 @@ public class MyViewController implements IView, Observer, Initializable {
     public ImageView icon5;
     @FXML
     public Label lbl_statusBar;
-    public TableView<MiniDictionary> table_showDic;
+    public TableView<ShowDictionaryRecord> table_showDic;
     public MenuItem save_MenuItem;
     public MenuItem load_MenuItem;
-    public TableColumn<MiniDictionary, String> tableCol_term;
-    public TableColumn<MiniDictionary, Number> tableCol_count;
+    public TableColumn<ShowDictionaryRecord, String> tableCol_term;
+    public TableColumn<ShowDictionaryRecord, Number> tableCol_count;
     public TextField txtfld_output_location;
 
     @FXML
@@ -107,7 +109,7 @@ public class MyViewController implements IView, Observer, Initializable {
      */
     public void onStartClick() {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
-            MyAlert.showAlert(javafx.scene.control.Alert.AlertType.ERROR, "path can not be empty");
+            MyAlert.showAlert("path can not be empty");
         else
             myViewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
@@ -120,18 +122,17 @@ public class MyViewController implements IView, Observer, Initializable {
     }
 
     /**
-     * transfers a request to show the dictionary of the current indexing
+     * shows an observable list that contains all the data about the current indexing: Term and TF
+     *
+     * @param records all the data about the current indexing
      */
-    public void showDictionaryClick() {
-        myViewModel.showDictionary();
-    }
-
-    public void KeyPressed(KeyEvent keyEvent) {
-        if (!myViewModel.isFinish())
-            lbl_statusBar.setText("running...");
-        else
-            lbl_statusBar.setText("If you want to search again just type");
-        keyEvent.consume();
+    private void showDictionaryClick(ObservableList<ShowDictionaryRecord> records) {
+        if (records != null) {
+            tableCol_term.setCellValueFactory(cellData -> cellData.getValue().getTermProperty());
+            tableCol_count.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
+            table_showDic.setItems(records);
+        }
+        btn_show_dictionary.setDisable(false);
     }
 
     public boolean isUseStemming() {
@@ -249,7 +250,6 @@ public class MyViewController implements IView, Observer, Initializable {
 
     public void reset(ActionEvent actionEvent) {
         btn_show_dictionary.setDisable(true);
-        //choiceBox_languages.setDisable(true);
     }
 
     @Override
@@ -326,11 +326,8 @@ public class MyViewController implements IView, Observer, Initializable {
             lbl_statusBar.setText("Loaded "+file.getName());
 
         } else
-            MyAlert.showAlert(Alert.AlertType.ERROR, "Please choose a vaild destination");
+            MyAlert.showAlert("Please choose a vaild destination");
         event.consume();
-    }
-
-    private void showDictionary(ObservableList<LinkedList> records){
     }
 
     public void onAction_Property() {

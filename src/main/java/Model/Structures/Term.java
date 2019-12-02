@@ -2,7 +2,7 @@ package Model.Structures;
 
 import java.io.Serializable;
 
-public class Term implements IData, Serializable, Comparable<Term> {
+public class Term implements Serializable, Comparable<Term> {
 
     private String name;
     private int df; // number of documents in which the term appeared in corpus.

@@ -87,32 +87,10 @@ public class ReadFile {
             for(Element element : docElements) {
                 Elements IDElement = element.getElementsByTag("DOCNO");
                 Elements DateElement = element.getElementsByTag("DATE1");
-                Elements unProcessedDocAuthor = element.getElementsByTag("BYLINE");
                 Elements TitleElement = element.getElementsByTag("TI");
                 Elements TextElement = element.getElementsByTag("TEXT");
-                Elements fElements = element.getElementsByTag("F");
-                String orginC = "";
-                String language = "";
-                for(Element fElement : fElements) {
-                    if (fElement.attr("P").equals("104")) {//orginC
-                        orginC = fElement.text();
-                        if (orginC.length() > 0 && Character.isLetter(orginC.charAt(0)))
-                            orginC = orginC.split(" ")[0].toUpperCase();
-                        else
-                            orginC = "";
-                    } else if (fElement.attr("P").equals("105")) {//language
-                        language = fElement.text().split(" ")[0];
-                        if (!(!language.equals("") && !Character.isDigit(language.charAt(0)))) {
-                            language = "";
-                        }
-                    }
-                }
-                String ID = IDElement.text();
-                String DATE = DateElement.text();
-                String TILTLE = TitleElement.text();
-                String TEXT = TextElement.text();
-                String author = unProcessedDocAuthor.text().replace("By ", "");
-                cDocument newDoc = new cDocument(ID, DATE, TILTLE, TEXT, orginC, author, language);
+                String docLang = element.getElementsByTag("F").select("F[P=105]").text().toUpperCase();
+                cDocument newDoc = new cDocument(IDElement.text(), DateElement.text(), TitleElement.text(), TextElement.text(), docLang);
                 documentBuffer.offer(newDoc);
             }
 
