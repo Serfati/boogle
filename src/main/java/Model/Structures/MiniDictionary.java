@@ -139,25 +139,6 @@ public class MiniDictionary {
             return m_dictionary.get(word);
         return null;
     }
-
-    /**
-     * returns the word that has the max freq in the doc
-     *
-     * @return the word that has the max freq in the doc
-     */
-    public String getMaxFreqWord() {
-        return m_maxFreqWord;
-    }
-
-    /**
-     * returns the name of the doc
-     *
-     * @return the name of the doc
-     */
-    public String getName() {
-        return m_name;
-    }
-
     /**
      * returns the freq of a certain term
      *
@@ -169,25 +150,6 @@ public class MiniDictionary {
             return m_dictionary.get(word).size();
         return 0;
     }
-
-    /**
-     * returns the max freq exists in a doc
-     *
-     * @return the max freq exists in a doc
-     */
-    public int getMaxFrequency() {
-        return m_maxFreq;
-    }
-
-    /**
-     * returns the document length
-     *
-     * @return document length
-     */
-    public int getDocLength() {
-        return m_dictionary.values().stream().mapToInt(LinkedList::size).sum();
-    }
-
     /**
      * sets the 5 primary words
      */

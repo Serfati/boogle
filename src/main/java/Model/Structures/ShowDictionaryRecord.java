@@ -11,7 +11,7 @@ public class ShowDictionaryRecord {
     private StringProperty termProperty;
     private IntegerProperty countProperty;
 
-    ShowDictionaryRecord(String term, int count) {
+    public ShowDictionaryRecord(String term, int count) {
         this.term = term;
         this.count = count;
         this.termProperty = new SimpleStringProperty(term);

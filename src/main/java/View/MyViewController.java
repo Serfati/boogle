@@ -71,9 +71,9 @@ public class MyViewController implements IView, Observer, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initImages();
-        Tooltip tooltip = new Tooltip();
-        tooltip.setText("");
-        checkbox_memory_saver.setTooltip(tooltip);
+//        Tooltip tooltip = new Tooltip();
+//        tooltip.setText("");
+//        checkbox_memory_saver.setTooltip(tooltip);
     }
 
     private void initImages() {
