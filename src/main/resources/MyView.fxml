@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0"
-            xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="View.MyViewController">
+            xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="MyViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -13,14 +13,18 @@
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick"
                                                                text="Load corpus"/>
-                                <MenuItem mnemonicParsing="false" onAction="#help" text="Go to seach tab"/>
+                                <MenuItem mnemonicParsing="false" disable="true" onAction="#help"
+                                          text="Go to seach tab"/>
                                 <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#help" text="Load"/>
+                                                               mnemonicParsing="false" onAction="#loadDictionary"
+                                                               text="Load"/>
                                 <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#help" text="Save"/>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Exit"/>
+                                                               mnemonicParsing="false" onAction="#saveDictionary"
+                                                               text="Save"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Exit"/>
                             </items>
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Options">

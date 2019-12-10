@@ -1,6 +1,5 @@
-package View;
-
 import Model.Structures.ShowDictionaryRecord;
+import View.MyAlert;
 import ViewModel.MyViewModel;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -211,7 +210,7 @@ public class MyViewController implements Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("src/main/java/View/Help.fxml"));
+            root = FXMLLoader.load(getClass().getResource("Help.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
@@ -239,7 +238,7 @@ public class MyViewController implements Observer, Initializable {
         }
         aboutStage.setTitle("About");
         assert root != null;
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 450, 400);
         scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
         aboutStage.setScene(scene);
         aboutStage.initModality(Modality.APPLICATION_MODAL);

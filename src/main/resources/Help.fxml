@@ -8,7 +8,7 @@
             xmlns="http://javafx.com/javafx/8.0.121" fx:controller="View.HelpController">
     <VBox prefHeight="500.0" prefWidth="700.0">
         <TabPane prefHeight="478.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE">
-            <Tab text="How to play">
+            <Tab text="How to run">
                 <ScrollPane prefHeight="200.0" prefWidth="200.0">
                     <Label fx:id="newWindowLabel" alignment="TOP_LEFT" text="Label">
                         <padding>
@@ -68,7 +68,7 @@
                                 <Insets left="10.0"/>
                             </GridPane.margin>
                         </Label>
-                        <Label fx:id="newWindowLabel2" text="Label" GridPane.columnIndex="1"
+                        <Label fx:id="newLabel" text="Label" GridPane.columnIndex="1"
                                GridPane.halignment="LEFT" GridPane.rowIndex="1"
                                GridPane.valignment="CENTER">
                             <GridPane.margin>
