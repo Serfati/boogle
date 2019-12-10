@@ -36,7 +36,7 @@ public class MyViewModel extends Observable implements Observer {
         Platform.runLater(() -> model.showDictionary());
     }
 
-    public void loadDictionary(File file, boolean stem) {
+    public void loadDictionary(String file, boolean stem) {
         Platform.runLater(() -> model.loadDictionary(file, stem));
     }
 

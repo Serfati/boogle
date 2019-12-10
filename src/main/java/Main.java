@@ -1,12 +1,14 @@
-package View;
+
 
 import Model.MyModel;
+import View.MyViewController;
 import ViewModel.MyViewModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 
 /* class for the program main run */
 public class Main extends Application {
@@ -31,6 +33,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load(getClass().getResource("MyView.fxml").openStream());
         Scene scene = new Scene(root, 800, 700);
         scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
+        primaryStage.setResizable(false);
         //------------------------------//
         MyViewController myViewController = fxmlLoader.getController();
         myViewController.setViewModel(myViewModel);
@@ -40,6 +43,7 @@ public class Main extends Application {
         SetStageCloseEvent(primaryStage, myViewController);
         primaryStage.show();
         //------------------------------//
+
     }
 
     private void SetStageCloseEvent(Stage primaryStage, MyViewController myViewController) {

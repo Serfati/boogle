@@ -14,5 +14,5 @@ public interface IModel {
 
     void showDictionary();
 
-    void loadDictionary(File file, boolean stem);
+    void loadDictionary(String path, boolean stem);
 }

@@ -29,13 +29,27 @@
                                                                text="Properties"/>
                             </items>
                         </javafx.scene.control.Menu>
-                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#help" text="Help"/>
-                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#About" text="About"/>
-                        <javafx.scene.control.Menu mnemonicParsing="false" onAction="#exitButton" text="Exit"/>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"/>
+                            </items>
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="About">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
+                            </items>
+
+                        </javafx.scene.control.Menu>
+                        <javafx.scene.control.Menu mnemonicParsing="false" text="Exit">
+                            <items>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
+                                                               text="Exit"/>
+                            </items>
+                        </javafx.scene.control.Menu>
                     </menus>
                 </javafx.scene.control.MenuBar>
                 <HBox>
-                    <ImageView fx:id="boogle_logo" fitHeight="90.0" fitWidth="272.0" visible="false">
+                    <ImageView fx:id="boogle_logo" fitHeight="90.0" fitWidth="272.0">
                         <HBox.margin>
                             <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                         </HBox.margin>
@@ -104,6 +118,7 @@
                     GridPane.valignment="CENTER"/>
         </GridPane>
     </center>
+
     <bottom>
         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="274.0" prefWidth="100.0">
@@ -127,13 +142,14 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false" onAction="#generateIndex"
+                <Button fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
+                        onAction="#showDictionaryClick"
                         text="Show Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#generateIndex"
+                <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary"
                         text="Load Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>

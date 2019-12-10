@@ -1,4 +1,4 @@
-package View;
+package Model.Structures;
 
 import ViewModel.MyViewModel;
 import javafx.event.ActionEvent;

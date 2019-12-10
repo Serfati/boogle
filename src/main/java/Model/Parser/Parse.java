@@ -227,8 +227,6 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                         e.getCause();
                     }
                 }
-
-
             } else if (term.length() >= 1 && isNumber(term.substring(0, term.length()-1))) {
                 if (!term.substring(0, term.length()-1).equals("%")) {
                     nextWord.addFirst(nextWord());
@@ -279,7 +277,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                     wordList.addFirst(s);
             }
 
-            if (!MyModel.stopWordSet.contains(term.toString().toLowerCase())) {
+            if (!MyModel.stopWords.contains(term.toString().toLowerCase())) {
                 if (useStemming) {
                     stemmer.getStemmer().setCurrent(term.toString());
                     if (stemmer.getStemmer().stem())

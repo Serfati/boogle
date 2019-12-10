@@ -38,9 +38,7 @@ public class NERPipelineDemo {
     }
 
     private static boolean stringContainsItemFromList(String inputStr, String[] items) {
-        if (inputStr.equalsIgnoreCase(".") || inputStr.equalsIgnoreCase(","))
-            return true;
-        return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
+        return inputStr.equalsIgnoreCase(".") || inputStr.equalsIgnoreCase(",") || Arrays.stream(items).parallel().anyMatch(inputStr::contains);
     }
 
     public static String[] tokenize(String sentence) {

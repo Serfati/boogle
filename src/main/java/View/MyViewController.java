@@ -26,7 +26,7 @@ import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MyViewController implements IView, Observer, Initializable {
+public class MyViewController implements Observer, Initializable {
 
     @FXML
     public ImageView icon_3;
@@ -77,30 +77,29 @@ public class MyViewController implements IView, Observer, Initializable {
     }
 
     private void initImages() {
-        File file = new File("resources/logo.jpg");
+        File file = new File("src/main/resources/start.png");
         Image image = new Image(file.toURI().toString());
-        icon_2.setImage(image);
-        setClick(icon_2);
+        icon_4.setImage(image);
+        setClick(icon_4);
 
-        file = new File("resources/SaveResult.jpg");
+        file = new File("src/main/resources/SaveResult.png");
         image = new Image(file.toURI().toString());
         icon_3.setImage(image);
         setClick(icon_3);
 
-        file = new File("resources/searchGif.gif");
-        image = new Image(file.toURI().toString());
-        icon_4.setImage(image);
-        setClick(icon_4);
-
-        file = new File("resources/start.png");
+        file = new File("src/main/resources/icon_new.png");
         image = new Image(file.toURI().toString());
         icon5.setImage(image);
         setClick(icon5);
 
-        file = new File("resources/end.png");
+        file = new File("src/main/resources/searchGif.gif");
+        image = new Image(file.toURI().toString());
+        icon_2.setImage(image);
+        setClick(icon_2);
+
+        file = new File("src/main/resources/logo.png");
         image = new Image(file.toURI().toString());
         boogle_logo.setImage(image);
-        setClick(boogle_logo);
 
     }
 
@@ -119,6 +118,13 @@ public class MyViewController implements IView, Observer, Initializable {
             help();
             event.consume();
         });
+    }
+
+    /**
+     * transfers a request to show the dictionary of the current indexing
+     */
+    public void showDictionaryClick() {
+        myViewModel.showDictionary();
     }
 
     /**
@@ -184,7 +190,7 @@ public class MyViewController implements IView, Observer, Initializable {
         exitCorrectly();
     }
 
-    void exitCorrectly() {
+    public void exitCorrectly() {
         Alert alert = new Alert(Alert.AlertType.NONE);
         ButtonType leaveButton = new ButtonType("Leave", ButtonBar.ButtonData.YES);
         ButtonType stayButton = new ButtonType("Stay", ButtonBar.ButtonData.NO);
@@ -205,7 +211,7 @@ public class MyViewController implements IView, Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("Help.fxml"));
+            root = FXMLLoader.load(getClass().getResource("src/main/java/View/Help.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
@@ -322,7 +328,7 @@ public class MyViewController implements IView, Observer, Initializable {
         File file = fileChooser.showOpenDialog(new PopupWindow() {
         });
         if (file != null && file.exists() && !file.isDirectory()) {
-            myViewModel.loadDictionary(file, checkbox_use_stemming.isSelected());
+            myViewModel.loadDictionary(file.getAbsolutePath(), checkbox_use_stemming.isSelected());
             lbl_statusBar.setText("Loaded "+file.getName());
 
         } else

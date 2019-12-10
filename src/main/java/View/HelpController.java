@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class HelpController implements Initializable {
     public javafx.scene.control.Label newWindowLabel;
-    public javafx.scene.control.Label newWindowLabe2;
+    //public javafx.scene.control.Label newWindowLabe2;
     public javafx.scene.control.Label MenuBar;
     public javafx.scene.control.Button OK;
     public javafx.scene.image.ImageView soundImage;
@@ -58,15 +58,15 @@ public class HelpController implements Initializable {
 
     private void initImages() {
 
-        File file = new File("resources/icon_new.png");
+        File file = new File("resources/searchGif.gif");
         Image image = new Image(file.toURI().toString());
         soundImage.setImage(image);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/searchGif.gif");
         image = new Image(file.toURI().toString());
         getHintImage.setImage(image);
 
-        file = new File("resources/icon_new.png");
+        file = new File("resources/searchGif.gif");
         image = new Image(file.toURI().toString());
         solveImage.setImage(image);
 
