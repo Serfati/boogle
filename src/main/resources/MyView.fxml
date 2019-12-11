@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
@@ -9,10 +10,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0" stylesheets="@ViewStyle.css"
-            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="MyViewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" prefHeight="685.0"
+            prefWidth="618.0" styleClass="custom-pane" stylesheets="@ViewStyle.css" fx:controller="MyViewController">
     <top>
-        <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER" stylesheets="@ViewStyle.css">
             <children>
                 <javafx.scene.control.MenuBar prefWidth="700.0">
                     <menus>
@@ -131,7 +132,8 @@
     </top>
 
     <bottom>
-        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER"
+              stylesheets="@ViewStyle.css">
             <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="274.0" prefWidth="100.0">
                 <placeholder>
                     <Label text="Press 'Show Dictionary' to see data "/>
@@ -142,41 +144,41 @@
                 </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
-                <Button fx:id="btn_reset" disable="true" mnemonicParsing="false" onAction="#reset" text="Reset">
+                <JFXButton fx:id="btn_reset" disable="true" mnemonicParsing="false" onAction="#reset" text="Reset">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                     <cursor>
                         <Cursor fx:constant="DISAPPEAR"/>
                     </cursor>
-                </Button>
-                <Button fx:id="btn_generate_index" mnemonicParsing="false" onAction="#generateIndex"
-                        text="Generate Index">
+                </JFXButton>
+                <JFXButton fx:id="btn_generate_index" mnemonicParsing="false" onAction="#generateIndex"
+                           text="Generate Index">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
-                </Button>
-                <Button fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
-                        onAction="#showDictionaryClick" text="Show Dictionary">
+                </JFXButton>
+                <JFXButton fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
+                           onAction="#showDictionaryClick" text="Show Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                     <cursor>
                         <Cursor fx:constant="DISAPPEAR"/>
                     </cursor>
-                </Button>
-                <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary"
-                        text="Load Dictionary">
+                </JFXButton>
+                <JFXButton fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary"
+                           text="Load Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
-                </Button>
+                </JFXButton>
             </HBox>
             <opaqueInsets>
                 <Insets/>
@@ -184,8 +186,7 @@
         </VBox>
     </bottom>
     <right>
-        <GridPane blendMode="MULTIPLY" focusTraversable="true" prefHeight="15.0" prefWidth="618.0"
-                  BorderPane.alignment="CENTER">
+        <GridPane prefHeight="15.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -197,73 +198,61 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                <font>
-                    <Font size="15.0"/>
-                </font>
-            </Label>
-            <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                   GridPane.valignment="CENTER">
-                <font>
-                    <Font size="15.0"/>
-                </font>
-            </Label>
-            <CheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
-                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                      GridPane.valignment="CENTER">
-                <cursor>
-                    <Cursor fx:constant="CROSSHAIR"/>
-                </cursor>
-            </CheckBox>
-            <TextField fx:id="txtfld_corpus_location" promptText="         Type Here" GridPane.columnIndex="1">
+            <JFXCheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
+                         GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                         GridPane.valignment="CENTER" styleClass="checkbox-main">
+            </JFXCheckBox>
+            <JFXTextField fx:id="txtfld_corpus_location" styleClass="main-text" labelFloat="true"
+                          promptText="Corpus Folder Location" GridPane.columnIndex="1">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
-            </TextField>
-            <TextField fx:id="txtfld_output_location" promptText="         Type Here" GridPane.columnIndex="1"
-                       GridPane.rowIndex="2">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtfld_output_location" styleClass="main-text" labelFloat="true"
+                          promptText="Output Folder Location" GridPane.columnIndex="1" GridPane.rowIndex="2">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
-            </TextField>
-            <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
-                    textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </JFXTextField>
+            <JFXButton fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
+                       GridPane.columnIndex="2" GridPane.halignment="CENTER">
                 <cursor>
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
-            </Button>
-            <Button fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            </JFXButton>
+            <JFXButton fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
+                       GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                 <cursor>
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
                 <effect>
                     <Blend mode="HARD_LIGHT"/>
                 </effect>
-            </Button>
-            <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                   GridPane.valignment="CENTER">
+            </JFXButton>
+            <JFXTextField fx:id="txtfld_stopwords_location" styleClass="main-text" labelFloat="true"
+                          promptText="Stopwords File Location" GridPane.columnIndex="1" GridPane.rowIndex="1">
                 <font>
-                    <Font size="15.0"/>
+                    <Font size="14.0"/>
                 </font>
-            </Label>
-            <TextField fx:id="txtfld_stopwords_location" promptText="         Type Here" GridPane.columnIndex="1"
-                       GridPane.rowIndex="1">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
-            </TextField>
-            <CheckBox fx:id="checkbox_memory_saver" accessibleHelp="Sacrifices performance to consume less memory"
-                      disable="true" mnemonicParsing="false" text="Memory Saver (see Readme)" visible="false"
-                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                      GridPane.valignment="CENTER"/>
-            <Button fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                    GridPane.valignment="CENTER">
+            </JFXTextField>
+
+            <JFXButton fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick"
+                       text="Browse"
+                       GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                       GridPane.valignment="CENTER">
                 <cursor>
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
-            </Button>
+            </JFXButton>
             <cursor>
                 <Cursor fx:constant="DEFAULT"/>
             </cursor>

@@ -1,6 +1,9 @@
 import Model.Structures.ShowDictionaryRecord;
 import View.MyAlert;
 import ViewModel.MyViewModel;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,10 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -46,23 +47,23 @@ public class MyViewController implements Observer, Initializable {
     public MenuItem load_MenuItem;
     public TableColumn<ShowDictionaryRecord, String> tableCol_term;
     public TableColumn<ShowDictionaryRecord, Number> tableCol_count;
-    public TextField txtfld_output_location;
+    public JFXTextField txtfld_output_location;
 
     @FXML
-    public TextField txtfld_corpus_location;
-    public TextField txtfld_stopwords_location;
+    public JFXTextField txtfld_corpus_location;
+    public JFXTextField txtfld_stopwords_location;
     public CheckBox checkbox_memory_saver;
     @FXML
-    public Button btn_corpus_browse;
-    public Button btn_show_dictionary;
-    public Button btn_generate_index;
-    public Button btn_stopwords_browse;
-    public Button btn_output_browse;
-    public Button btn_reset;
-    public Button btn_load_dictionary;
+    public JFXButton btn_corpus_browse;
+    public JFXButton btn_show_dictionary;
+    public JFXButton btn_generate_index;
+    public JFXButton btn_stopwords_browse;
+    public JFXButton btn_output_browse;
+    public JFXButton btn_reset;
+    public JFXButton btn_load_dictionary;
     private MyViewModel myViewModel;
     @FXML
-    private CheckBox checkbox_use_stemming;
+    private JFXCheckBox checkbox_use_stemming;
 
 
     /**
