@@ -4,11 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.Color?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0"
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0" stylesheets="@ViewStyle.css"
             xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="MyViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
@@ -69,18 +70,13 @@
                             <Cursor fx:constant="CLOSED_HAND"/>
                         </cursor>
                         <effect>
-                            <DropShadow blurType="ONE_PASS_BOX" height="21.26" offsetX="6.0" offsetY="-4.0"
-                                        radius="10.8875" width="24.29">
-                                <color>
-                                    <Color opacity="0.08813560754060745"/>
-                                </color>
-                            </DropShadow>
+                            <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0"/>
                         </effect>
                     </ImageView>
 
                     <ImageView fx:id="icon_2" accessibleHelp=" Search Tab" accessibleRoleDescription=" Search Tab"
-                               accessibleText=" Search Tab" depthTest="ENABLE" fitHeight="50.0" fitWidth="50.0"
-                               focusTraversable="true" opacity="0.36">
+                               accessibleText=" Search Tab" depthTest="ENABLE" disable="true" fitHeight="50.0"
+                               fitWidth="50.0" focusTraversable="true" opacity="0.02">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
@@ -201,9 +197,17 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
             <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                   GridPane.valignment="CENTER"/>
+                   GridPane.valignment="CENTER">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
             <CheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
                       GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
                       GridPane.valignment="CENTER">
@@ -211,19 +215,19 @@
                     <Cursor fx:constant="CROSSHAIR"/>
                 </cursor>
             </CheckBox>
-            <TextField fx:id="txtfld_corpus_location" promptText="Corpus Folder Location" GridPane.columnIndex="1">
+            <TextField fx:id="txtfld_corpus_location" promptText="         Type Here" GridPane.columnIndex="1">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
             </TextField>
-            <TextField fx:id="txtfld_output_location" promptText="Output Folder Location" GridPane.columnIndex="1"
+            <TextField fx:id="txtfld_output_location" promptText="         Type Here" GridPane.columnIndex="1"
                        GridPane.rowIndex="2">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
                 </cursor>
             </TextField>
             <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                    textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                 <cursor>
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
@@ -233,10 +237,17 @@
                 <cursor>
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
+                <effect>
+                    <Blend mode="HARD_LIGHT"/>
+                </effect>
             </Button>
             <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                   GridPane.valignment="CENTER"/>
-            <TextField fx:id="txtfld_stopwords_location" promptText="Stopwords File Location" GridPane.columnIndex="1"
+                   GridPane.valignment="CENTER">
+                <font>
+                    <Font size="15.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="txtfld_stopwords_location" promptText="         Type Here" GridPane.columnIndex="1"
                        GridPane.rowIndex="1">
                 <cursor>
                     <Cursor fx:constant="TEXT"/>
@@ -253,12 +264,12 @@
                     <Cursor fx:constant="CLOSED_HAND"/>
                 </cursor>
             </Button>
-            <effect>
-                <Blend mode="HARD_LIGHT" opacity="0.61"/>
-            </effect>
             <cursor>
                 <Cursor fx:constant="DEFAULT"/>
             </cursor>
+            <effect>
+                <Glow level="0.0"/>
+            </effect>
         </GridPane>
     </right>
 </BorderPane>
