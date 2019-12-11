@@ -76,6 +76,12 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>8.0.1</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.rholder/snowball-stemmer -->
         <dependency>
             <groupId>com.github.rholder</groupId>
