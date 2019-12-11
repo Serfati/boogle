@@ -9,14 +9,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -111,18 +117,27 @@ public class MyViewController implements Observer, Initializable {
 
     public void openGoogle() {
         try {
-            new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=stop+with+this+shit").start();
-        } catch(IOException e) {
-            e.printStackTrace();
+            Desktop desktop = Desktop.getDesktop();
+            if (desktop.isSupported(Desktop.Action.BROWSE))
+                desktop.browse(new URL("https://www.google.com/search?q=stop+with+this+shit").toURI());
+        } catch(IOException | URISyntaxException e1) {
+            System.out.println("fail");
+            e1.printStackTrace();
         }
-        //        try{
-//            Desktop desktop = Desktop.getDesktop();
-//            if (desktop.isSupported(Desktop.Action.BROWSE))
-//                desktop.browse(new URL("https://google.com").toURI());
-//        } catch (IOException | URISyntaxException e1) {
-//            System.out.println("fail");
-//            e1.printStackTrace();
+
+        /*
+LINUX - ubuntu
+ */
+        //        try {
+//            new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=stop+with+this+shit").start();
+//        } catch(IOException e) {
+//            e.printStackTrace();
 //        }
+
+        /*
+Windows - pc
+ */
+
     }
 
 
