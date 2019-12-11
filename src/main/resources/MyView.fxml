@@ -198,10 +198,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
-            <JFXCheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
-                         GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                         GridPane.valignment="CENTER" styleClass="checkbox-main">
-            </JFXCheckBox>
+            <JFXToggleButton fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
+                             GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                             GridPane.valignment="CENTER" styleClass="checkbox-main">
+            </JFXToggleButton>
             <JFXTextField fx:id="txtfld_corpus_location" styleClass="main-text" labelFloat="true"
                           promptText="Corpus Folder Location" GridPane.columnIndex="1">
                 <cursor>

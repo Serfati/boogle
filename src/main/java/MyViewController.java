@@ -2,8 +2,8 @@ import Model.Structures.ShowDictionaryRecord;
 import View.MyAlert;
 import ViewModel.MyViewModel;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -63,7 +63,7 @@ public class MyViewController implements Observer, Initializable {
     public JFXButton btn_load_dictionary;
     private MyViewModel myViewModel;
     @FXML
-    private JFXCheckBox checkbox_use_stemming;
+    private JFXToggleButton checkbox_use_stemming;
 
 
     /**

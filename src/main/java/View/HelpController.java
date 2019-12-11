@@ -54,7 +54,7 @@ public class HelpController implements Initializable {
                 "\t\t- At part 1 choose the directory of the new corpus at 'Corpus path'.\n"+
                 "\t\t- Choose a path for the files to be saved in at 'Posting path'.\n"+
                 "\t\t- Press build and wait untill the engine finishes.\n"+
-                "\t\t  Meanwhile you can check our cool & smart progress bar that works according to the actual corpus and merging process.\n"+
+                "\t\t  Meanwhile you can check our cool & smart progress bar that works \naccording to the actual corpus and merging process.\n"+
                 "\t\t- After the build is done click on 'Upload' to load the data.\n"+
                 "\t\t- Now you can switch to Part 2 by clicking it at the top right corner.\n"+
                 "\t\t- For understading Part 2 please read the instructions for it below.\n"+
@@ -62,11 +62,11 @@ public class HelpController implements Initializable {
                 "\t\t- Choose the path of the posting files saved with 'Posting path'.\n"+
                 "\t\t- Click on 'Upload' to upload the data.\n"+
                 "\t\t- Now you can switch to Part 2 by clicking it at the top right corner.\n"+
-                "\t\t- At Part 2 you can either enter your own query by simply writing it at 'Query' and click 'Run query'\n"+
+                "\t\t- At Part 2 you can either enter your own query by simply \nwriting it at 'Query' and click 'Run query'\n"+
                 "\t\t  or you can enter a file through the 'Query File' and click 'Run query from file'.\n"+
                 "\t\t- You can choose to use Stem and Sementics by checking the check-box\n"+
-                "\t\t- After the run you can save the output to a file. make sure you chose a directory path at 'Save Results'\n"+
-                "\t\t- You can see the most dominant Entities of the files that came back from the query by clicking 'Show Entities'\t");
+                "\t\t- After the run you can save the output to a file. make sure you chose a \ndirectory path at 'Save Results'\n"+
+                "\t\t- You can see the most dominant \nEntities of the files that came back from the query by clicking 'Show Entities'\t");
 
         MenuBar.setText("\n"+
                 "File - \n"+
