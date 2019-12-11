@@ -99,8 +99,32 @@ public class MyViewController implements Observer, Initializable {
         file = new File("src/main/resources/logo.png");
         image = new Image(file.toURI().toString());
         boogle_logo.setImage(image);
+        setBoogleClick();
 
     }
+
+    public void setBoogleClick() {
+        boogle_logo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            openGoogle();
+        });
+    }
+
+    public void openGoogle() {
+        try {
+            new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=stop+with+this+shit").start();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        //        try{
+//            Desktop desktop = Desktop.getDesktop();
+//            if (desktop.isSupported(Desktop.Action.BROWSE))
+//                desktop.browse(new URL("https://google.com").toURI());
+//        } catch (IOException | URISyntaxException e1) {
+//            System.out.println("fail");
+//            e1.printStackTrace();
+//        }
+    }
+
 
     /**
      * This function starts the process of parse and index the dictionary

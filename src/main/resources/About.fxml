@@ -5,19 +5,19 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/9.0.1" fx:controller="View.AboutController">
-    <BorderPane>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="416.0" prefWidth="403.0"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="View.AboutController">
+    <BorderPane prefHeight="416.0" prefWidth="403.0">
         <bottom>
-            <Button fx:id="close" mnemonicParsing="false" onAction="#close" text="Close"
-                    BorderPane.alignment="CENTER">
+            <Button fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" BorderPane.alignment="CENTER">
                 <BorderPane.margin>
                     <Insets bottom="10.0"/>
                 </BorderPane.margin>
             </Button>
         </bottom>
         <center>
-            <ScrollPane prefHeight="365.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <ScrollPane prefWidth="403.0" BorderPane.alignment="CENTER">
+                <prefHeight>300.0</prefHeight>
                 <Label fx:id="Itext" text="About">
                     <padding>
                         <Insets left="10.0"/>

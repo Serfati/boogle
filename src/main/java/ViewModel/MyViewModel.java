@@ -55,5 +55,4 @@ public class MyViewModel extends Observable implements Observer {
     public void onStartClick(String pathOfDocs, String destinationPath, boolean stm) {
         Platform.runLater(() -> model.startIndexing(pathOfDocs, destinationPath,stm));
     }
-
 }

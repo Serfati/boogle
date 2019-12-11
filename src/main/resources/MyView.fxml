@@ -2,10 +2,14 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.Color?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0"
-            xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="MyViewController">
+            xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="MyViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -15,7 +19,7 @@
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick"
                                                                text="Load corpus"/>
-                                <MenuItem mnemonicParsing="false" disable="true" onAction="#help"
+                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help"
                                           text="Go to seach tab"/>
                                 <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
                                                                mnemonicParsing="false" onAction="#loadDictionary"
@@ -53,75 +57,82 @@
                     </menus>
                 </javafx.scene.control.MenuBar>
                 <HBox>
-                    <ImageView fx:id="boogle_logo" fitHeight="90.0" fitWidth="272.0">
+                    <ImageView fx:id="boogle_logo" accessibleText="Google" cacheHint="SPEED" depthTest="ENABLE"
+                               fitHeight="90.0" fitWidth="272.0">
                         <HBox.margin>
                             <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
                         </HBox.margin>
+                        <image>
+                            <Image url="@logo.png"/>
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="CLOSED_HAND"/>
+                        </cursor>
+                        <effect>
+                            <DropShadow blurType="ONE_PASS_BOX" height="21.26" offsetX="6.0" offsetY="-4.0"
+                                        radius="10.8875" width="24.29">
+                                <color>
+                                    <Color opacity="0.08813560754060745"/>
+                                </color>
+                            </DropShadow>
+                        </effect>
                     </ImageView>
 
-                    <ImageView fx:id="icon_2" fitHeight="50.0" fitWidth="50.0">
+                    <ImageView fx:id="icon_2" accessibleHelp=" Search Tab" accessibleRoleDescription=" Search Tab"
+                               accessibleText=" Search Tab" depthTest="ENABLE" fitHeight="50.0" fitWidth="50.0"
+                               focusTraversable="true" opacity="0.36">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
+                        <image>
+                            <Image url="@searchGif.gif"/>
+                        </image>
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
                     </ImageView>
-                    <ImageView fx:id="icon_3" fitHeight="50.0" fitWidth="50.0" visible="false">
+                    <ImageView fx:id="icon_3" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
+                        <cursor>
+                            <Cursor fx:constant="CLOSED_HAND"/>
+                        </cursor>
+                        <image>
+                            <Image url="@SaveResult.png"/>
+                        </image>
                     </ImageView>
-                    <ImageView fx:id="icon_4" fitHeight="50.0" fitWidth="50.0" visible="false">
+                    <ImageView fx:id="icon_4" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
+                        <cursor>
+                            <Cursor fx:constant="CLOSED_HAND"/>
+                        </cursor>
+                        <image>
+                            <Image url="@end.png"/>
+                        </image>
                     </ImageView>
-                    <ImageView fx:id="icon5" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                    <ImageView fx:id="icon5" accessibleHelp="help" accessibleRoleDescription="help"
+                               accessibleText="help" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                               preserveRatio="true">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                        <image>
+                            <Image url="@icon_new.png"/>
+                        </image>
                     </ImageView>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT"/>
+                    </cursor>
                 </HBox>
             </children>
         </VBox>
     </top>
-    <center>
-        <GridPane prefHeight="15.0" prefWidth="618.0" BorderPane.alignment="CENTER">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
-            <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-                   GridPane.valignment="CENTER"/>
-            <CheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
-                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                      GridPane.valignment="CENTER"/>
-            <TextField fx:id="txtfld_corpus_location" promptText="Corpus Folder Location" GridPane.columnIndex="1"/>
-            <TextField fx:id="txtfld_output_location" promptText="Output Folder Location" GridPane.columnIndex="1"
-                       GridPane.rowIndex="2"/>
-            <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER"/>
-            <Button fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"/>
-            <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                   GridPane.valignment="CENTER"/>
-            <TextField fx:id="txtfld_stopwords_location" promptText="Stopwords File Location" GridPane.columnIndex="1"
-                       GridPane.rowIndex="1"/>
-            <CheckBox fx:id="checkbox_memory_saver" accessibleHelp="Sacrifices performance to consume less memory"
-                      disable="true" mnemonicParsing="false" text="Memory Saver (see Readme)" visible="false"
-                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                      GridPane.valignment="CENTER"/>
-            <Button fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick" text="Browse"
-                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                    GridPane.valignment="CENTER"/>
-        </GridPane>
-    </center>
 
     <bottom>
         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -139,25 +150,36 @@
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="DISAPPEAR"/>
+                    </cursor>
                 </Button>
                 <Button fx:id="btn_generate_index" mnemonicParsing="false" onAction="#generateIndex"
                         text="Generate Index">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </Button>
                 <Button fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
-                        onAction="#showDictionaryClick"
-                        text="Show Dictionary">
+                        onAction="#showDictionaryClick" text="Show Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="DISAPPEAR"/>
+                    </cursor>
                 </Button>
                 <Button fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary"
                         text="Load Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
                 </Button>
             </HBox>
             <opaqueInsets>
@@ -165,4 +187,78 @@
             </opaqueInsets>
         </VBox>
     </bottom>
+    <right>
+        <GridPane blendMode="MULTIPLY" focusTraversable="true" prefHeight="15.0" prefWidth="618.0"
+                  BorderPane.alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label text="Corpus Folder Location" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+            <Label text="Output Folder Location" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                   GridPane.valignment="CENTER"/>
+            <CheckBox fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
+                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                      GridPane.valignment="CENTER">
+                <cursor>
+                    <Cursor fx:constant="CROSSHAIR"/>
+                </cursor>
+            </CheckBox>
+            <TextField fx:id="txtfld_corpus_location" promptText="Corpus Folder Location" GridPane.columnIndex="1">
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <TextField fx:id="txtfld_output_location" promptText="Output Folder Location" GridPane.columnIndex="1"
+                       GridPane.rowIndex="2">
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <Button fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND"/>
+                </cursor>
+            </Button>
+            <Button fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND"/>
+                </cursor>
+            </Button>
+            <Label text="Stopwords File Location" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                   GridPane.valignment="CENTER"/>
+            <TextField fx:id="txtfld_stopwords_location" promptText="Stopwords File Location" GridPane.columnIndex="1"
+                       GridPane.rowIndex="1">
+                <cursor>
+                    <Cursor fx:constant="TEXT"/>
+                </cursor>
+            </TextField>
+            <CheckBox fx:id="checkbox_memory_saver" accessibleHelp="Sacrifices performance to consume less memory"
+                      disable="true" mnemonicParsing="false" text="Memory Saver (see Readme)" visible="false"
+                      GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
+                      GridPane.valignment="CENTER"/>
+            <Button fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick" text="Browse"
+                    GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                    GridPane.valignment="CENTER">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND"/>
+                </cursor>
+            </Button>
+            <effect>
+                <Blend mode="HARD_LIGHT" opacity="0.61"/>
+            </effect>
+            <cursor>
+                <Cursor fx:constant="DEFAULT"/>
+            </cursor>
+        </GridPane>
+    </right>
 </BorderPane>
