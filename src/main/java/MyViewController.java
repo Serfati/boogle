@@ -1,5 +1,5 @@
 import Model.Structures.ShowDictionaryRecord;
-import View.MyAlert;
+import View.AlertMaker;
 import ViewModel.MyViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
@@ -15,10 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
+import org.apache.commons.lang3.SystemUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -35,11 +35,11 @@ import java.util.ResourceBundle;
 public class MyViewController implements Observer, Initializable {
 
     @FXML
-    public ImageView icon_3;
-    public ImageView boogle_logo;
-    public ImageView icon_4;
-    public ImageView icon_2;
-    public ImageView icon5;
+    public ImageView saveIcon;
+    public ImageView boogleLogo;
+    public ImageView searchTab;
+    public ImageView generateIndexIcon;
+    public ImageView settings;
     @FXML
     public Label lbl_statusBar;
     public TableView<ShowDictionaryRecord> table_showDic;
@@ -52,7 +52,6 @@ public class MyViewController implements Observer, Initializable {
     @FXML
     public JFXTextField txtfld_corpus_location;
     public JFXTextField txtfld_stopwords_location;
-    public CheckBox checkbox_memory_saver;
     @FXML
     public JFXButton btn_corpus_browse;
     public JFXButton btn_show_dictionary;
@@ -64,7 +63,6 @@ public class MyViewController implements Observer, Initializable {
     private MyViewModel myViewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
-
 
     /**
      * constructor of view, connect the view to the viewModel
@@ -83,71 +81,48 @@ public class MyViewController implements Observer, Initializable {
     }
 
     private void initImages() {
-        File file = new File("src/main/resources/start.png");
-        Image image = new Image(file.toURI().toString());
-        icon_4.setImage(image);
-        setClick(icon_4);
-
-        file = new File("src/main/resources/SaveResult.png");
-        image = new Image(file.toURI().toString());
-        icon_3.setImage(image);
-        setClick(icon_3);
-
-        file = new File("src/main/resources/icon_new.png");
-        image = new Image(file.toURI().toString());
-        icon5.setImage(image);
-        setClick(icon5);
-
-        file = new File("src/main/resources/searchGif.gif");
-        image = new Image(file.toURI().toString());
-        icon_2.setImage(image);
-        setClick(icon_2);
-
-        file = new File("src/main/resources/logo.png");
-        image = new Image(file.toURI().toString());
-        boogle_logo.setImage(image);
         setBoogleClick();
-
+        setClick(generateIndexIcon);
+        setClick(settings);
+        setClick(saveIcon);
+        setClick(searchTab);
     }
 
     public void setBoogleClick() {
-        boogle_logo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             openGoogle();
         });
     }
 
+    /* WORKS ONLY ON - Windows OS */
     public void openGoogle() {
-        try {
-            Desktop desktop = Desktop.getDesktop();
-            if (desktop.isSupported(Desktop.Action.BROWSE))
-                desktop.browse(new URL("https://www.google.com/search?q=stop+with+this+shit").toURI());
-        } catch(IOException | URISyntaxException e1) {
-            System.out.println("fail");
-            e1.printStackTrace();
+        String OS = SystemUtils.OS_NAME;
+
+        if (OS.startsWith("Windows")) {
+            try {
+                Desktop desktop = Desktop.getDesktop();
+                if (desktop.isSupported(Desktop.Action.BROWSE))
+                    desktop.browse(new URL("https://www.google.com/search?q=STOP+WITH+THIS+SHIT").toURI());
+            } catch(IOException | URISyntaxException e1) {
+                System.out.println("fail");
+                e1.printStackTrace();
+            }
+        } else { /* UINUX platform - Ubuntu OS */
+            try {
+                new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=STOP+WITH+THIS+SHIT").start();
+            } catch(IOException e) {
+                System.out.println("fail");
+                e.printStackTrace();
+            }
         }
-
-        /*
-LINUX - ubuntu
- */
-        //        try {
-//            new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=stop+with+this+shit").start();
-//        } catch(IOException e) {
-//            e.printStackTrace();
-//        }
-
-        /*
-Windows - pc
- */
-
     }
-
 
     /**
      * This function starts the process of parse and index the dictionary
      */
     public void onStartClick() {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
-            MyAlert.showAlert("path can not be empty");
+            AlertMaker.showErrorMessage("Error", "path can not be empty");
         else
             myViewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
@@ -245,7 +220,7 @@ Windows - pc
     public void help() {
         Stage helpStage = new Stage();
         helpStage.setAlwaysOnTop(true);
-        helpStage.setResizable(false);
+        helpStage.setResizable(true);
         helpStage.setTitle("Help Window");
 
         Parent root = null;
@@ -268,7 +243,7 @@ Windows - pc
         Stage aboutStage = new Stage();
         aboutStage.setAlwaysOnTop(true);
         aboutStage.setResizable(false);
-        aboutStage.setTitle("About Window");
+        aboutStage.setTitle("About us");
 
         Parent root = null;
         try {
@@ -278,8 +253,7 @@ Windows - pc
         }
         aboutStage.setTitle("About");
         assert root != null;
-        Scene scene = new Scene(root, 450, 400);
-        scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
+        Scene scene = new Scene(root, 530, 247);
         aboutStage.setScene(scene);
         aboutStage.initModality(Modality.APPLICATION_MODAL);
         aboutStage.show();
@@ -371,7 +345,7 @@ Windows - pc
             lbl_statusBar.setText("Loaded "+file.getName());
 
         } else
-            MyAlert.showAlert("Please choose a vaild destination");
+            AlertMaker.showErrorMessage("Invalid", "Please choose a vaild destination");
         event.consume();
     }
 

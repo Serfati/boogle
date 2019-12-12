@@ -80,13 +80,13 @@ public class HelpController implements Initializable {
                 "\nAbout -\n    Read about this Search engine and it's creators.\n\n"+
                 "The Status Bar will help you understand what's going on in the software.");
 
-        soundLabel.setText("");
+        soundLabel.setText("bla bla bla");
 
-        newLabel.setText("");
+        newLabel.setText("bla bla bla");
 
-        getHintLabel.setText("");
+        getHintLabel.setText("bla bla bla");
 
-        solveLabel.setText("");
+        solveLabel.setText("bla bla bla");
 
         initImages();
     }

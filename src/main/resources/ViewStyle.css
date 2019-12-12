@@ -346,6 +346,21 @@
     -fx-text-fill: white;
 }
 
+.custom-alert:top *.header-panel {
+    -fx-background-color: -fx-blue;
+}
+
+.custom-alert:top .header-panel .label {
+    -fx-font-style: normal;
+    -fx-text-fill: white;
+}
+
+.custom-alert:top *.header-panel *.label {
+    -fx-font-size: 18px;
+    -fx-font-style: italic;
+    -fx-fill: -fx-primary;
+}
+
 /* Context menu */
 
 .colored-context-menu .menu-item:focused {

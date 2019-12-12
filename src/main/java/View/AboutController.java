@@ -1,42 +1,70 @@
 package View;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AboutController implements Initializable {
-    public javafx.scene.control.Button close;
-    public javafx.scene.control.Label Itext;
 
-    public void close() {
-        Stage s = (Stage) close.getScene().getWindow();
-        s.close();
-    }
+    private static final String LINKED_IN = "https://www.linkedin.com/";
+    private static final String FACEBOOK = "http://facebook.com/";
+    private static final String WEBSITE = "http://www.ynet.com";
+    private static final String YOUTUBE = "https://www.youtube.com/";
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        Itext.setWrapText(true);
-        Itext.setText("Copyright 2020 Avihai Serfati and Yarden Levy\n"+
-                "\n"+
-                "Permission is hereby granted, free of charge, to any "+"\n"+
-                "person obtaining a copy of this software and associated "+"\n"+
-                "documentation files (the \"Software\"), to deal in the "+"\n"+
-                "Software without restriction, including without limitation "+"\n"+
-                "the rights to use, copy, modify, merge, publish, distribute, "+"\n"+
-                "sublicense, and/or sell copies of the Software, and to permit "+"\n"+
-                "persons to whom the Software is furnished to do so, subject "+"\n"+
-                "to the following conditions:\n"+
-                "The above copyright notice and this permission notice shall be "+"\n"+
-                "included in all copies or substantial portions of the Software.\n"+
-                "\n"+
-                "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, "+"\n"+
-                "EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF "+"\n"+
-                "MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. "+"\n"+
-                "IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, "+"\n"+
-                "DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, "+"\n"+
-                "ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE "+"\n"+
-                "OR OTHER DEALINGS IN THE SOFTWARE.");
+    public void initialize(URL url, ResourceBundle rb) {
+        AlertMaker.showSimpleAlert("Author", "Hello ! Thanks for trying out Boogle search engine");
+    }
+
+    private void loadWebpage(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch(IOException | URISyntaxException e1) {
+            e1.printStackTrace();
+            handleWebpageLoadException(url);
+        }
+    }
+
+    private void handleWebpageLoadException(String url) {
+        WebView browser = new WebView();
+        WebEngine webEngine = browser.getEngine();
+        webEngine.load(url);
+        Stage stage = new Stage();
+        Scene scene = new Scene(new StackPane(browser));
+        stage.setScene(scene);
+        stage.setTitle("Genuine Coder");
+        stage.show();
+    }
+
+    @FXML
+    private void loadYoutubeChannel(ActionEvent event) {
+        loadWebpage(YOUTUBE);
+    }
+
+    @FXML
+    private void loadBlog(ActionEvent event) {
+        loadWebpage(WEBSITE);
+    }
+
+    @FXML
+    private void loadLinkedIN(ActionEvent event) {
+        loadWebpage(LINKED_IN);
+    }
+
+    @FXML
+    private void loadFacebook(ActionEvent event) {
+        loadWebpage(FACEBOOK);
     }
 }
