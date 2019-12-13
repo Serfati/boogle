@@ -22,5 +22,4 @@
             <AppenderRef ref="RollingFile"/>
         </Root>
     </Loggers>
-    l̥
 </Configuration>

@@ -1,7 +1,7 @@
 package Model.IO;
 
 import Model.Engine.Indexer;
-import Model.Structures.cDocument;
+import Model.Parser.cDocument;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.jsoup.Jsoup;

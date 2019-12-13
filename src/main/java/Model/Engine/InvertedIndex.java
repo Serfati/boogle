@@ -1,6 +1,6 @@
 package Model.Engine;
 
-import Model.Structures.ShowDictionaryRecord;
+import Model.Parser.ShowDictionaryRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

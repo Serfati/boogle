@@ -1,7 +1,5 @@
 package Model.Parser;
 
-import Model.Structures.MiniDictionary;
-
 /**
  * contract for being a parser
  */

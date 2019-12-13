@@ -98,15 +98,15 @@ public class HelpController implements Initializable {
         Image image = new Image(file.toURI().toString());
         soundImage.setImage(image);
 
-        file = new File("src/main/resources/icon_new.png");
+        file = new File("src/main/resources/settings.png");
         image = new Image(file.toURI().toString());
         getHintImage.setImage(image);
 
-        file = new File("src/main/resources/SaveResult.png");
+        file = new File("src/main/resources/saveIcon.png");
         image = new Image(file.toURI().toString());
         solveImage.setImage(image);
 
-        file = new File("src/main/resources/end.png");
+        file = new File("src/main/resources/searchIcon.png");
         image = new Image(file.toURI().toString());
         newSearchImage.setImage(image);
     }

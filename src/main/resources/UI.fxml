@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" prefHeight="685.0"
-            prefWidth="618.0" styleClass="custom-pane" stylesheets="@ViewStyle.css" fx:controller="MyViewController">
+            prefWidth="618.0" styleClass="custom-pane" stylesheets="@dark-style.css" fx:controller="ViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -70,18 +70,18 @@
                         <effect>
                             <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0"/>
                         </effect>
-                        <Image url="@logo.png"/>
+                        <Image url="@boogleLogo.png"/>
                     </ImageView>
 
                     <ImageView fx:id="generateIndexIcon" fitHeight="50.0" fitWidth="50.0" focusTraversable="true"
-                               opacity="0.3">
+                               opacity="0.7">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
                         </HBox.margin>
                         <cursor>
                             <Cursor fx:constant="HAND"/>
                         </cursor>
-                        <Image url="@searchGif.gif"/>
+                        <Image url="@googleIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="saveIcon" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
@@ -90,7 +90,7 @@
                         <cursor>
                             <Cursor fx:constant="CLOSED_HAND"/>
                         </cursor>
-                        <Image url="@SaveResult.png"/>
+                        <Image url="@saveIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="searchTab" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
@@ -99,7 +99,7 @@
                         <cursor>
                             <Cursor fx:constant="CLOSED_HAND"/>
                         </cursor>
-                        <Image url="@end.png"/>
+                        <Image url="@searchIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="settings" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                                preserveRatio="true">
@@ -109,7 +109,7 @@
                         <cursor>
                             <Cursor fx:constant="HAND"/>
                         </cursor>
-                        <Image url="@icon_new.png"/>
+                        <Image url="@settings.png"/>
                     </ImageView>
                     <cursor>
                         <Cursor fx:constant="DEFAULT"/>
@@ -131,7 +131,8 @@
                 </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
-                <JFXButton fx:id="btn_reset" disable="true" mnemonicParsing="false" onAction="#reset" text="Reset">
+                <JFXButton fx:id="btn_startOver" disable="true" mnemonicParsing="false" onAction="#onStartOverClick"
+                           text="Reset">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
@@ -175,7 +176,12 @@
     <right>
         <GridPane prefHeight="15.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 
-            <FontAwesomeIconView glyphName="FILE" size="25"/>
+            <FontAwesomeIconView glyphName="FILE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" size="25"/>
+            <FontAwesomeIconView glyphName="CODE" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER"
+                                 GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <FontAwesomeIconView glyphName="FOLDER" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER"
+                                 GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0"/>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0"/>
@@ -191,6 +197,8 @@
                              GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
                              GridPane.valignment="CENTER" styleClass="checkbox-main">
             </JFXToggleButton>
+            <Label fx:id="lbl_totalTime" styleClass="checkbox-main" GridPane.columnIndex="1"
+                   GridPane.halignment="CENTER" GridPane.rowIndex="3" text="Total Time:" visible="false"/>
             <JFXTextField fx:id="txtfld_corpus_location" styleClass="main-text" labelFloat="true"
                           promptText="Corpus Folder Location" GridPane.columnIndex="1">
                 <cursor>

@@ -134,7 +134,7 @@ public class AlertMaker {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
 
         DialogPane dialogPane = alert.getDialogPane();
-        //dialogPane.getStylesheets().add(AlertMaker.class.getResource("ViewStyle.css").toExternalForm());
+        //dialogPane.getStylesheets().add(AlertMaker.class.getResource("dark-style.css").toExternalForm());
         dialogPane.getStyleClass().add("custom-alert");
     }
 }

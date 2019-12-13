@@ -1,4 +1,4 @@
-package Model.Stemmer;
+package Model.Parser;
 
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.englishStemmer;

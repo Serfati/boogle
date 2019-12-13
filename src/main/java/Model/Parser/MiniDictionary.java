@@ -1,4 +1,4 @@
-package Model.Structures;
+package Model.Parser;
 
 import javafx.util.Pair;
 
@@ -38,33 +38,33 @@ public class MiniDictionary {
         LinkedList<Integer> currentPositions;
         //adds the word according to parsing rule 2
         int result = containsKey(word);
-        if (result == 0) {
-            if (Character.isLetter(word.charAt(0))) {
-                if (Character.isUpperCase(word.charAt(0)))
-                    word = word.toUpperCase();
-                else
-                    word = word.toLowerCase();
-            }
-            currentPositions = new LinkedList<>();
-            currentPositions.add(placeInText);
-            m_dictionary.put(word, currentPositions);
-        }
-        else if (result==1){
-            if (Character.isUpperCase(word.charAt(0))) {
-                currentPositions = m_dictionary.get(word.toUpperCase());
+        switch(result) {
+            case 0:
+                if (Character.isLetter(word.charAt(0)))
+                    word = Character.isUpperCase(word.charAt(0)) ? word.toUpperCase() : word.toLowerCase();
+                currentPositions = new LinkedList<>();
                 currentPositions.add(placeInText);
-            } else {
-                currentPositions = m_dictionary.remove(word.toUpperCase());
+                m_dictionary.put(word, currentPositions);
+                break;
+            case 1:
+                if (Character.isUpperCase(word.charAt(0))) {
+                    currentPositions = m_dictionary.get(word.toUpperCase());
+                    currentPositions.add(placeInText);
+                } else {
+                    currentPositions = m_dictionary.remove(word.toUpperCase());
+                    currentPositions.add(placeInText);
+                    m_dictionary.put(word.toLowerCase(), currentPositions);
+                }
+                break;
+            case 2:
+                word = word.toLowerCase();
+                currentPositions = m_dictionary.get(word);
                 currentPositions.add(placeInText);
-                m_dictionary.put(word.toLowerCase(),currentPositions);
-            }
-        } else if (result == 2) {
-            word = word.toLowerCase();
-            currentPositions = m_dictionary.get(word);
-            currentPositions.add(placeInText);
-        } else {
-            currentPositions = m_dictionary.get(word);
-            currentPositions.add(placeInText);
+                break;
+            default:
+                currentPositions = m_dictionary.get(word);
+                currentPositions.add(placeInText);
+                break;
         }
         //check if max freq has changed
         if (m_maxFreq < currentPositions.size()) {
@@ -112,9 +112,7 @@ public class MiniDictionary {
 
     private String printIndexes(LinkedList<Integer> indexesOfWord) {
         StringBuilder s = new StringBuilder("[");
-        for(Integer i : indexesOfWord) {
-            s.append(i).append("&");
-        }
+        indexesOfWord.forEach(i -> s.append(i).append("&"));
         s.replace(s.length()-1, s.length(), "]");
         return s.toString();
     }
@@ -135,9 +133,7 @@ public class MiniDictionary {
      * @return the indexes of the term
      */
     private LinkedList<Integer> getIndexesOfWord(String word) {
-        if (containsKey(word) != 0)
-            return m_dictionary.get(word);
-        return null;
+        return containsKey(word) != 0 ? m_dictionary.get(word) : null;
     }
     /**
      * returns the freq of a certain term
@@ -146,9 +142,7 @@ public class MiniDictionary {
      * @return the freq of a certain term
      */
     public int getFrequency(String word) {
-        if (size() > 0 && containsKey(word) != 0)
-            return m_dictionary.get(word).size();
-        return 0;
+        return size() > 0 && containsKey(word) != 0 ? m_dictionary.get(word).size() : 0;
     }
     /**
      * sets the 5 primary words

@@ -1,10 +1,6 @@
 package Model.Parser;
 
 import Model.MyModel;
-import Model.Stemmer.Stemmer;
-import Model.Structures.MiniDictionary;
-import Model.Structures.NamedEntitiesSearcher;
-import Model.Structures.cDocument;
 import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
@@ -132,6 +128,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         //FRACTION, RANGES,
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
+        /* ------------------------------------------------------------------------- */
         NamedEntitiesSearcher ner = new NamedEntitiesSearcher();
         CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
         ner.pipeline().annotate(doc);
@@ -175,7 +172,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                     nextWord.pollFirst();
                     term = new StringBuilder(handleDollar(term.toString().replace(",", ""), term.toString().contains(",")));
                 } else if (Objects.equals(nextWord.peekFirst(), "%")) { //  rule Gimel - percent term
-                    term = term.append('%');
+                    term.append('%');
                 } else if (Objects.equals(nextWord.peekFirst(), "Ton") || nextWord.peekFirst().equals("Gram")) {
                     //term = new StringBuilder(handleWeight(term.toString(), Objects.requireNonNull(nextWord.pollFirst())));
                 } else {
@@ -266,7 +263,6 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                                 }
                             }
                         }
-
                     }
                 }
             }
@@ -307,7 +303,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                 Integer.parseInt(check[1]);
                 return true;
             } catch(NumberFormatException e) {
-                //logger.error("NumberFormatException in PARSE :: checkIfFracture ");
+                logger.error("NumberFormatException in PARSE :: checkIfFracture ");
                 return false;
             }
         }

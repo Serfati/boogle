@@ -1,3 +1,5 @@
+package View;
+
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.process.CoreLabelTokenFactory;

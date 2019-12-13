@@ -1,4 +1,4 @@
-package Model.Structures;
+package Model.Parser;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 

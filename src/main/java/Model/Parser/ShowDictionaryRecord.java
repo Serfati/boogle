@@ -1,4 +1,4 @@
-package Model.Structures;
+package Model.Parser;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

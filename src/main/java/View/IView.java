@@ -1,6 +1,6 @@
-package Model.Structures;
+package View;
 
-import ViewModel.MyViewModel;
+import ViewModel.ViewModel;
 import javafx.event.ActionEvent;
 
 import java.util.Observable;
@@ -13,7 +13,7 @@ public interface IView extends Observer {
      *
      * @param viewModel the view model of the MVVM
      */
-    void setViewModel(MyViewModel viewModel);
+    void setViewModel(ViewModel viewModel);
 
     /* This function starts the process of parse and index the dictionary*/
     void onStartClick();

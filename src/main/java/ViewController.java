@@ -1,9 +1,11 @@
-import Model.Structures.ShowDictionaryRecord;
+import Model.Parser.ShowDictionaryRecord;
 import View.AlertMaker;
-import ViewModel.MyViewModel;
+import View.IView;
+import ViewModel.ViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import edu.stanford.nlp.ie.machinereading.domains.ace.reader.AceCharSeq;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,7 +34,7 @@ import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class MyViewController implements Observer, Initializable {
+public class ViewController implements IView, Observer, Initializable {
 
     @FXML
     public ImageView saveIcon;
@@ -58,20 +60,23 @@ public class MyViewController implements Observer, Initializable {
     public JFXButton btn_generate_index;
     public JFXButton btn_stopwords_browse;
     public JFXButton btn_output_browse;
-    public JFXButton btn_reset;
+    public JFXButton btn_startOver;
     public JFXButton btn_load_dictionary;
-    private MyViewModel myViewModel;
+    public Label lbl_totalTime;
+    private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
+    private AceCharSeq destination;
 
     /**
      * constructor of view, connect the view to the viewModel
      *
-     * @param myViewModel the view model of the MVVM
+     * @param viewModel the view model of the MVVM
      */
-    public void setViewModel(MyViewModel myViewModel) {
-        this.myViewModel = myViewModel;
+    public void setViewModel(ViewModel viewModel) {
+        this.viewModel = viewModel;
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initImages();
@@ -89,9 +94,7 @@ public class MyViewController implements Observer, Initializable {
     }
 
     public void setBoogleClick() {
-        boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            openGoogle();
-        });
+        boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openGoogle());
     }
 
     /* WORKS ONLY ON - Windows OS */
@@ -107,7 +110,7 @@ public class MyViewController implements Observer, Initializable {
                 System.out.println("fail");
                 e1.printStackTrace();
             }
-        } else { /* UINUX platform - Ubuntu OS */
+        } else { /* UNIX platform - Ubuntu OS */
             try {
                 new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=STOP+WITH+THIS+SHIT").start();
             } catch(IOException e) {
@@ -124,7 +127,7 @@ public class MyViewController implements Observer, Initializable {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
         else
-            myViewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
 
     private void setClick(javafx.scene.image.ImageView icon) {
@@ -138,7 +141,7 @@ public class MyViewController implements Observer, Initializable {
      * transfers a request to show the dictionary of the current indexing
      */
     public void showDictionaryClick() {
-        myViewModel.showDictionary();
+        viewModel.showDictionary();
     }
 
     /**
@@ -146,7 +149,7 @@ public class MyViewController implements Observer, Initializable {
      *
      * @param records all the data about the current indexing
      */
-    private void showDictionaryClick(ObservableList<ShowDictionaryRecord> records) {
+    private void showDictionary(ObservableList<ShowDictionaryRecord> records) {
         if (records != null) {
             tableCol_term.setCellValueFactory(cellData -> cellData.getValue().getTermProperty());
             tableCol_count.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
@@ -155,7 +158,7 @@ public class MyViewController implements Observer, Initializable {
         btn_show_dictionary.setDisable(false);
     }
 
-    public boolean isUseStemming() {
+    public boolean doStemming() {
         return checkbox_use_stemming.isSelected();
     }
 
@@ -195,7 +198,7 @@ public class MyViewController implements Observer, Initializable {
             result.showAndWait();
         else {
             result.show();
-            btn_reset.setDisable(false);
+            btn_startOver.setDisable(false);
             btn_show_dictionary.setDisable(false);
         }
     }
@@ -225,7 +228,7 @@ public class MyViewController implements Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("Help.fxml"));
+            root = FXMLLoader.load(getClass().getResource("settings.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
@@ -233,7 +236,7 @@ public class MyViewController implements Observer, Initializable {
         helpStage.setTitle("Help");
         assert root != null;
         Scene scene = new Scene(root, 520, 495);
-        scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("dark-style.css").toExternalForm());
         helpStage.setScene(scene);
         helpStage.initModality(Modality.WINDOW_MODAL);
         helpStage.show();
@@ -243,15 +246,14 @@ public class MyViewController implements Observer, Initializable {
         Stage aboutStage = new Stage();
         aboutStage.setAlwaysOnTop(true);
         aboutStage.setResizable(false);
-        aboutStage.setTitle("About us");
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("About.fxml"));
+            root = FXMLLoader.load(getClass().getResource("about.fxml"));
         } catch(IOException e) {
             showAlert();
         }
-        aboutStage.setTitle("About");
+        aboutStage.setTitle("About us");
         assert root != null;
         Scene scene = new Scene(root, 530, 247);
         aboutStage.setScene(scene);
@@ -267,19 +269,49 @@ public class MyViewController implements Observer, Initializable {
         alert.show();
     }
 
-    public void reset(ActionEvent actionEvent) {
-        btn_show_dictionary.setDisable(true);
+    /**
+     * a function that gets called when an observer has raised a flag for something that changed
+     *
+     * @param o   - who changed
+     * @param arg - the change
+     */
+    public void update(Observable o, Object arg) {
+        if (o == viewModel) {
+            if (arg instanceof String[]) {
+                String[] toUpdate = (String[]) arg;
+                if (toUpdate[0].equals("Fail")) { // if we received a fail message from the model
+                    if (toUpdate[1].equals("could not find one or more dictionaries"))
+                        AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), toUpdate[1]);
+                } else if (toUpdate[0].equals("Successful")) {// if we received a successful message from the model
+                    AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), toUpdate[1]);
+                    if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary")) {
+                        btn_show_dictionary.setDisable(false);
+                    }
+                }
+            } else if (arg instanceof ObservableList) { // a show dictionary operation was finished and can be shown on display
+                ObservableList l = (ObservableList) arg;
+                if (!l.isEmpty() && l.get(0) instanceof ShowDictionaryRecord)
+                    showDictionary((ObservableList<ShowDictionaryRecord>) arg);
+            } else if (arg instanceof double[]) { // show the results of the indexing
+                //showIndexResults times
+                btn_show_dictionary.setDisable(false);
+            }
+        }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        if (o != myViewModel) {
-            return;
-        }
-        if (arg != null) {
-            String argument = (String) arg;
-
-        }
+    /**
+     * This function deletes all the contents of the destination path
+     */
+    public void onStartOverClick() {
+        if (!destination.getText().equals("")) { // check if the user is sure he wants to delete the whole folder he chose
+            ButtonType stay = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType leave = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", leave, stay);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == stay)
+                viewModel.onStartOverClick(destination.getText());
+        } else
+            AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "destination path is unreachable");
     }
 
     public void saveDictionary(ActionEvent event) {
@@ -316,10 +348,10 @@ public class MyViewController implements Observer, Initializable {
 
         if (file != null) {
             if (choose[0] == 1) {
-                myViewModel.saveDictionary(file); //TODO need special method
+                viewModel.saveDictionary(file); //TODO need special method
                 lbl_statusBar.setText("Current dictionary saved");
             } else {
-                myViewModel.saveDictionary(file);
+                viewModel.saveDictionary(file);
                 lbl_statusBar.setText("Original dictionary saved");
             }
         }
@@ -341,29 +373,12 @@ public class MyViewController implements Observer, Initializable {
         File file = fileChooser.showOpenDialog(new PopupWindow() {
         });
         if (file != null && file.exists() && !file.isDirectory()) {
-            myViewModel.loadDictionary(file.getAbsolutePath(), checkbox_use_stemming.isSelected());
+            viewModel.loadDictionary(file.getAbsolutePath(), checkbox_use_stemming.isSelected());
             lbl_statusBar.setText("Loaded "+file.getName());
 
         } else
             AlertMaker.showErrorMessage("Invalid", "Please choose a vaild destination");
         event.consume();
-    }
-
-    public void onAction_Property() {
-        try {
-            Stage stage = new Stage();
-            stage.setTitle("Properties");
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            Parent root = fxmlLoader.load(getClass().getResource("MyPropertiesView.fxml").openStream());
-            Scene scene = new Scene(root, 400, 370);
-            scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
-            stage.setScene(scene);
-//            PropertiesViewController propertiesViewController = fxmlLoader.getController();
-//            propertiesViewController.setStage(stage);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-        } catch(Exception ignored) {
-        }
     }
 
 }

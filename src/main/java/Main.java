@@ -1,5 +1,5 @@
 import Model.MyModel;
-import ViewModel.MyViewModel;
+import ViewModel.ViewModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,8 +26,7 @@ public class Main extends Application {
         LOGGER.log(Level.INFO, "Boogle launched on "+formatDateTimeString(startTime));
         launch(args);
         long exitTime = System.currentTimeMillis();
-        LOGGER.log(Level.INFO, "Boogle is closing on "+formatDateTimeString(startTime)+". Used for "+(exitTime-startTime) / 60000+" m");
-
+        LOGGER.log(Level.INFO, "Boogle is closing on "+formatDateTimeString(startTime)+". Used for "+(exitTime-startTime) / 60000.0+" m");
     }
 
     public static String formatDateTimeString(Long time) {
@@ -39,29 +38,29 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         MyModel model = new MyModel();
-        MyViewModel myViewModel = new MyViewModel(model);
-        model.addObserver(myViewModel);
+        ViewModel viewModel = new ViewModel(model);
+        model.addObserver(viewModel);
         //------------------------------//
         primaryStage.setTitle("BOOGLE");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("MyView.fxml").openStream());
+        Parent root = fxmlLoader.load(getClass().getResource("UI.fxml").openStream());
         Scene scene = new Scene(root, 620, 700);
-        scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("dark-style.css").toExternalForm());
         primaryStage.setResizable(true);
         //------------------------------//
-        MyViewController myViewController = fxmlLoader.getController();
-        myViewController.setViewModel(myViewModel);
-        myViewModel.addObserver(myViewController);
+        ViewController viewController = fxmlLoader.getController();
+        viewController.setViewModel(viewModel);
+        viewModel.addObserver(viewController);
         //------------------------------//
         primaryStage.setScene(scene);
-        SetStageCloseEvent(primaryStage, myViewController);
+        SetStageCloseEvent(primaryStage, viewController);
         primaryStage.show();
         //------------------------------//
     }
 
-    private void SetStageCloseEvent(Stage primaryStage, MyViewController myViewController) {
+    private void SetStageCloseEvent(Stage primaryStage, ViewController viewController) {
         primaryStage.setOnCloseRequest(windowEvent -> {
-            myViewController.exitCorrectly();
+            viewController.exitCorrectly();
             windowEvent.consume();
         });
     }
