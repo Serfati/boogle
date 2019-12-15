@@ -2,7 +2,7 @@ package Model.IO;
 
 import Model.Engine.Indexer;
 import Model.Engine.InvertedIndex;
-import Model.Parser.cDocument;
+import Model.Engine.cDocument;
 import javafx.util.Pair;
 
 import java.io.File;
@@ -78,15 +78,16 @@ public class WriteFile {
     public static void writeFinalPosting(String fileName, HashMap<String, StringBuilder> finalPosting) {
         StringBuilder ans = new StringBuilder();
         StringBuilder[] sbArray = finalPosting.values().toArray(new StringBuilder[0]);
-        File file = new File(fileName);
         try {
+            File file = new File(fileName);
             FileWriter fileWriter = new FileWriter(file, true);
-            for (int i = 0; i <= sbArray.length / 1000; i++) {
-                for (int j = 0; j < 1000 && (j + i * 1000) < sbArray.length; j++) {
-                    ans.append(sbArray[j + i * 1000]).append("\n");
-                }
+            int i = 0;
+            while(i <= sbArray.length / 1000) {
+                for(int j = 0; j < 1000 && (j+i * 1000) < sbArray.length; j++)
+                    ans.append(sbArray[j+i * 1000]).append("\n");
                 fileWriter.write(ans.toString());
                 ans.delete(0, ans.length());
+                i++;
             }
             fileWriter.close();
         }
@@ -101,9 +102,8 @@ public class WriteFile {
      * @param toWrite what should be written
      */
     private static void write(File actualFile, StringBuilder toWrite){
-        FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter(actualFile);
+            FileWriter fileWriter = new FileWriter(actualFile);
             fileWriter.write(toWrite.toString());
             fileWriter.close();
             toWrite.delete(0,toWrite.length());

@@ -1,4 +1,4 @@
-import Model.MyModel;
+import Model.Model;
 import ViewModel.ViewModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +37,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        MyModel model = new MyModel();
+        Model model = new Model();
         ViewModel viewModel = new ViewModel(model);
         model.addObserver(viewModel);
         //------------------------------//

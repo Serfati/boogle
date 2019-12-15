@@ -1,6 +1,5 @@
 package Model.Engine;
 
-import Model.Parser.MiniDictionary;
 import javafx.util.Pair;
 
 import java.util.Comparator;
@@ -26,7 +25,7 @@ public class Indexer implements Callable<HashMap<String, Pair<Integer, StringBui
         // adding to inverted index the term and the other data
         // AND adding to the map (temporary posting)
         HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
-        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.listOfWords().forEach(word -> {
+        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.m_dictionary.keySet().forEach(word -> {
             if (toReturn.containsKey(word)) { //if the word already exists
                 Pair<Integer, StringBuilder> all = toReturn.remove(word);
                 int newShows = all.getKey()+miniDic.getFrequency(word);

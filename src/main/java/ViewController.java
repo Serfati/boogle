@@ -1,11 +1,10 @@
-import Model.Parser.ShowDictionaryRecord;
+import Model.Engine.ShowDictionaryRecord;
 import View.AlertMaker;
 import View.IView;
 import ViewModel.ViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
-import edu.stanford.nlp.ie.machinereading.domains.ace.reader.AceCharSeq;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,10 +44,12 @@ public class ViewController implements IView, Observer, Initializable {
     @FXML
     public Label lbl_statusBar;
     public TableView<ShowDictionaryRecord> table_showDic;
-    public MenuItem save_MenuItem;
-    public MenuItem load_MenuItem;
     public TableColumn<ShowDictionaryRecord, String> tableCol_term;
     public TableColumn<ShowDictionaryRecord, Number> tableCol_count;
+
+    public MenuItem save_MenuItem;
+    public MenuItem load_MenuItem;
+
     public JFXTextField txtfld_output_location;
 
     @FXML
@@ -66,7 +67,6 @@ public class ViewController implements IView, Observer, Initializable {
     private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
-    private AceCharSeq destination;
 
     /**
      * constructor of view, connect the view to the viewModel
@@ -80,9 +80,6 @@ public class ViewController implements IView, Observer, Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initImages();
-//        Tooltip tooltip = new Tooltip();
-//        tooltip.setText("");
-//        checkbox_memory_saver.setTooltip(tooltip);
     }
 
     private void initImages() {
@@ -127,10 +124,10 @@ public class ViewController implements IView, Observer, Initializable {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
         else
-            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_stopwords_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
 
-    private void setClick(javafx.scene.image.ImageView icon) {
+    private void setClick(ImageView icon) {
         icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             help();
             event.consume();
@@ -158,14 +155,6 @@ public class ViewController implements IView, Observer, Initializable {
         btn_show_dictionary.setDisable(false);
     }
 
-    public boolean doStemming() {
-        return checkbox_use_stemming.isSelected();
-    }
-
-    public void generateIndex(ActionEvent actionEvent) {
-
-    }
-
     public void browseCorpusClick(ActionEvent actionEvent) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Corpus Location");
@@ -191,16 +180,6 @@ public class ViewController implements IView, Observer, Initializable {
         File corpusDir = fileChooser.showOpenDialog(new Stage());
         if (null != corpusDir)  //directory chosen
             txtfld_stopwords_location.setText(corpusDir.getAbsolutePath());
-    }
-
-    private void handleNewDictionary(Alert result) {
-        if (result.getAlertType() == Alert.AlertType.ERROR)
-            result.showAndWait();
-        else {
-            result.show();
-            btn_startOver.setDisable(false);
-            btn_show_dictionary.setDisable(false);
-        }
     }
 
     public void exitButton() {
@@ -303,13 +282,15 @@ public class ViewController implements IView, Observer, Initializable {
      * This function deletes all the contents of the destination path
      */
     public void onStartOverClick() {
-        if (!destination.getText().equals("")) { // check if the user is sure he wants to delete the whole folder he chose
+        if (!txtfld_output_location.getText().equals("")) { // check if the user is sure he wants to delete the whole folder he chose
             ButtonType stay = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType leave = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", leave, stay);
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == stay)
-                viewModel.onStartOverClick(destination.getText());
+            if (stay != result.get()) {
+                return;
+            }
+            viewModel.onStartOverClick(txtfld_output_location.getText());
         } else
             AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "destination path is unreachable");
     }
@@ -347,13 +328,8 @@ public class ViewController implements IView, Observer, Initializable {
         });
 
         if (file != null) {
-            if (choose[0] == 1) {
-                viewModel.saveDictionary(file); //TODO need special method
-                lbl_statusBar.setText("Current dictionary saved");
-            } else {
-                viewModel.saveDictionary(file);
-                lbl_statusBar.setText("Original dictionary saved");
-            }
+            viewModel.saveDictionary(file);
+            lbl_statusBar.setText(choose[0] == 1 ? "Current dictionary saved" : "Original dictionary saved");
         }
         event.consume();
     }

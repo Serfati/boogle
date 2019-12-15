@@ -1,14 +1,14 @@
 package Model.Engine;
 
 //--------------------------------------//
-class InvertedIndexNode {
+class Term {
 
     private String m_word; //the term
     private int m_termFreq; //number of documents the words appears in
     private int m_numOfAppearances; //number of times the word has appeared
     private int m_postingLine; //line number in the posting
 
-    InvertedIndexNode(String word, int termFreq, int numOfAppearances, int postingLine) {
+    Term(String word, int termFreq, int numOfAppearances, int postingLine) {
         this.m_word = word;
         this.m_termFreq = termFreq;
         this.m_numOfAppearances = numOfAppearances;
@@ -26,10 +26,6 @@ class InvertedIndexNode {
 
     int getTermFreq() {
         return m_termFreq;
-    }
-
-    String getPostingLink() {
-        return ""+m_postingLine;
     }
 
     int getNumOfAppearances() {

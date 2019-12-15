@@ -1,6 +1,5 @@
 package Model.Engine;
 
-import Model.Parser.ShowDictionaryRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -13,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class InvertedIndex {
     // term  | num Of appearance | pointer(path of posting file, line number in the posting)
-    private ConcurrentHashMap<String, InvertedIndexNode> invertedIndexDic;
+    private ConcurrentHashMap<String, Term> invertedIndexDic;
 
     /**
      * create a new inverted index
@@ -36,7 +35,7 @@ public class InvertedIndex {
             line = bufferedReader.readLine();
             while(line != null) {
                 String[] curLine = line.split("\t");
-                InvertedIndexNode cur = new InvertedIndexNode(curLine[0], Integer.parseInt(curLine[1]), Integer.parseInt(curLine[2]), Integer.parseInt(curLine[3]));
+                Term cur = new Term(curLine[0], Integer.parseInt(curLine[1]), Integer.parseInt(curLine[2]), Integer.parseInt(curLine[3]));
                 invertedIndexDic.put(curLine[0], cur);
                 line = bufferedReader.readLine();
             }
@@ -56,7 +55,7 @@ public class InvertedIndex {
             if (invertedIndexDic.containsKey(term))
                 invertedIndexDic.get(term).increaseTermFreq(1); // if the term exist in the inverted index increase number of freqenecy
             else {//if the term doesn't exist in the inverted index
-                InvertedIndexNode first = new InvertedIndexNode(term, 1, -1, -1);
+                Term first = new Term(term, 1, -1, -1);
                 invertedIndexDic.put(term, first);
             }
     }
@@ -66,7 +65,7 @@ public class InvertedIndex {
      */
     public void deleteEntriesOfIrrelevant() {
         for(String s : invertedIndexDic.keySet()) {
-            InvertedIndexNode cur = invertedIndexDic.get(s);
+            Term cur = invertedIndexDic.get(s);
             if (cur.getNumOfAppearances() == -1) {
                 int termFreqCur = cur.getTermFreq();
                 if (invertedIndexDic.get(s.toLowerCase()) != null)
@@ -90,14 +89,19 @@ public class InvertedIndex {
             invertedIndexDic.get(term).setNumOfAppearance(numOfAppearance);
     }
 
-    public String getPostingLink(String word) {
-        return invertedIndexDic.get(word) == null ? "" : invertedIndexDic.get(word).getPostingLink();
-    }
-
     public ObservableList<ShowDictionaryRecord> getRecords() {
         ObservableList<ShowDictionaryRecord> showDictionaryRecords = FXCollections.observableArrayList();
-        TreeMap<String, InvertedIndexNode> sorted = new TreeMap<>(invertedIndexDic);
+        TreeMap<String, Term> sorted = new TreeMap<>(invertedIndexDic);
         sorted.keySet().stream().map(s -> new ShowDictionaryRecord(s, invertedIndexDic.get(s).getNumOfAppearances())).forEach(showDictionaryRecords::add);
         return showDictionaryRecords;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder toWrite = new StringBuilder();
+        for(Term cur : invertedIndexDic.values()) {
+            toWrite.append(cur.toString());
+        }
+        return toWrite.toString();
     }
 }

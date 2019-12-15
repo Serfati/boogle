@@ -1,19 +1,16 @@
 package Model.Parser;
 
-import Model.MyModel;
-import edu.stanford.nlp.ling.Word;
+import Model.Engine.MiniDictionary;
+import Model.Engine.cDocument;
+import Model.Model;
 import edu.stanford.nlp.pipeline.CoreDocument;
 import edu.stanford.nlp.pipeline.CoreEntityMention;
-import edu.stanford.nlp.process.PTBTokenizer;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 
 import static org.apache.commons.lang3.StringUtils.replace;
@@ -31,17 +28,16 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     private Stemmer stemmer;
     private Boolean useStemming;
     private cDocument currentCDocument;
-
-    private BlockingQueue<cDocument> sourceDocumentsQueue;
-    PTBTokenizer<Word> tokenizer;
     private LinkedList<String> wordList;
     HashMap<String, String> monthsData;
+    NamedEntitiesSearcher ner;
 
 
-    public Parse(cDocument corpus_doc, boolean stm) {
+    public Parse(cDocument corpus_doc, NamedEntitiesSearcher ner, boolean stm) {
         this.currentCDocument = corpus_doc;
         this.useStemming = stm;
         this.stemmer = new Stemmer();
+        this.ner = ner;
     }
 
     public MiniDictionary call() {
@@ -52,7 +48,6 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         }
         return null;
     }
-
 
     private String numberValue(Double d) {
         if (isInteger(d))
@@ -109,42 +104,26 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         return wordsList;
     }
 
-    /**
-     * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
-     *
-     * @return all the data about the terms and the doc
-     * @since Nov 13
-     */
-
-    private boolean stringContainsItemFromList(String inputStr, String[] items) {
-        return Arrays.stream(items).parallel().anyMatch(inputStr::contains);
-    }
-
     public MiniDictionary parse() {
         long startTime = System.nanoTime();
 
-        MiniDictionary miniDic = new MiniDictionary(currentCDocument.getDocId(), currentCDocument.getDocTitle(), currentCDocument.getDocLang());
+        MiniDictionary miniDic = new MiniDictionary(currentCDocument.getDocId());
         LinkedList<String> nextWord = new LinkedList<>();
+
         //FRACTION, RANGES,
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-        NamedEntitiesSearcher ner = new NamedEntitiesSearcher();
+
         CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
         ner.pipeline().annotate(doc);
         for(CoreEntityMention em : doc.entityMentions())
             miniDic.addWord(em.text(), 0);
-        String[] replacements = "~;!?=#&^*+\\|:\"(){}[]<>\n\t".split("");
-        Reader r = new StringReader(currentCDocument.getDocText());
-        tokenizer = PTBTokenizer.newPTBTokenizer(r);
-        while(tokenizer.hasNext()) {
-            Word label = tokenizer.next();
-            if (!stringContainsItemFromList(label.word(), replacements)) {
-                wordList.add(label.word());
-            }
-        }
+
         //TODO
         /* ------------------------------------------------------------------------- */
+        wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
+        //list of next words from the current term
         initMonthsData();
         int index = 0;
         while(!wordList.isEmpty()) {
@@ -152,15 +131,16 @@ public class Parse implements IParse, Callable<MiniDictionary> {
             StringBuilder term = new StringBuilder(wordList.remove());
             if (isNumber(term.toString())) { //if current term is a number
                 nextWord.add(nextWord());
-                if (Objects.requireNonNull(nextWord.peekFirst()).contains("-") && isRangeNumbers(nextWord.peekFirst()) && checkIfFracture(Objects.requireNonNull(nextWord.peekFirst()).substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
+                if (Objects.requireNonNull(nextWord.peekFirst()).contains("-") &&
+                        isRangeNumbers(nextWord.peekFirst()) &&
+                        checkIfFracture(Objects.requireNonNull(nextWord.peekFirst()).substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty())
+                {
                     nextWord.addFirst(wordList.pollFirst());
                     term.append(" ").append(nextWord.pollLast());
-                    if (checkIfFracture(Objects.requireNonNull(nextWord.peekFirst()))) {
+                    if (checkIfFracture(Objects.requireNonNull(nextWord.peekFirst())))
                         term.append(" ").append(nextWord.pollLast());
-                    }
                 } else if (monthsData.containsKey(nextWord.peekFirst()) && isInteger(Double.parseDouble(term.toString()))) {  // rule Hei -  Month term
                     String save = nextWord.pollFirst();
-
                     term.insert(0, save+"-");
                     if (!wordList.isEmpty()) {
                         nextWord.add(wordList.pollFirst());
@@ -174,7 +154,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                 } else if (Objects.equals(nextWord.peekFirst(), "%")) { //  rule Gimel - percent term
                     term.append('%');
                 } else if (Objects.equals(nextWord.peekFirst(), "Ton") || nextWord.peekFirst().equals("Gram")) {
-                    //term = new StringBuilder(handleWeight(term.toString(), Objects.requireNonNull(nextWord.pollFirst())));
+                    term = new StringBuilder(handleWeight(term.toString(), Objects.requireNonNull(nextWord.pollFirst())));
                 } else {
                     term = new StringBuilder(handleNumber(term.toString().replace(",", "")));
                     if (!(term.charAt(term.length()-1) > 'A' && term.charAt(term.length()-1) < 'Z')) { //if a number returned is smaller than 1000
@@ -265,15 +245,26 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                         }
                     }
                 }
+            } else if (term.toString().contains("-") && isRangeNumbers(term.toString())) {
+                if (!wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.pollFirst());
+                    if (checkIfFracture(Objects.requireNonNull(nextWord.peekFirst())))
+                        term.append(" ").append(nextWord.pollFirst());
+                }
+            } else if (term.toString().contains("-")) {
+                int idx = term.toString().indexOf('-');
+                if (idx != -1) {
+                    if (term.toString().lastIndexOf('-') == idx+1)
+                        term = new StringBuilder(term.toString().replaceFirst("-", ""));
+                }
             }
-
             while(!nextWord.isEmpty()) {
                 String s = nextWord.pollLast();
                 if (s != null && !s.equals(""))
                     wordList.addFirst(s);
             }
 
-            if (!MyModel.stopWords.contains(term.toString().toLowerCase())) {
+            if (!Model.stopWords.contains(term.toString().toLowerCase())) {
                 if (useStemming) {
                     stemmer.getStemmer().setCurrent(term.toString());
                     if (stemmer.getStemmer().stem())
@@ -288,8 +279,24 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         return miniDic;
     }
 
-    private boolean isRangeNumbers(String s) {
-        return true;
+    private boolean isRangeNumbers(String range) {
+        int idx = range.indexOf('-');
+        if (idx != -1) if (checkIfFracture(range.substring(0, idx)))
+            return isNumber(range.substring(idx+1)) || checkIfFracture(range.substring(idx+1));
+        else if (isNumber(range.substring(0, idx)))
+            return isNumber(range.substring(idx+1));
+        return false;
+    }
+
+    private String handleWeight(String term, String unit) {
+        switch(unit) {
+            case "Ton":
+                term = numberValue(Double.parseDouble(term.replace(",", "")) * 1000);
+                break;
+            case "Gram":
+                term = numberValue(Double.parseDouble(term.replace(",", "")) / 1000);
+        }
+        return term+" Kilograms";
     }
 
     private boolean checkIfFracture(String token) {
@@ -367,6 +374,12 @@ public class Parse implements IParse, Callable<MiniDictionary> {
             } else if (queuePeek.equalsIgnoreCase("Trillion")) {
                 wordList.remove();
                 nextWord = "T";
+            } else if (queuePeek.equalsIgnoreCase("Minutes")) {
+                wordList.remove();
+                nextWord = "Min";
+            } else if (queuePeek.equalsIgnoreCase("Seconds")) {
+                wordList.remove();
+                nextWord = "Sec";
             } else if (queuePeek.equalsIgnoreCase("Tons")) {
                 wordList.remove();
                 nextWord = "Ton";

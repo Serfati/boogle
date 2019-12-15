@@ -1,6 +1,5 @@
 package View;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -44,27 +43,27 @@ public class AboutController implements Initializable {
         Stage stage = new Stage();
         Scene scene = new Scene(new StackPane(browser));
         stage.setScene(scene);
-        stage.setTitle("Genuine Coder");
+        stage.setTitle("SERFATI");
         stage.show();
     }
 
     @FXML
-    private void loadYoutubeChannel(ActionEvent event) {
+    private void loadYoutubeChannel() {
         loadWebpage(YOUTUBE);
     }
 
     @FXML
-    private void loadBlog(ActionEvent event) {
+    private void loadBlog() {
         loadWebpage(WEBSITE);
     }
 
     @FXML
-    private void loadLinkedIN(ActionEvent event) {
+    private void loadLinkedIN() {
         loadWebpage(LINKED_IN);
     }
 
     @FXML
-    private void loadFacebook(ActionEvent event) {
+    private void loadFacebook() {
         loadWebpage(FACEBOOK);
     }
 }

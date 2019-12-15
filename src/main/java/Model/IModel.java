@@ -2,7 +2,7 @@ package Model;
 
 public interface IModel {
 
-    void startIndexing(String pathOfDocs, String destinationPath, boolean stm);
+    void startIndexing(String pathOfDocs, String stopWordsPath, String destinationPath, boolean stm);
 
     void startOver(String path);
 
