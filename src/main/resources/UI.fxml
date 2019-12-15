@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" prefHeight="685.0"
-            prefWidth="618.0" styleClass="custom-pane" stylesheets="@dark-style.css" fx:controller="ViewController">
+
+<BorderPane prefHeight="685.0" prefWidth="618.0" styleClass="custom-pane" stylesheets="@dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -20,41 +33,32 @@
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick"
-                                                               text="Load corpus"/>
-                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help"
-                                          text="Go to seach tab"/>
-                                <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#loadDictionary"
-                                                               text="Load"/>
-                                <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true"
-                                                               mnemonicParsing="false" onAction="#saveDictionary"
-                                                               text="Save"/>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
-                                                               text="Exit"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick" text="Load corpus" />
+                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help" text="Go to seach tab" />
+                                <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true" mnemonicParsing="false" onAction="#loadDictionary" text="Load" />
+                                <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true" mnemonicParsing="false" onAction="#saveDictionary" text="Save" />
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton" text="Exit" />
                             </items>
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Options">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
-                                                               text="Properties"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Properties" />
                             </items>
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Help" />
                             </items>
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="About">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#About" text="About" />
                             </items>
 
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Exit">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton"
-                                                               text="Exit"/>
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton" text="Exit" />
                             </items>
                         </javafx.scene.control.Menu>
                     </menus>
@@ -62,57 +66,55 @@
                 <HBox>
                     <ImageView fx:id="boogleLogo" fitHeight="90.0" fitWidth="272.0">
                         <HBox.margin>
-                            <Insets bottom="5.0" left="10.0" right="5.0" top="5.0"/>
+                            <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="CLOSED_HAND"/>
+                            <Cursor fx:constant="CLOSED_HAND" />
                         </cursor>
                         <effect>
-                            <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0"/>
+                            <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0" />
                         </effect>
-                        <Image url="@boogleLogo.png"/>
+                        <Image url="@boogleLogo.png" />
                     </ImageView>
 
-                    <ImageView fx:id="generateIndexIcon" fitHeight="50.0" fitWidth="50.0" focusTraversable="true"
-                               opacity="0.7">
+                    <ImageView fx:id="generateIndexIcon" fitHeight="50.0" fitWidth="50.0" focusTraversable="true" opacity="0.7">
                         <HBox.margin>
-                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
-                        <Image url="@googleIcon.png"/>
+                        <Image url="@googleIcon.png" />
                     </ImageView>
                     <ImageView fx:id="saveIcon" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
-                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="CLOSED_HAND"/>
+                            <Cursor fx:constant="CLOSED_HAND" />
                         </cursor>
-                        <Image url="@saveIcon.png"/>
+                        <Image url="@saveIcon.png" />
                     </ImageView>
                     <ImageView fx:id="searchTab" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
-                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="CLOSED_HAND"/>
+                            <Cursor fx:constant="CLOSED_HAND" />
                         </cursor>
-                        <Image url="@searchIcon.png"/>
+                        <Image url="@searchIcon.png" />
                     </ImageView>
-                    <ImageView fx:id="settings" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
-                               preserveRatio="true">
+                    <ImageView fx:id="settings" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                         <HBox.margin>
-                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0"/>
+                            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="HAND"/>
+                            <Cursor fx:constant="HAND" />
                         </cursor>
-                        <Image url="@settings.png"/>
+                        <Image url="@settings.png" />
                     </ImageView>
                     <cursor>
-                        <Cursor fx:constant="DEFAULT"/>
+                        <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </HBox>
             </children>
@@ -123,138 +125,122 @@
         <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="274.0" prefWidth="100.0">
                 <placeholder>
-                    <Label text="Press 'Show Dictionary' to see data "/>
+                    <Label text="Press 'Show Dictionary' to see data " />
                 </placeholder>
                 <columns>
-                    <TableColumn fx:id="tableCol_term" prefWidth="284.0" text="Term"/>
-                    <TableColumn fx:id="tableCol_count" prefWidth="316.0" text="Number of appearances"/>
+                    <TableColumn fx:id="tableCol_term" prefWidth="284.0" text="Term" />
+                    <TableColumn fx:id="tableCol_count" prefWidth="316.0" text="Number of appearances" />
                 </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
-                <JFXButton fx:id="btn_startOver" disable="true" mnemonicParsing="false" onAction="#onStartOverClick"
-                           text="Reset">
+                <JFXButton fx:id="btn_startOver" disable="true" mnemonicParsing="false" onAction="#onStartOverClick" text="Reset">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR"/>
+                        <Cursor fx:constant="DISAPPEAR" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="btn_generate_index" mnemonicParsing="false" onAction="#generateIndex"
-                           text="Generate Index">
+                <JFXButton fx:id="btn_generate_index" mnemonicParsing="false" onAction="#onStartClick" text="Generate Index">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
-                           onAction="#showDictionaryClick" text="Show Dictionary">
+                <JFXButton fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false" onAction="#showDictionaryClick" text="Show Dictionary">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
                     <cursor>
-                        <Cursor fx:constant="DISAPPEAR"/>
+                        <Cursor fx:constant="DISAPPEAR" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary"
-                           text="Load Dictionary">
+                <JFXButton fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary" text="Load Dictionary">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
                     <cursor>
-                        <Cursor fx:constant="HAND"/>
+                        <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
             </HBox>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
         </VBox>
     </bottom>
     <right>
         <GridPane prefHeight="15.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 
-            <FontAwesomeIconView glyphName="FILE" GridPane.halignment="CENTER" GridPane.valignment="CENTER" size="25"/>
-            <FontAwesomeIconView glyphName="CODE" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER"
-                                 GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-            <FontAwesomeIconView glyphName="FOLDER" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER"
-                                 GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <FontAwesomeIconView glyphName="FILE" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <FontAwesomeIconView glyphName="CODE" size="25" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <FontAwesomeIconView glyphName="FOLDER" size="25" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <JFXToggleButton fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" styleClass="checkbox-main" text="Use Stemming" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            </JFXToggleButton>
+            <Label fx:id="lbl_totalTime" styleClass="checkbox-main" text="Total Time:" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="txtfld_corpus_location" labelFloat="true" promptText="Corpus Folder Location" styleClass="main-text" GridPane.columnIndex="1">
+                <cursor>
+                    <Cursor fx:constant="TEXT" />
+                </cursor>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtfld_output_location" labelFloat="true" promptText="Output Folder Location" styleClass="main-text" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <cursor>
+                    <Cursor fx:constant="TEXT" />
+                </cursor>
+                <font>
+                    <Font size="14.0" />
+                </font>
+            </JFXTextField>
+            <JFXButton fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND" />
+                </cursor>
+            </JFXButton>
+            <JFXButton fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND" />
+                </cursor>
+                <effect>
+                    <Blend mode="HARD_LIGHT" />
+                </effect>
+            </JFXButton>
+            <JFXTextField fx:id="txtfld_stopwords_location" labelFloat="true" promptText="Stopwords File Location" styleClass="main-text" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <font>
+                    <Font size="14.0" />
+                </font>
+                <cursor>
+                    <Cursor fx:constant="TEXT" />
+                </cursor>
+            </JFXTextField>
+
+            <JFXButton fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick" text="Browse" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                <cursor>
+                    <Cursor fx:constant="CLOSED_HAND" />
+                </cursor>
+            </JFXButton>
 
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
             </columnConstraints>
 
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
-                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints />
             </rowConstraints>
-            <JFXToggleButton fx:id="checkbox_use_stemming" mnemonicParsing="false" selected="true" text="Use Stemming"
-                             GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3"
-                             GridPane.valignment="CENTER" styleClass="checkbox-main">
-            </JFXToggleButton>
-            <Label fx:id="lbl_totalTime" styleClass="checkbox-main" GridPane.columnIndex="1"
-                   GridPane.halignment="CENTER" GridPane.rowIndex="3" text="Total Time:" visible="false"/>
-            <JFXTextField fx:id="txtfld_corpus_location" styleClass="main-text" labelFloat="true"
-                          promptText="Corpus Folder Location" GridPane.columnIndex="1">
-                <cursor>
-                    <Cursor fx:constant="TEXT"/>
-                </cursor>
-                <font>
-                    <Font size="14.0"/>
-                </font>
-            </JFXTextField>
-            <JFXTextField fx:id="txtfld_output_location" styleClass="main-text" labelFloat="true"
-                          promptText="Output Folder Location" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                <cursor>
-                    <Cursor fx:constant="TEXT"/>
-                </cursor>
-                <font>
-                    <Font size="14.0"/>
-                </font>
-            </JFXTextField>
-            <JFXButton fx:id="btn_corpus_browse" mnemonicParsing="false" onAction="#browseCorpusClick" text="Browse"
-                       GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                <cursor>
-                    <Cursor fx:constant="CLOSED_HAND"/>
-                </cursor>
-            </JFXButton>
-            <JFXButton fx:id="btn_output_browse" mnemonicParsing="false" onAction="#browseOutputClick" text="Browse"
-                       GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-                <cursor>
-                    <Cursor fx:constant="CLOSED_HAND"/>
-                </cursor>
-                <effect>
-                    <Blend mode="HARD_LIGHT"/>
-                </effect>
-            </JFXButton>
-            <JFXTextField fx:id="txtfld_stopwords_location" styleClass="main-text" labelFloat="true"
-                          promptText="Stopwords File Location" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                <font>
-                    <Font size="14.0"/>
-                </font>
-                <cursor>
-                    <Cursor fx:constant="TEXT"/>
-                </cursor>
-            </JFXTextField>
-
-            <JFXButton fx:id="btn_stopwords_browse" mnemonicParsing="false" onAction="#browseStopwordsClick"
-                       text="Browse"
-                       GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1"
-                       GridPane.valignment="CENTER">
-                <cursor>
-                    <Cursor fx:constant="CLOSED_HAND"/>
-                </cursor>
-            </JFXButton>
             <cursor>
-                <Cursor fx:constant="DEFAULT"/>
+                <Cursor fx:constant="DEFAULT" />
             </cursor>
             <effect>
-                <Glow level="0.0"/>
+                <Glow level="0.0" />
             </effect>
         </GridPane>
 

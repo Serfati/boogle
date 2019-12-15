@@ -1,9 +1,11 @@
 package Model.IO;
 
 import Model.Engine.Indexer;
+import Model.Engine.InvertedIndex;
 import Model.Parser.cDocument;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,8 +13,12 @@ import org.jsoup.select.Elements;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -107,41 +113,5 @@ public class ReadFile {
         }
     }
 
-
-//    private void writeDocumentsListToDisk(String pathForWriting) {
-//        if (!docsToWrite.isEmpty()) {
-//            StringBuilder documentsData = new StringBuilder();
-//            BufferedWriter writerDocuments;
-//            try {
-//                writerDocuments = new BufferedWriter(new FileWriter(pathForWriting+"/cReview.txt", true));
-//                //writerDocuments.write("[ doc_ID ] : | date | -  title  - |  lang  | max_tf | numOfUniqueTerms | length | "+"\n");
-//
-//                cDocument document;
-//                while(!docsToWrite.isEmpty()) {
-//                    document = docsToWrite.poll();
-//
-//                    documentsData.append(document.getDocId()).append(";;")
-//                            .append(document.getDocDate())
-//                            .append("|").append(document.getDocTitle()).append("|").
-//                            append(document.getDocLang()).append("|").append(document.getMaxFrequency()).
-//                            append("|").append(document.getNumOfUniqueTerms()).append("|").
-//                            append("\n");
-//                    numOfDocuments.getAndIncrement();
-//                }
-//                writerDocuments.write(documentsData.toString());
-//                writerDocuments.close();
-//            } catch(Exception e) {
-//                e.printStackTrace();
-//            }
-//            docsToWrite.clear();
-//        }
-//    }
-
-    public ObservableList<String> getLanguages() {
-        ObservableList<String> listOfLanguages = FXCollections.observableArrayList();
-        //listOfLanguages.addAll(languages);
-        FXCollections.sort(listOfLanguages, new Indexer.StringComparator());
-        return listOfLanguages;
-    }
-
 }
+
