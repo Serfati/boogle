@@ -85,8 +85,8 @@ public class ViewController implements IView, Observer, Initializable {
     private void initImages() {
         setBoogleClick();
         setClick(generateIndexIcon);
-        setClick(settings);
         setClick(saveIcon);
+        setClick(settings);
         setClick(searchTab);
     }
 
@@ -124,7 +124,7 @@ public class ViewController implements IView, Observer, Initializable {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
         else
-            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_stopwords_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
     }
 
     private void setClick(ImageView icon) {
@@ -258,21 +258,19 @@ public class ViewController implements IView, Observer, Initializable {
         if (o == viewModel) {
             if (arg instanceof String[]) {
                 String[] toUpdate = (String[]) arg;
-                if (toUpdate[0].equals("Fail")) { // if we received a fail message from the model
+                if (toUpdate[0].equals("Fail")) {
                     if (toUpdate[1].equals("could not find one or more dictionaries"))
                         AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), toUpdate[1]);
                 } else if (toUpdate[0].equals("Successful")) {// if we received a successful message from the model
                     AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), toUpdate[1]);
-                    if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary")) {
+                    if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary"))
                         btn_show_dictionary.setDisable(false);
-                    }
                 }
-            } else if (arg instanceof ObservableList) { // a show dictionary operation was finished and can be shown on display
+            } else if (arg instanceof ObservableList) {
                 ObservableList l = (ObservableList) arg;
                 if (!l.isEmpty() && l.get(0) instanceof ShowDictionaryRecord)
                     showDictionary((ObservableList<ShowDictionaryRecord>) arg);
-            } else if (arg instanceof double[]) { // show the results of the indexing
-                //showIndexResults times
+            } else if (arg instanceof double[]) {
                 btn_show_dictionary.setDisable(false);
             }
         }

@@ -2,17 +2,24 @@ package Model.Engine;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
-public class InvertedIndex {
+public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
     // term  | num Of appearance | pointer(path of posting file, line number in the posting)
-    private ConcurrentHashMap<String, Term> invertedIndexDic;
+    private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
+
+    private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
 
     /**
      * create a new inverted index
@@ -21,18 +28,15 @@ public class InvertedIndex {
         invertedIndexDic = new ConcurrentHashMap<>();
     }
 
-    /**
-     * construct a inverted index from a file
-     *
-     * @param file the file that has the data about he inverted file
-     */
+    public InvertedIndex(ConcurrentLinkedDeque<MiniDictionary> minidic) {
+        m_miniDicList = minidic;
+    }
+
     public InvertedIndex(File file) {
-        String line = null;
-        invertedIndexDic = new ConcurrentHashMap<>();
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            line = bufferedReader.readLine();
+            String line = bufferedReader.readLine();
             while(line != null) {
                 String[] curLine = line.split("\t");
                 Term cur = new Term(curLine[0], Integer.parseInt(curLine[1]), Integer.parseInt(curLine[2]), Integer.parseInt(curLine[3]));
@@ -45,11 +49,26 @@ public class InvertedIndex {
         }
     }
 
-    /**
-     * adds a term to the inverted index
-     *
-     * @param term the term to be added
-     */
+    @Override
+    public HashMap<String, Pair<Integer, StringBuilder>> call() {
+        HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
+        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.m_dictionary.keySet().forEach(word -> {
+            if (toReturn.containsKey(word)) { //if the word already exists
+                Pair<Integer, StringBuilder> all = toReturn.remove(word);
+                int newShows = all.getKey()+miniDic.getFrequency(word);
+                StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
+                Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
+                toReturn.put(word, newAll);
+            } else { //if the word doesn't exist
+                int shows = miniDic.getFrequency(word);
+                StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
+                Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
+                toReturn.put(word, all);
+            }
+        }));
+        return toReturn;
+    }
+
     public void addTerm(String term) {
         if (term.charAt(0) < 123)
             if (invertedIndexDic.containsKey(term))
@@ -60,9 +79,6 @@ public class InvertedIndex {
             }
     }
 
-    /**
-     * deletes all the terms that appeared in different ways in the corpus (their appearance number was never updated)
-     */
     public void deleteEntriesOfIrrelevant() {
         for(String s : invertedIndexDic.keySet()) {
             Term cur = invertedIndexDic.get(s);
@@ -96,6 +112,19 @@ public class InvertedIndex {
         return showDictionaryRecords;
     }
 
+    public static class StringComparator implements Comparator<String> {
+        public int compare(String o1, String o2) {
+            for(int i = 0; i < o1.length() && i < o2.length(); i++) {
+                int c1 = o1.toLowerCase().charAt(i);
+                int c2 = o2.toLowerCase().charAt(i);
+                int comparison = c1-c2;
+                if (comparison != 0)
+                    return comparison;
+            }
+            return Integer.compare(o1.length(), o2.length());
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder toWrite = new StringBuilder();
@@ -104,4 +133,49 @@ public class InvertedIndex {
         }
         return toWrite.toString();
     }
+
 }
+
+class Term {
+
+    private String m_word; //the term
+    private int m_termFreq; //number of documents the words appears in
+    private int m_numOfAppearances; //number of times the word has appeared
+    private int m_postingLine; //line number in the posting
+
+    Term(String word, int termFreq, int numOfAppearances, int postingLine) {
+        this.m_word = word;
+        this.m_termFreq = termFreq;
+        this.m_numOfAppearances = numOfAppearances;
+        this.m_postingLine = postingLine;
+    }
+
+    void increaseTermFreq(int termFreqCur) {
+        m_termFreq += termFreqCur;
+    }
+
+    int getTermFreq() {
+        return m_termFreq;
+    }
+
+    int getNumOfAppearances() {
+        return m_numOfAppearances;
+    }
+
+    void setPointer(int postingLine) {
+        this.m_postingLine = postingLine;
+    }
+
+    void setNumOfAppearance(int numOfAppearance) {
+        this.m_numOfAppearances = numOfAppearance;
+    }
+
+    @Override
+    public String toString() {
+        return m_word+"\t"+m_termFreq+"\t"+m_numOfAppearances+"\t"+m_postingLine+"\n";
+    }
+}
+
+
+
+

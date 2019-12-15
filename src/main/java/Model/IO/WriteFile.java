@@ -1,8 +1,7 @@
 package Model.IO;
 
-import Model.Engine.Indexer;
+import Model.Engine.DocDictionaryNode;
 import Model.Engine.InvertedIndex;
-import Model.Engine.cDocument;
 import javafx.util.Pair;
 
 import java.io.File;
@@ -23,7 +22,7 @@ public class WriteFile {
         //get all the info needed and write it to dest
         StringBuilder toWrite = new StringBuilder();
         LinkedList<String> sorted = new LinkedList<>(temporaryPosting.keySet());
-        sorted.sort(new Indexer.StringComparator());
+        sorted.sort(new InvertedIndex.StringComparator());
         for (String s : sorted) {
             int shows = temporaryPosting.get(s).getKey();
             StringBuilder stringBuilder = temporaryPosting.get(s).getValue();
@@ -36,21 +35,22 @@ public class WriteFile {
 
     /**
      * writes the doc dictionary to the disk
-     * @param path the path where it should be written
+     *
+     * @param path               the path where it should be written
      * @param documentDictionary the document dictionary
-     * @param stem if terms were stemmed
+     * @param stem               if terms were stemmed
      */
-    public static void writeDocDictionary(String path, HashMap<String, cDocument> documentDictionary, boolean stem) {
+    public static void writeDocDictionary(String path, HashMap<String, DocDictionaryNode> documentDictionary, boolean stem) {
         StringBuilder toWrite = new StringBuilder();
-        for (cDocument cur :documentDictionary.values()) {
+        for(DocDictionaryNode cur : documentDictionary.values()) {
             toWrite.append(cur.toString());
         }
         File dir = new File(path);
         String fileName = "StemDocumentDictionary.txt";
         if (!stem)
-            fileName= "DocumentDictionary.txt";
-        File actualFile = new File(dir,fileName);
-        write(actualFile,toWrite);
+            fileName = "DocumentDictionary.txt";
+        File actualFile = new File(dir, fileName);
+        write(actualFile, toWrite);
     }
 
     /**
@@ -68,7 +68,6 @@ public class WriteFile {
         File actualFile = new File(dir,fileName);
         write(actualFile,new StringBuilder(toWrite));
     }
-
 
     /**
      * writes a final posting to the disk

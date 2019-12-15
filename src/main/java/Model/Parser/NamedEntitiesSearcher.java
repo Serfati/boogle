@@ -15,8 +15,6 @@ public class NamedEntitiesSearcher {
     public static void buildPipeLine() {
         Properties props = new Properties();
         props.setProperty("ner.model", "edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz");
-        //edu/stanford/nlp/models/ner/english.muc.7class.distsim.crf.ser.gz
-        //edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz
         props.setProperty("ner.rulesOnly", "true");
         props.setProperty("ner.statisticalOnly", "true");
         props.setProperty("ner.applyNumericClassifiers", "false");

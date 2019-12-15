@@ -1,10 +1,7 @@
 package Model.Parser;
 
 import Model.Engine.MiniDictionary;
-import Model.Engine.cDocument;
 import Model.Model;
-import edu.stanford.nlp.pipeline.CoreDocument;
-import edu.stanford.nlp.pipeline.CoreEntityMention;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
@@ -13,8 +10,6 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
-import static org.apache.commons.lang3.StringUtils.replace;
-import static org.apache.commons.lang3.StringUtils.split;
 import static org.apache.commons.lang3.math.NumberUtils.isNumber;
 
 /**
@@ -33,7 +28,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     NamedEntitiesSearcher ner;
 
 
-    public Parse(cDocument corpus_doc, NamedEntitiesSearcher ner, boolean stm) {
+    public Parse(cDocument corpus_doc, boolean stm) {
         this.currentCDocument = corpus_doc;
         this.useStemming = stm;
         this.stemmer = new Stemmer();
@@ -41,12 +36,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     }
 
     public MiniDictionary call() {
-        try {
-            return parse();
-        } catch(Exception e) {
-            logger.error("PARSE :: DOC FAILD : a thread prosses - call()");
-        }
-        return null;
+        return parse();
     }
 
     private String numberValue(Double d) {
@@ -98,6 +88,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     private LinkedList<String> stringToList(String[] split) {
         LinkedList<String> wordsList = new LinkedList<>();
         for(String word : split) {
+            word = cleanTerm(word);
             if (!word.equals(""))
                 wordsList.add(word);
         }
@@ -105,24 +96,22 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     }
 
     public MiniDictionary parse() {
-        long startTime = System.nanoTime();
-
-        MiniDictionary miniDic = new MiniDictionary(currentCDocument.getDocId());
+        wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
+        MiniDictionary miniDic = new MiniDictionary(currentCDocument.getFileName(), "TO");
         LinkedList<String> nextWord = new LinkedList<>();
 
         //FRACTION, RANGES,
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-
-        CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
-        ner.pipeline().annotate(doc);
-        for(CoreEntityMention em : doc.entityMentions())
-            miniDic.addWord(em.text(), 0);
+//
+//        CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
+//        ner.pipeline().annotate(doc);
+//        for(CoreEntityMention em : doc.entityMentions())
+//            miniDic.addWord(em.text(), 0);
 
         //TODO
         /* ------------------------------------------------------------------------- */
-        wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         //list of next words from the current term
         initMonthsData();
         int index = 0;
@@ -274,8 +263,8 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                 index++;
             }
         }
-        long endTime = System.nanoTime()-startTime;
-        System.out.printf("Time Complexity of parser: %s%n sec", endTime * Math.pow(10, -9));
+        //long endTime = System.nanoTime()-startTime;
+        //System.out.printf("Time Complexity of parser: %s%n sec", endTime * Math.pow(10, -9));
         return miniDic;
     }
 
@@ -299,32 +288,39 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         return term+" Kilograms";
     }
 
-    private boolean checkIfFracture(String token) {
-        if (token.contains("/")) {
-            token = replace(token, ",", "");
-            String[] check = split(token, "/");
-            if (check.length < 2)
-                return false;
-            try {
-                Integer.parseInt(check[0]);
-                Integer.parseInt(check[1]);
-                return true;
-            } catch(NumberFormatException e) {
-                logger.error("NumberFormatException in PARSE :: checkIfFracture ");
-                return false;
+    private boolean checkIfFracture(String nextWord) {
+        int idx = nextWord.indexOf('/');
+        if (idx != -1)
+            return isNumber(nextWord.substring(0, idx)) && isNumber(nextWord.substring(idx+1));
+        return false;
+    }
+
+    private String cleanTerm(String term) {
+        if (!term.equals("")) {
+            if (!(term.charAt(term.length()-1) == '%')) {
+                int i = term.length()-1;
+                while(i >= 0 && !Character.isLetterOrDigit(term.charAt(i))) {
+                    term = term.substring(0, i);
+                    i--;
+                }
+            }
+            if (term.length() > 1 && !(term.charAt(0) == '$') && !isNumber(term)) {
+                while(term.length() > 0 && !Character.isLetterOrDigit(term.charAt(0))) {
+                    term = term.substring(1);
+                }
             }
         }
-        return false;
+        return term;
     }
 
     private String handleNumber(String number) {
         StringBuilder ans = new StringBuilder();
         ans.append(number);
-        String check="";//check there are only 3 digits after the dot
+        String check = "";//check there are only 3 digits after the dot
         while(ans.toString().contains(","))
             ans.deleteCharAt(ans.indexOf(","));
         double num = Double.parseDouble(ans.toString());
-        check= check+num;
+        check = check+num;
         ans.delete(0, ans.length());
         if (num < 1000) {
             return number;

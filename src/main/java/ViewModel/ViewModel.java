@@ -37,11 +37,10 @@ public class ViewModel extends Observable implements Observer {
      *
      * @param pathOfDocs      - path of the corpus
      * @param destinationPath - path where the posting files and other files will be written
-     * @param stopWordsPath   - path of the stop words file
      * @param stm             - if this indexing includes stemming or not
      */
-    public void onStartClick(String pathOfDocs, String stopWordsPath, String destinationPath, boolean stm) {
-        Platform.runLater(() -> model.startIndexing(pathOfDocs, stopWordsPath, destinationPath, stm));
+    public void onStartClick(String pathOfDocs, String destinationPath, boolean stm) {
+        Platform.runLater(() -> model.startIndexing(pathOfDocs, destinationPath, stm));
     }
 
     /**
