@@ -36,7 +36,6 @@ public class ReadFile {
             for(int i = start; i <= end; i++) {
                 futureDocsInFile.add(pool.submit(new Reader(directoryListing[i])));
             }
-
             //add together all the lists of the corpus docs to one list
             for(Future<LinkedList<cDocument>> f : futureDocsInFile) {
                 try {

@@ -97,7 +97,6 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     }
 
     public MiniDictionary parse() {
-        System.out.println("start thead Call()");
         wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         MiniDictionary miniDic = new MiniDictionary(currentCDocument.getFileName(), "TO");
         LinkedList<String> nextWord = new LinkedList<>();
@@ -106,7 +105,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-//
+
 //        CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
 //        ner.pipeline().annotate(doc);
 //        for(CoreEntityMention em : doc.entityMentions())
@@ -116,6 +115,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         /* ------------------------------------------------------------------------- */
         //list of next words from the current term
         initMonthsData();
+        nextWordsRules();
         int index = 0;
         while(!wordList.isEmpty()) {
             useStemming = false;
@@ -126,6 +126,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                         isRangeNumbers(nextWord.peekFirst()) &&
                         checkIfFracture(Objects.requireNonNull(nextWord.peekFirst()).substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty())
                 {
+
                     nextWord.addFirst(wordList.pollFirst());
                     term.append(" ").append(nextWord.pollLast());
                     if (checkIfFracture(Objects.requireNonNull(nextWord.peekFirst())))
@@ -267,12 +268,14 @@ public class Parse implements IParse, Callable<MiniDictionary> {
             }
 
         }
+
         //long endTime = System.nanoTime()-startTime;
         //System.out.printf("Time Complexity of parser: %s%n sec", endTime * Math.pow(10, -9));
         return miniDic;
     }
 
     private boolean isRangeNumbers(String range) {
+
         int idx = range.indexOf('-');
         if (idx != -1) if (checkIfFracture(range.substring(0, idx)))
             return isNumber(range.substring(idx+1)) || checkIfFracture(range.substring(idx+1));
@@ -293,6 +296,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     }
 
     private boolean checkIfFracture(String nextWord) {
+
         int idx = nextWord.indexOf('/');
         if (idx != -1)
             return isNumber(nextWord.substring(0, idx)) && isNumber(nextWord.substring(idx+1));
@@ -317,40 +321,29 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         return term;
     }
 
-    private String handleNumber(String number) {
-        StringBuilder ans = new StringBuilder();
-        ans.append(number);
-        String check = "";//check there are only 3 digits after the dot
-        while(ans.toString().contains(","))
-            ans.deleteCharAt(ans.indexOf(","));
-        double num = Double.parseDouble(ans.toString());
-        check = check+num;
-        ans.delete(0, ans.length());
-        if (num < 1000) {
-            return number;
-        } else if (num < 1000000) {
-            num /= 1000;
-            if(check.contains(".")){
-                num=threeDigit(check);
+    public String handleNumber(String termNumber) {
+        double number = Double.parseDouble(termNumber);
+        String ans = "";
+        int multi = 1000;
+        if (number > multi) {//smaller than 1000
+            multi *= 1000;
+            if (number > multi) {
+                multi *= 1000;
+                if (number > multi) { // is billion or trillion
+                    ans = "B";
+                    number = (number / multi);
+                } else { // is million
+                    ans = "M";
+                    multi /= 1000;
+                    number = number / multi;
+                }
+            } else { // is thousand
+                ans = "K";
+                multi /= 1000;
+                number = number / multi;
             }
-            ans.append(num).append("K");
-        } else if (num < 1000000000) {
-            num /= 1000000;
-            if(check.contains(".")){
-                num=threeDigit(check);
-            }
-            ans.append(num).append("M");
-        } else {
-            num /= 1000000000;
-            if(check.contains(".")){
-                num=threeDigit(check);
-            }
-            ans.append(num).append("B");
         }
-        if (ans.toString().substring(ans.toString().indexOf("."), ans.toString().length()-1).equals(".0")) {
-            ans.delete(ans.toString().length()-3, ans.toString().length()-1);
-        }
-        return ans.toString();
+        return numberValue(number)+ans;
     }
 
     /**

@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
     // term  | num Of appearance | pointer(path of posting file, line number in the posting)
-    private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Term> invertedIndexDic;
 
     private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
 
@@ -33,6 +33,7 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
     }
 
     public InvertedIndex(File file) {
+        invertedIndexDic = new ConcurrentHashMap<>();
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -134,48 +135,46 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         return toWrite.toString();
     }
 
+    class Term {
+
+        private String m_word; //the term
+        private int m_termFreq; //number of documents the words appears in
+        private int m_numOfAppearances; //number of times the word has appeared
+        private int m_postingLine; //line number in the posting
+
+        Term(String word, int termFreq, int numOfAppearances, int postingLine) {
+            this.m_word = word;
+            this.m_termFreq = termFreq;
+            this.m_numOfAppearances = numOfAppearances;
+            this.m_postingLine = postingLine;
+        }
+
+        void increaseTermFreq(int termFreqCur) {
+            m_termFreq += termFreqCur;
+        }
+
+        int getTermFreq() {
+            return m_termFreq;
+        }
+
+        int getNumOfAppearances() {
+            return m_numOfAppearances;
+        }
+
+        void setPointer(int postingLine) {
+            this.m_postingLine = postingLine;
+        }
+
+        void setNumOfAppearance(int numOfAppearance) {
+            this.m_numOfAppearances = numOfAppearance;
+        }
+
+        @Override
+        public String toString() {
+            return m_word+"\t"+m_termFreq+"\t"+m_numOfAppearances+"\t"+m_postingLine+"\n";
+        }
+    }
 }
-
-class Term {
-
-    private String m_word; //the term
-    private int m_termFreq; //number of documents the words appears in
-    private int m_numOfAppearances; //number of times the word has appeared
-    private int m_postingLine; //line number in the posting
-
-    Term(String word, int termFreq, int numOfAppearances, int postingLine) {
-        this.m_word = word;
-        this.m_termFreq = termFreq;
-        this.m_numOfAppearances = numOfAppearances;
-        this.m_postingLine = postingLine;
-    }
-
-    void increaseTermFreq(int termFreqCur) {
-        m_termFreq += termFreqCur;
-    }
-
-    int getTermFreq() {
-        return m_termFreq;
-    }
-
-    int getNumOfAppearances() {
-        return m_numOfAppearances;
-    }
-
-    void setPointer(int postingLine) {
-        this.m_postingLine = postingLine;
-    }
-
-    void setNumOfAppearance(int numOfAppearance) {
-        this.m_numOfAppearances = numOfAppearance;
-    }
-
-    @Override
-    public String toString() {
-        return m_word+"\t"+m_termFreq+"\t"+m_numOfAppearances+"\t"+m_postingLine+"\n";
-    }
-}
-
 
 
 

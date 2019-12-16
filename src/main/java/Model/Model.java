@@ -28,7 +28,7 @@ public class Model extends Observable implements IModel {
     public static InvertedIndex invertedIndex;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
     public static HashMap<String, DocDictionaryNode> documentDictionary;
-    public static HashSet<String> stopWords;
+    public static HashSet<String> stopWords = ReadFile.initSet("/home/serfati/Desktop/1/stop_words.txt");
     private boolean dictionaryIsStemmed = false;
 
     @Override
@@ -184,7 +184,7 @@ public class Model extends Observable implements IModel {
         return new double[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
 
-    private void fillData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary) {
+    public static void fillData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary) {
         for(MiniDictionary mini : miniDicList) {
             DocDictionaryNode cur = new DocDictionaryNode(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle(), mini.getPrimaryWords());
             documentDictionary.put(cur.getDocName(), cur);
