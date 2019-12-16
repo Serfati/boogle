@@ -96,6 +96,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     }
 
     public MiniDictionary parse() {
+        System.out.println("start thead Call()");
         wordList = stringToList(StringUtils.split(currentCDocument.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         MiniDictionary miniDic = new MiniDictionary(currentCDocument.getFileName(), "TO");
         LinkedList<String> nextWord = new LinkedList<>();
@@ -261,7 +262,9 @@ public class Parse implements IParse, Callable<MiniDictionary> {
                 }
                 miniDic.addWord(term.toString(), index);
                 index++;
+
             }
+
         }
         //long endTime = System.nanoTime()-startTime;
         //System.out.printf("Time Complexity of parser: %s%n sec", endTime * Math.pow(10, -9));
