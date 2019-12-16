@@ -48,7 +48,7 @@ public class Manager {
             Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
             t1.start();
             tmpPostingThread.add(t1);
-            fillCityData(miniDicList, invertedIndex, documentDictionary);
+            fillData(miniDicList, invertedIndex, documentDictionary);
             pool.shutdown();
         }
 
@@ -60,7 +60,7 @@ public class Manager {
         return new double[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
 
-    private void fillCityData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary) {
+    private void fillData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary) {
         for(MiniDictionary mini : miniDicList) {
             DocDictionaryNode cur = new DocDictionaryNode(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle(), mini.getPrimaryWords());
             documentDictionary.put(cur.getDocName(), cur);
