@@ -25,6 +25,7 @@ public class Parse implements IParse, Callable<MiniDictionary> {
     private cDocument currentCDocument;
     private LinkedList<String> wordList;
     HashMap<String, String> monthsData;
+    HashMap<String, String> wordsRulesData;
     NamedEntitiesSearcher ner;
 
 
@@ -361,36 +362,9 @@ public class Parse implements IParse, Callable<MiniDictionary> {
         String nextWord = "";
         if (!wordList.isEmpty()) {
             String queuePeek = wordList.peek();
-            if (queuePeek.equalsIgnoreCase("Thousand")) {
+            if (wordsRulesData.containsKey(queuePeek)) {
                 wordList.remove();
-                nextWord = "K";
-            } else if (queuePeek.equalsIgnoreCase("Million")) {
-                wordList.remove();
-                nextWord = "M";
-            } else if (queuePeek.equalsIgnoreCase("Billion")) {
-                wordList.remove();
-                nextWord = "B";
-            } else if (queuePeek.equalsIgnoreCase("Trillion")) {
-                wordList.remove();
-                nextWord = "T";
-            } else if (queuePeek.equalsIgnoreCase("Minutes")) {
-                wordList.remove();
-                nextWord = "Min";
-            } else if (queuePeek.equalsIgnoreCase("Seconds")) {
-                wordList.remove();
-                nextWord = "Sec";
-            } else if (queuePeek.equalsIgnoreCase("Tons")) {
-                wordList.remove();
-                nextWord = "Ton";
-            } else if (queuePeek.equalsIgnoreCase("Grams")) {
-                wordList.remove();
-                nextWord = "Gram";
-            } else if (queuePeek.equalsIgnoreCase("percent") || queuePeek.equalsIgnoreCase("percentage")) {
-                wordList.remove();
-                nextWord = "%";
-            } else if (queuePeek.equalsIgnoreCase("Dollars")) {
-                wordList.remove();
-                nextWord = "Dollars";
+                nextWord = wordsRulesData.get(queuePeek);
             } else if (monthsData.containsKey(queuePeek)) {
                 wordList.remove();
                 nextWord = queuePeek;
@@ -421,6 +395,85 @@ public class Parse implements IParse, Callable<MiniDictionary> {
             correct = Double.parseDouble(ans.toString());
         }
         return correct;
+    }
+
+    private void nextWordsRules() {
+        wordsRulesData = new HashMap<String, String>() {{
+            put("Thousand", "K");
+            put("Thousands", "K");
+            put("thousand", "K");
+            put("thousands", "K");
+            put("Million", "M");
+            put("Millions", "M");
+            put("million", "M");
+            put("millions", "M");
+            put("Billion", "B");
+            put("Billions", "B");
+            put("billion", "B");
+            put("billions", "B");
+            put("Trillion", "T");
+            put("Trillions", "T");
+            put("trillion", "T");
+            put("trillions", "T");
+            put("Minute", "Min");
+            put("Minutes", "Min");
+            put("minute", "Min");
+            put("minutes", "Min");
+            put("Second", "Sec");
+            put("Seconds", "Sec");
+            put("second", "Sec");
+            put("seconds", "Sec");
+            put("Tons", "Tons");
+            put("Ton", "Tons");
+            put("tons", "Tons");
+            put("ton", "Tons");
+            put("Grams", "gr");
+            put("Gram", "gr");
+            put("grams", "gr");
+            put("gram", "gr");
+            put("GRAM", "gr");
+            put("GRAMS", "gr");
+            put("gr", "gr");
+            put("kilogram", "kg");
+            put("Kilogram", "kg");
+            put("kilograms", "kg");
+            put("Kilograms", "kg");
+            put("KILOGRAM", "kg");
+            put("KILOGRAMS", "kg");
+            put("kg", "kg");
+            put("kgs", "kg");
+            put("KG", "kg");
+            put("KGS", "kg");
+            put("percent", "%");
+            put("percentage", "%");
+            put("%", "%");
+            put("Dollars", "Dollars");
+            put("Dollar", "Dollars");
+            put("DOLLARS", "Dollars");
+            put("DOLLAR", "Dollars");
+            put("$", "Dollars");
+            put("centimeter", "cm");
+            put("Centimeter", "cm");
+            put("centimeters", "cm");
+            put("Centimeters", "cm");
+            put("cm", "cm");
+            put("CM", "cm");
+            put("meter", "m");
+            put("Meter", "m");
+            put("METER", "m");
+            put("meters", "m");
+            put("Meters", "m");
+            put("METERS", "m");
+            put("kilometer", "km");
+            put("Kilometer", "km");
+            put("kilometers", "km");
+            put("Kilometers", "km");
+            put("km", "km");
+            put("KILOMETER", "km");
+            put("KILOMETERS", "km");
+            put("KM", "km");
+
+        }};
     }
 
     private void initMonthsData() {
