@@ -4,7 +4,6 @@ import Model.Engine.MiniDictionary;
 import Model.IO.ReadFile;
 import Model.IO.WriteFile;
 import Model.Parser.Parse;
-import Model.Parser.cDocument;
 import javafx.util.Pair;
 
 import java.util.HashMap;
@@ -25,11 +24,11 @@ public class testClass {
         int numOfDocs = 0;
         int numOfTempPostings = 15;
         LinkedList<Thread> tmpPostingThread = new LinkedList<>();
-        LinkedList<cDocument> l = null;
+        LinkedList<ReadFile.cDocument> l = null;
         InvertedIndex index;
         AtomicInteger numOfPostings = new AtomicInteger(0);
         for(int i = 0; i < numOfTempPostings; i++) {
-            l = ReadFile.readFiles("/home/serfati/Desktop/1", i, numOfTempPostings);
+            l = rf.readFiles("/home/serfati/Desktop/1", i, numOfTempPostings);
 
             ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList = l.stream().map(cd -> pool.submit(new Parse(cd, false))).collect(Collectors.toCollection(ConcurrentLinkedDeque::new));

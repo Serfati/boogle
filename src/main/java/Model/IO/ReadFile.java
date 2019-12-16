@@ -1,6 +1,5 @@
 package Model.IO;
 
-import Model.Parser.cDocument;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
  */
 public class ReadFile {
 
-    public static LinkedList<cDocument> readFiles(String pathOfDocs, int mone, int mechane) {
+    public LinkedList<cDocument> readFiles(String pathOfDocs, int mone, int mechane) {
         File dir = new File(pathOfDocs);
         File[] directoryListing = dir.listFiles();
         LinkedList<cDocument> allDocsInCorpus = new LinkedList<>();
@@ -62,7 +61,7 @@ public class ReadFile {
         return set;
     }
 
-    static class Reader implements Callable<LinkedList<cDocument>> {
+    class Reader implements Callable<LinkedList<cDocument>> {
         File file;
 
         Reader(File file) {
@@ -89,7 +88,7 @@ public class ReadFile {
                     Elements DateElement = element.getElementsByTag("DATE1");
                     Elements TitleElement = element.getElementsByTag("TI");
                     Elements TextElement = element.getElementsByTag("TEXT");
-                    cDocument newDoc = new cDocument(fileToSeparate.getName(), IDElement.text(), DateElement.text(), TitleElement.text(), TextElement.text());
+                    cDocument newDoc = new cDocument(fileToSeparate.getName(), TextElement.text());
                     docList.add(newDoc);
                 }
                 return docList;
@@ -99,6 +98,26 @@ public class ReadFile {
             return docList;
         }
     }
+
+    public class cDocument {
+        private String m_fileName;
+        private String m_docText;
+
+        public cDocument(String fileName, String docText) {
+            this.m_fileName = fileName;
+            this.m_docText = docText;
+        }
+
+        public String getFileName() {
+            return m_fileName;
+        }
+
+        public String getDocText() {
+            return m_docText;
+        }
+
+    }
 }
+
 
 

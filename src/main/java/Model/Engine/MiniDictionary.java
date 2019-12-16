@@ -2,7 +2,9 @@ package Model.Engine;
 
 import javafx.util.Pair;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Objects;
 
 public class MiniDictionary {
     public HashMap<String, LinkedList<Integer>> m_dictionary; //string - the term ; int - TF in the doc
@@ -85,15 +87,6 @@ public class MiniDictionary {
         if (!Character.isLetter(word.charAt(0)) && m_dictionary.containsKey(word))
             return 3;
         return 0;
-    }
-
-    /**
-     * returns all the terms in the dictionary
-     *
-     * @return all the terms in the dictionary
-     */
-    public Set<String> listOfWords() {
-        return m_dictionary.keySet();
     }
 
     /**
@@ -189,25 +182,6 @@ public class MiniDictionary {
     }
 
     /**
-     * sets the 5 primary words
-     */
-    public void setPrimaryWords() {
-        Map<String, LinkedList<Integer>> inPlace = sorted(m_dictionary);
-        int i = 0;
-        for(Map.Entry<String, LinkedList<Integer>> first : inPlace.entrySet()) {
-            if (Character.isUpperCase(first.getKey().charAt(0))) {
-                LinkedList<Integer> cur = first.getValue();
-                if (cur != null)
-                    places[i] = new Pair<>(first.getKey(), cur.size());
-            }
-            if (places[i] == null)
-                i--;
-            i++;
-            if (places[4] != null) break;
-        }
-    }
-
-    /**
      * returns the primary words
      *
      * @return the primary words
@@ -216,22 +190,6 @@ public class MiniDictionary {
         return places;
     }
 
-    /**
-     * sorts a map
-     *
-     * @param toSort which map should be sorted
-     * @return a sorted map
-     */
-    private Map<String, LinkedList<Integer>> sorted(Map<String, LinkedList<Integer>> toSort) {
-        TreeMap<String, LinkedList<Integer>> sorted = new TreeMap<>((o1, o2) -> {
-            if (o1.equals(o2)) return 0;
-            if (m_dictionary.get(o1).size() > m_dictionary.get(o2).size())
-                return -1;
-            else return 1;
-        });
-        sorted.putAll(toSort);
-        return sorted;
-    }
 
     /**
      * returns doc title
@@ -242,16 +200,4 @@ public class MiniDictionary {
         return m_title;
     }
 
-    /**
-     * returns number of appearnces of words
-     *
-     * @return number of appearnces of words
-     */
-    public HashMap<String, Integer> countAppearances() {
-        HashMap<String, Integer> result = new HashMap<>();
-        for(Map.Entry<String, LinkedList<Integer>> entry : m_dictionary.entrySet()) {
-            result.put(entry.getKey(), entry.getValue().size());
-        }
-        return result;
-    }
 }

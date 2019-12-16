@@ -1,4 +1,4 @@
-import Model.Engine.ShowDictionaryRecord;
+import Model.Engine.InvertedIndex;
 import View.AlertMaker;
 import View.IView;
 import ViewModel.ViewModel;
@@ -43,9 +43,9 @@ public class ViewController implements IView, Observer, Initializable {
     public ImageView settings;
     @FXML
     public Label lbl_statusBar;
-    public TableView<ShowDictionaryRecord> table_showDic;
-    public TableColumn<ShowDictionaryRecord, String> tableCol_term;
-    public TableColumn<ShowDictionaryRecord, Number> tableCol_count;
+    public TableView<InvertedIndex.ShowDictionaryRecord> table_showDic;
+    public TableColumn<InvertedIndex.ShowDictionaryRecord, String> tableCol_term;
+    public TableColumn<InvertedIndex.ShowDictionaryRecord, Number> tableCol_count;
 
     public MenuItem save_MenuItem;
     public MenuItem load_MenuItem;
@@ -146,7 +146,7 @@ public class ViewController implements IView, Observer, Initializable {
      *
      * @param records all the data about the current indexing
      */
-    private void showDictionary(ObservableList<ShowDictionaryRecord> records) {
+    private void showDictionary(ObservableList<InvertedIndex.ShowDictionaryRecord> records) {
         if (records != null) {
             tableCol_term.setCellValueFactory(cellData -> cellData.getValue().getTermProperty());
             tableCol_count.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
@@ -191,7 +191,7 @@ public class ViewController implements IView, Observer, Initializable {
         ButtonType leaveButton = new ButtonType("Leave", ButtonBar.ButtonData.YES);
         ButtonType stayButton = new ButtonType("Stay", ButtonBar.ButtonData.NO);
         alert.getButtonTypes().setAll(stayButton, leaveButton);
-        alert.setContentText("Are you sure you want to exit??");
+        alert.setContentText("Are you sure you want to exit?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == leaveButton)
             Platform.exit();
@@ -268,8 +268,8 @@ public class ViewController implements IView, Observer, Initializable {
                 }
             } else if (arg instanceof ObservableList) {
                 ObservableList l = (ObservableList) arg;
-                if (!l.isEmpty() && l.get(0) instanceof ShowDictionaryRecord)
-                    showDictionary((ObservableList<ShowDictionaryRecord>) arg);
+                if (!l.isEmpty() && l.get(0) instanceof InvertedIndex.ShowDictionaryRecord)
+                    showDictionary((ObservableList<InvertedIndex.ShowDictionaryRecord>) arg);
             } else if (arg instanceof double[]) {
                 btn_show_dictionary.setDisable(false);
             }

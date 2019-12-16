@@ -71,7 +71,7 @@ public class WriteFile {
     }
 
     private static void write(File actualFile, StringBuilder toWrite){
-        FileWriter fileWriter = null;
+        FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(actualFile);
             fileWriter.write(toWrite.toString());

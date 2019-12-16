@@ -4,9 +4,9 @@ import Model.Engine.DocDictionaryNode;
 import Model.Engine.InvertedIndex;
 import Model.Engine.MiniDictionary;
 import Model.IO.ReadFile;
+import Model.IO.ReadFile.cDocument;
 import Model.IO.WriteFile;
 import Model.Parser.Parse;
-import Model.Parser.cDocument;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
 import org.apache.commons.io.FileUtils;
@@ -154,7 +154,7 @@ public class Model extends Observable implements IModel {
 
         for(int i = 0; i < numOfTempPostings; i++) {
             ReadFile rf = new ReadFile();
-            LinkedList<cDocument> l = ReadFile.readFiles(corpusPath, i, numOfTempPostings);
+            LinkedList<cDocument> l = rf.readFiles(corpusPath, i, numOfTempPostings);
 
             ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList = l.stream().map(cd -> pool.submit(new Parse(cd, stem))).collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
@@ -173,7 +173,7 @@ public class Model extends Observable implements IModel {
             t1.start();
             tmpPostingThread.add(t1);
             fillData(miniDicList, invertedIndex, documentDictionary);
-            pool.shutdown();
+            //pool.shutdown();
         }
 
         for(Thread t : tmpPostingThread)

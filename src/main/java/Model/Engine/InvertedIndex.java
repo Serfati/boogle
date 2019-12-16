@@ -1,5 +1,9 @@
 package Model.Engine;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
@@ -172,6 +176,28 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         @Override
         public String toString() {
             return m_word+"\t"+m_termFreq+"\t"+m_numOfAppearances+"\t"+m_postingLine+"\n";
+        }
+    }
+
+    public class ShowDictionaryRecord {
+        private String term;
+        private int count;
+        private StringProperty termProperty;
+        private IntegerProperty countProperty;
+
+        public ShowDictionaryRecord(String term, int count) {
+            this.term = term;
+            this.count = count;
+            this.termProperty = new SimpleStringProperty(term);
+            this.countProperty = new SimpleIntegerProperty(count);
+        }
+
+        public StringProperty getTermProperty() {
+            return termProperty;
+        }
+
+        public IntegerProperty getCountProperty() {
+            return countProperty;
         }
     }
 }

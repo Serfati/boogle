@@ -1,6 +1,7 @@
 package Model.Parser;
 
 import Model.Engine.MiniDictionary;
+import Model.IO.ReadFile.cDocument;
 import Model.Model;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;

@@ -24,17 +24,8 @@ public class DocDictionaryNode {
         this.m_primaryWords = primaryWords;
 
     }
-
     public String getDocName() {
         return m_docName;
-    }
-
-    public String getTitle() {
-        return m_title;
-    }
-
-    public int getDocLength() {
-        return m_docLength;
     }
 
     @Override
