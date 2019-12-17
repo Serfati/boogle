@@ -38,9 +38,9 @@ public class WriteFile {
             toWrite.append(cur.toString());
         }
         File dir = new File(path);
-        String fileName = "StemDocumentDictionary.txt";
+        String fileName = "DocDic PS.txt";
         if (!stem)
-            fileName = "DocumentDictionary.txt";
+            fileName = "DocDic.txt";
         File actualFile = new File(dir, fileName);
         write(actualFile, toWrite);
     }
@@ -48,9 +48,9 @@ public class WriteFile {
     public static void writeInvertedFile(String path, InvertedIndex invertedIndex, boolean stem) {
         String toWrite = invertedIndex.toString();
         File dir = new File(path);
-        String fileName = "StemInvertedFile.txt";
+        String fileName = "SIF.txt";
         if (!stem)
-            fileName= "InvertedFile.txt";
+            fileName = "IF.txt";
         File actualFile = new File(dir,fileName);
         write(actualFile,new StringBuilder(toWrite));
     }

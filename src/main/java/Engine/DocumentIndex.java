@@ -19,11 +19,6 @@ public class DocumentIndex {
     }
 
     @Override
-    public int hashCode() {
-        return m_docName.hashCode();
-    }
-
-    @Override
     public String toString() {
         return m_docName+"\t"+m_maxFreq+"\t"+m_numOfUniWords+'\t'+m_maxFreqWord+"\t"+m_title+"\t"+m_docLength+"\t"+"\n";
     }

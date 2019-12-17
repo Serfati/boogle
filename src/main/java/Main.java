@@ -30,7 +30,7 @@ public class Main extends Application {
     }
 
     public static String formatDateTimeString(Long time) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        SimpleDateFormat formatter = new SimpleDateFormat("YY-MM-dd 'at' HH:mm");
         return formatter.format(new Date(time));
     }
 

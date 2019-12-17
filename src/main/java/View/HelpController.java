@@ -1,7 +1,6 @@
 package View;
 
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -11,7 +10,6 @@ import java.util.ResourceBundle;
 
 public class HelpController implements Initializable {
     public javafx.scene.control.Label newWindowLabel;
-    //public javafx.scene.control.Label newWindowLabe2;
     public javafx.scene.control.Label MenuBar;
     public javafx.scene.control.Button OK;
     public javafx.scene.image.ImageView soundImage;
@@ -26,7 +24,6 @@ public class HelpController implements Initializable {
     public javafx.scene.control.Label solveLabel;
     public javafx.scene.control.Label extraLabel;
     public javafx.scene.control.Label resetZoomLabel;
-    public Label newWindowLabel2;
 
 
     @Override
@@ -94,7 +91,7 @@ public class HelpController implements Initializable {
 
     private void initImages() {
 
-        File file = new File("src/main/resources/searchGif.gif");
+        File file = new File("src/main/resources/googleIcon.png");
         Image image = new Image(file.toURI().toString());
         soundImage.setImage(image);
 

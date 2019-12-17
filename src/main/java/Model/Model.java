@@ -10,6 +10,9 @@ import Parser.cDocument;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.*;
@@ -25,61 +28,82 @@ public class Model extends Observable implements IModel {
     public static InvertedIndex invertedIndex;
     public static HashMap<String, DocumentIndex> documentDictionary;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
+    private final static Logger LOGGER = LogManager.getLogger(Model.class.getName());
 
 
     @Override
     public void startIndexing(String pathOfDocs, String destinationPath, boolean stm) {
+        LOGGER.log(Level.INFO, "Start Parsing and Indexing");
+
         String[] paths = pathsAreValid(pathOfDocs, destinationPath); // checks if the paths entered are valid
         if (paths != null) {
-            double start = System.currentTimeMillis();
-            stopWords = ReadFile.initStopWordsSet(paths[2]);
+            int[] results = new int[0];
+            double startEngine = System.currentTimeMillis();
+            stopWords = ReadFile.initStopWordsSet(pathOfDocs+"/stop_words.txt");
             invertedIndex = new InvertedIndex();
             documentDictionary = new HashMap<>();
-            double[] results = new double[0];
+
             try {
-                results = manage(invertedIndex, paths[0], paths[1], stm);
+                results = mainLogicUnit(invertedIndex, paths[0], paths[1], stm);
                 WriteFile.writeDictionariesToDisk(destinationPath, stm);
             } catch(Exception e) {
                 String[] update = {"Fail", "Indexing failed"};
+                LOGGER.log(Level.ERROR, "Indexing failed");
                 setChanged();
                 notifyObservers(update);
             }
-            double[] totalResults = new double[]{results[0], results[1], (System.currentTimeMillis()-start) / 60000};
+            final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine) / 60000));
+            double[] totalResults = new double[]{results[0], results[1], RUNTIME};
+            LOGGER.log(Level.INFO, "PROCESS DONE :: END INDEXING");
             setChanged();
             notifyObservers(totalResults);
         }
     }
 
-    @Override
-    public void startOver(String path) {
-        File dir = new File(path);
-        String[] update;
-        if (dir.isDirectory()) {
-            try {
-                FileUtils.cleanDirectory(dir); //delete all the files in the directory
-                update = new String[]{"Successful", "The folder is clean now"};
-            } catch(IOException e) {
-                e.printStackTrace();
-                update = new String[]{"Fail", "Cleaning the folder was unsuccessful"};
+    private int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
+        LOGGER.log(Level.INFO, "Start manager Method :: runnable");
+        int numOfDocs = 0;
+        int numOfTempPostings = 1000;
+        LinkedList<Thread> tmpPostingThread = new LinkedList<>();
+        ReadFile rf = new ReadFile();
+        int i = 0;
+        while(i < numOfTempPostings) {
+            //-------------------------ReadFile------------------------//
+            LinkedList<cDocument> l =
+                    rf.readFiles(corpusPath, i, numOfTempPostings);
+            //--------------------Thread Pool 8 cores-----------------//
+            ExecutorService pool =
+                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
+            //-------------------------Parsing------------------------//
+            ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
+                    l.stream().map(cd -> pool.submit(new Parse(cd, stem)))
+                            .collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
+            //-------------------------Arrange------------------------//
+            ConcurrentLinkedDeque<MiniDictionary> miniDicList = new ConcurrentLinkedDeque<>();
+            for(Future<MiniDictionary> fMiniDic : futureMiniDicList) {
+                miniDicList.add(fMiniDic.get());
+                numOfDocs++;
             }
-        } else {
-            update = new String[]{"Fail", "Path given is not a directory or could not be reached"};
+            //-------------------------Indexing------------------------//
+            InvertedIndex index = new InvertedIndex(miniDicList); // tempPost on Memory
+            Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = pool.submit(index); // runnable build tempPost
+            HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get(); // get it from future
+            //-------------------------WriteFile------------------------//
+            Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
+            t1.start();
+            tmpPostingThread.add(t1);
+            //-------------------------Insert Data to II------------------------//
+            insertData(miniDicList, invertedIndex);
+            pool.shutdown();
+            i++;
         }
-        setChanged();
-        notifyObservers(update);
-    }
+        for(Thread t : tmpPostingThread)
+            t.join();
 
-    @Override
-    public void showDictionary() {
-        if (invertedIndex == null) {
-            String[] update = {"Fail", "Please load the dictionary first"};
-            setChanged();
-            notifyObservers(update);
-        } else {
-            ObservableList records = invertedIndex.getRecords();
-            setChanged();
-            notifyObservers(records);
-        }
+        LOGGER.log(Level.INFO, "Start merge Method :: single");
+        mergePostings(invertedIndex, destinationPath, stem);
+
+        return new int[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
 
     @Override
@@ -90,13 +114,12 @@ public class Model extends Observable implements IModel {
         String[] update;
         if (directoryListing != null && dirSource.isDirectory()) {
             for(File file : directoryListing) { // search for the relevant file
-                if ((file.getName().equals("StemInvertedFile.txt") && stem) || (file.getName().equals("InvertedFile.txt")) && !stem) {
+                if ((file.getName().equals("SIF.txt") && stem) || (file.getName().equals("IF.txt")) && !stem) {
                     invertedIndex = new InvertedIndex(file);
                     foundInvertedIndex = true;
                 }
-                if ((file.getName().equals("StemDocumentDictionary.txt") && stem) || (file.getName().equals("DocumentDictionary.txt")) && !stem) {
+                if ((file.getName().equals("DocDic PS.txt") && stem) || (file.getName().equals("DocDic.txt")) && !stem)
                     foundDocumentDictionary = true;
-                }
             }
             if (!foundInvertedIndex || !foundDocumentDictionary) {
                 invertedIndex = null;
@@ -116,7 +139,8 @@ public class Model extends Observable implements IModel {
         File dirSource = new File(pathOfDocs);
         File[] directoryListing = dirSource.listFiles();
         if (directoryListing != null && dirSource.isDirectory()) {
-            for(File file : directoryListing) {
+            for(int i = 0, directoryListingLength = directoryListing.length; i < directoryListingLength; i++) {
+                File file = directoryListing[i];
                 if (file.isFile() && file.getName().equalsIgnoreCase("stop_words.txt"))
                     pathOfStopWords = file.getAbsolutePath();
             }
@@ -142,49 +166,7 @@ public class Model extends Observable implements IModel {
         return new String[]{pathOfDocs, destinationPath, pathOfStopWords};
     }
 
-    double[] manage(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
-        int numOfDocs = 0;
-        int numOfTempPostings = 100;
-        LinkedList<Thread> tmpPostingThread = new LinkedList<>();
-
-        for(int i = 0; i < numOfTempPostings; i++) {
-
-            ReadFile rf = new ReadFile();
-            LinkedList<cDocument> l = rf.readFiles(corpusPath, i, numOfTempPostings);
-
-            ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
-            ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList = l.stream().map(cd -> pool.submit(new Parse(cd, stem))).collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
-
-
-            ConcurrentLinkedDeque<MiniDictionary> miniDicList = new ConcurrentLinkedDeque<>();
-            for(Future<MiniDictionary> fMiniDic : futureMiniDicList) {
-                miniDicList.add(fMiniDic.get());
-                numOfDocs++;
-            }
-
-            InvertedIndex index = new InvertedIndex(miniDicList);
-            Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = pool.submit(index);
-            HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get();
-
-            Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
-            t1.start();
-            tmpPostingThread.add(t1);
-
-            insertData(miniDicList, invertedIndex);
-            pool.shutdown();
-        }
-
-
-        for(Thread t : tmpPostingThread)
-            t.join();
-
-        mergePostings(invertedIndex, destinationPath, stem);
-
-        return new double[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
-    }
-
     private void insertData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex) {
-
         miniDicList.forEach(mini -> {
             DocumentIndex cur = new DocumentIndex(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle());
             documentDictionary.put(mini.getName(), cur);
@@ -192,7 +174,7 @@ public class Model extends Observable implements IModel {
         });
     }
 
-    private void mergePostings(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) {
+    private void mergePostings(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) throws IOException {
         //save buffers for each temp file
         LinkedList<BufferedReader> bufferedReaderList = initiateBufferedReaderList(tempPostingPath);
         //download all the first sentences of each file
@@ -200,35 +182,39 @@ public class Model extends Observable implements IModel {
         char postingNum = '`';
         HashMap<String, StringBuilder> writeToPosting = new HashMap<>();
         //separate the name of the file to be with stem or not
-        String fileName = tempPostingPath+"/finalPostingStem";
+        String fileName = tempPostingPath+"/Stemmed";
         if (!stem)
-            fileName = tempPostingPath+"/finalPosting";
+            fileName = tempPostingPath+"/Unstemmed";
         do {
             int numOfAppearances = 0;
             StringBuilder finalPostingLine = new StringBuilder(); //current posting line
             String minTerm = ""+(char) 127;
             String[] saveSentences = new String[firstSentenceOfFile.length];
             //go throw all the lines currently in the array to merge them together if a certain term exists in more than 1 file
-            for(int i = 0; i < firstSentenceOfFile.length; i++) {
-                if (firstSentenceOfFile[i] != null && !firstSentenceOfFile[i].equals("")) {
-                    String[] termAndData = firstSentenceOfFile[i].split("~");
-                    int result = termAndData[0].compareToIgnoreCase(minTerm);
-                    if (result == 0) { // if it is the same term add his posting data to the old term
-                        if (Character.isLowerCase(termAndData[0].charAt(0)))
-                            finalPostingLine.replace(0, termAndData[0].length(), termAndData[0].toLowerCase());
-                        finalPostingLine.append(termAndData[2]);
-                        firstSentenceOfFile[i] = null;
-                        saveSentences[i] = termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2];
-                        numOfAppearances += Integer.parseInt(termAndData[1]);
-                    } else if (result < 0) { // if it is more lexi smaller than min term than it is time to take care of it
-                        minTerm = termAndData[0];
-                        finalPostingLine.delete(0, finalPostingLine.length());
-                        finalPostingLine.append(termAndData[0]).append("~").append(termAndData[2]);
-                        firstSentenceOfFile[i] = null;
-                        saveSentences[i] = termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2];
-                        numOfAppearances = Integer.parseInt(termAndData[1]);
+            int i = 0;
+            if (i < firstSentenceOfFile.length) {
+                do {
+                    if (firstSentenceOfFile[i] != null && !firstSentenceOfFile[i].equals("")) {
+                        String[] termAndData = firstSentenceOfFile[i].split("~");
+                        int result = termAndData[0].compareToIgnoreCase(minTerm);
+                        if (result == 0) { // if it is the same term add his posting data to the old term
+                            if (Character.isLowerCase(termAndData[0].charAt(0)))
+                                finalPostingLine.replace(0, termAndData[0].length(), termAndData[0].toLowerCase());
+                            finalPostingLine.append(termAndData[2]);
+                            firstSentenceOfFile[i] = null;
+                            saveSentences[i] = termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2];
+                            numOfAppearances += Integer.parseInt(termAndData[1]);
+                        } else if (result < 0) { // if it is more lexi smaller than min term than it is time to take care of it
+                            minTerm = termAndData[0];
+                            finalPostingLine.delete(0, finalPostingLine.length());
+                            finalPostingLine.append(termAndData[0]).append("~").append(termAndData[2]);
+                            firstSentenceOfFile[i] = null;
+                            saveSentences[i] = termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2];
+                            numOfAppearances = Integer.parseInt(termAndData[1]);
+                        }
                     }
-                }
+                    i++;
+                } while(i < firstSentenceOfFile.length);
             }
             //restore all the lines that were deleted (because they weren't the minimal term)
             restoreSentence(bufferedReaderList, minTerm, firstSentenceOfFile, saveSentences);
@@ -244,18 +230,14 @@ public class Model extends Observable implements IModel {
         WriteFile.writeFinalPosting(writeToPosting, invertedIndex, fileName, 'z');
 
         invertedIndex.deleteEntriesOfIrrelevant();
-        closeAllFiles(bufferedReaderList);
-        deleteTempFiles(tempPostingPath);
-    }
 
-    private void closeAllFiles(LinkedList<BufferedReader> bufferedReaderList) {
-        bufferedReaderList.forEach(bf -> {
-            try {
-                bf.close();
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
-        });
+        for(BufferedReader bufferedReader : bufferedReaderList)
+            bufferedReader.close();
+
+        File dirSource = new File(tempPostingPath);
+        File[] directoryListing = dirSource.listFiles();
+        if (directoryListing != null && dirSource.isDirectory())
+            Arrays.stream(directoryListing).filter(file -> file.getName().startsWith("posting")).forEachOrdered(File::delete);
     }
 
     private void lookForSameTerm(String minTerm, StringBuilder finalPostingLine, HashMap<String, StringBuilder> writeToPosting) {
@@ -342,10 +324,32 @@ public class Model extends Observable implements IModel {
         return bufferedReaderList;
     }
 
-    private void deleteTempFiles(String destPath) {
-        File dirSource = new File(destPath);
-        File[] directoryListing = dirSource.listFiles();
-        if (directoryListing != null && dirSource.isDirectory())
-            Arrays.stream(directoryListing).filter(file -> file.getName().startsWith("posting")).forEachOrdered(File::delete);
+    @Override
+    public void startOver(String path) {
+        File dir = new File(path);
+        String[] update;
+        if (dir.isDirectory()) {
+            try {
+                FileUtils.cleanDirectory(dir); //delete all the files in the directory
+                update = new String[]{"Successful", "folder is clean"};
+                LOGGER.log(Level.INFO, "folder is clean");
+            } catch(IOException e) {
+                e.printStackTrace();
+                update = new String[]{"Fail", "Faild to clean folder"};
+                LOGGER.log(Level.ERROR, "Faild to clean folder");
+            }
+        } else {
+            update = new String[]{"Fail", "Not a directory"};
+            LOGGER.log(Level.ERROR, "Not a directory");
+        }
+        setChanged();
+        notifyObservers(update);
+    }
+
+    @Override
+    public void showDictionary() {
+        ObservableList records = invertedIndex.getRecords();
+        setChanged();
+        notifyObservers(records);
     }
 }

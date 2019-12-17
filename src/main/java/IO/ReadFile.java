@@ -22,10 +22,7 @@ public class ReadFile {
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line;
-            while((line = bufferedReader.readLine()) != null) {
-                set.add(line);
-            }
+            set = bufferedReader.lines().collect(Collectors.toCollection(HashSet::new));
             bufferedReader.close();
         } catch(IOException e) {
             e.printStackTrace();
@@ -33,15 +30,16 @@ public class ReadFile {
         return set;
     }
 
-    public LinkedList<cDocument> readFiles(String pathOfDocs, int mone, int mechane) {
+    public LinkedList<cDocument> readFiles(String pathOfDocs, int j, int jumps) {
         File dir = new File(pathOfDocs);
         File[] directoryListing = dir.listFiles();
         LinkedList<cDocument> allDocsInCorpus = new LinkedList<>();
         if (directoryListing != null && dir.isDirectory()) {
-            int start = mone * directoryListing.length / mechane;
-            int end = ((mone+1) * directoryListing.length / mechane)-1;
+            int start = j * directoryListing.length / jumps;
+            int end = (j+1) * directoryListing.length / jumps;
             ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
-            LinkedList<Future<LinkedList<cDocument>>> futureDocsInFile = IntStream.rangeClosed(start, end).mapToObj(i -> pool.submit(new ReadDocuments(directoryListing[i]))).collect(Collectors.toCollection(LinkedList::new));
+            LinkedList<Future<LinkedList<cDocument>>> futureDocsInFile = IntStream.rangeClosed(start, end-1)
+                    .mapToObj(i -> pool.submit(new reader(directoryListing[i]))).collect(Collectors.toCollection(LinkedList::new));
 
             futureDocsInFile.forEach(f -> {
                 try {
@@ -57,11 +55,11 @@ public class ReadFile {
 
     //------------------------- Callable thread-----------------------------------------//
 
-    public class ReadDocuments implements Callable<LinkedList<cDocument>> {
+    class reader implements Callable<LinkedList<cDocument>> {
 
         private File file;
 
-        ReadDocuments(File fileToSeparate) {
+        reader(File fileToSeparate) {
             this.file = fileToSeparate;
         }
 

@@ -21,6 +21,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.*;
 import org.apache.commons.lang3.SystemUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.awt.*;
 import java.io.File;
@@ -35,7 +38,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ViewController implements IView, Observer, Initializable {
-
+    private final static Logger LOGGER = LogManager.getLogger(ViewController.class.getName());
     @FXML
     public ImageView saveIcon;
     public ImageView boogleLogo;
@@ -43,7 +46,6 @@ public class ViewController implements IView, Observer, Initializable {
     public ImageView generateIndexIcon;
     public ImageView settings;
     @FXML
-    public Label lbl_statusBar;
     public TableView<InvertedIndex.ShowDictionaryRecord> table_showDic;
     public TableColumn<InvertedIndex.ShowDictionaryRecord, String> tableCol_term;
     public TableColumn<InvertedIndex.ShowDictionaryRecord, Number> tableCol_count;
@@ -85,14 +87,55 @@ public class ViewController implements IView, Observer, Initializable {
 
     private void initImages() {
         setBoogleClick();
-        setClick(generateIndexIcon);
-        setClick(saveIcon);
-        setClick(settings);
-        setClick(searchTab);
+        setGenerateIndexClick(generateIndexIcon);
+        setSaveClick(saveIcon);
+        setSettingsClick(settings);
+        setSearchTabClick(searchTab);
     }
 
     public void setBoogleClick() {
         boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openGoogle());
+    }
+
+    /**
+     * This function starts the process of parse and index the dictionary
+     */
+    public void onStartClick() {
+        if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
+            AlertMaker.showErrorMessage("Error", "path can not be empty");
+        else
+            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+    }
+
+    private void setGenerateIndexClick(ImageView icon) {
+        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
+                AlertMaker.showErrorMessage("Error", "path can not be empty");
+            else
+                viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+            event.consume();
+        });
+    }
+
+    private void setSettingsClick(ImageView icon) {
+        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            help();
+            event.consume();
+        });
+    }
+
+    private void setSaveClick(ImageView icon) {
+        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            saveDictionary(new ActionEvent());
+            event.consume();
+        });
+    }
+
+    private void setSearchTabClick(ImageView icon) {
+        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            AlertMaker.showErrorMessage("Error", "Please be patient to PART B");
+            event.consume();
+        });
     }
 
     /* WORKS ONLY ON - Windows OS */
@@ -116,23 +159,6 @@ public class ViewController implements IView, Observer, Initializable {
                 e.printStackTrace();
             }
         }
-    }
-
-    /**
-     * This function starts the process of parse and index the dictionary
-     */
-    public void onStartClick() {
-        if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
-            AlertMaker.showErrorMessage("Error", "path can not be empty");
-        else
-            viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
-    }
-
-    private void setClick(ImageView icon) {
-        icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            help();
-            event.consume();
-        });
     }
 
     /**
@@ -264,6 +290,8 @@ public class ViewController implements IView, Observer, Initializable {
                         AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), toUpdate[1]);
                 } else if (toUpdate[0].equals("Successful")) {// if we received a successful message from the model
                     AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), toUpdate[1]);
+                    if (toUpdate[1].equalsIgnoreCase("The folder is clean now"))
+                        btn_startOver.setDisable(true);
                     if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary"))
                         btn_show_dictionary.setDisable(false);
                 }
@@ -273,9 +301,15 @@ public class ViewController implements IView, Observer, Initializable {
                     showDictionary((ObservableList<InvertedIndex.ShowDictionaryRecord>) arg);
             } else if (arg instanceof double[]) {
                 double[] res = (double[]) arg;
-                AlertMaker.showSimpleAlert("Summary", "Number of Documents: "+res[0]+"\n total time: "+res[2]+"m"+"\n Unique terms: "+res[1]);
+
+                AlertMaker.showSimpleAlert("Boogle Engine Analyze Summary",
+                        "Number of Documents: "+res[0]+"\nTotal runtime complex: "
+                                +res[2]+" minutes"+"\n Unique terms: "+res[1]);
                 btn_show_dictionary.setDisable(false);
+                btn_load_dictionary.setDisable(true);
                 btn_startOver.setDisable(false);
+                lbl_totalTime.setVisible(true);
+                lbl_totalTime.setText("Runtime complexity: "+res[2]+" m");
             }
         }
     }
@@ -292,6 +326,8 @@ public class ViewController implements IView, Observer, Initializable {
             if (stay != result.get()) {
                 return;
             }
+            btn_load_dictionary.setDisable(false);
+            lbl_totalTime.setVisible(false);
             viewModel.onStartOverClick(txtfld_output_location.getText());
         } else
             AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "destination path is unreachable");
@@ -301,19 +337,16 @@ public class ViewController implements IView, Observer, Initializable {
         int[] choose = {0};
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Save Dictionary");
-        alert.setContentText("Which Dictionary do you want to save?");
-        ButtonType okButton = new ButtonType("Current", ButtonBar.ButtonData.YES);
-        ButtonType noButton = new ButtonType("Original", ButtonBar.ButtonData.NO);
+        alert.setContentText("Do you want to save dictionary?");
+        ButtonType okButton = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(okButton, noButton, cancelButton);
+        alert.getButtonTypes().setAll(okButton, cancelButton);
         alert.showAndWait().ifPresent(type -> {
             if (type == okButton) //Current
                 choose[0] = 1;
-            else if (type == noButton)  //Original
-                choose[0] = 2;
         });
         if (choose[0] == 0) {
-            lbl_statusBar.setText("Save was canceled");
+            LOGGER.log(Level.INFO, "Save was canceled");
             return;
         }
         FileChooser fileChooser = new FileChooser();
@@ -328,9 +361,8 @@ public class ViewController implements IView, Observer, Initializable {
         fileChooser.setInitialFileName("myDictionary;"+formattedDate);
         File file = fileChooser.showSaveDialog(new PopupWindow() {
         });
-
         if (file != null)
-            lbl_statusBar.setText(choose[0] == 1 ? "Current dictionary saved" : "Original dictionary saved");
+            LOGGER.log(Level.INFO, "Current dictionary saved");
         event.consume();
     }
 
@@ -338,19 +370,15 @@ public class ViewController implements IView, Observer, Initializable {
      * transfers to the view model a load dictionary request
      */
     public void loadDictionary(ActionEvent event) {
-        System.out.println("loadFile");
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choose a dictionary to load");
-        File filePath = new File("./dictionaries/");
-        if (!filePath.exists())
-            filePath.mkdir();
-        fileChooser.setInitialDirectory(filePath);
-
-        File file = fileChooser.showOpenDialog(new PopupWindow() {
+        LOGGER.log(Level.INFO, "loadFile::");
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose a dictionary to load");
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        File file = directoryChooser.showDialog(new PopupWindow() {
         });
-        if (file != null && file.exists() && !file.isDirectory()) {
+        if (file != null && file.exists() && file.isDirectory()) {
             viewModel.loadDictionary(file.getAbsolutePath(), checkbox_use_stemming.isSelected());
-            lbl_statusBar.setText("Loaded "+file.getName());
+            LOGGER.log(Level.INFO, "Loaded::"+file.getName());
 
         } else
             AlertMaker.showErrorMessage("Invalid", "Please choose a vaild destination");

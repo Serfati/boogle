@@ -868,3 +868,64 @@
 2019-12-17 12:04:24 INFO  Main:29 - Boogle is closing on 2019-12-17 at 12:04:10 IST. Used for 0.23411666666666667 m
 2019-12-17 12:08:12 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:08:12 IST
 2019-12-17 12:08:58 INFO  Main:29 - Boogle is closing on 2019-12-17 at 12:08:12 IST. Used for 0.7719666666666667 m
+2019-12-17 12:16:02 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:16:02 IST
+2019-12-17 12:17:09 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:17:09 IST
+2019-12-17 12:22:03 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:22:03 IST
+2019-12-17 12:23:53 INFO  Main:29 - Boogle is closing on 2019-12-17 at 12:22:03 IST. Used for 1.8448666666666667 m
+2019-12-17 12:24:00 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:24:00 IST
+2019-12-17 12:27:14 INFO  Main:29 - Boogle is closing on 2019-12-17 at 12:24:00 IST. Used for 3.2395 m
+2019-12-17 12:27:23 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:27:23 IST
+2019-12-17 12:30:22 INFO  Main:26 - Boogle launched on 2019-12-17 at 12:30:22 IST
+2019-12-17 13:57:45 INFO  Main:29 - Boogle is closing on 2019-12-17 at 12:30:22 IST. Used for 87.3968 m
+2019-12-17 14:56:16 INFO  Main:26 - Boogle launched on 2019-12-17 at 14:56:16 IST
+2019-12-17 15:05:57 INFO  Main:29 - Boogle is closing on 2019-12-17 at 14:56:16 IST. Used for 9.686533333333333 m
+2019-12-17 15:10:36 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:10:36 IST
+2019-12-17 15:11:12 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:10:36 IST. Used for 0.5970333333333333 m
+2019-12-17 15:13:51 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:13:50 IST
+2019-12-17 15:14:12 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:13:50 IST. Used for 0.35278333333333334 m
+2019-12-17 15:14:21 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:14:21 IST
+2019-12-17 15:15:18 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:14:21 IST. Used for 0.94875 m
+2019-12-17 15:15:22 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:15:22 IST
+2019-12-17 15:15:42 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:15:22 IST. Used for 0.3305 m
+2019-12-17 15:18:04 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:18:04 IST
+2019-12-17 15:23:10 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:23:10 IST
+2019-12-17 15:23:25 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:23:10 IST. Used for 0.248 m
+2019-12-17 15:23:48 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:23:48 IST
+2019-12-17 15:27:46 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:23:48 IST. Used for 3.9689666666666668 m
+2019-12-17 15:57:33 INFO  Main:26 - Boogle launched on 2019-12-17 at 15:57:33 IST
+2019-12-17 15:57:52 INFO  ViewController:364 - loadFile::
+2019-12-17 15:57:54 INFO  ViewController:372 - Loaded::Boogle
+2019-12-17 15:58:00 INFO  ViewController:364 - loadFile::
+2019-12-17 15:58:01 INFO  ViewController:372 - Loaded::Boogle
+2019-12-17 15:58:15 INFO  Main:29 - Boogle is closing on 2019-12-17 at 15:57:33 IST. Used for 0.6997666666666666 m
+2019-12-17 16:12:27 INFO  Main:26 - Boogle launched on 2019-12-17 at 16:12:27 IST
+2019-12-17 16:12:40 INFO  Model:38 - Start Parsing and Indexing
+2019-12-17 16:12:40 INFO  Model:66 - Start manager Method :: runnable
+2019-12-17 16:13:00 INFO  Model:104 - Start merge Method :: single
+2019-12-17 16:13:02 INFO  Model:59 - PROCESS DONE :: END INDEXING
+2019-12-17 16:20:28 INFO  Main:26 - Boogle launched on 2019-12-17 at 16:20:28 IST
+2019-12-17 16:20:43 INFO  Model:39 - Start Parsing and Indexing
+2019-12-17 16:20:43 INFO  Model:69 - Start manager Method :: runnable
+2019-12-17 16:21:04 INFO  Model:107 - Start merge Method :: single
+2019-12-17 16:23:20 INFO  Main:29 - Boogle is closing on 2019-12-17 at 16:20:28 IST. Used for 2.8565 m
+2019-12-17 16:31:18 INFO  Main:26 - Boogle launched on 2019-12-17 at 16:31:18 IST
+2019-12-17 16:31:39 INFO  Model:39 - Start Parsing and Indexing
+2019-12-17 16:31:39 INFO  Model:67 - Start manager Method :: runnable
+2019-12-17 16:31:58 INFO  Model:105 - Start merge Method :: single
+2019-12-17 16:32:00 INFO  Model:60 - PROCESS DONE :: END INDEXING
+2019-12-17 16:36:59 INFO  Main:26 - Boogle launched on 2019-12-17 at 16:36:59 IST
+2019-12-17 16:37:19 INFO  Model:39 - Start Parsing and Indexing
+2019-12-17 16:37:19 INFO  Model:67 - Start manager Method :: runnable
+2019-12-17 16:37:37 INFO  Model:105 - Start merge Method :: single
+2019-12-17 16:37:40 INFO  Model:60 - PROCESS DONE :: END INDEXING
+2019-12-17 16:38:28 INFO  Model:337 - folder is clean
+2019-12-17 16:38:32 INFO  Main:29 - Boogle is closing on 2019-12-17 at 16:36:59 IST. Used for 1.5431833333333334 m
+2019-12-17 16:46:53 INFO  Main:26 - Boogle launched on 19-12-17 at 16:46
+2019-12-17 16:48:34 INFO  Model:39 - Start Parsing and Indexing
+2019-12-17 16:48:34 INFO  Model:67 - Start manager Method :: runnable
+2019-12-17 16:48:52 INFO  Model:105 - Start merge Method :: single
+2019-12-17 16:48:55 INFO  Model:60 - PROCESS DONE :: END INDEXING
+2019-12-17 16:49:22 INFO  Model:337 - folder is clean
+2019-12-17 16:49:34 INFO  Model:337 - folder is clean
+2019-12-17 16:50:27 INFO  ViewController:348 - Save was canceled
+2019-12-17 16:50:35 INFO  Main:29 - Boogle is closing on 19-12-17 at 16:46. Used for 3.69005 m

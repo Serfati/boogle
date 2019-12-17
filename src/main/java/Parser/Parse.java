@@ -80,7 +80,7 @@ public class Parse implements Callable<MiniDictionary> {
                     term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
                 } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
                     term = handlePercent(term, nextWord.pollFirst());
-                } else if (nextWord.peekFirst().equalsIgnoreCase("CM") || nextWord.peekFirst().equalsIgnoreCase("M")) {
+                } else if (nextWord.peekFirst().equalsIgnoreCase("centimeter") || nextWord.peekFirst().equalsIgnoreCase("meter")) {
                     term = handleDistance(term, Objects.requireNonNull(nextWord.pollFirst()));
                 } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
                     term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
