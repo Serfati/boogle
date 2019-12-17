@@ -1,4 +1,5 @@
-import Model.Engine.InvertedIndex;
+
+import Engine.InvertedIndex;
 import View.AlertMaker;
 import View.IView;
 import ViewModel.ViewModel;
@@ -271,7 +272,10 @@ public class ViewController implements IView, Observer, Initializable {
                 if (!l.isEmpty() && l.get(0) instanceof InvertedIndex.ShowDictionaryRecord)
                     showDictionary((ObservableList<InvertedIndex.ShowDictionaryRecord>) arg);
             } else if (arg instanceof double[]) {
+                double[] res = (double[]) arg;
+                AlertMaker.showSimpleAlert("Summary", "Number of Documents: "+res[0]+"\n total time: "+res[2]+"m"+"\n Unique terms: "+res[1]);
                 btn_show_dictionary.setDisable(false);
+                btn_startOver.setDisable(false);
             }
         }
     }
@@ -325,10 +329,8 @@ public class ViewController implements IView, Observer, Initializable {
         File file = fileChooser.showSaveDialog(new PopupWindow() {
         });
 
-        if (file != null) {
-            viewModel.saveDictionary(file);
+        if (file != null)
             lbl_statusBar.setText(choose[0] == 1 ? "Current dictionary saved" : "Original dictionary saved");
-        }
         event.consume();
     }
 

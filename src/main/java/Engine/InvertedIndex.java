@@ -1,5 +1,6 @@
-package Model.Engine;
+package Engine;
 
+import Parser.MiniDictionary;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,7 +13,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.concurrent.Callable;
@@ -21,23 +21,18 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
     // term  | num Of appearance | pointer(path of posting file, line number in the posting)
-    private ConcurrentHashMap<String, Term> invertedIndexDic;
-
+    private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
     private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
-
-    /**
-     * create a new inverted index
-     */
-    public InvertedIndex() {
-        invertedIndexDic = new ConcurrentHashMap<>();
-    }
 
     public InvertedIndex(ConcurrentLinkedDeque<MiniDictionary> minidic) {
         m_miniDicList = minidic;
     }
 
+    public InvertedIndex() {
+    }
+
+
     public InvertedIndex(File file) {
-        invertedIndexDic = new ConcurrentHashMap<>();
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -57,31 +52,35 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
         HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
-        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.m_dictionary.keySet().forEach(word -> {
-            if (toReturn.containsKey(word)) { //if the word already exists
-                Pair<Integer, StringBuilder> all = toReturn.remove(word);
-                int newShows = all.getKey()+miniDic.getFrequency(word);
-                StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
-                Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
-                toReturn.put(word, newAll);
-            } else { //if the word doesn't exist
-                int shows = miniDic.getFrequency(word);
-                StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
-                Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
-                toReturn.put(word, all);
-            }
-        }));
+        if (m_miniDicList != null) {
+            for(MiniDictionary miniDic : m_miniDicList)
+                miniDic.m_dictionary.keySet().forEach(word -> {
+                    if (toReturn.containsKey(word)) { //if the word already exists
+                        Pair<Integer, StringBuilder> all = toReturn.remove(word);
+                        int newShows = all.getKey()+miniDic.getFrequency(word);
+                        StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
+                        Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
+                        toReturn.put(word, newAll);
+                    } else { //if the word doesn't exist
+                        int shows = miniDic.getFrequency(word);
+                        StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
+                        Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
+                        toReturn.put(word, all);
+                    }
+                });
+        }
         return toReturn;
     }
 
     public void addTerm(String term) {
-        if (term.charAt(0) < 123)
-            if (invertedIndexDic.containsKey(term))
-                invertedIndexDic.get(term).increaseTermFreq(1); // if the term exist in the inverted index increase number of freqenecy
-            else {//if the term doesn't exist in the inverted index
+        if (term.charAt(0) < 123) {
+            if (!invertedIndexDic.containsKey(term)) {//if the term doesn't exist in the inverted index
                 Term first = new Term(term, 1, -1, -1);
                 invertedIndexDic.put(term, first);
+            } else {
+                invertedIndexDic.get(term).increaseTermFreq(1); // if the term exist in the inverted index increase number of freqenecy
             }
+        }
     }
 
     public void deleteEntriesOfIrrelevant() {
@@ -89,8 +88,9 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             Term cur = invertedIndexDic.get(s);
             if (cur.getNumOfAppearances() == -1) {
                 int termFreqCur = cur.getTermFreq();
-                if (invertedIndexDic.get(s.toLowerCase()) != null)
+                if (invertedIndexDic.get(s.toLowerCase()) != null) {
                     invertedIndexDic.get(s.toLowerCase()).increaseTermFreq(termFreqCur);
+                }
                 invertedIndexDic.remove(s);
             }
         }
@@ -117,19 +117,6 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         return showDictionaryRecords;
     }
 
-    public static class StringComparator implements Comparator<String> {
-        public int compare(String o1, String o2) {
-            for(int i = 0; i < o1.length() && i < o2.length(); i++) {
-                int c1 = o1.toLowerCase().charAt(i);
-                int c2 = o2.toLowerCase().charAt(i);
-                int comparison = c1-c2;
-                if (comparison != 0)
-                    return comparison;
-            }
-            return Integer.compare(o1.length(), o2.length());
-        }
-    }
-
     @Override
     public String toString() {
         StringBuilder toWrite = new StringBuilder();
@@ -139,12 +126,29 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         return toWrite.toString();
     }
 
-    class Term {
+    public class ShowDictionaryRecord {
+        private StringProperty termProperty;
+        private IntegerProperty countProperty;
 
-        private String m_word; //the term
-        private int m_termFreq; //number of documents the words appears in
-        private int m_numOfAppearances; //number of times the word has appeared
-        private int m_postingLine; //line number in the posting
+        ShowDictionaryRecord(String term, int count) {
+            this.termProperty = new SimpleStringProperty(term);
+            this.countProperty = new SimpleIntegerProperty(count);
+        }
+
+        public StringProperty getTermProperty() {
+            return termProperty;
+        }
+
+        public IntegerProperty getCountProperty() {
+            return countProperty;
+        }
+    }
+
+    public class Term {
+        private String m_word;//the term
+        private int m_termFreq;//number of documents the words appears in
+        private int m_numOfAppearances;//number of times the word has appeared
+        private int m_postingLine;//line number in the posting
 
         Term(String word, int termFreq, int numOfAppearances, int postingLine) {
             this.m_word = word;
@@ -179,28 +183,5 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         }
     }
 
-    public class ShowDictionaryRecord {
-        private String term;
-        private int count;
-        private StringProperty termProperty;
-        private IntegerProperty countProperty;
 
-        public ShowDictionaryRecord(String term, int count) {
-            this.term = term;
-            this.count = count;
-            this.termProperty = new SimpleStringProperty(term);
-            this.countProperty = new SimpleIntegerProperty(count);
-        }
-
-        public StringProperty getTermProperty() {
-            return termProperty;
-        }
-
-        public IntegerProperty getCountProperty() {
-            return countProperty;
-        }
-    }
 }
-
-
-

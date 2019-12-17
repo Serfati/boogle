@@ -19,7 +19,7 @@ public class AboutController implements Initializable {
 
     private static final String LINKED_IN = "https://www.linkedin.com/";
     private static final String FACEBOOK = "http://facebook.com/";
-    private static final String WEBSITE = "http://www.ynet.com";
+    private static final String WEBSITE = "https://www.ynet.co.il/articles/0,7340,L-5641413,00.html";
     private static final String YOUTUBE = "https://www.youtube.com/";
 
     @Override

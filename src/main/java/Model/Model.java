@@ -1,12 +1,12 @@
 package Model;
 
-import Model.Engine.DocDictionaryNode;
-import Model.Engine.InvertedIndex;
-import Model.Engine.MiniDictionary;
-import Model.IO.ReadFile;
-import Model.IO.ReadFile.cDocument;
-import Model.IO.WriteFile;
-import Model.Parser.Parse;
+import Engine.DocumentIndex;
+import Engine.InvertedIndex;
+import IO.ReadFile;
+import IO.WriteFile;
+import Parser.MiniDictionary;
+import Parser.Parse;
+import Parser.cDocument;
 import javafx.collections.ObservableList;
 import javafx.util.Pair;
 import org.apache.commons.io.FileUtils;
@@ -20,30 +20,25 @@ import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-/**
- * This class is from MVVM architecture.
- */
-
 public class Model extends Observable implements IModel {
+    public static HashSet<String> stopWords;
     public static InvertedIndex invertedIndex;
+    public static HashMap<String, DocumentIndex> documentDictionary;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
-    public static HashMap<String, DocDictionaryNode> documentDictionary;
-    public static HashSet<String> stopWords = ReadFile.initSet("/home/serfati/Desktop/1/stop_words.txt");
-    private boolean dictionaryIsStemmed = false;
+
 
     @Override
     public void startIndexing(String pathOfDocs, String destinationPath, boolean stm) {
-        String[] paths = pathsAreValid(pathOfDocs, destinationPath);
+        String[] paths = pathsAreValid(pathOfDocs, destinationPath); // checks if the paths entered are valid
         if (paths != null) {
             double start = System.currentTimeMillis();
-            dictionaryIsStemmed = stm;
-            stopWords = ReadFile.initSet(pathOfDocs+"/stop_words.txt");
+            stopWords = ReadFile.initStopWordsSet(paths[2]);
             invertedIndex = new InvertedIndex();
             documentDictionary = new HashMap<>();
-            double[] results = new double[2];
+            double[] results = new double[0];
             try {
-                results = manage(invertedIndex, documentDictionary, paths[0], paths[1], stm);
-                writeDictionariesToDisk(destinationPath, stm);
+                results = manage(invertedIndex, paths[0], paths[1], stm);
+                WriteFile.writeDictionariesToDisk(destinationPath, stm);
             } catch(Exception e) {
                 String[] update = {"Fail", "Indexing failed"};
                 setChanged();
@@ -55,22 +50,66 @@ public class Model extends Observable implements IModel {
         }
     }
 
+    @Override
+    public void startOver(String path) {
+        File dir = new File(path);
+        String[] update;
+        if (dir.isDirectory()) {
+            try {
+                FileUtils.cleanDirectory(dir); //delete all the files in the directory
+                update = new String[]{"Successful", "The folder is clean now"};
+            } catch(IOException e) {
+                e.printStackTrace();
+                update = new String[]{"Fail", "Cleaning the folder was unsuccessful"};
+            }
+        } else {
+            update = new String[]{"Fail", "Path given is not a directory or could not be reached"};
+        }
+        setChanged();
+        notifyObservers(update);
+    }
+
+    @Override
+    public void showDictionary() {
+        if (invertedIndex == null) {
+            String[] update = {"Fail", "Please load the dictionary first"};
+            setChanged();
+            notifyObservers(update);
+        } else {
+            ObservableList records = invertedIndex.getRecords();
+            setChanged();
+            notifyObservers(records);
+        }
+    }
+
+    @Override
     public void loadDictionary(String path, boolean stem) {
+        boolean foundInvertedIndex = false, foundDocumentDictionary = false;
         File dirSource = new File(path);
         File[] directoryListing = dirSource.listFiles();
         String[] update;
         if (directoryListing != null && dirSource.isDirectory()) {
-            // search for the relevant file
-            Arrays.stream(directoryListing).filter(file -> (file.getName().equals("StemInvertedFile.txt") && stem) || (file.getName().equals("InvertedFile.txt")) && !stem).forEachOrdered(file -> invertedIndex = new InvertedIndex(file));
-            invertedIndex = null;
-            update = new String[]{"Fail", "could not find one or more dictionaries"};
+            for(File file : directoryListing) { // search for the relevant file
+                if ((file.getName().equals("StemInvertedFile.txt") && stem) || (file.getName().equals("InvertedFile.txt")) && !stem) {
+                    invertedIndex = new InvertedIndex(file);
+                    foundInvertedIndex = true;
+                }
+                if ((file.getName().equals("StemDocumentDictionary.txt") && stem) || (file.getName().equals("DocumentDictionary.txt")) && !stem) {
+                    foundDocumentDictionary = true;
+                }
+            }
+            if (!foundInvertedIndex || !foundDocumentDictionary) {
+                invertedIndex = null;
+                documentDictionary = null;
+                update = new String[]{"Fail", "could not find one or more dictionaries"};
+            } else
+                update = new String[]{"Successful", "Dictionary was loaded successfully"};
         } else
             update = new String[]{"Fail", "destination path is illegal or unreachable"};
 
         setChanged();
         notifyObservers(update);
     }
-
 
     private String[] pathsAreValid(String pathOfDocs, String destinationPath) {
         String pathOfStopWords = "";
@@ -100,64 +139,22 @@ public class Model extends Observable implements IModel {
             notifyObservers(update);
             return null;
         }
-        return new String[]{pathOfDocs, destinationPath};
+        return new String[]{pathOfDocs, destinationPath, pathOfStopWords};
     }
 
-
-    @Override
-    public void startOver(String path) {
-        File dir = new File(path);
-        String[] update;
-        if (dir.isDirectory()) try {
-            FileUtils.cleanDirectory(dir);//delete all the files in the directory
-            update = new String[]{"Successful", "The folder is clean now"};
-        } catch(IOException e) {
-            e.printStackTrace();
-            update = new String[]{"Fail", "Cleaning the folder was unsuccessful"};
-        }
-        else update = new String[]{"Fail", "Path given is not a directory or could not be reached"};
-        setChanged();
-        notifyObservers(update);
-    }
-
-    @Override
-    public void showDictionary() {
-        if (invertedIndex == null) {
-            String[] update = {"Fail", "Please load the dictionary first"};
-            setChanged();
-            notifyObservers(update);
-        } else {
-            ObservableList records = invertedIndex.getRecords();
-            setChanged();
-            notifyObservers(records);
-        }
-    }
-
-    private void writeDictionariesToDisk(String destinationPath, boolean stem) {
-        Thread tInvertedFile = new Thread(() -> WriteFile.writeInvertedFile(destinationPath, invertedIndex, stem));
-        tInvertedFile.start();
-        Thread tDocs = new Thread(() -> WriteFile.writeDocDictionary(destinationPath, documentDictionary, stem));
-        tDocs.start();
-        try {
-            tInvertedFile.join();
-            tDocs.join();
-        } catch(InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    double[] manage(InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary, String corpusPath, String destinationPath, boolean stem) throws Exception {
-
+    double[] manage(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         int numOfDocs = 0;
-        int numOfTempPostings = 900;
+        int numOfTempPostings = 100;
         LinkedList<Thread> tmpPostingThread = new LinkedList<>();
 
         for(int i = 0; i < numOfTempPostings; i++) {
+
             ReadFile rf = new ReadFile();
             LinkedList<cDocument> l = rf.readFiles(corpusPath, i, numOfTempPostings);
 
             ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList = l.stream().map(cd -> pool.submit(new Parse(cd, stem))).collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
+
 
             ConcurrentLinkedDeque<MiniDictionary> miniDicList = new ConcurrentLinkedDeque<>();
             for(Future<MiniDictionary> fMiniDic : futureMiniDicList) {
@@ -172,9 +169,11 @@ public class Model extends Observable implements IModel {
             Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
             t1.start();
             tmpPostingThread.add(t1);
-            fillData(miniDicList, invertedIndex, documentDictionary);
-            //pool.shutdown();
+
+            insertData(miniDicList, invertedIndex);
+            pool.shutdown();
         }
+
 
         for(Thread t : tmpPostingThread)
             t.join();
@@ -184,28 +183,32 @@ public class Model extends Observable implements IModel {
         return new double[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
 
-    public static void fillData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex, HashMap<String, DocDictionaryNode> documentDictionary) {
-        for(MiniDictionary mini : miniDicList) {
-            DocDictionaryNode cur = new DocDictionaryNode(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle(), mini.getPrimaryWords());
-            documentDictionary.put(cur.getDocName(), cur);
+    private void insertData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex) {
+
+        miniDicList.forEach(mini -> {
+            DocumentIndex cur = new DocumentIndex(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle());
+            documentDictionary.put(mini.getName(), cur);
             mini.m_dictionary.keySet().forEach(invertedIndex::addTerm);
-        }
+        });
     }
 
     private void mergePostings(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) {
+        //save buffers for each temp file
         LinkedList<BufferedReader> bufferedReaderList = initiateBufferedReaderList(tempPostingPath);
+        //download all the first sentences of each file
         String[] firstSentenceOfFile = initiateMergingArray(bufferedReaderList);
         char postingNum = '`';
         HashMap<String, StringBuilder> writeToPosting = new HashMap<>();
+        //separate the name of the file to be with stem or not
         String fileName = tempPostingPath+"/finalPostingStem";
         if (!stem)
             fileName = tempPostingPath+"/finalPosting";
         do {
             int numOfAppearances = 0;
-            StringBuilder finalPostingLine = new StringBuilder();
+            StringBuilder finalPostingLine = new StringBuilder(); //current posting line
             String minTerm = ""+(char) 127;
             String[] saveSentences = new String[firstSentenceOfFile.length];
-
+            //go throw all the lines currently in the array to merge them together if a certain term exists in more than 1 file
             for(int i = 0; i < firstSentenceOfFile.length; i++) {
                 if (firstSentenceOfFile[i] != null && !firstSentenceOfFile[i].equals("")) {
                     String[] termAndData = firstSentenceOfFile[i].split("~");
@@ -231,43 +234,28 @@ public class Model extends Observable implements IModel {
             restoreSentence(bufferedReaderList, minTerm, firstSentenceOfFile, saveSentences);
             finalPostingLine.append("\t").append(numOfAppearances);
             if (minTerm.toLowerCase().charAt(0) > postingNum) { //write the current posting to the disk once a term with higher first letter has riched
-                writeFinalPosting(writeToPosting, invertedIndex, fileName, postingNum);
+                WriteFile.writeFinalPosting(writeToPosting, invertedIndex, fileName, postingNum);
                 writeToPosting = new HashMap<>();
                 postingNum++;
             }
             //merge terms that appeared in different case
             lookForSameTerm(finalPostingLine.toString().split("~")[0], finalPostingLine, writeToPosting);
-        } while(readingIsDone(firstSentenceOfFile) && postingNum < 'z'+1);
-        writeFinalPosting(writeToPosting, invertedIndex, fileName, 'z');
+        } while(Arrays.stream(firstSentenceOfFile).anyMatch(Objects::nonNull) && postingNum < 'z'+1);
+        WriteFile.writeFinalPosting(writeToPosting, invertedIndex, fileName, 'z');
 
         invertedIndex.deleteEntriesOfIrrelevant();
         closeAllFiles(bufferedReaderList);
         deleteTempFiles(tempPostingPath);
     }
 
-    private void writeFinalPosting(HashMap<String, StringBuilder> writeToPosting, InvertedIndex invertedIndex, String fileName, char postingNum) {
-        List<String> keys = new LinkedList<String>(writeToPosting.keySet());
-        int k = 0;
-        //set the pointers in the inverted index for each term
-        for(String word0 : keys) {
-            String toNum = writeToPosting.get(word0).toString().split("\t")[1];
-            int num = Integer.parseInt(toNum);
-            invertedIndex.setPointer(word0, k++);
-            invertedIndex.setNumOfAppearance(word0, num);
-        }
-        final HashMap<String, StringBuilder> sendToThread = new HashMap<>(writeToPosting);
-        String file = fileName+"_"+postingNum+".txt";
-        new Thread(() -> WriteFile.writeFinalPosting(file, sendToThread)).start();
-    }
-
     private void closeAllFiles(LinkedList<BufferedReader> bufferedReaderList) {
-        for(BufferedReader bf : bufferedReaderList) {
+        bufferedReaderList.forEach(bf -> {
             try {
                 bf.close();
             } catch(IOException e) {
                 e.printStackTrace();
             }
-        }
+        });
     }
 
     private void lookForSameTerm(String minTerm, StringBuilder finalPostingLine, HashMap<String, StringBuilder> writeToPosting) {
@@ -275,37 +263,34 @@ public class Model extends Observable implements IModel {
         boolean option2 = writeToPosting.containsKey(minTerm.toLowerCase());
         boolean option3 = writeToPosting.containsKey(minTerm);
         String replace;
-        if (option1) {
-
+        if (option1) { //if term appeared in upper case
+            //remove the current appearance of the term
             if (Character.isLowerCase(minTerm.charAt(0))) {
                 replace = writeToPosting.remove(minTerm.toUpperCase()).toString();
                 minTerm = minTerm.toLowerCase();
             } else {
                 replace = writeToPosting.remove(minTerm.toUpperCase()).toString();
             }
-
-            String[] separatePostingAndNumOld = replace.split("\t");
-            String[] separatePostingAndNumNew = finalPostingLine.toString().split("\t");
-            int numOfAppearance = Integer.parseInt(separatePostingAndNumOld[1])+Integer.parseInt(separatePostingAndNumNew[1]);
-            String oldPosting = separatePostingAndNumOld[0].substring(separatePostingAndNumOld[0].indexOf("~")+1);
-            String newPosting = separatePostingAndNumNew[0].substring(separatePostingAndNumNew[0].indexOf("~")+1);
-            StringBuilder allTogether = new StringBuilder(minTerm+"~"+oldPosting+newPosting+"\t"+numOfAppearance);
-            writeToPosting.put(minTerm, allTogether);
-        } else if (option3 || option2) {
+            //update the posting with old and new data
+            writeToPosting.put(minTerm, separator(minTerm, finalPostingLine, replace));
+        } else if (option3 || option2) { //if term appeared in lower case
             if (option2)
                 minTerm = minTerm.toLowerCase();
-
+            //update the posting with old and new data
             replace = writeToPosting.get(minTerm).toString();
-            String[] separatePostingAndNumOld = replace.split("\t");
-            String[] separatePostingAndNumNew = finalPostingLine.toString().split("\t");
-            int numOfAppearance = Integer.parseInt(separatePostingAndNumOld[1])+Integer.parseInt(separatePostingAndNumNew[1]);
-            String oldPosting = separatePostingAndNumOld[0].substring(separatePostingAndNumOld[0].indexOf("~")+1);
-            String newPosting = separatePostingAndNumNew[0].substring(separatePostingAndNumNew[0].indexOf("~")+1);
-            StringBuilder allTogether = new StringBuilder(minTerm+"~"+oldPosting+newPosting+"\t"+numOfAppearance);
-            writeToPosting.replace(minTerm, allTogether);
+            writeToPosting.replace(minTerm, separator(minTerm, finalPostingLine, replace));
         } else {
             writeToPosting.put(minTerm, finalPostingLine);
         }
+    }
+
+    private StringBuilder separator(String minTerm, StringBuilder finalPostingLine, String replace) {
+        String[] separatePostingAndNumOld = replace.split("\t");
+        String[] separatePostingAndNumNew = finalPostingLine.toString().split("\t");
+        int numOfAppearance = Integer.parseInt(separatePostingAndNumOld[1])+Integer.parseInt(separatePostingAndNumNew[1]);
+        String oldPosting = separatePostingAndNumOld[0].substring(separatePostingAndNumOld[0].indexOf("~")+1);
+        String newPosting = separatePostingAndNumNew[0].substring(separatePostingAndNumNew[0].indexOf("~")+1);
+        return new StringBuilder(minTerm+"~"+oldPosting+newPosting+"\t"+numOfAppearance);
     }
 
     private void restoreSentence(LinkedList<BufferedReader> bufferedReaderList, String minTerm, String[] firstSentenceOfFile, String[] saveSentences) {
@@ -320,20 +305,10 @@ public class Model extends Observable implements IModel {
         }
     }
 
-    private boolean readingIsDone(String[] firstSentenceOfFile) {
-        for(String sentence : firstSentenceOfFile) {
-            if (sentence != null)
-                return true;
-        }
-        return false;
-    }
-
     private String getNextSentence(BufferedReader bf) {
         String line = null;
         try {
-            if ((line = bf.readLine()) != null) {
-                return line;
-            }
+            if ((line = bf.readLine()) != null) return line;
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -343,7 +318,8 @@ public class Model extends Observable implements IModel {
     private String[] initiateMergingArray(LinkedList<BufferedReader> bufferedReaderList) {
         String[] firstSentenceOfFile = new String[bufferedReaderList.size()];
         int i = 0;
-        for(BufferedReader bf : bufferedReaderList) {
+        for(Iterator<BufferedReader> iterator = bufferedReaderList.iterator(); iterator.hasNext(); ) {
+            BufferedReader bf = iterator.next();
             String line = getNextSentence(bf);
             if (line != null) firstSentenceOfFile[i] = line;
             i++;
@@ -355,30 +331,21 @@ public class Model extends Observable implements IModel {
         File dirSource = new File(tempPostingPath);
         File[] directoryListing = dirSource.listFiles();
         LinkedList<BufferedReader> bufferedReaderList = new LinkedList<>();
-        if (directoryListing != null && dirSource.isDirectory()) {
-            for(File file : directoryListing) {
-                if (file.getName().startsWith("posting")) {
-                    try {
-                        bufferedReaderList.add(new BufferedReader(new FileReader(file)));
-                    } catch(FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+        if (directoryListing != null && dirSource.isDirectory())
+            Arrays.stream(directoryListing).filter(file -> file.getName().startsWith("posting")).forEach(file -> {
+                try {
+                    bufferedReaderList.add(new BufferedReader(new FileReader(file)));
+                } catch(FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-            }
-        }
+            });
         return bufferedReaderList;
     }
 
     private void deleteTempFiles(String destPath) {
         File dirSource = new File(destPath);
         File[] directoryListing = dirSource.listFiles();
-        if (directoryListing != null && dirSource.isDirectory()) {
-            for(File file : directoryListing) {
-                if (file.getName().startsWith("posting")) {
-                    file.delete();
-                }
-            }
-        }
+        if (directoryListing != null && dirSource.isDirectory())
+            Arrays.stream(directoryListing).filter(file -> file.getName().startsWith("posting")).forEachOrdered(File::delete);
     }
 }
-
