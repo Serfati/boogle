@@ -239,7 +239,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return index;
     }
 
-
     private LinkedList<String> stringToList(String[] split) {
         LinkedList<String> wordsList = new LinkedList<>();
         for(String word : split) {

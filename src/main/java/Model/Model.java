@@ -90,16 +90,17 @@ public class Model extends Observable implements IModel {
             Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = pool.submit(index); // runnable build tempPost
             HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get(); // get it from future
             //-------------------------WriteFile------------------------//
-            Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
-            t1.start();
-            tmpPostingThread.add(t1);
+            //Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
+            WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting);
+//            t1.start();
+//            tmpPostingThread.add(t1);
             //-------------------------Insert Data to II------------------------//
             insertData(miniDicList, invertedIndex);
             pool.shutdown();
             i++;
         }
-        for(Thread t : tmpPostingThread)
-            t.join();
+//        for(Thread t : tmpPostingThread)
+//            t.join();
 
         LOGGER.log(Level.INFO, "Start merge Method :: single");
         mergePostings(invertedIndex, destinationPath, stem);
