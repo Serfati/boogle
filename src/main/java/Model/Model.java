@@ -80,7 +80,8 @@ public class Model extends Observable implements IModel {
                             .collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
             //-------------------------Arrange------------------------//
             ConcurrentLinkedDeque<MiniDictionary> miniDicList = new ConcurrentLinkedDeque<>();
-            for(Future<MiniDictionary> fMiniDic : futureMiniDicList) {
+            for(Iterator<Future<MiniDictionary>> iterator = futureMiniDicList.iterator(); iterator.hasNext(); ) {
+                Future<MiniDictionary> fMiniDic = iterator.next();
                 miniDicList.add(fMiniDic.get());
                 numOfDocs++;
             }
@@ -113,7 +114,8 @@ public class Model extends Observable implements IModel {
         File[] directoryListing = dirSource.listFiles();
         String[] update;
         if (directoryListing != null && dirSource.isDirectory()) {
-            for(File file : directoryListing) { // search for the relevant file
+            for(int i = 0, directoryListingLength = directoryListing.length; i < directoryListingLength; i++) {
+                File file = directoryListing[i]; // search for the relevant file
                 if ((file.getName().equals("SIF.txt") && stem) || (file.getName().equals("IF.txt")) && !stem) {
                     invertedIndex = new InvertedIndex(file);
                     foundInvertedIndex = true;
@@ -170,7 +172,7 @@ public class Model extends Observable implements IModel {
         miniDicList.forEach(mini -> {
             DocumentIndex cur = new DocumentIndex(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle());
             documentDictionary.put(mini.getName(), cur);
-            mini.m_dictionary.keySet().forEach(invertedIndex::addTerm);
+            mini.dictionary.keySet().forEach(invertedIndex::addTerm);
         });
     }
 
@@ -325,7 +327,7 @@ public class Model extends Observable implements IModel {
     }
 
     @Override
-    public void startOver(String path) {
+    public void reset(String path) {
         File dir = new File(path);
         String[] update;
         if (dir.isDirectory()) {

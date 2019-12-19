@@ -5,121 +5,114 @@ import java.util.LinkedList;
 import java.util.Objects;
 
 public class MiniDictionary {
-    public HashMap<String, LinkedList<Integer>> m_dictionary; //string - the term ; int - TF in the doc
-    private String m_name;
-    private int m_maxFreq;
-    private String m_maxFreqWord;
-    private String m_title;
+    public HashMap<String, LinkedList<Integer>> dictionary; // term ; TF
+    private String docID;
+    private int naxFreq_count;
+    private String maxFreq_word;
+    private String docTI;
 
 
     MiniDictionary(String name, String title) {
-        m_name = name;
-        m_dictionary = new HashMap<>();
-        m_maxFreq = 0;
-        m_maxFreqWord = "";
-        m_title = title;
+        docID = name;
+        dictionary = new HashMap<>();
+        naxFreq_count = 0;
+        maxFreq_word = "";
+        docTI = title;
     }
 
     void addWord(String word, int placeInText) {
         LinkedList<Integer> currentPositions;
         //adds the word according to parsing rule 2
         int result = containsKey(word);
-        if (result == 0) {
-            if (Character.isLetter(word.charAt(0))) {
-                if (Character.isUpperCase(word.charAt(0)))
+        switch(result) {
+            case 0:
+                if (Character.isLetter(word.charAt(0))) if (Character.isUpperCase(word.charAt(0)))
                     word = word.toUpperCase();
                 else
                     word = word.toLowerCase();
-            }
-            currentPositions = new LinkedList<>();
-            currentPositions.add(placeInText);
-            m_dictionary.put(word, currentPositions);
-        } else if (result == 1) {
-            if (Character.isUpperCase(word.charAt(0))) {
-                currentPositions = m_dictionary.get(word.toUpperCase());
+                currentPositions = new LinkedList<>();
                 currentPositions.add(placeInText);
-            } else {
-                currentPositions = m_dictionary.remove(word.toUpperCase());
+                dictionary.put(word, currentPositions);
+                break;
+            case 1:
+                if (Character.isUpperCase(word.charAt(0))) {
+                    currentPositions = dictionary.get(word.toUpperCase());
+                    currentPositions.add(placeInText);
+                } else {
+                    currentPositions = dictionary.remove(word.toUpperCase());
+                    currentPositions.add(placeInText);
+                    dictionary.put(word.toLowerCase(), currentPositions);
+                }
+                break;
+            case 2:
+                word = word.toLowerCase();
+                currentPositions = dictionary.get(word);
                 currentPositions.add(placeInText);
-                m_dictionary.put(word.toLowerCase(), currentPositions);
-            }
-        } else if (result == 2) {
-            word = word.toLowerCase();
-            currentPositions = m_dictionary.get(word);
-            currentPositions.add(placeInText);
-        } else {
-            currentPositions = m_dictionary.get(word);
-            currentPositions.add(placeInText);
+                break;
+            default:
+                currentPositions = dictionary.get(word);
+                currentPositions.add(placeInText);
+                break;
         }
         //check if max freq has changed
-        if (m_maxFreq < currentPositions.size()) {
-            m_maxFreq = currentPositions.size();
-            m_maxFreqWord = word;
+        if (naxFreq_count < currentPositions.size()) {
+            naxFreq_count = currentPositions.size();
+            maxFreq_word = word;
         }
     }
 
     private int containsKey(String word) {
         String upper = word.toUpperCase();
         String lower = word.toLowerCase();
-        if (m_dictionary.containsKey(upper))
+        if (dictionary.containsKey(upper))
             return 1;
-        if (m_dictionary.containsKey(lower))
+        if (dictionary.containsKey(lower))
             return 2;
-        if (!Character.isLetter(word.charAt(0)) && m_dictionary.containsKey(word))
+        if (!Character.isLetter(word.charAt(0)) && dictionary.containsKey(word))
             return 3;
         return 0;
     }
 
     public String listOfData(String word) {
-        return ""+m_name+","+getFrequency(word)+","+printIndexes(Objects.requireNonNull(getIndexesOfWord(word)));
+        return ""+docID+","+getFrequency(word)+","+printIndexes(Objects.requireNonNull(getIndexesOfWord(word)));
     }
 
     private String printIndexes(LinkedList<Integer> indexesOfWord) {
         StringBuilder s = new StringBuilder("[");
-        for(Integer i : indexesOfWord) {
-            s.append(i).append("&");
-        }
+        indexesOfWord.forEach(i -> s.append(i).append("&"));
         s.replace(s.length()-1, s.length(), "]");
         return s.toString();
     }
 
     public int size() {
-        return m_dictionary.size();
+        return dictionary.size();
     }
 
     private LinkedList<Integer> getIndexesOfWord(String word) {
-        if (containsKey(word) != 0)
-            return m_dictionary.get(word);
-        return null;
+        return containsKey(word) != 0 ? dictionary.get(word) : null;
     }
 
     public String getMaxFreqWord() {
-        return m_maxFreqWord;
+        return maxFreq_word;
     }
 
     public String getName() {
-        return m_name;
+        return docID;
     }
 
     public int getFrequency(String word) {
-        if (size() > 0 && containsKey(word) != 0)
-            return m_dictionary.get(word).size();
-        return 0;
+        return size() > 0 && containsKey(word) != 0 ? dictionary.get(word).size() : 0;
     }
 
     public int getMaxFrequency() {
-        return m_maxFreq;
+        return naxFreq_count;
     }
 
     public int getDocLength() {
-        int count = 0;
-        for(LinkedList l : m_dictionary.values()) {
-            count += l.size();
-        }
-        return count;
+        return dictionary.values().stream().mapToInt(LinkedList::size).sum();
     }
 
     public String getTitle() {
-        return m_title;
+        return docTI;
     }
 }

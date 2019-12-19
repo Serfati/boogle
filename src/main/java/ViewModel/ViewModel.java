@@ -46,7 +46,7 @@ public class ViewModel extends Observable implements Observer {
      * @param path the path that all his contents will be deleted
      */
     public void onStartOverClick(String path) {
-        Platform.runLater(() -> model.startOver(path));
+        Platform.runLater(() -> model.reset(path));
     }
 
     /**

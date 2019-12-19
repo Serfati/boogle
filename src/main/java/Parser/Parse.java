@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
-public class Parse implements Callable<MiniDictionary> {
+public class Parse implements Callable<MiniDictionary>, IParse {
     private static String[] shortMonth = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     private static String[] longMonth = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     HashMap<String, String> monthsData;

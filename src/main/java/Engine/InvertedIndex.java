@@ -13,15 +13,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.stream.Collectors;
 
 public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
-    // term  | num Of appearance | pointer(path of posting file, line number in the posting)
     private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
+
     private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
 
     public InvertedIndex(ConcurrentLinkedDeque<MiniDictionary> minidic) {
@@ -30,7 +32,6 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
     public InvertedIndex() {
     }
-
 
     public InvertedIndex(File file) {
         try {
@@ -51,47 +52,43 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
-        HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
-        if (m_miniDicList != null) {
-            for(MiniDictionary miniDic : m_miniDicList)
-                miniDic.m_dictionary.keySet().forEach(word -> {
-                    if (toReturn.containsKey(word)) { //if the word already exists
-                        Pair<Integer, StringBuilder> all = toReturn.remove(word);
-                        int newShows = all.getKey()+miniDic.getFrequency(word);
-                        StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
-                        Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
-                        toReturn.put(word, newAll);
-                    } else { //if the word doesn't exist
-                        int shows = miniDic.getFrequency(word);
-                        StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
-                        Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
-                        toReturn.put(word, all);
-                    }
-                });
-        }
-        return toReturn;
+        HashMap<String, Pair<Integer, StringBuilder>> postingForm = new HashMap<>();
+        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.dictionary.keySet().forEach(word -> {
+            if (postingForm.containsKey(word)) { //if the word already exists
+                Pair<Integer, StringBuilder> all = postingForm.remove(word);
+                int newShows = all.getKey()+miniDic.getFrequency(word);
+                StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
+                Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
+                postingForm.put(word, newAll);
+            } else { //if the word doesn't exist
+                int shows = miniDic.getFrequency(word);
+                StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
+                Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
+                postingForm.put(word, all);
+            }
+        }));
+        return postingForm;
     }
 
     public void addTerm(String term) {
-        if (term.charAt(0) < 123) {
+        if (term.charAt(0) < 123)
             if (!invertedIndexDic.containsKey(term)) {//if the term doesn't exist in the inverted index
                 Term first = new Term(term, 1, -1, -1);
                 invertedIndexDic.put(term, first);
-            } else {
+            } else
                 invertedIndexDic.get(term).increaseTermFreq(1); // if the term exist in the inverted index increase number of freqenecy
-            }
-        }
     }
 
     public void deleteEntriesOfIrrelevant() {
         for(String s : invertedIndexDic.keySet()) {
             Term cur = invertedIndexDic.get(s);
-            if (cur.getNumOfAppearances() == -1) {
-                int termFreqCur = cur.getTermFreq();
-                if (invertedIndexDic.get(s.toLowerCase()) != null) {
-                    invertedIndexDic.get(s.toLowerCase()).increaseTermFreq(termFreqCur);
-                }
-                invertedIndexDic.remove(s);
+            switch(cur.getNumOfAppearances()) {
+                case -1:
+                    int termFreqCur = cur.getTermFreq();
+                    if (invertedIndexDic.get(s.toLowerCase()) != null)
+                        invertedIndexDic.get(s.toLowerCase()).increaseTermFreq(termFreqCur);
+                    invertedIndexDic.remove(s);
+                    break;
             }
         }
     }
@@ -119,11 +116,7 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
     @Override
     public String toString() {
-        StringBuilder toWrite = new StringBuilder();
-        for(Term cur : invertedIndexDic.values()) {
-            toWrite.append(cur.toString());
-        }
-        return toWrite.toString();
+        return invertedIndexDic.values().stream().map(Term::toString).collect(Collectors.joining());
     }
 
     public class ShowDictionaryRecord {
@@ -145,41 +138,41 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
     }
 
     public class Term {
-        private String m_word;//the term
-        private int m_termFreq;//number of documents the words appears in
-        private int m_numOfAppearances;//number of times the word has appeared
-        private int m_postingLine;//line number in the posting
+        private String word;//the term
+        private int freq;//number of documents the words appears in
+        private int numOfAppearancesTF;//number of times the word has appeared
+        private int postingLine;//line number in the posting
 
         Term(String word, int termFreq, int numOfAppearances, int postingLine) {
-            this.m_word = word;
-            this.m_termFreq = termFreq;
-            this.m_numOfAppearances = numOfAppearances;
-            this.m_postingLine = postingLine;
+            this.word = word;
+            this.freq = termFreq;
+            this.numOfAppearancesTF = numOfAppearances;
+            this.postingLine = postingLine;
         }
 
         void increaseTermFreq(int termFreqCur) {
-            m_termFreq += termFreqCur;
+            freq += termFreqCur;
         }
 
         int getTermFreq() {
-            return m_termFreq;
+            return freq;
         }
 
         int getNumOfAppearances() {
-            return m_numOfAppearances;
+            return numOfAppearancesTF;
         }
 
         void setPointer(int postingLine) {
-            this.m_postingLine = postingLine;
+            this.postingLine = postingLine;
         }
 
         void setNumOfAppearance(int numOfAppearance) {
-            this.m_numOfAppearances = numOfAppearance;
+            this.numOfAppearancesTF = numOfAppearance;
         }
 
         @Override
         public String toString() {
-            return m_word+"\t"+m_termFreq+"\t"+m_numOfAppearances+"\t"+m_postingLine+"\n";
+            return MessageFormat.format("{0}\t{1}\t{2}\t{3}\n", word, freq, numOfAppearancesTF, postingLine);
         }
     }
 

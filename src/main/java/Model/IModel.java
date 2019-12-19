@@ -4,7 +4,7 @@ public interface IModel {
 
     void startIndexing(String pathOfDocs, String destinationPath, boolean stm);
 
-    void startOver(String path);
+    void reset(String path);
 
     void showDictionary();
 
