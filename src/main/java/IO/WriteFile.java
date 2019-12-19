@@ -22,37 +22,22 @@ public class WriteFile {
         StringBuilder toWrite = new StringBuilder();
         LinkedList<String> sorted = new LinkedList<>(temporaryPosting.keySet());
         sorted.sort(new StringNaturalOrderComparator());
-        for (String s : sorted) {
+        sorted.forEach(s -> {
             int shows = temporaryPosting.get(s).getKey();
             StringBuilder stringBuilder = temporaryPosting.get(s).getValue();
             toWrite.append(s).append("~").append(shows).append("~").append(stringBuilder).append("\n");
-        }
-        File dir = new File(path);
-        File actualFile = new File(dir, "posting_" + postingNum + ".txt");
-        write(actualFile, toWrite);
+        });
+        write(new File(new File(path), "posting_"+postingNum+".txt"), toWrite);
     }
 
     public static void writeDocDictionary(String path, HashMap<String, DocumentIndex> documentDictionary, boolean stem) {
         StringBuilder toWrite = new StringBuilder();
-        for(DocumentIndex cur : documentDictionary.values()) {
-            toWrite.append(cur.toString());
-        }
-        File dir = new File(path);
-        String fileName = "DocDic PS.txt";
-        if (!stem)
-            fileName = "DocDic.txt";
-        File actualFile = new File(dir, fileName);
-        write(actualFile, toWrite);
+        documentDictionary.values().stream().map(DocumentIndex::toString).forEach(toWrite::append);
+        write(new File(new File(path), !stem ? "DocDic.txt" : "DocDic PS.txt"), toWrite);
     }
 
     public static void writeInvertedFile(String path, InvertedIndex invertedIndex, boolean stem) {
-        String toWrite = invertedIndex.toString();
-        File dir = new File(path);
-        String fileName = "SIF.txt";
-        if (!stem)
-            fileName = "IF.txt";
-        File actualFile = new File(dir,fileName);
-        write(actualFile,new StringBuilder(toWrite));
+        write(new File(new File(path), !stem ? "IF.txt" : "SIF.txt"), new StringBuilder(invertedIndex.toString()));
     }
 
     public static void writeFinalPosting(String fileName, HashMap<String, StringBuilder> finalPosting) {

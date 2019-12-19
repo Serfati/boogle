@@ -31,13 +31,12 @@ public class ReadFile {
     }
 
     public LinkedList<cDocument> readFiles(String pathOfDocs, int j, int jumps) {
-        File dir = new File(pathOfDocs);
-        File[] directoryListing = dir.listFiles();
+        File[] directoryListing = new File(pathOfDocs).listFiles();
         LinkedList<cDocument> allDocsInCorpus = new LinkedList<>();
-        if (directoryListing != null && dir.isDirectory()) {
+        if (directoryListing != null) {
             int start = j * directoryListing.length / jumps;
             int end = (j+1) * directoryListing.length / jumps;
-            ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
+            ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
             LinkedList<Future<LinkedList<cDocument>>> futureDocsInFile = IntStream.rangeClosed(start, end-1)
                     .mapToObj(i -> pool.submit(new reader(directoryListing[i]))).collect(Collectors.toCollection(LinkedList::new));
 

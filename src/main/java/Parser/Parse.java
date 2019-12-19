@@ -60,79 +60,48 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             String term = wordList.remove();
             if (isNumber(term)) { //if current term is a number
                 nextWord.add(nextWord());
-                if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && isFraction(nextWord.peekFirst().substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
-                    nextWord.addFirst(wordList.pollFirst());
-                    term += " "+nextWord.pollLast();
-                    if (isFraction(nextWord.peekFirst())) {
+                assert nextWord.peekFirst() != null;
+                if (nextWord.peekFirst() != null) {
+                    if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && isFraction(Objects.requireNonNull(nextWord.peekFirst()).substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
+                        nextWord.addFirst(wordList.pollFirst());
                         term += " "+nextWord.pollLast();
-                    }
-                } else if (isMonth(nextWord.peekFirst()) != -1 && isInteger(term)) {  //if it is rule Hei - it is a Month term
-                    String save = nextWord.pollFirst();
-                    term = handleMonthDay(save, term);
-                    if (!wordList.isEmpty()) {
-                        nextWord.add(wordList.pollFirst());
-                        if (nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && nextWord.peekFirst().length() == 4) {
-                            nextWord.addFirst(save);
+                        if (nextWord.peekFirst() != null && isFraction(nextWord.peekFirst())) {
+                            term += " "+nextWord.pollLast();
                         }
-                    }
-                } else if (nextWord.peekFirst().equalsIgnoreCase("Dollars")) {  //if it is rule Dalet - it is a Dollar term
-                    nextWord.pollFirst();
-                    term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
-                } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
-                    term = handlePercent(term, nextWord.pollFirst());
-                } else if (nextWord.peekFirst().equalsIgnoreCase("centimeter") || nextWord.peekFirst().equalsIgnoreCase("meter")) {
-                    term = handleDistance(term, Objects.requireNonNull(nextWord.pollFirst()));
-                } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
-                    term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
-                } else {
-                    term = handleNumber(Double.parseDouble(term.replace(",", "")));
-                    if (!(term.charAt(term.length()-1) > 'A' && term.charAt(term.length()-1) < 'Z')) { //if a number returned is smaller than 1000
-                        if (nextWord.peekFirst().equals("T")) {
-                            term = numberValue(Double.parseDouble(term) * 1000);
+                    } else if (isMonth(nextWord.peekFirst()) != -1 && isInteger(term)) {  //if it is rule Hei - it is a Month term
+                        term = handleMonth(nextWord, term);
+                    } else {
+                        assert nextWord.peekFirst() != null;
+                        if (nextWord.peekFirst().equalsIgnoreCase("Dollars")) {  //if it is rule Dalet - it is a Dollar term
                             nextWord.pollFirst();
-                            nextWord.addFirst("B");
-                        }
-                        if (nextWord.peekFirst().length() == 1)
-                            term += nextWord.pollFirst();
-
-                        if (!nextWord.isEmpty() && nextWord.peekFirst().equals(""))
-                            nextWord.clear();
-
-                        if (!wordList.isEmpty()) {
-                            nextWord.addLast(wordList.poll());
-                            if (isFraction(nextWord.peekFirst())) { //rule Alef 2 - fraction rule
-                                term += " "+nextWord.pollFirst();
-                                nextWord.addFirst(nextWord());
-                                if (nextWord.peekFirst().equals("Dollars"))
-                                    term += " "+nextWord.pollFirst();
-                            } else if (!wordList.isEmpty() && nextWord.peekFirst().equals("U.S")) {
-                                nextWord.addFirst(wordList.poll());
-                                if (nextWord.peekFirst().equalsIgnoreCase("dollars")) {
-                                    nextWord.clear();
-                                    double d;
-                                    if (Character.isLetter(term.charAt(term.length()-1)))
-                                        d = Double.parseDouble(term.substring(0, term.length()-1));
-                                    else
-                                        d = Double.parseDouble(term);
-                                    if (term.charAt(term.length()-1) == 'M')
-                                        d *= 1000000;
-                                    else if (term.charAt(term.length()-1) == 'B') {
-                                        d *= 1000000000;
-                                    }
-                                    term = handleDollar(d, term.contains(","));
+                            term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
+                        } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
+                            term = handlePercent(term, nextWord.pollFirst());
+                        } else if (nextWord.peekFirst().equalsIgnoreCase("centimeter") || nextWord.peekFirst().equalsIgnoreCase("meter")) {
+                            term = handleDistance(term, Objects.requireNonNull(nextWord.pollFirst()));
+                        } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
+                            term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
+                        } else {
+                            term = handleNumber(Double.parseDouble(term.replace(",", "")));
+                            if (!(term.charAt(term.length()-1) > 'A' && term.charAt(term.length()-1) < 'Z')) { //if a number returned is smaller than 1000
+                                if (nextWord.peekFirst() != null && Objects.equals(nextWord.peekFirst(), "T")) {
+                                    term = numberValue(Double.parseDouble(term) * 1000);
+                                    nextWord.pollFirst();
+                                    nextWord.addFirst("B");
                                 }
+                                if (Objects.requireNonNull(nextWord.peekFirst()).length() == 1)
+                                    term += nextWord.pollFirst();
+
+                                if (!nextWord.isEmpty() && nextWord.peekFirst().equals(""))
+                                    nextWord.clear();
+
+                                term = dealWithDollars(nextWord, term);
                             }
                         }
                     }
                 }
             } else if (term.length() >= 1 && isNumber(term.substring(1))) {
-                if (term.charAt(0) == '$') { //rule Dalet - dollar sign at the beginning of a number
-                    try {
-                        term = handleDollar(Double.parseDouble(term.substring(1).replace(",", "")), term.contains(","));
-                    } catch(NumberFormatException e) {
-                        e.getCause();
-                    }
-                }
+                term = startWithDollar(term);
 
 
             } else if (term.length() >= 1 && isNumber(term.substring(0, term.length()-1))) {
@@ -156,29 +125,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                     }
                 }
             } else if (term.equalsIgnoreCase("between")) {
-                if (!wordList.isEmpty()) {
-                    nextWord.addFirst(wordList.poll());
-                    if ((isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
-                        nextWord.addFirst(wordList.pollFirst());
-                        if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
-                            nextWord.addFirst(wordList.pollFirst());
-
-                        if (nextWord.peekFirst().equalsIgnoreCase("and") && !wordList.isEmpty()) {
-                            nextWord.addFirst(wordList.pollFirst());
-                            if (isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) {
-                                while(!nextWord.isEmpty())
-                                    term += " "+nextWord.pollLast();
-                                if (!wordList.isEmpty()) {
-                                    nextWord.addFirst(wordList.pollFirst());
-                                    if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
-                                        term += " "+nextWord.pollFirst();
-
-                                }
-                            }
-                        }
-
-                    }
-                }
+                term = handleRange(nextWord, term);
             } else if (term.contains("-") && isRangeNumbers(term)) {
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
@@ -192,21 +139,104 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             }
 
 
-            while(!nextWord.isEmpty()) {
-                String s = nextWord.pollLast();
-                if (s != null && !s.equals(""))
-                    wordList.addFirst(s);
-
-            }
-
-            if (!Model.stopWords.contains(term.toLowerCase())) {
-                if (doStemIfTermWasNotManipulated)
-                    term = ps.stemTerm(term);
-                miniDic.addWord(term, index);
-                index++;
-            }
+            index = lastCheckAndAdd(nextWord, miniDic, index, doStemIfTermWasNotManipulated, term);
         }
         return miniDic;
+    }
+
+    private String handleRange(LinkedList<String> nextWord, String term) {
+        if (!wordList.isEmpty()) {
+            nextWord.addFirst(wordList.poll());
+            if ((isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
+                nextWord.addFirst(wordList.pollFirst());
+                if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                    nextWord.addFirst(wordList.pollFirst());
+
+                if (nextWord.peekFirst().equalsIgnoreCase("and") && !wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.pollFirst());
+                    if (isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) {
+                        while(!nextWord.isEmpty())
+                            term += " "+nextWord.pollLast();
+                        if (!wordList.isEmpty()) {
+                            nextWord.addFirst(wordList.pollFirst());
+                            if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                                term += " "+nextWord.pollFirst();
+
+                        }
+                    }
+                }
+
+            }
+        }
+        return term;
+    }
+
+    private String handleMonth(LinkedList<String> nextWord, String term) {
+        String save = nextWord.pollFirst();
+        term = handleMonthDay(save, term);
+        if (!wordList.isEmpty()) {
+            nextWord.add(wordList.pollFirst());
+            if (nextWord.peekFirst() != null && nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && nextWord.peekFirst().length() == 4) {
+                nextWord.addFirst(save);
+            }
+        }
+        return term;
+    }
+
+    private String startWithDollar(String term) {
+        if (term.charAt(0) == '$') { //rule Dalet - dollar sign at the beginning of a number
+            try {
+                term = handleDollar(Double.parseDouble(term.substring(1).replace(",", "")), term.contains(","));
+            } catch(NumberFormatException e) {
+                e.getCause();
+            }
+        }
+        return term;
+    }
+
+    private String dealWithDollars(LinkedList<String> nextWord, String term) {
+        if (!wordList.isEmpty()) {
+            nextWord.addLast(wordList.poll());
+            if (isFraction(Objects.requireNonNull(nextWord.peekFirst()))) { //rule Alef 2 - fraction rule
+                term += " "+nextWord.pollFirst();
+                nextWord.addFirst(nextWord());
+                if (Objects.equals(nextWord.peekFirst(), "Dollars"))
+                    term += " "+nextWord.pollFirst();
+            } else if (!wordList.isEmpty() && Objects.equals(nextWord.peekFirst(), "U.S")) {
+                nextWord.addFirst(wordList.poll());
+                if (Objects.requireNonNull(nextWord.peekFirst()).equalsIgnoreCase("dollars")) {
+                    nextWord.clear();
+                    double d;
+                    if (Character.isLetter(term.charAt(term.length()-1)))
+                        d = Double.parseDouble(term.substring(0, term.length()-1));
+                    else
+                        d = Double.parseDouble(term);
+                    if (term.charAt(term.length()-1) == 'M')
+                        d *= 1000000;
+                    else if (term.charAt(term.length()-1) == 'B') {
+                        d *= 1000000000;
+                    }
+                    term = handleDollar(d, term.contains(","));
+                }
+            }
+        }
+        return term;
+    }
+
+    private int lastCheckAndAdd(LinkedList<String> nextWord, MiniDictionary miniDic, int index, boolean doStemIfTermWasNotManipulated, String term) {
+        while(!nextWord.isEmpty()) {
+            String s = nextWord.pollLast();
+            if (s != null && !s.equals(""))
+                wordList.addFirst(s);
+        }
+
+        if (!Model.stopWords.contains(term.toLowerCase())) {
+            if (doStemIfTermWasNotManipulated)
+                term = ps.stemTerm(term);
+            miniDic.addWord(term, index);
+            index++;
+        }
+        return index;
     }
 
 

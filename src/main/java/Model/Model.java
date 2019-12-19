@@ -54,7 +54,7 @@ public class Model extends Observable implements IModel {
             }
             final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine) / 60000));
             double[] totalResults = new double[]{results[0], results[1], RUNTIME};
-            LOGGER.log(Level.INFO, "PROCESS DONE :: END INDEXING");
+            LOGGER.log(Level.INFO, "PROCESS DONE :: END INDEXING in "+RUNTIME+" minutes");
             setChanged();
             notifyObservers(totalResults);
         }
@@ -63,7 +63,7 @@ public class Model extends Observable implements IModel {
     private int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
-        int numOfTempPostings = 1000;
+        int numOfTempPostings = 750;
         LinkedList<Thread> tmpPostingThread = new LinkedList<>();
         ReadFile rf = new ReadFile();
         int i = 0;
@@ -73,7 +73,7 @@ public class Model extends Observable implements IModel {
                     rf.readFiles(corpusPath, i, numOfTempPostings);
             //--------------------Thread Pool 8 cores-----------------//
             ExecutorService pool =
-                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
+                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
             //-------------------------Parsing------------------------//
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
                     l.stream().map(cd -> pool.submit(new Parse(cd, stem)))
@@ -281,10 +281,7 @@ public class Model extends Observable implements IModel {
         for(int i = 0; i < saveSentences.length; i++) {
             if (saveSentences[i] != null) {
                 String[] termAndData = saveSentences[i].split("~");
-                if (termAndData[0].compareToIgnoreCase(minTerm) != 0) {
-                    firstSentenceOfFile[i] = termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2];
-                } else
-                    firstSentenceOfFile[i] = getNextSentence(bufferedReaderList.get(i));
+                firstSentenceOfFile[i] = termAndData[0].compareToIgnoreCase(minTerm) != 0 ? termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2] : getNextSentence(bufferedReaderList.get(i));
             }
         }
     }
