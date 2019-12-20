@@ -53,20 +53,22 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
         HashMap<String, Pair<Integer, StringBuilder>> postingForm = new HashMap<>();
-        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.dictionary.keySet().forEach(word -> {
-            if (postingForm.containsKey(word)) { //if the word already exists
-                Pair<Integer, StringBuilder> all = postingForm.remove(word);
-                int newShows = all.getKey()+miniDic.getFrequency(word);
-                StringBuilder newSb = all.getValue().append(miniDic.listOfData(word)).append("|");
-                Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
-                postingForm.put(word, newAll);
-            } else { //if the word doesn't exist
-                int shows = miniDic.getFrequency(word);
-                StringBuilder sb = new StringBuilder(miniDic.listOfData(word)+"|");
-                Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
-                postingForm.put(word, all);
-            }
-        }));
+        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> {
+            miniDic.dictionary.keySet().forEach(word -> {
+                if (!postingForm.containsKey(word)) { //if the word doesn't exist
+                    int shows = miniDic.getFrequency(word);
+                    StringBuilder sb = new StringBuilder(miniDic.listData(word)+"|");
+                    Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
+                    postingForm.put(word, all);
+                } else { //if the word already exists
+                    Pair<Integer, StringBuilder> all = postingForm.remove(word);
+                    int newShows = all.getKey()+miniDic.getFrequency(word);
+                    StringBuilder sb2 = all.getValue().append(miniDic.listData(word)).append("|");
+                    Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, sb2);
+                    postingForm.put(word, newAll);
+                }
+            });
+        });
         return postingForm;
     }
 
@@ -102,12 +104,12 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             invertedIndexDic.get(minTerm).setPointer(lineNumber);
     }
 
-    public void setNumOfAppearance(String term, int numOfAppearance) {
+    public void setNumOfAppearances(String term, int numOfAppearance) {
         if (invertedIndexDic.containsKey(term))
             invertedIndexDic.get(term).setNumOfAppearance(numOfAppearance);
     }
 
-    public ObservableList<ShowDictionaryRecord> getRecords() {
+    public ObservableList<ShowDictionaryRecord> getRecord() {
         ObservableList<ShowDictionaryRecord> showDictionaryRecords = FXCollections.observableArrayList();
         TreeMap<String, Term> sorted = new TreeMap<>(invertedIndexDic);
         sorted.keySet().stream().map(s -> new ShowDictionaryRecord(s, invertedIndexDic.get(s).getNumOfAppearances())).forEach(showDictionaryRecords::add);
@@ -138,10 +140,10 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
     }
 
     public class Term {
-        private String word;//the term
-        private int freq;//number of documents the words appears in
-        private int numOfAppearancesTF;//number of times the word has appeared
-        private int postingLine;//line number in the posting
+        private String word;
+        private int freq;
+        private int numOfAppearancesTF;
+        private int postingLine;
 
         Term(String word, int termFreq, int numOfAppearances, int postingLine) {
             this.word = word;

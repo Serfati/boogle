@@ -1,6 +1,6 @@
 package Parser;
 /*
-this class represents a single document in the corpus containing all the data about the document
+    a single document in corpus
  */
 
 public class cDocument {

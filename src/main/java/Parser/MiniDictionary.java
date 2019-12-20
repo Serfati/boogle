@@ -1,5 +1,6 @@
 package Parser;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
@@ -11,7 +12,10 @@ public class MiniDictionary {
     private String maxFreq_word;
     private String docTI;
 
-
+    /**
+     * cTor new MiniDictionary
+     * @param name name of the file and doc
+     */
     MiniDictionary(String name, String title) {
         docID = name;
         dictionary = new HashMap<>();
@@ -20,9 +24,13 @@ public class MiniDictionary {
         docTI = title;
     }
 
+    /**
+     * adds a term to @MiniDictionary
+     * @param word a term to add
+     * @param placeInText  index of the term in text
+     */
     void addWord(String word, int placeInText) {
         LinkedList<Integer> currentPositions;
-        //adds the word according to parsing rule 2
         int result = containsKey(word);
         switch(result) {
             case 0:
@@ -60,36 +68,45 @@ public class MiniDictionary {
             maxFreq_word = word;
         }
     }
-
+    /**
+     * checks if the term has been already added
+     * @param word the term to be checked
+     * @return returns indicate
+     */
     private int containsKey(String word) {
-        String upper = word.toUpperCase();
-        String lower = word.toLowerCase();
-        if (dictionary.containsKey(upper))
-            return 1;
-        if (dictionary.containsKey(lower))
-            return 2;
         if (!Character.isLetter(word.charAt(0)) && dictionary.containsKey(word))
             return 3;
-        return 0;
+        String upper = word.toUpperCase();
+        if (dictionary.containsKey(upper))
+            return 1;
+        String lower = word.toLowerCase();
+        return dictionary.containsKey(lower) ? 2 : 0;
+
     }
 
-    public String listOfData(String word) {
-        return ""+docID+","+getFrequency(word)+","+printIndexes(Objects.requireNonNull(getIndexesOfWord(word)));
+    /**
+     * returns indexes of the term (postions)
+     * @param word the term
+     * @return the indexes of the term
+     */
+    private LinkedList<Integer> getIndexOfWord(String word) {
+        return containsKey(word) != 0 ? dictionary.get(word) : null;
     }
 
-    private String printIndexes(LinkedList<Integer> indexesOfWord) {
+    /**
+     * data about a certain term
+     * @param word the term
+     * @return data of a term
+     */
+    public String listData(String word) {
+        return MessageFormat.format("{0},{1},{2}", docID, getFrequency(word), printIndex(Objects.requireNonNull(getIndexOfWord(word))));
+    }
+
+    private String printIndex(LinkedList<Integer> indexesOfWord) {
         StringBuilder s = new StringBuilder("[");
         indexesOfWord.forEach(i -> s.append(i).append("&"));
         s.replace(s.length()-1, s.length(), "]");
         return s.toString();
-    }
-
-    public int size() {
-        return dictionary.size();
-    }
-
-    private LinkedList<Integer> getIndexesOfWord(String word) {
-        return containsKey(word) != 0 ? dictionary.get(word) : null;
     }
 
     public String getMaxFreqWord() {
@@ -98,6 +115,14 @@ public class MiniDictionary {
 
     public String getName() {
         return docID;
+    }
+
+    /**
+     *  size of the dictionary
+     * @return  size
+     */
+    public int size() {
+        return dictionary.size();
     }
 
     public int getFrequency(String word) {

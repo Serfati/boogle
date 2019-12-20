@@ -4,11 +4,11 @@ import java.text.MessageFormat;
 
 public class DocumentIndex {
     private String docId;
-    private int maxFreq_count;
-    private int uniqueWords;
-    private int docLength;
     private String docTI;
     private String maxFreq_word;
+    private int maxFreq_count;
+    private int docLength;
+    private int uniqueWords;
 
 
     public DocumentIndex(String docName, int maxFreq, int numOfUniWords, String maxFreqWord, int docLength, String title) {

@@ -8,10 +8,7 @@ interface IParse {
 
     /**
      * parse by free text
-     *
-     * @return a list of tokens
+     * @return MiniDictionary with all term of current document.
      */
     MiniDictionary parse();
-
-
 }
