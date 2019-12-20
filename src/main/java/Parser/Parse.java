@@ -13,7 +13,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     private static String[] longMonth = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     HashMap<String, String> monthsData;
     HashMap<String, String> wordsRulesData;
-    NamedEntitiesSearcher ner;
+    //NamedEntitiesSearcher ner;
     private LinkedList<String> wordList;
     private cDocument corpus_doc;
     private Stemmer ps;
@@ -52,8 +52,8 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         //TODO
         /* ------------------------------------------------------------------------- */
 
-        initMonthsData();
-        nextWordsRules();
+//        initMonthsData();
+//        nextWordsRules();
         int index = 0;
         while(!wordList.isEmpty()) {
             boolean doStemIfTermWasNotManipulated = false;
@@ -107,20 +107,20 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (term.length() >= 1 && isNumber(term.substring(0, term.length()-1))) {
                 if (!term.substring(0, term.length()-1).equals("%")) {
                     nextWord.addFirst(nextWord());
-                    if (term.substring(term.length()-1).equals("m") && nextWord.peekFirst().equals("Dollars"))
+                    if (term.substring(term.length()-1).equals("m") && Objects.requireNonNull(nextWord.peekFirst()).equals("Dollars"))
                         term = numberValue(Double.parseDouble(term.substring(0, term.length()-1).replace(",", "")))+" M "+nextWord.pollFirst();
 
                 }
             } else if (term.length() >= 2 && isNumber(term.substring(0, term.length()-2)) && term.substring(term.length()-2).equals("bn")) {
                 nextWord.addFirst(nextWord());
-                if (nextWord.peekFirst().equals("Dollars"))
+                if (Objects.requireNonNull(nextWord.peekFirst()).equals("Dollars"))
                     term = numberValue(Double.parseDouble(term.substring(0, term.length()-2).replace(",", "")) * 1000)+" M "+nextWord.pollFirst();
 
 
             } else if (isMonth(term) != -1) { // rule Vav - month year rule
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.poll());
-                    if (isNumber(nextWord.peekFirst())) {
+                    if (isNumber(Objects.requireNonNull(nextWord.peekFirst()))) {
                         term = handleMonthYear(term, nextWord.pollFirst());
                     }
                 }
@@ -129,7 +129,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (term.contains("-") && isRangeNumbers(term)) {
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
-                    if (isFraction(nextWord.peekFirst()))
+                    if (isFraction(Objects.requireNonNull(nextWord.peekFirst())))
                         term += " "+nextWord.pollFirst();
                 }
             } else if (term.contains("-")) {
@@ -147,19 +147,19 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     private String handleRange(LinkedList<String> nextWord, String term) {
         if (!wordList.isEmpty()) {
             nextWord.addFirst(wordList.poll());
-            if ((isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
+            if ((isNumber(Objects.requireNonNull(nextWord.peekFirst())) || isFraction(Objects.requireNonNull(nextWord.peekFirst()))) && !wordList.isEmpty()) {
                 nextWord.addFirst(wordList.pollFirst());
-                if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                if (isFraction(Objects.requireNonNull(nextWord.peekFirst())) && !wordList.isEmpty())
                     nextWord.addFirst(wordList.pollFirst());
 
-                if (nextWord.peekFirst().equalsIgnoreCase("and") && !wordList.isEmpty()) {
+                if (Objects.requireNonNull(nextWord.peekFirst()).equalsIgnoreCase("and") && !wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
-                    if (isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) {
+                    if (isNumber(Objects.requireNonNull(nextWord.peekFirst())) || isFraction(Objects.requireNonNull(nextWord.peekFirst()))) {
                         while(!nextWord.isEmpty())
                             term += " "+nextWord.pollLast();
                         if (!wordList.isEmpty()) {
                             nextWord.addFirst(wordList.pollFirst());
-                            if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                            if (isFraction(Objects.requireNonNull(nextWord.peekFirst())) && !wordList.isEmpty())
                                 term += " "+nextWord.pollFirst();
 
                         }
@@ -176,7 +176,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         term = handleMonthDay(save, term);
         if (!wordList.isEmpty()) {
             nextWord.add(wordList.pollFirst());
-            if (nextWord.peekFirst() != null && nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && nextWord.peekFirst().length() == 4) {
+            if (nextWord.peekFirst() != null && nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && Objects.requireNonNull(nextWord.peekFirst()).length() == 4) {
                 nextWord.addFirst(save);
             }
         }
@@ -306,7 +306,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
 
     private String handleMonthDay(String month, String day) {
         int monthNum = isMonth(month);
-        int dayNum = 0;
+        int dayNum;
         dayNum = Integer.parseInt(day);
         if (dayNum < 10)
             day = "0"+day;

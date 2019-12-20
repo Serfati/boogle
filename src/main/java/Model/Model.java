@@ -22,6 +22,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Model extends Observable implements IModel {
     public static HashSet<String> stopWords;
@@ -63,17 +64,19 @@ public class Model extends Observable implements IModel {
     private int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
-        int numOfTempPostings = 750;
+        int numOfTempPostings = 400;
         LinkedList<Thread> tmpPostingThread = new LinkedList<>();
         ReadFile rf = new ReadFile();
         int i = 0;
         while(i < numOfTempPostings) {
+            if (i == numOfTempPostings / 2)
+                LOGGER.log(Level.INFO, "mainLogicUnit Method :: DONE HALF WAY");
             //-------------------------ReadFile------------------------//
             LinkedList<cDocument> l =
                     rf.readFiles(corpusPath, i, numOfTempPostings);
             //--------------------Thread Pool 8 cores-----------------//
             ExecutorService pool =
-                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             //-------------------------Parsing------------------------//
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
                     l.stream().map(cd -> pool.submit(new Parse(cd, stem)))
@@ -90,16 +93,17 @@ public class Model extends Observable implements IModel {
             Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = pool.submit(index); // runnable build tempPost
             HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get(); // get it from future
             //-------------------------WriteFile------------------------//
-            Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
-            t1.start();
-            tmpPostingThread.add(t1);
+            //           Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
+            WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting);
+//            t1.start();
+//            tmpPostingThread.add(t1);
             //-------------------------Insert Data to II------------------------//
             insertData(miniDicList, invertedIndex);
             pool.shutdown();
             i++;
         }
-        for(Thread t : tmpPostingThread)
-            t.join();
+//        for(Thread t : tmpPostingThread)
+//            t.join();
 
         LOGGER.log(Level.INFO, "Start merge Method :: single");
         mergePostings(invertedIndex, destinationPath, stem);
@@ -120,7 +124,7 @@ public class Model extends Observable implements IModel {
                     invertedIndex = new InvertedIndex(file);
                     foundInvertedIndex = true;
                 }
-                if ((file.getName().equals("DocDic PS.txt") && stem) || (file.getName().equals("DocDic.txt")) && !stem)
+                if ((file.getName().equals("DocDic_PS.txt") && stem) || (file.getName().equals("DocDic.txt")) && !stem)
                     foundDocumentDictionary = true;
             }
             if (!foundInvertedIndex || !foundDocumentDictionary) {
@@ -222,14 +226,16 @@ public class Model extends Observable implements IModel {
             restoreSentence(bufferedReaderList, minTerm, firstSentenceOfFile, saveSentences);
             finalPostingLine.append("\t").append(numOfAppearances);
             if (minTerm.toLowerCase().charAt(0) > postingNum) { //write the current posting to the disk once a term with higher first letter has riched
-                WriteFile.writeFinalPosting(writeToPosting, invertedIndex, fileName, postingNum);
+                writeFinalPosting(writeToPosting, invertedIndex, fileName, postingNum);
                 writeToPosting = new HashMap<>();
                 postingNum++;
             }
             //merge terms that appeared in different case
             lookForSameTerm(finalPostingLine.toString().split("~")[0], finalPostingLine, writeToPosting);
         } while(Arrays.stream(firstSentenceOfFile).anyMatch(Objects::nonNull) && postingNum < 'z'+1);
-        WriteFile.writeFinalPosting(writeToPosting, invertedIndex, fileName, 'z');
+        HashMap<String, StringBuilder> finalWriteToPosting = writeToPosting;
+        String finalFileName = fileName;
+        writeFinalPosting(finalWriteToPosting, invertedIndex, finalFileName, 'z');
 
         invertedIndex.deleteEntriesOfIrrelevant();
 
@@ -278,12 +284,10 @@ public class Model extends Observable implements IModel {
     }
 
     private void restoreSentence(LinkedList<BufferedReader> bufferedReaderList, String minTerm, String[] firstSentenceOfFile, String[] saveSentences) {
-        for(int i = 0; i < saveSentences.length; i++) {
-            if (saveSentences[i] != null) {
-                String[] termAndData = saveSentences[i].split("~");
-                firstSentenceOfFile[i] = termAndData[0].compareToIgnoreCase(minTerm) != 0 ? termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2] : getNextSentence(bufferedReaderList.get(i));
-            }
-        }
+        IntStream.range(0, saveSentences.length).filter(i -> saveSentences[i] != null).forEach(i -> {
+            String[] termAndData = saveSentences[i].split("~");
+            firstSentenceOfFile[i] = termAndData[0].compareToIgnoreCase(minTerm) != 0 ? termAndData[0]+"~"+termAndData[1]+"~"+termAndData[2] : getNextSentence(bufferedReaderList.get(i));
+        });
     }
 
     private String getNextSentence(BufferedReader bf) {
@@ -301,7 +305,12 @@ public class Model extends Observable implements IModel {
         int i = 0;
         for(Iterator<BufferedReader> iterator = bufferedReaderList.iterator(); iterator.hasNext(); ) {
             BufferedReader bf = iterator.next();
-            String line = getNextSentence(bf);
+            String line = null;
+            try {
+                if ((line = bf.readLine()) != null) line = bf.readLine();
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
             if (line != null) firstSentenceOfFile[i] = line;
             i++;
         }
@@ -350,5 +359,20 @@ public class Model extends Observable implements IModel {
         ObservableList records = invertedIndex.getRecords();
         setChanged();
         notifyObservers(records);
+    }
+
+    public void writeFinalPosting(HashMap<String, StringBuilder> writeToPosting, InvertedIndex invertedIndex, String fileName, char postingNum) {
+        List<String> keys = new LinkedList<>(writeToPosting.keySet());
+        int k = 0;
+        //set the pointers in the inverted index for each term
+        for(Iterator<String> iterator = keys.iterator(); iterator.hasNext(); ) {
+            String word0 = iterator.next();
+            String toNum = writeToPosting.get(word0).toString().split("\t")[1];
+            invertedIndex.setPointer(word0, k++);
+            invertedIndex.setNumOfAppearance(word0, Integer.parseInt(toNum));
+        }
+        final HashMap<String, StringBuilder> sendToThread = new HashMap<>(writeToPosting);
+        String file = fileName+"_"+postingNum+".txt";
+        new Thread(() -> WriteFile.writeFinalPosting(file, sendToThread)).start();
     }
 }

@@ -4,3 +4,18 @@
 2019-12-19 14:37:13 INFO  Main:29 - Boogle is closing on 19-12-19 at 14:34. Used for 2.5715666666666666 m
 2019-12-19 20:21:27 INFO  Main:26 - Boogle launched on 19-12-19 at 20:21
 2019-12-19 21:14:47 INFO  Main:29 - Boogle is closing on 19-12-19 at 20:21. Used for 53.32763333333333 m
+2019-12-20 00:53:55 INFO  Main:26 - Boogle launched on 19-12-20 at 00:53
+2019-12-20 00:54:30 INFO  Model:36 - Start Parsing and Indexing
+2019-12-20 00:54:30 INFO  Model:64 - Start manager Method :: runnable
+2019-12-20 00:56:23 INFO  Main:26 - Boogle launched on 19-12-20 at 00:56
+2019-12-20 00:56:38 INFO  Model:36 - Start Parsing and Indexing
+2019-12-20 00:56:38 INFO  Model:64 - Start manager Method :: runnable
+2019-12-20 01:00:07 INFO  Model:105 - Start merge Method :: single
+2019-12-20 01:00:36 INFO  Model:57 - PROCESS DONE :: END INDEXING in 3.97 minutes
+2019-12-20 01:27:23 INFO  Main:29 - Boogle is closing on 19-12-20 at 00:56. Used for 31.004316666666668 m
+2019-12-20 01:29:45 INFO  Main:26 - Boogle launched on 19-12-20 at 01:29
+2019-12-20 01:30:01 INFO  Model:37 - Start Parsing and Indexing
+2019-12-20 01:30:01 INFO  Model:65 - Start manager Method :: runnable
+2019-12-20 01:33:19 INFO  Model:106 - Start merge Method :: single
+2019-12-20 01:33:51 INFO  Model:58 - PROCESS DONE :: END INDEXING in 3.83 minutes
+2019-12-20 01:34:22 INFO  Main:29 - Boogle is closing on 19-12-20 at 01:29. Used for 4.619933333333333 m

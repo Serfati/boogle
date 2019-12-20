@@ -36,7 +36,7 @@ public class ReadFile {
         if (directoryListing != null) {
             int start = j * directoryListing.length / jumps;
             int end = (j+1) * directoryListing.length / jumps;
-            ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             LinkedList<Future<LinkedList<cDocument>>> futureDocsInFile = IntStream.rangeClosed(start, end-1)
                     .mapToObj(i -> pool.submit(new reader(directoryListing[i]))).collect(Collectors.toCollection(LinkedList::new));
 
@@ -83,11 +83,11 @@ public class ReadFile {
                 Elements elements = doc.select("DOC");
                 //get contents of all tags in a specific doc
                 for(Element element : elements) {
-                    String docNum = element.getElementsByTag("DOCNO").text();
-                    String docDate = element.getElementsByTag("DATE1").text();
+                    String docID = element.getElementsByTag("DOCNO").text();
                     String docText = element.getElementsByTag("TEXT").text();
                     String docTitle = element.getElementsByTag("TI").text();
-                    cDocument document = new cDocument(fileToSeparate.getName(), docNum, docDate, docTitle, docText);
+                    String docDate = element.getElementsByTag("DATE1").text();
+                    cDocument document = new cDocument(fileToSeparate.getName(), docID, docDate, docTitle, docText);
                     docList.add(document);
                 }
                 return docList;

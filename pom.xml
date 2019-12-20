@@ -53,18 +53,26 @@
 
     <dependencies>
         <!-- main library coreNLP dependency -->
+        <!--        <dependency>-->
+        <!--            <groupId>edu.stanford.nlp</groupId>-->
+        <!--            <artifactId>stanford-corenlp</artifactId>-->
+        <!--            <version>3.9.2</version>-->
+        <!--        </dependency>-->
+        <!--&lt;!&ndash;        &lt;!&ndash; Stanford coreNLP 3.9.2 data dependency &ndash;&gt;&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>edu.stanford.nlp</groupId>-->
+        <!--            <artifactId>stanford-corenlp</artifactId>-->
+        <!--            <version>3.9.2</version>-->
+        <!--            <classifier>models</classifier>-->
+        <!--        </dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
         </dependency>
-        <!-- Stanford coreNLP 3.9.2 data dependency -->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
-            <classifier>models</classifier>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
