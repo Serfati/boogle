@@ -8,6 +8,7 @@ import Parser.cDocument;
 import RW.ReadFile;
 import RW.WriteFile;
 import javafx.util.Pair;
+import me.tongfei.progressbar.ProgressBar;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
@@ -66,6 +67,10 @@ public class Model extends Observable implements IModel {
         int numOfDocs = 0;
         int tempPostingValue = 400;
         ReadFile rf = new ReadFile();
+
+        ProgressBar pb = new ProgressBar("Parse & Index", 400).start();
+
+
         int i = 0;
         while(i < tempPostingValue) {
             if (i == tempPostingValue / 2)
@@ -98,7 +103,10 @@ public class Model extends Observable implements IModel {
             insertData(dicList, invertedIndex);
             threadPool.shutdown();
             i++;
+            pb.stepBy(1);
+            pb.setExtraMessage("Reading...");
         }
+        pb.stop();
 
         LOGGER.log(Level.INFO, "Start merge Method :: single");
         mergePosting(invertedIndex, destinationPath, stem);

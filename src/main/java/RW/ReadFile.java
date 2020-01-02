@@ -1,6 +1,7 @@
 package RW;
 
 import Parser.cDocument;
+import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.parser.Parser;
@@ -10,6 +11,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -86,6 +88,34 @@ public class ReadFile {
             }
             return docList;
         }
+    }
+
+   public static LinkedList<Query> readQueries(String fileToQueries) throws IOException {
+        FileInputStream fis;
+        LinkedList<Query> queries = null;
+        Document doc = Jsoup.parse(new FileInputStream(fileToQueries), null, "", Parser.xmlParser());
+       Elements elements = doc.select("top");
+       elements.forEach(element -> {
+           String queryNumber = element.getElementsByTag("num").text();
+           String queryDesc = element.getElementsByTag("desc").text();
+           String queryNarr = element.getElementsByTag("narr").text();
+           queries.add(new Query(queryNumber, queryDesc, queryNarr));
+       });
+       return queries;
+    }
+
+    public static LinkedList<String> readPostingLineAtIndex(String path, char c, List<Integer> indexes, boolean stem){
+        String filePath = path + ( stem ? "\\Stemmed\\" : "\\Unstemmed\\");
+        filePath += "_"+ c +".txt";
+        File postingFile = new File (filePath);
+        LinkedList<String> postingLines = new LinkedList<>();
+        try {
+            List l = FileUtils.readLines(postingFile);
+            for (Integer i : indexes) postingLines.add(l.get(i).toString());
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+        return postingLines;
     }
 
     /**

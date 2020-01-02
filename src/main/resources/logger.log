@@ -21,3 +21,53 @@
 2019-12-20 01:34:22 INFO  Main:29 - Boogle is closing on 19-12-20 at 01:29. Used for 4.619933333333333 m
 2019-12-20 14:36:07 INFO  Main:26 - Boogle launched on 19-12-20 at 14:36
 2019-12-20 14:36:15 INFO  Main:29 - Boogle is closing on 19-12-20 at 14:36. Used for 0.13276666666666667 m
+2019-12-20 14:39:41 INFO  Main:26 - Boogle launched on 19-12-20 at 14:39
+2019-12-20 14:39:48 INFO  Main:29 - Boogle is closing on 19-12-20 at 14:39. Used for 0.10476666666666666 m
+2019-12-21 19:18:55 INFO  Main:26 - Boogle launched on 19-12-21 at 19:18
+2019-12-21 19:19:11 INFO  Main:29 - Boogle is closing on 19-12-21 at 19:18. Used for 0.26858333333333334 m
+2019-12-22 01:24:46 INFO  Main:26 - Boogle launched on 19-12-22 at 01:24
+2019-12-22 01:25:02 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:25:02 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:28:15 INFO  Main:26 - Boogle launched on 19-12-22 at 01:28
+2019-12-22 01:28:23 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:28:23 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:32:46 INFO  Main:26 - Boogle launched on 19-12-22 at 01:32
+2019-12-22 01:32:55 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:32:55 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:36:01 INFO  Main:26 - Boogle launched on 19-12-22 at 01:36
+2019-12-22 01:36:12 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:36:12 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:39:30 INFO  Main:26 - Boogle launched on 19-12-22 at 01:39
+2019-12-22 01:39:37 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:39:37 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:41:24 INFO  Main:26 - Boogle launched on 19-12-22 at 01:41
+2019-12-22 01:41:30 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:41:30 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:45:07 INFO  Main:26 - Boogle launched on 19-12-22 at 01:45
+2019-12-22 01:45:13 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:45:13 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:46:47 INFO  Main:26 - Boogle launched on 19-12-22 at 01:46
+2019-12-22 01:46:55 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:46:55 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:49:17 INFO  Main:26 - Boogle launched on 19-12-22 at 01:49
+2019-12-22 01:49:22 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:49:22 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:50:17 INFO  Main:26 - Boogle launched on 19-12-22 at 01:50
+2019-12-22 01:50:24 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:50:24 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:51:58 INFO  Main:26 - Boogle launched on 19-12-22 at 01:51
+2019-12-22 01:52:05 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:52:05 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:54:29 INFO  Main:26 - Boogle launched on 19-12-22 at 01:54
+2019-12-22 01:54:37 INFO  Model:38 - Start Parsing and Indexing
+2019-12-22 01:54:37 INFO  Model:66 - Start manager Method :: runnable
+2019-12-22 01:56:45 INFO  Model:75 - mainLogicUnit Method :: DONE HALF WAY
+2019-12-22 01:58:53 INFO  Model:109 - Start merge Method :: single
+2019-12-22 01:59:31 INFO  Model:59 - PROCESS DONE :: END INDEXING in 4.91 minutes
+2019-12-30 19:39:21 INFO  Main:26 - Boogle launched on 20-12-30 at 19:39
+2019-12-30 19:39:55 INFO  Main:29 - Boogle is closing on 20-12-30 at 19:39. Used for 0.5662 m
+2019-12-30 19:53:35 INFO  Main:26 - Boogle launched on 20-12-30 at 19:53
+2019-12-30 19:53:44 INFO  Model:38 - Start Parsing and Indexing
+2019-12-30 19:53:44 INFO  Model:66 - Start manager Method :: runnable
+2020-01-02 10:32:00 INFO  Main:26 - Boogle launched on 20-01-02 at 10:32
+2020-01-02 10:33:10 INFO  Main:29 - Boogle is closing on 20-01-02 at 10:32. Used for 1.1691 m

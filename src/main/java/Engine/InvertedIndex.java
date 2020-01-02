@@ -141,8 +141,8 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
     public class Term {
         private String word;
-        private int freq;
-        private int numOfAppearancesTF;
+        private int freq;  // idf
+        private int numOfAppearancesTF; // tf
         private int postingLine;
 
         Term(String word, int termFreq, int numOfAppearances, int postingLine) {

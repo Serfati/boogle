@@ -1,6 +1,9 @@
 package Engine;
 
+import javafx.util.Pair;
+
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 public class DocumentIndex {
     private String docId;
@@ -9,7 +12,7 @@ public class DocumentIndex {
     private int maxFreq_count;
     private int docLength;
     private int uniqueWords;
-
+    private Pair<String, Integer>[] mainEntities; //TODO
 
     public DocumentIndex(String docName, int maxFreq, int numOfUniWords, String maxFreqWord, int docLength, String title) {
         this.maxFreq_word = maxFreqWord;
@@ -18,6 +21,16 @@ public class DocumentIndex {
         this.docId = docName;
         this.maxFreq_count = maxFreq;
         this.uniqueWords = numOfUniWords;
+    }
+
+    public int getDocLength() {
+        return docLength;
+    }
+
+    public StringBuilder getFiveEntities() {
+      StringBuilder pw = new StringBuilder();
+      Arrays.stream(mainEntities).map(Pair::getKey).forEach(pw::append);
+      return  pw;
     }
 
     @Override
