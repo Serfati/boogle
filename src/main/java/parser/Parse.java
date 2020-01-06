@@ -1,5 +1,7 @@
 package parser;
 
+import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.CoreEntityMention;
 import model.Model;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,10 +21,11 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     private boolean stm;
 
 
-    public Parse(cDocument corpus_doc, boolean stm) {
+    public Parse(cDocument corpus_doc, boolean stm, NamedEntitiesSearcher ner) {
         this.corpus_doc = corpus_doc;
         this.stm = stm;
         this.ps = new Stemmer();
+        this.ner = ner;
     }
 
     public MiniDictionary call() {
@@ -43,14 +46,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         //TODO
         /* ------------------------------------------------------------------------- */
 
-//        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
-//        ner.pipeline().annotate(doc);
-//        for(CoreEntityMention em : doc.entityMentions())
-//            miniDic.addWord(em.text().toUpperCase(), 0);
-
-        //TODO
-        /* ------------------------------------------------------------------------- */
-
+        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
+        ner.pipeline().annotate(doc);
+        for(CoreEntityMention em : doc.entityMentions())
+            miniDic.addWord(em.text().toUpperCase(), 0);
 //        initMonthsData();
 //        nextWordsRules();
         int index = 0;

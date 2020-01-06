@@ -9,6 +9,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import parser.MiniDictionary;
+import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
 import rw.ReadFile;
@@ -69,11 +70,11 @@ public class Model extends Observable implements IModel {
      public int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
-        int tempPostingValue = 400;
+        int tempPostingValue = 500;
 
         ReadFile rf = new ReadFile();
-
-        ProgressBar pb = new ProgressBar("Parse & Index", 400).start();
+        NamedEntitiesSearcher ner = new NamedEntitiesSearcher();
+        ProgressBar pb = new ProgressBar("Parse & Index", tempPostingValue).start();
 
         int i = 0;
         while(i < tempPostingValue) {
@@ -87,7 +88,7 @@ public class Model extends Observable implements IModel {
                     Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
             //-------------------------Parsing------------------------//
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
-                    l.stream().map(cd -> threadPool.submit(new Parse(cd, stem)))
+                    l.stream().map(cd -> threadPool.submit(new Parse(cd, stem, ner)))
                             .collect(Collectors.toCollection(ConcurrentLinkedDeque::new));
             //-------------------------Arrange------------------------//
             ConcurrentLinkedDeque<MiniDictionary> dicList = new ConcurrentLinkedDeque<>();

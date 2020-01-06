@@ -1,7 +1,6 @@
 package ui;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import indexer.InvertedIndex;
@@ -72,8 +71,7 @@ public class UIController implements IView, Observer, Initializable {
     private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
-    @FXML
-    private JFXSpinner progressSpinner;
+
 
     /**
      * constructor of view, connect the view to the viewModel
@@ -108,9 +106,7 @@ public class UIController implements IView, Observer, Initializable {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
         else {
-            progressSpinner.setVisible(true);
             viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
-            progressSpinner.setVisible(false);
         }
     }
 
@@ -122,7 +118,6 @@ public class UIController implements IView, Observer, Initializable {
                 viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
             event.consume();
         });
-
     }
 
     private void setSettingsClick(ImageView icon) {

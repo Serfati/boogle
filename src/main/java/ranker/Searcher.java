@@ -1,8 +1,5 @@
 package ranker;
 
-import parser.MiniDictionary;
-import parser.Parse;
-import parser.cDocument;
 import rw.Query;
 
 import java.util.HashMap;
@@ -29,8 +26,8 @@ public class Searcher implements Callable<LinkedList<String>> {
     }
 
     private LinkedList<String> getQueryResults() {
-        Parse p = new Parse(new cDocument("", "", "", "", q.getQueryText()), useStemming);
-        MiniDictionary md = p.parse();
+//        Parse p = new Parse(new cDocument("", "", "", "", q.getQueryText()), useStemming);
+//        MiniDictionary md = p.parse();
 
         HashMap<String, Integer> wordsCountInQuery = null;
 

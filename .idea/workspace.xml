@@ -8,17 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5a526c18-b9ae-4b27-9de6-d6434c5eb020" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/parser/Parse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/Parse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/SearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ui/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ui.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dark-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dark-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/AlertMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/AlertMaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logger.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/help.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +206,7 @@
       <workItem from="1577727535057" duration="968000" />
       <workItem from="1577950112420" duration="1724000" />
       <workItem from="1577955497803" duration="10109000" />
-      <workItem from="1578336586197" duration="11531000" />
+      <workItem from="1578336586197" duration="13706000" />
     </task>
     <task id="LOCAL-00001" summary="1.12">
       <created>1575224365858</created>
@@ -416,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578344105696</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="6.1 part 2 UI">
+      <created>1578348926011</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1578348926011</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,36 +502,36 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="1177" y="303" width="524" height="499" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1576423740650" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1578344105307">
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1578348925820">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="503" y="146" key="CommitChangelistDialog2/65.27.1301.741@65.27.1301.741" timestamp="1576052559931" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1578344105307" />
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1578348925820" />
     <state x="828" y="310" width="600" height="484" key="FileChooserDialogImpl" timestamp="1577954392501">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="600" y="226" width="306" height="341" key="FileChooserDialogImpl/65.27.1301.741@65.27.1301.741" timestamp="1575370987679" />
     <state x="828" y="310" width="600" height="484" key="FileChooserDialogImpl/65.27.1855.1053@65.27.1855.1053" timestamp="1577954392501" />
-    <state width="1159" height="286" key="GridCell.Tab.0.bottom" timestamp="1578348860363">
+    <state width="1159" height="224" key="GridCell.Tab.0.bottom" timestamp="1578350976950">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.bottom/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1159" height="286" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1578348860363" />
-    <state width="1159" height="286" key="GridCell.Tab.0.center" timestamp="1578348860362">
+    <state width="1159" height="224" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1578350976950" />
+    <state width="1159" height="224" key="GridCell.Tab.0.center" timestamp="1578350976949">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.center/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1159" height="286" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1578348860362" />
-    <state width="1159" height="286" key="GridCell.Tab.0.left" timestamp="1578348860362">
+    <state width="1159" height="224" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1578350976949" />
+    <state width="1159" height="224" key="GridCell.Tab.0.left" timestamp="1578350976949">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.left/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1159" height="286" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1578348860362" />
-    <state width="1159" height="286" key="GridCell.Tab.0.right" timestamp="1578348860362">
+    <state width="1159" height="224" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1578350976949" />
+    <state width="1159" height="224" key="GridCell.Tab.0.right" timestamp="1578350976949">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.right/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1159" height="286" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1578348860362" />
+    <state width="1159" height="224" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1578350976949" />
     <state width="1813" height="309" key="GridCell.Tab.1.bottom" timestamp="1576586559649">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>

@@ -275,3 +275,24 @@
 2020-01-07 00:14:20 INFO  Main:28 - Boogle launched on 20-01-07 at 00:14
 2020-01-07 00:14:29 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:14:29 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:30:18 INFO  Main:28 - Boogle launched on 20-01-07 at 00:30
+2020-01-07 00:31:23 INFO  Main:28 - Boogle launched on 20-01-07 at 00:31
+2020-01-07 00:33:47 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:31. Used for 2.4071666666666665 m
+2020-01-07 00:34:28 INFO  Main:28 - Boogle launched on 20-01-07 at 00:34
+2020-01-07 00:35:04 INFO  UIController:401 - loadFile::
+2020-01-07 00:37:00 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:34. Used for 2.52125 m
+2020-01-07 00:38:36 INFO  Main:28 - Boogle launched on 20-01-07 at 00:38
+2020-01-07 00:38:42 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:38. Used for 0.09891666666666667 m
+2020-01-07 00:39:08 INFO  Main:28 - Boogle launched on 20-01-07 at 00:39
+2020-01-07 00:45:04 INFO  Main:28 - Boogle launched on 20-01-07 at 00:45
+2020-01-07 00:45:08 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:45. Used for 0.0761 m
+2020-01-07 00:45:48 INFO  Main:28 - Boogle launched on 20-01-07 at 00:45
+2020-01-07 00:46:21 INFO  Main:28 - Boogle launched on 20-01-07 at 00:46
+2020-01-07 00:46:47 INFO  Main:28 - Boogle launched on 20-01-07 at 00:46
+2020-01-07 00:47:15 INFO  Main:28 - Boogle launched on 20-01-07 at 00:47
+2020-01-07 00:47:20 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 00:47:20 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 00:49:20 INFO  Main:28 - Boogle launched on 20-01-07 at 00:49
+2020-01-07 00:49:37 INFO  Main:28 - Boogle launched on 20-01-07 at 00:49
+2020-01-07 00:49:45 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 00:49:45 INFO  Model:71 - Start manager Method :: runnable
