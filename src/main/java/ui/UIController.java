@@ -1,6 +1,7 @@
 package ui;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
 import indexer.InvertedIndex;
@@ -37,8 +38,8 @@ import java.util.Observer;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ViewController implements IView, Observer, Initializable {
-    private final static Logger LOGGER = LogManager.getLogger(ViewController.class.getName());
+public class UIController implements IView, Observer, Initializable {
+    private final static Logger LOGGER = LogManager.getLogger(UIController.class.getName());
     @FXML
     public ImageView saveIcon;
     public ImageView boogleLogo;
@@ -71,6 +72,8 @@ public class ViewController implements IView, Observer, Initializable {
     private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
+    @FXML
+    private JFXSpinner progressSpinner;
 
     /**
      * constructor of view, connect the view to the viewModel
@@ -104,8 +107,11 @@ public class ViewController implements IView, Observer, Initializable {
     public void onStartClick() {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
-        else
+        else {
+            progressSpinner.setVisible(true);
             viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
+            progressSpinner.setVisible(false);
+        }
     }
 
     private void setGenerateIndexClick(ImageView icon) {
@@ -116,6 +122,7 @@ public class ViewController implements IView, Observer, Initializable {
                 viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
             event.consume();
         });
+
     }
 
     private void setSettingsClick(ImageView icon) {
@@ -239,7 +246,7 @@ public class ViewController implements IView, Observer, Initializable {
             e.printStackTrace();
             showAlert();
         }
-        searchStage.setTitle("Search Engine Window");
+        searchStage.setTitle("BOOGLE");
         Scene scene = new Scene(root, 842, 456);
         scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         searchStage.setScene(scene);
@@ -252,11 +259,10 @@ public class ViewController implements IView, Observer, Initializable {
         Stage helpStage = new Stage();
         helpStage.setAlwaysOnTop(true);
         helpStage.setResizable(true);
-        helpStage.setTitle("Help Window");
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../settings.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../help.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();

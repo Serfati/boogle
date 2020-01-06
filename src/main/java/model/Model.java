@@ -25,6 +25,8 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static java.lang.System.exit;
+
 public class Model extends Observable implements IModel {
     public static HashSet<String> stopWords;
     public static InvertedIndex invertedIndex;
@@ -53,6 +55,8 @@ public class Model extends Observable implements IModel {
             LOGGER.log(Level.ERROR, "Indexing failed");
             setChanged();
             notifyObservers(update);
+            e.printStackTrace();
+            exit(0);
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine) / 60000));
         double[] totalResults = new double[]{results[0], results[1], RUNTIME};

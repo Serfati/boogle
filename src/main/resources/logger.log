@@ -1,210 +1,277 @@
-2019-12-19 14:34:38 INFO  Main:26 - Boogle launched on 19-12-19 at 14:34
-2019-12-19 14:35:49 INFO  ui.ViewController:373 - loadFile::
-2019-12-19 14:36:49 INFO  ui.ViewController:381 - Loaded::Out
-2019-12-19 14:37:13 INFO  Main:29 - Boogle is closing on 19-12-19 at 14:34. Used for 2.5715666666666666 m
-2019-12-19 20:21:27 INFO  Main:26 - Boogle launched on 19-12-19 at 20:21
-2019-12-19 21:14:47 INFO  Main:29 - Boogle is closing on 19-12-19 at 20:21. Used for 53.32763333333333 m
-2019-12-20 00:53:55 INFO  Main:26 - Boogle launched on 19-12-20 at 00:53
+2019-12-19 14:34:38 INFO  ui.Main:26 - Boogle launched on 19-12-19 at 14:34
+2019-12-19 14:35:49 INFO  ui.UIController:373 - loadFile::
+2019-12-19 14:36:49 INFO  ui.UIController:381 - Loaded::Out
+2019-12-19 14:37:13 INFO  ui.Main:29 - Boogle is closing on 19-12-19 at 14:34. Used for 2.5715666666666666 m
+2019-12-19 20:21:27 INFO  ui.Main:26 - Boogle launched on 19-12-19 at 20:21
+2019-12-19 21:14:47 INFO  ui.Main:29 - Boogle is closing on 19-12-19 at 20:21. Used for 53.32763333333333 m
+2019-12-20 00:53:55 INFO  ui.Main:26 - Boogle launched on 19-12-20 at 00:53
 2019-12-20 00:54:30 INFO  model:36 - Start Parsing and Indexing
 2019-12-20 00:54:30 INFO  model:64 - Start manager Method :: runnable
-2019-12-20 00:56:23 INFO  Main:26 - Boogle launched on 19-12-20 at 00:56
+2019-12-20 00:56:23 INFO  ui.Main:26 - Boogle launched on 19-12-20 at 00:56
 2019-12-20 00:56:38 INFO  model:36 - Start Parsing and Indexing
 2019-12-20 00:56:38 INFO  model:64 - Start manager Method :: runnable
 2019-12-20 01:00:07 INFO  model:105 - Start merge Method :: single
 2019-12-20 01:00:36 INFO  model:57 - PROCESS DONE :: END INDEXING in 3.97 minutes
-2019-12-20 01:27:23 INFO  Main:29 - Boogle is closing on 19-12-20 at 00:56. Used for 31.004316666666668 m
-2019-12-20 01:29:45 INFO  Main:26 - Boogle launched on 19-12-20 at 01:29
+2019-12-20 01:27:23 INFO  ui.Main:29 - Boogle is closing on 19-12-20 at 00:56. Used for 31.004316666666668 m
+2019-12-20 01:29:45 INFO  ui.Main:26 - Boogle launched on 19-12-20 at 01:29
 2019-12-20 01:30:01 INFO  model:37 - Start Parsing and Indexing
 2019-12-20 01:30:01 INFO  model:65 - Start manager Method :: runnable
 2019-12-20 01:33:19 INFO  model:106 - Start merge Method :: single
 2019-12-20 01:33:51 INFO  model:58 - PROCESS DONE :: END INDEXING in 3.83 minutes
-2019-12-20 01:34:22 INFO  Main:29 - Boogle is closing on 19-12-20 at 01:29. Used for 4.619933333333333 m
-2019-12-20 14:36:07 INFO  Main:26 - Boogle launched on 19-12-20 at 14:36
-2019-12-20 14:36:15 INFO  Main:29 - Boogle is closing on 19-12-20 at 14:36. Used for 0.13276666666666667 m
-2019-12-20 14:39:41 INFO  Main:26 - Boogle launched on 19-12-20 at 14:39
-2019-12-20 14:39:48 INFO  Main:29 - Boogle is closing on 19-12-20 at 14:39. Used for 0.10476666666666666 m
-2019-12-21 19:18:55 INFO  Main:26 - Boogle launched on 19-12-21 at 19:18
-2019-12-21 19:19:11 INFO  Main:29 - Boogle is closing on 19-12-21 at 19:18. Used for 0.26858333333333334 m
-2019-12-22 01:24:46 INFO  Main:26 - Boogle launched on 19-12-22 at 01:24
+2019-12-20 01:34:22 INFO  ui.Main:29 - Boogle is closing on 19-12-20 at 01:29. Used for 4.619933333333333 m
+2019-12-20 14:36:07 INFO  ui.Main:26 - Boogle launched on 19-12-20 at 14:36
+2019-12-20 14:36:15 INFO  ui.Main:29 - Boogle is closing on 19-12-20 at 14:36. Used for 0.13276666666666667 m
+2019-12-20 14:39:41 INFO  ui.Main:26 - Boogle launched on 19-12-20 at 14:39
+2019-12-20 14:39:48 INFO  ui.Main:29 - Boogle is closing on 19-12-20 at 14:39. Used for 0.10476666666666666 m
+2019-12-21 19:18:55 INFO  ui.Main:26 - Boogle launched on 19-12-21 at 19:18
+2019-12-21 19:19:11 INFO  ui.Main:29 - Boogle is closing on 19-12-21 at 19:18. Used for 0.26858333333333334 m
+2019-12-22 01:24:46 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:24
 2019-12-22 01:25:02 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:25:02 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:28:15 INFO  Main:26 - Boogle launched on 19-12-22 at 01:28
+2019-12-22 01:28:15 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:28
 2019-12-22 01:28:23 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:28:23 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:32:46 INFO  Main:26 - Boogle launched on 19-12-22 at 01:32
+2019-12-22 01:32:46 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:32
 2019-12-22 01:32:55 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:32:55 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:36:01 INFO  Main:26 - Boogle launched on 19-12-22 at 01:36
+2019-12-22 01:36:01 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:36
 2019-12-22 01:36:12 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:36:12 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:39:30 INFO  Main:26 - Boogle launched on 19-12-22 at 01:39
+2019-12-22 01:39:30 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:39
 2019-12-22 01:39:37 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:39:37 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:41:24 INFO  Main:26 - Boogle launched on 19-12-22 at 01:41
+2019-12-22 01:41:24 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:41
 2019-12-22 01:41:30 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:41:30 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:45:07 INFO  Main:26 - Boogle launched on 19-12-22 at 01:45
+2019-12-22 01:45:07 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:45
 2019-12-22 01:45:13 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:45:13 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:46:47 INFO  Main:26 - Boogle launched on 19-12-22 at 01:46
+2019-12-22 01:46:47 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:46
 2019-12-22 01:46:55 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:46:55 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:49:17 INFO  Main:26 - Boogle launched on 19-12-22 at 01:49
+2019-12-22 01:49:17 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:49
 2019-12-22 01:49:22 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:49:22 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:50:17 INFO  Main:26 - Boogle launched on 19-12-22 at 01:50
+2019-12-22 01:50:17 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:50
 2019-12-22 01:50:24 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:50:24 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:51:58 INFO  Main:26 - Boogle launched on 19-12-22 at 01:51
+2019-12-22 01:51:58 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:51
 2019-12-22 01:52:05 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:52:05 INFO  model:66 - Start manager Method :: runnable
-2019-12-22 01:54:29 INFO  Main:26 - Boogle launched on 19-12-22 at 01:54
+2019-12-22 01:54:29 INFO  ui.Main:26 - Boogle launched on 19-12-22 at 01:54
 2019-12-22 01:54:37 INFO  model:38 - Start Parsing and Indexing
 2019-12-22 01:54:37 INFO  model:66 - Start manager Method :: runnable
 2019-12-22 01:56:45 INFO  model:75 - mainLogicUnit Method :: DONE HALF WAY
 2019-12-22 01:58:53 INFO  model:109 - Start merge Method :: single
 2019-12-22 01:59:31 INFO  model:59 - PROCESS DONE :: END INDEXING in 4.91 minutes
-2019-12-30 19:39:21 INFO  Main:26 - Boogle launched on 20-12-30 at 19:39
-2019-12-30 19:39:55 INFO  Main:29 - Boogle is closing on 20-12-30 at 19:39. Used for 0.5662 m
-2019-12-30 19:53:35 INFO  Main:26 - Boogle launched on 20-12-30 at 19:53
+2019-12-30 19:39:21 INFO  ui.Main:26 - Boogle launched on 20-12-30 at 19:39
+2019-12-30 19:39:55 INFO  ui.Main:29 - Boogle is closing on 20-12-30 at 19:39. Used for 0.5662 m
+2019-12-30 19:53:35 INFO  ui.Main:26 - Boogle launched on 20-12-30 at 19:53
 2019-12-30 19:53:44 INFO  model:38 - Start Parsing and Indexing
 2019-12-30 19:53:44 INFO  model:66 - Start manager Method :: runnable
-2020-01-02 10:32:00 INFO  Main:26 - Boogle launched on 20-01-02 at 10:32
-2020-01-02 10:33:10 INFO  Main:29 - Boogle is closing on 20-01-02 at 10:32. Used for 1.1691 m
-2020-01-02 13:55:16 INFO  Main:26 - Boogle launched on 20-01-02 at 13:55
+2020-01-02 10:32:00 INFO  ui.Main:26 - Boogle launched on 20-01-02 at 10:32
+2020-01-02 10:33:10 INFO  ui.Main:29 - Boogle is closing on 20-01-02 at 10:32. Used for 1.1691 m
+2020-01-02 13:55:16 INFO  ui.Main:26 - Boogle launched on 20-01-02 at 13:55
 2020-01-02 13:55:46 INFO  model:38 - Start Parsing and Indexing
 2020-01-02 13:55:46 INFO  model:66 - Start manager Method :: runnable
-2020-01-02 14:09:00 INFO  Main:26 - Boogle launched on 20-01-02 at 14:09
-2020-01-02 14:22:39 INFO  Main:29 - Boogle is closing on 20-01-02 at 14:09. Used for 13.657516666666666 m
-2020-01-06 15:14:45 INFO  Main:27 - Boogle launched on 20-01-06 at 15:14
-2020-01-06 15:15:12 INFO  Main:27 - Boogle launched on 20-01-06 at 15:15
-2020-01-06 15:15:56 INFO  Main:31 - Boogle launched on 20-01-06 at 15:15
-2020-01-06 15:18:21 INFO  Main:31 - Boogle launched on 20-01-06 at 15:18
-2020-01-06 15:19:12 INFO  Main:32 - Boogle launched on 20-01-06 at 15:19
-2020-01-06 15:39:42 INFO  Main:34 - Boogle launched on 20-01-06 at 15:39
-2020-01-06 15:40:31 INFO  Main:31 - Boogle launched on 20-01-06 at 15:40
-2020-01-06 15:40:37 INFO  Main:34 - Boogle is closing on 20-01-06 at 15:40. Used for 0.10743333333333334 m
-2020-01-06 15:59:54 INFO  Main:34 - Boogle launched on 20-01-06 at 15:59
-2020-01-06 16:07:22 INFO  Main:34 - Boogle launched on 20-01-06 at 16:07
-2020-01-06 16:07:49 INFO  Main:34 - Boogle launched on 20-01-06 at 16:07
-2020-01-06 16:10:06 INFO  Main:34 - Boogle launched on 20-01-06 at 16:10
-2020-01-06 16:10:54 INFO  Main:34 - Boogle launched on 20-01-06 at 16:10
-2020-01-06 16:11:15 INFO  Main:34 - Boogle launched on 20-01-06 at 16:11
-2020-01-06 16:11:24 INFO  Main:34 - Boogle launched on 20-01-06 at 16:11
-2020-01-06 19:44:16 INFO  Main:26 - Boogle launched on 20-01-06 at 19:44
-2020-01-06 19:44:23 INFO  Main:29 - Boogle is closing on 20-01-06 at 19:44. Used for 0.11625 m
-2020-01-06 19:45:06 INFO  Main:27 - Boogle launched on 20-01-06 at 19:45
-2020-01-06 19:46:16 INFO  Main:27 - Boogle launched on 20-01-06 at 19:46
-2020-01-06 19:46:33 INFO  Main:27 - Boogle launched on 20-01-06 at 19:46
-2020-01-06 19:47:47 INFO  Main:27 - Boogle launched on 20-01-06 at 19:47
-2020-01-06 19:48:33 INFO  Main:27 - Boogle launched on 20-01-06 at 19:48
-2020-01-06 19:49:08 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:48. Used for 0.5847833333333333 m
-2020-01-06 19:49:38 INFO  Main:27 - Boogle launched on 20-01-06 at 19:49
-2020-01-06 19:50:07 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:49. Used for 0.4870333333333333 m
-2020-01-06 19:50:55 INFO  Main:27 - Boogle launched on 20-01-06 at 19:50
-2020-01-06 19:51:09 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:50. Used for 0.24586666666666668 m
-2020-01-06 19:52:01 INFO  Main:27 - Boogle launched on 20-01-06 at 19:52
-2020-01-06 19:52:14 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:52. Used for 0.22123333333333334 m
-2020-01-06 19:52:33 INFO  Main:27 - Boogle launched on 20-01-06 at 19:52
-2020-01-06 19:52:41 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:52. Used for 0.12721666666666667 m
-2020-01-06 19:53:52 INFO  Main:27 - Boogle launched on 20-01-06 at 19:53
-2020-01-06 19:54:03 INFO  Main:30 - Boogle is closing on 20-01-06 at 19:53. Used for 0.18546666666666667 m
-2020-01-06 20:13:39 INFO  Main:27 - Boogle launched on 20-01-06 at 20:13
-2020-01-06 20:13:47 INFO  Main:30 - Boogle is closing on 20-01-06 at 20:13. Used for 0.12035 m
-2020-01-06 20:14:09 INFO  Main:27 - Boogle launched on 20-01-06 at 20:14
-2020-01-06 20:14:24 INFO  Main:27 - Boogle launched on 20-01-06 at 20:14
-2020-01-06 20:14:30 INFO  Main:30 - Boogle is closing on 20-01-06 at 20:14. Used for 0.09168333333333334 m
-2020-01-06 20:52:51 INFO  Main:27 - Boogle launched on 20-01-06 at 20:52
-2020-01-06 20:52:58 INFO  Main:30 - Boogle is closing on 20-01-06 at 20:52. Used for 0.1267 m
-2020-01-06 20:55:34 INFO  Main:27 - Boogle launched on 20-01-06 at 20:55
-2020-01-06 20:55:53 INFO  Main:30 - Boogle is closing on 20-01-06 at 20:55. Used for 0.31545 m
-2020-01-06 21:11:17 INFO  Main:27 - Boogle launched on 20-01-06 at 21:11
-2020-01-06 21:12:26 INFO  Main:27 - Boogle launched on 20-01-06 at 21:12
-2020-01-06 21:12:49 INFO  Main:27 - Boogle launched on 20-01-06 at 21:12
-2020-01-06 21:15:16 INFO  Main:27 - Boogle launched on 20-01-06 at 21:15
-2020-01-06 21:15:29 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:15. Used for 0.222 m
-2020-01-06 21:16:13 INFO  Main:27 - Boogle launched on 20-01-06 at 21:16
-2020-01-06 21:16:39 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:16. Used for 0.43138333333333334 m
-2020-01-06 21:17:01 INFO  Main:27 - Boogle launched on 20-01-06 at 21:17
-2020-01-06 21:17:13 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:17. Used for 0.19423333333333334 m
-2020-01-06 21:17:38 INFO  Main:27 - Boogle launched on 20-01-06 at 21:17
-2020-01-06 21:17:45 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:17. Used for 0.12171666666666667 m
-2020-01-06 21:18:12 INFO  Main:27 - Boogle launched on 20-01-06 at 21:18
-2020-01-06 21:19:21 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:18. Used for 1.14455 m
-2020-01-06 21:24:03 INFO  Main:27 - Boogle launched on 20-01-06 at 21:24
-2020-01-06 21:27:58 INFO  Main:27 - Boogle launched on 20-01-06 at 21:27
-2020-01-06 21:29:51 INFO  Main:27 - Boogle launched on 20-01-06 at 21:29
-2020-01-06 21:39:45 INFO  Main:27 - Boogle launched on 20-01-06 at 21:39
-2020-01-06 21:41:43 INFO  Main:27 - Boogle launched on 20-01-06 at 21:41
-2020-01-06 21:42:07 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:41. Used for 0.39415 m
-2020-01-06 21:46:23 INFO  Main:27 - Boogle launched on 20-01-06 at 21:46
-2020-01-06 21:48:26 INFO  Main:27 - Boogle launched on 20-01-06 at 21:48
-2020-01-06 21:50:21 INFO  Main:27 - Boogle launched on 20-01-06 at 21:50
-2020-01-06 21:51:02 INFO  Main:27 - Boogle launched on 20-01-06 at 21:51
-2020-01-06 21:51:35 INFO  Main:27 - Boogle launched on 20-01-06 at 21:51
-2020-01-06 21:51:44 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:51. Used for 0.1516 m
-2020-01-06 21:52:03 INFO  Main:27 - Boogle launched on 20-01-06 at 21:52
-2020-01-06 21:52:19 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:52. Used for 0.27373333333333333 m
-2020-01-06 21:52:26 INFO  Main:27 - Boogle launched on 20-01-06 at 21:52
+2020-01-02 14:09:00 INFO  ui.Main:26 - Boogle launched on 20-01-02 at 14:09
+2020-01-02 14:22:39 INFO  ui.Main:29 - Boogle is closing on 20-01-02 at 14:09. Used for 13.657516666666666 m
+2020-01-06 15:14:45 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 15:14
+2020-01-06 15:15:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 15:15
+2020-01-06 15:15:56 INFO  ui.Main:31 - Boogle launched on 20-01-06 at 15:15
+2020-01-06 15:18:21 INFO  ui.Main:31 - Boogle launched on 20-01-06 at 15:18
+2020-01-06 15:19:12 INFO  ui.Main:32 - Boogle launched on 20-01-06 at 15:19
+2020-01-06 15:39:42 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 15:39
+2020-01-06 15:40:31 INFO  ui.Main:31 - Boogle launched on 20-01-06 at 15:40
+2020-01-06 15:40:37 INFO  ui.Main:34 - Boogle is closing on 20-01-06 at 15:40. Used for 0.10743333333333334 m
+2020-01-06 15:59:54 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 15:59
+2020-01-06 16:07:22 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:07
+2020-01-06 16:07:49 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:07
+2020-01-06 16:10:06 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:10
+2020-01-06 16:10:54 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:10
+2020-01-06 16:11:15 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:11
+2020-01-06 16:11:24 INFO  ui.Main:34 - Boogle launched on 20-01-06 at 16:11
+2020-01-06 19:44:16 INFO  ui.Main:26 - Boogle launched on 20-01-06 at 19:44
+2020-01-06 19:44:23 INFO  ui.Main:29 - Boogle is closing on 20-01-06 at 19:44. Used for 0.11625 m
+2020-01-06 19:45:06 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:45
+2020-01-06 19:46:16 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:46
+2020-01-06 19:46:33 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:46
+2020-01-06 19:47:47 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:47
+2020-01-06 19:48:33 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:48
+2020-01-06 19:49:08 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:48. Used for 0.5847833333333333 m
+2020-01-06 19:49:38 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:49
+2020-01-06 19:50:07 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:49. Used for 0.4870333333333333 m
+2020-01-06 19:50:55 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:50
+2020-01-06 19:51:09 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:50. Used for 0.24586666666666668 m
+2020-01-06 19:52:01 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:52
+2020-01-06 19:52:14 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:52. Used for 0.22123333333333334 m
+2020-01-06 19:52:33 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:52
+2020-01-06 19:52:41 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:52. Used for 0.12721666666666667 m
+2020-01-06 19:53:52 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 19:53
+2020-01-06 19:54:03 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 19:53. Used for 0.18546666666666667 m
+2020-01-06 20:13:39 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 20:13
+2020-01-06 20:13:47 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 20:13. Used for 0.12035 m
+2020-01-06 20:14:09 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 20:14
+2020-01-06 20:14:24 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 20:14
+2020-01-06 20:14:30 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 20:14. Used for 0.09168333333333334 m
+2020-01-06 20:52:51 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 20:52
+2020-01-06 20:52:58 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 20:52. Used for 0.1267 m
+2020-01-06 20:55:34 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 20:55
+2020-01-06 20:55:53 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 20:55. Used for 0.31545 m
+2020-01-06 21:11:17 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:11
+2020-01-06 21:12:26 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:12
+2020-01-06 21:12:49 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:12
+2020-01-06 21:15:16 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:15
+2020-01-06 21:15:29 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:15. Used for 0.222 m
+2020-01-06 21:16:13 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:16
+2020-01-06 21:16:39 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:16. Used for 0.43138333333333334 m
+2020-01-06 21:17:01 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:17
+2020-01-06 21:17:13 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:17. Used for 0.19423333333333334 m
+2020-01-06 21:17:38 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:17
+2020-01-06 21:17:45 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:17. Used for 0.12171666666666667 m
+2020-01-06 21:18:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:18
+2020-01-06 21:19:21 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:18. Used for 1.14455 m
+2020-01-06 21:24:03 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:24
+2020-01-06 21:27:58 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:27
+2020-01-06 21:29:51 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:29
+2020-01-06 21:39:45 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:39
+2020-01-06 21:41:43 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:41
+2020-01-06 21:42:07 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:41. Used for 0.39415 m
+2020-01-06 21:46:23 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:46
+2020-01-06 21:48:26 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:48
+2020-01-06 21:50:21 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:50
+2020-01-06 21:51:02 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:51
+2020-01-06 21:51:35 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:51
+2020-01-06 21:51:44 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:51. Used for 0.1516 m
+2020-01-06 21:52:03 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:52
+2020-01-06 21:52:19 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:52. Used for 0.27373333333333333 m
+2020-01-06 21:52:26 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 21:52
 2020-01-06 21:54:30 INFO  ViewController:395 - loadFile::
-2020-01-06 21:54:46 INFO  Main:30 - Boogle is closing on 20-01-06 at 21:52. Used for 2.3360166666666666 m
-2020-01-06 22:06:51 INFO  Main:27 - Boogle launched on 20-01-06 at 22:06
-2020-01-06 22:07:29 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:06. Used for 0.6402833333333333 m
-2020-01-06 22:08:09 INFO  Main:27 - Boogle launched on 20-01-06 at 22:08
-2020-01-06 22:10:36 INFO  Main:27 - Boogle launched on 20-01-06 at 22:10
-2020-01-06 22:15:52 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:10. Used for 5.264633333333333 m
-2020-01-06 22:26:29 INFO  Main:27 - Boogle launched on 20-01-06 at 22:26
-2020-01-06 22:26:43 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:26. Used for 0.23235 m
-2020-01-06 22:28:19 INFO  Main:27 - Boogle launched on 20-01-06 at 22:28
-2020-01-06 22:28:28 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:28. Used for 0.14951666666666666 m
-2020-01-06 22:28:38 INFO  Main:27 - Boogle launched on 20-01-06 at 22:28
-2020-01-06 22:28:52 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:28. Used for 0.22011666666666665 m
-2020-01-06 22:29:26 INFO  Main:27 - Boogle launched on 20-01-06 at 22:29
-2020-01-06 22:29:49 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:29. Used for 0.39321666666666666 m
-2020-01-06 22:31:53 INFO  Main:27 - Boogle launched on 20-01-06 at 22:31
-2020-01-06 22:32:01 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:31. Used for 0.13791666666666666 m
-2020-01-06 22:32:20 INFO  Main:27 - Boogle launched on 20-01-06 at 22:32
-2020-01-06 22:32:28 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:32. Used for 0.13405 m
-2020-01-06 22:32:41 INFO  Main:27 - Boogle launched on 20-01-06 at 22:32
-2020-01-06 22:33:12 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:32. Used for 0.5096833333333334 m
-2020-01-06 22:33:26 INFO  Main:27 - Boogle launched on 20-01-06 at 22:33
-2020-01-06 22:33:36 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:33. Used for 0.17533333333333334 m
-2020-01-06 22:33:55 INFO  Main:27 - Boogle launched on 20-01-06 at 22:33
-2020-01-06 22:34:03 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:33. Used for 0.14605 m
-2020-01-06 22:34:49 INFO  Main:27 - Boogle launched on 20-01-06 at 22:34
-2020-01-06 22:34:54 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:34. Used for 0.0722 m
-2020-01-06 22:35:04 INFO  Main:27 - Boogle launched on 20-01-06 at 22:35
-2020-01-06 22:37:15 INFO  Main:27 - Boogle launched on 20-01-06 at 22:37
-2020-01-06 22:38:10 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:37. Used for 0.9126166666666666 m
-2020-01-06 22:38:54 INFO  Main:27 - Boogle launched on 20-01-06 at 22:38
-2020-01-06 22:39:08 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:38. Used for 0.23648333333333332 m
-2020-01-06 22:40:36 INFO  Main:27 - Boogle launched on 20-01-06 at 22:40
-2020-01-06 22:40:50 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:40. Used for 0.2256 m
-2020-01-06 22:40:56 INFO  Main:27 - Boogle launched on 20-01-06 at 22:40
-2020-01-06 22:41:08 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:40. Used for 0.19963333333333333 m
-2020-01-06 22:41:16 INFO  Main:27 - Boogle launched on 20-01-06 at 22:41
-2020-01-06 22:41:33 INFO  Main:27 - Boogle launched on 20-01-06 at 22:41
-2020-01-06 22:41:40 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:41. Used for 0.11628333333333334 m
-2020-01-06 22:41:46 INFO  Main:27 - Boogle launched on 20-01-06 at 22:41
-2020-01-06 22:42:05 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:41. Used for 0.3191333333333333 m
-2020-01-06 22:42:38 INFO  Main:27 - Boogle launched on 20-01-06 at 22:42
-2020-01-06 22:42:50 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:42. Used for 0.19348333333333334 m
-2020-01-06 22:43:12 INFO  Main:27 - Boogle launched on 20-01-06 at 22:43
-2020-01-06 22:43:23 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:43. Used for 0.18211666666666668 m
-2020-01-06 22:43:36 INFO  Main:27 - Boogle launched on 20-01-06 at 22:43
-2020-01-06 22:43:44 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:43. Used for 0.1305 m
-2020-01-06 22:44:04 INFO  Main:27 - Boogle launched on 20-01-06 at 22:44
-2020-01-06 22:44:22 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:44. Used for 0.2870666666666667 m
-2020-01-06 22:44:43 INFO  Main:27 - Boogle launched on 20-01-06 at 22:44
-2020-01-06 22:44:54 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:44. Used for 0.18435 m
-2020-01-06 22:45:34 INFO  Main:27 - Boogle launched on 20-01-06 at 22:45
-2020-01-06 22:46:12 INFO  Main:27 - Boogle launched on 20-01-06 at 22:46
-2020-01-06 22:46:28 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:46. Used for 0.25585 m
-2020-01-06 22:46:49 INFO  Main:27 - Boogle launched on 20-01-06 at 22:46
-2020-01-06 22:47:12 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:46. Used for 0.37043333333333334 m
-2020-01-06 22:47:37 INFO  Main:27 - Boogle launched on 20-01-06 at 22:47
-2020-01-06 22:47:51 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:47. Used for 0.23245 m
-2020-01-06 22:47:56 INFO  Main:27 - Boogle launched on 20-01-06 at 22:47
-2020-01-06 22:48:19 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:47. Used for 0.38516666666666666 m
-2020-01-06 22:48:50 INFO  Main:27 - Boogle launched on 20-01-06 at 22:48
-2020-01-06 22:51:17 INFO  Main:30 - Boogle is closing on 20-01-06 at 22:48. Used for 2.448566666666667 m
+2020-01-06 21:54:46 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 21:52. Used for 2.3360166666666666 m
+2020-01-06 22:06:51 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:06
+2020-01-06 22:07:29 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:06. Used for 0.6402833333333333 m
+2020-01-06 22:08:09 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:08
+2020-01-06 22:10:36 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:10
+2020-01-06 22:15:52 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:10. Used for 5.264633333333333 m
+2020-01-06 22:26:29 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:26
+2020-01-06 22:26:43 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:26. Used for 0.23235 m
+2020-01-06 22:28:19 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:28
+2020-01-06 22:28:28 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:28. Used for 0.14951666666666666 m
+2020-01-06 22:28:38 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:28
+2020-01-06 22:28:52 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:28. Used for 0.22011666666666665 m
+2020-01-06 22:29:26 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:29
+2020-01-06 22:29:49 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:29. Used for 0.39321666666666666 m
+2020-01-06 22:31:53 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:31
+2020-01-06 22:32:01 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:31. Used for 0.13791666666666666 m
+2020-01-06 22:32:20 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:32
+2020-01-06 22:32:28 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:32. Used for 0.13405 m
+2020-01-06 22:32:41 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:32
+2020-01-06 22:33:12 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:32. Used for 0.5096833333333334 m
+2020-01-06 22:33:26 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:33
+2020-01-06 22:33:36 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:33. Used for 0.17533333333333334 m
+2020-01-06 22:33:55 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:33
+2020-01-06 22:34:03 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:33. Used for 0.14605 m
+2020-01-06 22:34:49 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:34
+2020-01-06 22:34:54 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:34. Used for 0.0722 m
+2020-01-06 22:35:04 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:35
+2020-01-06 22:37:15 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:37
+2020-01-06 22:38:10 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:37. Used for 0.9126166666666666 m
+2020-01-06 22:38:54 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:38
+2020-01-06 22:39:08 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:38. Used for 0.23648333333333332 m
+2020-01-06 22:40:36 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:40
+2020-01-06 22:40:50 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:40. Used for 0.2256 m
+2020-01-06 22:40:56 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:40
+2020-01-06 22:41:08 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:40. Used for 0.19963333333333333 m
+2020-01-06 22:41:16 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:41
+2020-01-06 22:41:33 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:41
+2020-01-06 22:41:40 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:41. Used for 0.11628333333333334 m
+2020-01-06 22:41:46 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:41
+2020-01-06 22:42:05 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:41. Used for 0.3191333333333333 m
+2020-01-06 22:42:38 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:42
+2020-01-06 22:42:50 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:42. Used for 0.19348333333333334 m
+2020-01-06 22:43:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:43
+2020-01-06 22:43:23 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:43. Used for 0.18211666666666668 m
+2020-01-06 22:43:36 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:43
+2020-01-06 22:43:44 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:43. Used for 0.1305 m
+2020-01-06 22:44:04 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:44
+2020-01-06 22:44:22 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:44. Used for 0.2870666666666667 m
+2020-01-06 22:44:43 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:44
+2020-01-06 22:44:54 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:44. Used for 0.18435 m
+2020-01-06 22:45:34 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:45
+2020-01-06 22:46:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:46
+2020-01-06 22:46:28 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:46. Used for 0.25585 m
+2020-01-06 22:46:49 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:46
+2020-01-06 22:47:12 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:46. Used for 0.37043333333333334 m
+2020-01-06 22:47:37 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:47
+2020-01-06 22:47:51 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:47. Used for 0.23245 m
+2020-01-06 22:47:56 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:47
+2020-01-06 22:48:19 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:47. Used for 0.38516666666666666 m
+2020-01-06 22:48:50 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 22:48
+2020-01-06 22:51:17 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 22:48. Used for 2.448566666666667 m
+2020-01-06 23:24:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:24
+2020-01-06 23:25:22 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:25
+2020-01-06 23:25:32 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:25. Used for 0.16026666666666667 m
+2020-01-06 23:25:48 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:25
+2020-01-06 23:25:53 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:25. Used for 0.0924 m
+2020-01-06 23:26:04 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:26
+2020-01-06 23:26:10 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:26. Used for 0.09745 m
+2020-01-06 23:27:00 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:27
+2020-01-06 23:27:28 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:27. Used for 0.47385 m
+2020-01-06 23:27:57 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:27
+2020-01-06 23:28:51 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:28
+2020-01-06 23:29:24 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:28. Used for 0.5475 m
+2020-01-06 23:30:16 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:30
+2020-01-06 23:31:28 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:30. Used for 1.2082833333333334 m
+2020-01-06 23:49:19 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:49
+2020-01-06 23:49:31 INFO  Model:38 - Start Parsing and Indexing
+2020-01-06 23:49:32 INFO  Model:66 - Start manager Method :: runnable
+2020-01-06 23:49:32 ERROR Model:53 - Indexing failed
+2020-01-06 23:51:10 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:51
+2020-01-06 23:51:25 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:51. Used for 0.2519166666666667 m
+2020-01-06 23:51:32 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:51
+2020-01-06 23:51:41 INFO  Model:38 - Start Parsing and Indexing
+2020-01-06 23:51:41 INFO  Model:66 - Start manager Method :: runnable
+2020-01-06 23:51:41 ERROR Model:53 - Indexing failed
+2020-01-06 23:51:56 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:51. Used for 0.39848333333333336 m
+2020-01-06 23:52:12 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:52
+2020-01-06 23:52:26 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:52. Used for 0.2312 m
+2020-01-06 23:52:51 INFO  ui.Main:27 - Boogle launched on 20-01-06 at 23:52
+2020-01-06 23:52:59 INFO  Model:38 - Start Parsing and Indexing
+2020-01-06 23:52:59 INFO  Model:66 - Start manager Method :: runnable
+2020-01-06 23:52:59 ERROR Model:53 - Indexing failed
+2020-01-06 23:53:07 INFO  ui.Main:30 - Boogle is closing on 20-01-06 at 23:52. Used for 0.2654666666666667 m
+2020-01-06 23:53:50 INFO  ui.Main:26 - Boogle launched on 20-01-06 at 23:53
+2020-01-06 23:53:58 INFO  Model:38 - Start Parsing and Indexing
+2020-01-06 23:53:58 INFO  Model:66 - Start manager Method :: runnable
+2020-01-06 23:53:59 ERROR Model:53 - Indexing failed
+2020-01-06 23:55:41 INFO  ui.Main:26 - Boogle launched on 20-01-06 at 23:55
+2020-01-06 23:55:48 INFO  Model:38 - Start Parsing and Indexing
+2020-01-06 23:55:48 INFO  Model:66 - Start manager Method :: runnable
+2020-01-06 23:55:48 ERROR Model:53 - Indexing failed
+2020-01-06 23:56:34 INFO  ui.Main:26 - Boogle launched on 20-01-06 at 23:56
+2020-01-06 23:56:37 INFO  ui.Main:29 - Boogle is closing on 20-01-06 at 23:56. Used for 0.05948333333333333 m
+2020-01-06 23:58:46 INFO  ui.Main:26 - Boogle launched on 20-01-06 at 23:58
+2020-01-06 23:59:16 INFO  Model:40 - Start Parsing and Indexing
+2020-01-06 23:59:16 INFO  Model:69 - Start manager Method :: runnable
+2020-01-06 23:59:16 ERROR Model:55 - Indexing failed
+2020-01-07 00:02:44 INFO  Main:28 - Boogle launched on 20-01-07 at 00:02
+2020-01-07 00:03:16 INFO  Main:28 - Boogle launched on 20-01-07 at 00:03
+2020-01-07 00:04:02 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:04:02 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:04:02 ERROR Model:55 - Indexing failed
+2020-01-07 00:06:50 INFO  Main:28 - Boogle launched on 20-01-07 at 00:06
+2020-01-07 00:07:03 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:07:03 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:08:45 INFO  Main:28 - Boogle launched on 20-01-07 at 00:08
+2020-01-07 00:08:58 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:08:58 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:11:08 INFO  Main:28 - Boogle launched on 20-01-07 at 00:11
+2020-01-07 00:11:15 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:11:15 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:13:04 INFO  Main:28 - Boogle launched on 20-01-07 at 00:13
+2020-01-07 00:13:21 INFO  Main:28 - Boogle launched on 20-01-07 at 00:13
+2020-01-07 00:13:29 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:13:29 INFO  Model:70 - Start manager Method :: runnable
+2020-01-07 00:14:20 INFO  Main:28 - Boogle launched on 20-01-07 at 00:14
+2020-01-07 00:14:29 INFO  Model:40 - Start Parsing and Indexing
+2020-01-07 00:14:29 INFO  Model:70 - Start manager Method :: runnable

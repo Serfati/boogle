@@ -27,7 +27,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>ui.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

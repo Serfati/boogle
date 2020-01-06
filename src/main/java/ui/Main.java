@@ -1,3 +1,5 @@
+package ui;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +9,6 @@ import model.Model;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import ui.ViewController;
 import view_model.ViewModel;
 
 import java.text.SimpleDateFormat;
@@ -43,12 +44,12 @@ public class Main extends Application {
         //------------------------------//
         primaryStage.setTitle("BOOGLE");
         FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("UI.fxml").openStream());
+        Parent root = fxmlLoader.load(getClass().getResource("../ui.fxml").openStream());
         Scene scene = new Scene(root, 620, 700);
-        scene.getStylesheets().add(getClass().getResource("dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         primaryStage.setResizable(true);
         //------------------------------//
-        ViewController viewController = fxmlLoader.getController();
+        UIController viewController = fxmlLoader.getController();
         viewController.setViewModel(viewModel);
         viewModel.addObserver(viewController);
         //------------------------------//
@@ -58,7 +59,7 @@ public class Main extends Application {
         //------------------------------//
     }
 
-    private void SetStageCloseEvent(Stage primaryStage, ViewController viewController) {
+    private void SetStageCloseEvent(Stage primaryStage, UIController viewController) {
         primaryStage.setOnCloseRequest(windowEvent -> {
             viewController.exitCorrectly();
             windowEvent.consume();

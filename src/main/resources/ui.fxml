@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0" styleClass="custom-pane"
             stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            fx:controller="ui.ViewController">
+            fx:controller="ui.UIController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -61,14 +61,13 @@
                             <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
                         </HBox.margin>
                         <cursor>
-                            <Cursor fx:constant="CLOSED_HAND" />
+                            <Cursor fx:constant="OPEN_HAND"/>
                         </cursor>
                         <effect>
                             <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0" />
                         </effect>
                         <Image url="@/boogleLogo.png"/>
                     </ImageView>
-
                     <ImageView fx:id="generateIndexIcon" fitHeight="50.0" fitWidth="50.0" focusTraversable="true" opacity="0.7">
                         <HBox.margin>
                             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
@@ -134,13 +133,15 @@
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </HBox.margin>
+
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false" onAction="#showDictionaryClick" text="Show Dictionary">
+                <JFXButton fx:id="btn_show_data" disable="true" mnemonicParsing="false" onAction="#showDictionaryClick"
+                           text="Show Dictionary">
                     <HBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
                     </HBox.margin>
                 </JFXButton>
                 <JFXButton fx:id="btn_load_dictionary" mnemonicParsing="false" onAction="#loadDictionary" text="Load Dictionary">
@@ -159,7 +160,6 @@
     </bottom>
     <right>
         <GridPane prefHeight="15.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-
             <FontAwesomeIconView glyphName="FILE" size="25" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
             <FontAwesomeIconView glyphName="CODE" size="25" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
             <FontAwesomeIconView glyphName="FOLDER" size="25" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -215,12 +215,11 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" prefWidth="0.0" />
             </columnConstraints>
-
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints />
+                <RowConstraints/>
             </rowConstraints>
             <cursor>
                 <Cursor fx:constant="DEFAULT" />
@@ -231,5 +230,4 @@
         </GridPane>
 
     </right>
-
 </BorderPane>
