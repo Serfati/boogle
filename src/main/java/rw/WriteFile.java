@@ -1,7 +1,7 @@
-package RW;
+package rw;
 
-import Engine.DocumentIndex;
-import Engine.InvertedIndex;
+import indexer.DocumentIndex;
+import indexer.InvertedIndex;
 import javafx.util.Pair;
 
 import java.io.File;
@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import static Model.Model.documentDictionary;
-import static Model.Model.invertedIndex;
+import static model.Model.documentDictionary;
+import static model.Model.invertedIndex;
 
 public class WriteFile {
 

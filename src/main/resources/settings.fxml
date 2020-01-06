@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="500.0"
-            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="View.HelpController">
+            xmlns="http://javafx.com/javafx/8.0.121" fx:controller="ui.HelpController">
     <VBox prefHeight="500.0" prefWidth="700.0">
         <TabPane prefHeight="478.0" prefWidth="613.0" tabClosingPolicy="UNAVAILABLE">
             <Tab text="How to run">

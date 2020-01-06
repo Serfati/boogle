@@ -1,9 +1,12 @@
-package Parser;
+package parser;
+
+import sun.awt.Mutex;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
+
 
 public class MiniDictionary {
     public HashMap<String, LinkedList<Integer>> dictionary; // term ; TF
@@ -11,9 +14,12 @@ public class MiniDictionary {
     private int naxFreq_count;
     private String maxFreq_word;
     private String docTI;
+    private Mutex mutex;
+    private double rank;
 
     /**
      * cTor new MiniDictionary
+     *
      * @param name name of the file and doc
      */
     MiniDictionary(String name, String title) {
@@ -22,6 +28,7 @@ public class MiniDictionary {
         naxFreq_count = 0;
         maxFreq_word = "";
         docTI = title;
+        this.mutex = new Mutex();
     }
 
     /**
@@ -86,6 +93,7 @@ public class MiniDictionary {
 
     /**
      * returns indexes of the term (postions)
+     *
      * @param word the term
      * @return the indexes of the term
      */
@@ -93,8 +101,19 @@ public class MiniDictionary {
         return containsKey(word) != 0 ? dictionary.get(word) : null;
     }
 
+    public void addRank(double rank) {
+        this.mutex.lock();
+        this.rank += rank;
+        this.mutex.unlock();
+    }
+
+    public double getRank() {
+        return rank;
+    }
+
     /**
      * data about a certain term
+     *
      * @param word the term
      * @return data of a term
      */

@@ -1,7 +1,7 @@
-package ViewModel;
+package view_model;
 
-import Model.IModel;
 import javafx.application.Platform;
+import model.IModel;
 
 import java.util.Observable;
 import java.util.Observer;

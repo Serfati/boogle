@@ -11,7 +11,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane prefHeight="685.0" prefWidth="618.0" styleClass="custom-pane" stylesheets="@dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0" styleClass="custom-pane"
+            stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            fx:controller="ui.ViewController">
     <top>
         <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,9 +21,13 @@
                     <menus>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="File">
                             <items>
-                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick" text="Load corpus" />
-                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help" text="Go to seach tab" />
-                                <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true" mnemonicParsing="false" onAction="#loadDictionary" text="Load" />
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick"
+                                                               text="Load corpus"/>
+                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help"
+                                          text="Go to seach tab"/>
+                                <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
+                                                               mnemonicParsing="false" onAction="#loadDictionary"
+                                                               text="Load"/>
                                 <javafx.scene.control.MenuItem fx:id="save_MenuItem" disable="true" mnemonicParsing="false" onAction="#saveDictionary" text="Save" />
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#exitButton" text="Exit" />
                             </items>
@@ -60,7 +66,7 @@
                         <effect>
                             <ColorAdjust brightness="0.88" contrast="-0.34" hue="-1.0" />
                         </effect>
-                        <Image url="@boogleLogo.png" />
+                        <Image url="@/boogleLogo.png"/>
                     </ImageView>
 
                     <ImageView fx:id="generateIndexIcon" fitHeight="50.0" fitWidth="50.0" focusTraversable="true" opacity="0.7">
@@ -70,7 +76,7 @@
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
-                        <Image url="@googleIcon.png" />
+                        <Image url="@/googleIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="saveIcon" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
@@ -79,7 +85,7 @@
                         <cursor>
                             <Cursor fx:constant="CLOSED_HAND" />
                         </cursor>
-                        <Image url="@saveIcon.png" />
+                        <Image url="@/saveIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="searchTab" fitHeight="50.0" fitWidth="50.0">
                         <HBox.margin>
@@ -88,7 +94,7 @@
                         <cursor>
                             <Cursor fx:constant="CLOSED_HAND" />
                         </cursor>
-                        <Image url="@searchIcon.png" />
+                        <Image url="@/searchIcon.png"/>
                     </ImageView>
                     <ImageView fx:id="settings" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                         <HBox.margin>
@@ -97,7 +103,7 @@
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>
-                        <Image url="@settings.png" />
+                        <Image url="@/settings.png"/>
                     </ImageView>
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />

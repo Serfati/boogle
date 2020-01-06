@@ -1,18 +1,18 @@
-package Model;
+package model;
 
-import Engine.DocumentIndex;
-import Engine.InvertedIndex;
-import Parser.MiniDictionary;
-import Parser.Parse;
-import Parser.cDocument;
-import RW.ReadFile;
-import RW.WriteFile;
+import indexer.DocumentIndex;
+import indexer.InvertedIndex;
 import javafx.util.Pair;
 import me.tongfei.progressbar.ProgressBar;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import parser.MiniDictionary;
+import parser.Parse;
+import parser.cDocument;
+import rw.ReadFile;
+import rw.WriteFile;
 
 import java.io.*;
 import java.util.*;
@@ -66,10 +66,10 @@ public class Model extends Observable implements IModel {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
         int tempPostingValue = 400;
+
         ReadFile rf = new ReadFile();
 
         ProgressBar pb = new ProgressBar("Parse & Index", 400).start();
-
 
         int i = 0;
         while(i < tempPostingValue) {

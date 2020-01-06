@@ -1,6 +1,8 @@
-package Parser;
+package parser;
 
-import Model.Model;
+import edu.stanford.nlp.pipeline.CoreDocument;
+import edu.stanford.nlp.pipeline.CoreEntityMention;
+import model.Model;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -12,7 +14,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
 
     HashMap<String, String> monthsData;
     HashMap<String, String> wordsRulesData;
-    //NamedEntitiesSearcher ner;
+    NamedEntitiesSearcher ner;
     private LinkedList<String> wordList;
     private cDocument corpus_doc;
     private Stemmer ps;
@@ -43,10 +45,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         //TODO
         /* ------------------------------------------------------------------------- */
 
-//        CoreDocument doc = new CoreDocument(currentCDocument.getDocText());
-//        ner.pipeline().annotate(doc);
-//        for(CoreEntityMention em : doc.entityMentions())
-//            miniDic.addWord(em.text(), 0);
+        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
+        ner.pipeline().annotate(doc);
+        for(CoreEntityMention em : doc.entityMentions())
+            miniDic.addWord(em.text().toUpperCase(), 0);
 
         //TODO
         /* ------------------------------------------------------------------------- */
@@ -136,8 +138,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (stm) {
                 doStemIfTermWasNotManipulated = true;
             }
-
-
             index = lastCheckAndAdd(nextWord, miniDic, index, doStemIfTermWasNotManipulated, term);
         }
         return miniDic;
@@ -155,8 +155,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             if (Objects.requireNonNull(nextWord.peekFirst()).equalsIgnoreCase("and") && !wordList.isEmpty()) {
                 nextWord.addFirst(wordList.pollFirst());
                 if (isNumber(Objects.requireNonNull(nextWord.peekFirst())) || checkIsFraction(Objects.requireNonNull(nextWord.peekFirst()))) {
+                    StringBuilder termBuilder = new StringBuilder(term);
                     while(!nextWord.isEmpty())
-                        term += " "+nextWord.pollLast();
+                        termBuilder.append(" ").append(nextWord.pollLast());
+                    term = termBuilder.toString();
                     if (!wordList.isEmpty()) {
                         nextWord.addFirst(wordList.pollFirst());
                         if (checkIsFraction(Objects.requireNonNull(nextWord.peekFirst())) && !wordList.isEmpty())
@@ -353,12 +355,11 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                 multi *= 1000;
                 if (number > multi) {
                     ans = "B";
-                    number = (number / multi);
                 } else {
                     ans = "M";
                     multi /= 1000;
-                    number = number / multi;
                 }
+                number = (number / multi);
             } else {
                 ans = "K";
                 multi /= 1000;

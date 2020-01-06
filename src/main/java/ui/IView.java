@@ -1,7 +1,7 @@
-package View;
+package ui;
 
-import ViewModel.ViewModel;
 import javafx.event.ActionEvent;
+import view_model.ViewModel;
 
 import java.util.Observable;
 import java.util.Observer;

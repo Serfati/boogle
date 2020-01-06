@@ -1,6 +1,6 @@
-package Model;
+package model;
 
-import Engine.InvertedIndex;
+import indexer.InvertedIndex;
 
 import java.io.IOException;
 

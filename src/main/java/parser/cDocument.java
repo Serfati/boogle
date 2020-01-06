@@ -1,4 +1,4 @@
-package Parser;
+package parser;
 /*
     a single document in corpus
  */
@@ -29,4 +29,5 @@ public class cDocument {
     public String getDocText() {
         return m_docText;
     }
+
 }

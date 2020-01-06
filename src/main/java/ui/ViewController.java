@@ -1,11 +1,9 @@
+package ui;
 
-import Engine.InvertedIndex;
-import View.AlertMaker;
-import View.IView;
-import ViewModel.ViewModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
+import indexer.InvertedIndex;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +22,8 @@ import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import ranker.SemanticHandler;
+import view_model.ViewModel;
 
 import java.awt.*;
 import java.io.File;
@@ -53,11 +53,12 @@ public class ViewController implements IView, Observer, Initializable {
     public MenuItem save_MenuItem;
     public MenuItem load_MenuItem;
 
-    public JFXTextField txtfld_output_location;
-
     @FXML
     public JFXTextField txtfld_corpus_location;
     public JFXTextField txtfld_stopwords_location;
+    public JFXTextField queryField;
+    public JFXTextField txtfld_output_location;
+
     @FXML
     public JFXButton btn_corpus_browse;
     public JFXButton btn_show_dictionary;
@@ -234,7 +235,7 @@ public class ViewController implements IView, Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("settings.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../settings.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
@@ -242,7 +243,7 @@ public class ViewController implements IView, Observer, Initializable {
         helpStage.setTitle("Help");
         assert root != null;
         Scene scene = new Scene(root, 520, 495);
-        scene.getStylesheets().add(getClass().getResource("dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         helpStage.setScene(scene);
         helpStage.initModality(Modality.WINDOW_MODAL);
         helpStage.show();
@@ -255,7 +256,7 @@ public class ViewController implements IView, Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("about.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../about.fxml"));
         } catch(IOException e) {
             showAlert();
         }
@@ -385,4 +386,43 @@ public class ViewController implements IView, Observer, Initializable {
         event.consume();
     }
 
+    //TODO  ---------------------- part II ------------------------ TODO //
+
+    @FXML
+    public void handleNoSemantic() {
+        SemanticHandler.clearWordsVecs();
+        SemanticHandler.includeSemantics = false;
+    }
+
+    @FXML
+    public void HandleSlimSemantics() {
+        SemanticHandler.gloveFile = "SlimWikiGlove200D.txt";
+        SemanticHandler.includeSemantics = true;
+        if (this.txtfld_corpus_location.getText().equals("")) {
+            AlertMaker.showErrorMessage("Invalid", "must specify target path first");
+            return;
+        }
+        if (SemanticHandler.corpusPath == null)
+            SemanticHandler.corpusPath = txtfld_corpus_location.getText();
+        SemanticHandler.readGloveFile();
+    }
+
+    @FXML
+    public void HandleStanfordSemantics() {
+        SemanticHandler.gloveFile = "Stanford_glove.6B.50d.txt";
+        SemanticHandler.includeSemantics = true;
+        if (SemanticHandler.corpusPath == null)
+            SemanticHandler.corpusPath = txtfld_corpus_location.getText();
+        if (SemanticHandler.wordVectors == null)
+            SemanticHandler.readGloveFile();
+    }
+
+    public void handleRunQuery() {
+        String query = queryField.getText();
+        int index = 0;
+        if (query.equals(null) || query.equals("")) {
+            AlertMaker.showErrorMessage("Invalid", "Must fill a query first");
+        }
+    }
+    //TODO  ---------------------- part II ------------------------ TODO //
 }

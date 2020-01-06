@@ -1,4 +1,4 @@
-package Parser;
+package parser;
 
 public class Stemmer {
     private static int INC = 200;
@@ -58,8 +58,7 @@ public class Stemmer {
     public void add(char ch) {
         if (i == b.length) {
             char[] new_b = new char[i+INC];
-            for(int c = 0; c < i; c++)
-                new_b[c] = b[c];
+            System.arraycopy(b, 0, new_b, 0, i);
             b = new_b;
         }
         b[i++] = ch;
@@ -75,8 +74,7 @@ public class Stemmer {
     public void add(char[] w, int wLen) {
         if (i+wLen >= b.length) {
             char[] new_b = new char[i+wLen+INC];
-            for(int c = 0; c < i; c++)
-                new_b[c] = b[c];
+            if (i >= 0) System.arraycopy(b, 0, new_b, 0, i);
             b = new_b;
         }
         for(int c = 0; c < wLen; c++)
@@ -212,8 +210,7 @@ public class Stemmer {
         int l = s.length();
         int o = j+1;
         char[] sc = s.toCharArray();
-        for(int i = 0; i < l; i++)
-            b[o+i] = sc[i];
+        System.arraycopy(sc, 0, b, o+0, l);
         k = j+l;
     }
 

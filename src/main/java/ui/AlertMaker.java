@@ -1,4 +1,4 @@
-package View;
+package ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -43,8 +43,8 @@ public class AlertMaker {
 
     public static void showErrorMessage(Exception ex) {
         Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("Error occured");
-        alert.setHeaderText("Error Occured");
+        alert.setTitle("Error occurred");
+        alert.setHeaderText("Error Occurred");
         alert.setContentText(ex.getLocalizedMessage());
 
         StringWriter sw = new StringWriter();
@@ -115,18 +115,14 @@ public class AlertMaker {
 
         controls.forEach(controlButton -> {
             controlButton.getStyleClass().add("dialog-button");
-            controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                dialog.close();
-            });
+            controlButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> dialog.close());
         });
 
         dialogLayout.setHeading(new Label(header));
         dialogLayout.setBody(new Label(body));
         dialogLayout.setActions(controls);
         dialog.show();
-        dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
-            nodeToBeBlurred.setEffect(null);
-        });
+        dialog.setOnDialogClosed((JFXDialogEvent event1) -> nodeToBeBlurred.setEffect(null));
         nodeToBeBlurred.setEffect(blur);
     }
 

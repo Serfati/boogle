@@ -1,4 +1,4 @@
-package Parser;
+package parser;
 
 /**
  * contract for being a parser

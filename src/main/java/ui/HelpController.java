@@ -1,4 +1,4 @@
-package View;
+package ui;
 
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -50,11 +50,11 @@ public class HelpController implements Initializable {
                 "\t- in case you want to build the engine on a new corpus:\n"+
                 "\t\t- At part 1 choose the directory of the new corpus at 'Corpus path'.\n"+
                 "\t\t- Choose a path for the files to be saved in at 'Posting path'.\n"+
-                "\t\t- Press build and wait untill the engine finishes.\n"+
+                "\t\t- Press build and wait until the engine finishes.\n"+
                 "\t\t  Meanwhile you can check our cool & smart progress bar that works \naccording to the actual corpus and merging process.\n"+
                 "\t\t- After the build is done click on 'Upload' to load the data.\n"+
                 "\t\t- Now you can switch to Part 2 by clicking it at the top right corner.\n"+
-                "\t\t- For understading Part 2 please read the instructions for it below.\n"+
+                "\t\t- For understanding Part 2 please read the instructions for it below.\n"+
                 "\t-in case you already built the engine before and just want the search the data:\n"+
                 "\t\t- Choose the path of the posting files saved with 'Posting path'.\n"+
                 "\t\t- Click on 'Upload' to upload the data.\n"+

@@ -1,9 +1,9 @@
-package Engine;
+package ranker;
 
-import Parser.MiniDictionary;
-import Parser.Parse;
-import Parser.cDocument;
-import RW.Query;
+import parser.MiniDictionary;
+import parser.Parse;
+import parser.cDocument;
+import rw.Query;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,6 +14,7 @@ public class Searcher implements Callable<LinkedList<String>> {
     String outputPath;
     boolean useStemming;
     boolean useSemantics;
+    private final int DOCS_RETURN_NUMBER = 50;
 
     public Searcher(Query q, String outputPath, boolean useStemming, boolean useSemantics) {
         this.q = q;
@@ -28,25 +29,14 @@ public class Searcher implements Callable<LinkedList<String>> {
     }
 
     private LinkedList<String> getQueryResults() {
-        Parse p = new Parse(new cDocument("","","","",q.getQuery()),useStemming );
-        MiniDictionary md  = p.parse();
+        Parse p = new Parse(new cDocument("", "", "", "", q.getQueryText()), useStemming);
+        MiniDictionary md = p.parse();
 
         HashMap<String, Integer> wordsCountInQuery = null;
 
-        for (String word: wordsCountInQuery.keySet()){
-
-        }
-
-
-
-
-
-
-
-
-
-        Ranker ranker = new Ranker();
+        Ranker ranker = null;
 
         return null;
     }
+
 }
