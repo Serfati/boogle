@@ -19,9 +19,9 @@ The Structure:
 
 The Model:
 -------------
- ReadFile – This module reads documents from the corpus.
+- ReadFile – This module reads documents from the corpus.
 
-- Model.Model.Parser – Parses the documents (removes stop-words, converts dates to a unified format etc.).
+- Parser – Parses the documents (removes stop-words, converts dates to a unified format etc.).
 
 - Stemmer – Performs stemming on a given document. We used porter's for JAVA 8.
 
@@ -31,7 +31,7 @@ The Model:
 
 - Ranker –
 
-- GUI (view) 
+- GUI (view) -
 
 
 Licence:
