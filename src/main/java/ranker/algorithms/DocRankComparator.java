@@ -1,12 +1,10 @@
-package ranker.algoritems;
+package ranker.algorithms;
 
 import parser.MiniDictionary;
 
 import java.util.Comparator;
 
-/**
- * comparator class for comparing doc ranks
- */
+/* comparator class for comparing doc ranks*/
 
 public class DocRankComparator implements Comparator<MiniDictionary> {
 

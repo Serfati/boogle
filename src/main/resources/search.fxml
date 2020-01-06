@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootContainer" prefHeight="459.0" prefWidth="581.0"
+           stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ui.SearchController">
+    <children>
+        <TabPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="414.0" prefWidth="400.0">
+            <tabs>
+                <Tab closable="false" styleClass="settings-tab" text="Input and Semantics">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"
+                                    styleClass="custom-pane">
+                            <children>
+                                <VBox prefHeight="385.0" prefWidth="585.0" spacing="10.0" AnchorPane.bottomAnchor="0.0"
+                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                      AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <JFXTextField fx:id="nDaysWithoutFine" labelFloat="true"
+                                                      promptText="Search Boogle of type docURL">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="25.0"/>
+                                            </VBox.margin>
+                                        </JFXTextField>
+                                        <JFXTextField fx:id="finePerDay" labelFloat="true"
+                                                      promptText="Browse for a query file">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                            </VBox.margin>
+                                        </JFXTextField>
+                                        <JFXTextField fx:id="emailAddress" labelFloat="true"
+                                                      promptText="Search for entitie">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                            </VBox.margin>
+                                        </JFXTextField>
+                                        <JFXPasswordField fx:id="emailPassword" labelFloat="true"
+                                                          promptText="          ">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                            </VBox.margin>
+                                        </JFXPasswordField>
+                                        <JFXCheckBox fx:id="sslCheckbox" prefHeight="17.0" prefWidth="239.0"
+                                                     selected="true" styleClass="checkbox-main"
+                                                     text="Enable Semantics"/>
+                                        <JFXCheckBox fx:id="stemCheckbox" prefHeight="17.0" prefWidth="239.0"
+                                                     selected="true" styleClass="checkbox-main" text="Enable Stemming"/>
+                                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
+                                            <children>
+                                                <JFXButton prefHeight="100.0" prefWidth="200.0" text="Boogle Search"/>
+                                            </children>
+                                            <VBox.margin>
+                                                <Insets top="10.0"/>
+                                            </VBox.margin>
+                                        </HBox>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab closable="false" styleClass="settings-tab" text="Outputs">
+                    <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0">
+                        <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="350.0"
+                                   prefWidth="100.0">
+                            <placeholder>
+                                <Label text="Press 'Show Data' to see data "/>
+                            </placeholder>
+                            <columns>
+                                <TableColumn fx:id="tableCol_1" prefWidth="250.0" text="Results"/>
+                                <TableColumn fx:id="tableCol" prefWidth="300.0" text="TOP 5"/>
+                                <TableColumn fx:id="tableCol_3" prefWidth="100.0" text="Rank"/>
+                            </columns>
+                        </TableView>
+                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0" spacing="25.0">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="25.0"/>
+                            </VBox.margin>
+                            <children>
+                                <JFXButton prefHeight="100.0" prefWidth="170.0" text="Show Data"/>
+                                <JFXButton prefHeight="100.0" prefWidth="170.0" text="Save Results"/>
+                                <JFXButton prefHeight="100.0" prefWidth="170.0" text="Export as PDF"/>
+                            </children>
+                        </HBox>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</StackPane>

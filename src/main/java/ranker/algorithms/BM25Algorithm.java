@@ -1,4 +1,4 @@
-package ranker.algoritems;
+package ranker.algorithms;
 
 import indexer.DocumentIndex;
 import indexer.InvertedIndex;
@@ -8,9 +8,7 @@ import parser.MiniDictionary;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * implementation of the bm25 okapi algorithm
- */
+/* implementation of the bm25 okapi algorithm */
 
 public class BM25Algorithm extends ARankingAlgorithm {
     private double m_averageDocumentLength;//average document size in the corpus

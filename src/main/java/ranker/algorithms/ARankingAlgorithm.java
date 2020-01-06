@@ -1,13 +1,11 @@
-package ranker.algoritems;
+package ranker.algorithms;
 
 import indexer.InvertedIndex.Term;
 import parser.MiniDictionary;
 
 import java.util.ArrayList;
 
-/**
- * abstract class to be extended by each ranking algorithm that's to be used by the ranker
- */
+/* abstract class to be extended by each ranking algorithm that's to be used by the ranker*/
 
 public abstract class ARankingAlgorithm {
 

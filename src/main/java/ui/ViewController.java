@@ -134,7 +134,7 @@ public class ViewController implements IView, Observer, Initializable {
 
     private void setSearchTabClick(ImageView icon) {
         icon.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            AlertMaker.showErrorMessage("Error", "Please be patient to PART B");
+            searchView();
             event.consume();
         });
     }
@@ -225,6 +225,27 @@ public class ViewController implements IView, Observer, Initializable {
             Platform.exit();
         else
             alert.close();
+    }
+
+    private void searchView() {
+        Stage searchStage = new Stage();
+        searchStage.setAlwaysOnTop(true);
+        searchStage.setResizable(true);
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("../search.fxml"));
+        } catch(IOException e) {
+            e.printStackTrace();
+            showAlert();
+        }
+        searchStage.setTitle("Search Engine Window");
+        Scene scene = new Scene(root, 842, 456);
+        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        searchStage.setScene(scene);
+        searchStage.initModality(Modality.WINDOW_MODAL);
+        searchStage.alwaysOnTopProperty();
+        searchStage.show();
     }
 
     public void help() {

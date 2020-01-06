@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" id="AnchorPane" prefHeight="247.0" prefWidth="530.0"
             styleClass="custom-pane" stylesheets="@dark-style.css" xmlns="http://javafx.com/javafx/8.0.141"
-            fx:controller="View.AboutController">
+            fx:controller="ui.AboutController">
     <ImageView fitHeight="154.0" fitWidth="240.0" layoutX="-12.0" layoutY="65.0" pickOnBounds="true"
                preserveRatio="true">
         <Image url="@boogleLogo.png"/>

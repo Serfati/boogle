@@ -1,4 +1,4 @@
-package ranker.algoritems;
+package ranker.algorithms;
 
 import indexer.InvertedIndex;
 import parser.MiniDictionary;
@@ -6,10 +6,7 @@ import parser.MiniDictionary;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * an algorithm to rank by positions in the document. this algorithm checks for consecutive terms in the
- * documents and if terms are the the head of the document .
- */
+/* an algorithm to rank by positions in the document */
 
 public class PositionsAlgorithm extends ARankingAlgorithm {
 

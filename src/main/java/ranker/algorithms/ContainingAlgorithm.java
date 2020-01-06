@@ -1,4 +1,4 @@
-package ranker.algoritems;
+package ranker.algorithms;
 
 import indexer.InvertedIndex;
 import parser.MiniDictionary;
@@ -6,9 +6,7 @@ import parser.MiniDictionary;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-/**
- * checks if a term is an entity of the given document .
- */
+/* checks if a term is an entity of the given document */
 
 public class ContainingAlgorithm extends ARankingAlgorithm {
 
