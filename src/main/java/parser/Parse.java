@@ -32,7 +32,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return parse();
     }
 
-    public MiniDictionary parse() {
+    public synchronized MiniDictionary parse() {
         //split the <Text> label to list of terms
         wordList = stringToList(StringUtils.split(corpus_doc.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         //list of next words from the current term
@@ -45,11 +45,11 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-
         CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
         ner.pipeline().annotate(doc);
         for(CoreEntityMention em : doc.entityMentions())
             miniDic.addWord(em.text().toUpperCase(), 0);
+
 //        initMonthsData();
 //        nextWordsRules();
         int index = 0;

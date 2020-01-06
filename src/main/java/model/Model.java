@@ -70,8 +70,7 @@ public class Model extends Observable implements IModel {
      public int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
-        int tempPostingValue = 500;
-
+        int tempPostingValue = 650;
         ReadFile rf = new ReadFile();
         NamedEntitiesSearcher ner = new NamedEntitiesSearcher();
         ProgressBar pb = new ProgressBar("Parse & Index", tempPostingValue).start();
@@ -85,7 +84,7 @@ public class Model extends Observable implements IModel {
                     rf.readFiles(corpusPath, i, tempPostingValue);
             //--------------------Thread Pool 8 cores-----------------//
             ExecutorService threadPool =
-                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 2);
+                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 3);
             //-------------------------Parsing------------------------//
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
                     l.stream().map(cd -> threadPool.submit(new Parse(cd, stem, ner)))
@@ -102,7 +101,7 @@ public class Model extends Observable implements IModel {
             Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = threadPool.submit(index); // runnable build tempPost
             HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get(); // get it from future
             //-------------------------WriteFile------------------------//
-            //           Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
+            //Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
             WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting);
             //-------------------------Insert Data to II------------------------//
             insertData(dicList, invertedIndex);

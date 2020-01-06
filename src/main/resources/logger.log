@@ -296,3 +296,31 @@
 2020-01-07 00:49:37 INFO  Main:28 - Boogle launched on 20-01-07 at 00:49
 2020-01-07 00:49:45 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:49:45 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 00:53:40 INFO  Main:28 - Boogle launched on 20-01-07 at 00:53
+2020-01-07 00:54:52 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 00:54:52 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 00:54:58 ERROR Model:56 - Indexing failed
+2020-01-07 00:56:00 INFO  Main:28 - Boogle launched on 20-01-07 at 00:56
+2020-01-07 00:56:14 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 00:56:14 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 00:58:31 INFO  Main:28 - Boogle launched on 20-01-07 at 00:58
+2020-01-07 00:58:52 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 00:58:52 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 00:58:59 ERROR Model:56 - Indexing failed
+2020-01-07 01:00:16 INFO  Main:28 - Boogle launched on 20-01-07 at 01:00
+2020-01-07 01:00:23 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 01:00:23 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 01:00:29 ERROR Model:56 - Indexing failed
+2020-01-07 01:00:48 INFO  Main:28 - Boogle launched on 20-01-07 at 01:00
+2020-01-07 01:00:57 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 01:00:57 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 01:01:04 ERROR Model:56 - Indexing failed
+2020-01-07 01:03:32 INFO  Main:28 - Boogle launched on 20-01-07 at 01:03
+2020-01-07 01:03:39 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 01:03:39 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 01:03:44 ERROR Model:56 - Indexing failed
+2020-01-07 01:08:23 INFO  Main:28 - Boogle launched on 20-01-07 at 01:08
+2020-01-07 01:08:52 INFO  Main:28 - Boogle launched on 20-01-07 at 01:08
+2020-01-07 01:09:00 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 01:09:05 INFO  Model:72 - Start manager Method :: runnable
+2020-01-07 01:09:07 ERROR Model:57 - Indexing failed
