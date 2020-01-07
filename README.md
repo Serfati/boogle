@@ -1,10 +1,10 @@
-# Boogle
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/boogleLogo.png "LOGO")
+
 ![Build Status](https://travis-ci.org/lemire/JavaFastPFOR.png)
 ![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)
 [![GitHub](https://img.shields.io/github/license/nevoit/Automated-Messages.svg)](https://github.com/Serfati/The-LionKing-Maze/edit/master/LICENSE)
 
-
-- Our search engine was implemented with a Model-View-Controller (MVC) Architecture.
+- Our search engine was implemented with a Model-View-ViewModel (MVVM) Architecture.
 
 The Structure:
 -------------
@@ -19,7 +19,7 @@ The Structure:
 
 The Model:
 -------------
-- ReadFile – This module reads documents from the corpus.
+ - ReadFile – This module reads documents from the corpus.
 
 - Parser – Parses the documents (removes stop-words, converts dates to a unified format etc.).
 
@@ -27,12 +27,18 @@ The Model:
 
 - Indexer – Creates the final posting file separated by alphabet letters.
 
-- Searcher – 
+- Searcher – Runs the query and returns the relevant results.
 
-- Ranker –
+- Ranker – This model will rank each document given a specific query from the user (from the GUI).  We used Cosine similarity   (With TF, IDF), BM 25, 
 
-- GUI (view) -
+- WriteFile – This module writes files to the disk.
 
+- GUI (view) - reach User Interface see below
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/googleIcon.png "GUI")
+
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/googleIcon.png "GUI")
 
 Licence:
 -------------
