@@ -11,8 +11,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import view_model.ViewModel;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /* class for the program main run */
 public class Main extends Application {
@@ -24,16 +22,11 @@ public class Main extends Application {
      * @param args - ignored
      */
     public static void main(String[] args) {
-        Long startTime = System.currentTimeMillis();
-        LOGGER.log(Level.INFO, "Boogle launched on "+formatDateTimeString(startTime));
+        long startTime = System.currentTimeMillis();
+        LOGGER.log(Level.INFO, "Boogle launched");
         launch(args);
         long exitTime = System.currentTimeMillis();
-        LOGGER.log(Level.INFO, "Boogle is closing on "+formatDateTimeString(startTime)+". Used for "+(exitTime-startTime) / 60000.0+" m");
-    }
-
-    public static String formatDateTimeString(Long time) {
-        SimpleDateFormat formatter = new SimpleDateFormat("YY-MM-dd 'at' HH:mm");
-        return formatter.format(new Date(time));
+        LOGGER.log(Level.INFO, "Boogle is closing. Used for "+(exitTime-startTime) / 60000.0+" m");
     }
 
     @Override

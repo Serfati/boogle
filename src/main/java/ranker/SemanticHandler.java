@@ -48,7 +48,6 @@ public class SemanticHandler {
 
 
     //-------------------------------------------------------------------//
-
     /**
      * this will return all the related words for a given query (3 for each word)
      *
