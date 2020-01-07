@@ -40,7 +40,19 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             String line = bufferedReader.readLine();
             while(line != null) {
                 String[] curLine = line.split("\t");
-                Term cur = new Term(curLine[0], Integer.parseInt(curLine[1]), Integer.parseInt(curLine[2]), Integer.parseInt(curLine[3]));
+                int terf;
+                int noa;
+                int postingLine;
+                try {
+                    terf = Integer.parseInt(curLine[curLine.length-1]);
+                    noa = Integer.parseInt(curLine[curLine.length-2]);
+                    postingLine = Integer.parseInt(curLine[curLine.length-3]);
+                } catch(NumberFormatException e) {
+                    terf = 1;
+                    noa = 1;
+                    postingLine = 1;
+                }
+                Term cur = new Term(curLine[0], terf, noa, postingLine);
                 invertedIndexDic.put(curLine[0], cur);
                 line = bufferedReader.readLine();
             }

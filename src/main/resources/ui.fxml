@@ -138,7 +138,8 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton fx:id="btn_show_data" disable="true" mnemonicParsing="false" onAction="#showDictionaryClick"
+                <JFXButton fx:id="btn_show_dictionary" disable="true" mnemonicParsing="false"
+                           onAction="#showDictionaryClick"
                            text="Show Dictionary">
                     <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>

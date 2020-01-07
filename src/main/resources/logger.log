@@ -324,3 +324,66 @@
 2020-01-07 01:09:00 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:09:05 INFO  Model:72 - Start manager Method :: runnable
 2020-01-07 01:09:07 ERROR Model:57 - Indexing failed
+2020-01-07 01:10:48 INFO  Main:28 - Boogle launched on 20-01-07 at 01:10
+2020-01-07 01:11:21 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 01:11:21 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 01:25:54 INFO  Model:81 - mainLogicUnit Method :: DONE HALF WAY
+2020-01-07 01:39:51 INFO  Model:115 - Start merge Method :: single
+2020-01-07 01:41:09 INFO  Model:64 - PROCESS DONE :: END INDEXING in 29.8 minutes
+2020-01-07 09:57:25 INFO  Main:31 - Boogle is closing on 20-01-07 at 01:10. Used for 526.6101333333334 m
+2020-01-07 09:58:27 INFO  Main:28 - Boogle launched on 20-01-07 at 09:58
+2020-01-07 09:58:49 INFO  UIController:396 - loadFile::
+2020-01-07 09:58:56 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:04:48 INFO  Main:28 - Boogle launched on 20-01-07 at 10:04
+2020-01-07 10:04:52 INFO  UIController:396 - loadFile::
+2020-01-07 10:04:57 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:06:17 INFO  Main:28 - Boogle launched on 20-01-07 at 10:06
+2020-01-07 10:06:20 INFO  UIController:396 - loadFile::
+2020-01-07 10:06:24 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:07:51 INFO  Main:28 - Boogle launched on 20-01-07 at 10:07
+2020-01-07 10:07:55 INFO  UIController:396 - loadFile::
+2020-01-07 10:08:00 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:09:24 INFO  Main:28 - Boogle launched on 20-01-07 at 10:09
+2020-01-07 10:09:28 INFO  UIController:396 - loadFile::
+2020-01-07 10:09:28 INFO  UIController:396 - loadFile::
+2020-01-07 10:09:32 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:18:23 INFO  Main:28 - Boogle launched on 20-01-07 at 10:18
+2020-01-07 10:18:27 INFO  UIController:396 - loadFile::
+2020-01-07 10:18:30 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:18:56 INFO  Main:28 - Boogle launched on 20-01-07 at 10:18
+2020-01-07 10:18:59 INFO  UIController:396 - loadFile::
+2020-01-07 10:19:05 INFO  UIController:404 - Loaded::Out
+2020-01-07 10:20:08 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:18. Used for 1.1867166666666666 m
+2020-01-07 10:22:22 INFO  Main:28 - Boogle launched on 20-01-07 at 10:22
+2020-01-07 10:23:15 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 10:23:15 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 10:30:03 INFO  Main:28 - Boogle launched on 20-01-07 at 10:30
+2020-01-07 10:30:10 INFO  Model:41 - Start Parsing and Indexing
+2020-01-07 10:30:10 INFO  Model:71 - Start manager Method :: runnable
+2020-01-07 10:32:39 INFO  Model:81 - mainLogicUnit Method :: DONE HALF WAY
+2020-01-07 10:34:54 INFO  Model:115 - Start merge Method :: single
+2020-01-07 10:35:46 INFO  Model:64 - PROCESS DONE :: END INDEXING in 5.61 minutes
+2020-01-07 10:36:46 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:30. Used for 6.72375 m
+2020-01-07 10:39:27 INFO  Main:28 - Boogle launched on 20-01-07 at 10:39
+2020-01-07 10:40:09 INFO  Main:28 - Boogle launched on 20-01-07 at 10:40
+2020-01-07 10:40:20 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.19291666666666665 m
+2020-01-07 10:40:56 INFO  Main:28 - Boogle launched on 20-01-07 at 10:40
+2020-01-07 10:41:55 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.9723833333333334 m
+2020-01-07 10:58:23 INFO  Main:28 - Boogle launched on 20-01-07 at 10:58
+2020-01-07 10:59:06 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:58. Used for 0.7138666666666666 m
+2020-01-07 11:10:24 INFO  Main:28 - Boogle launched on 20-01-07 at 11:10
+2020-01-07 11:11:06 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:10. Used for 0.6927833333333333 m
+2020-01-07 11:41:16 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-07 11:41:17 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-07 11:41:17 INFO  Reflections:229 - Reflections took 155 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-07 11:41:26 INFO  Reflections:229 - Reflections took 157 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-07 11:41:26 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-07 11:42:13 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-07 11:42:13 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-07 11:42:13 INFO  Reflections:229 - Reflections took 167 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-07 11:42:22 INFO  Reflections:229 - Reflections took 157 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-07 11:42:22 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-07 11:42:39 INFO  Main:28 - Boogle launched on 20-01-07 at 11:42
+2020-01-07 11:43:14 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:42. Used for 0.5791333333333334 m
+2020-01-07 11:43:23 INFO  Main:28 - Boogle launched on 20-01-07 at 11:43
+2020-01-07 11:43:27 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:43. Used for 0.07838333333333333 m

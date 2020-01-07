@@ -2,7 +2,6 @@ package ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import indexer.InvertedIndex;
 import javafx.collections.ObservableList;
@@ -10,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
@@ -27,42 +28,57 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(SearchController.class.getName());
-
-    @FXML
-    private JFXTextField nDaysWithoutFine;
-    @FXML
-    private JFXTextField finePerDay;
-    @FXML
-    private JFXPasswordField emailPassword;
-    @FXML
-    private JFXCheckBox sslCheckbox;
-    @FXML
+    public TabPane tabManager;
     public TableView<InvertedIndex.ShowDictionaryRecord> table_showDic;
-    public TableColumn<InvertedIndex.ShowDictionaryRecord, String> tableCol_term;
-    public TableColumn<InvertedIndex.ShowDictionaryRecord, Number> tableCol_count;
+    public TableColumn<InvertedIndex.ShowDictionaryRecord, String> tableCol_1;
+    public TableColumn<InvertedIndex.ShowDictionaryRecord, Number> tableCol_2;
+    public TableColumn<InvertedIndex.ShowDictionaryRecord, Number> tableCol_3;
+    public StackPane rootContainer;
+    public JFXButton btn_save_results;
+    public JFXButton btn_export_pdf;
+    public JFXButton btn_boogle_search;
+    @FXML
+    public JFXTextField entite_text;
+    @FXML
+    public JFXCheckBox stem_checkbox;
+    @FXML
+    private JFXTextField freeQuery_txt;
+    @FXML
+    private JFXTextField fileQuery_txt;
+    @FXML
+    private JFXTextField goToOutputs_txt;
+    @FXML
+    private JFXCheckBox semantic_checkbox;
     @FXML
     public JFXButton btn_show_data;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        setBoogleClick();
         initDefaultValues();
     }
 
     @FXML
     private void handleSaveButtonAction(ActionEvent event) {
-        int ndays = Integer.parseInt(nDaysWithoutFine.getText());
-        float fine = Float.parseFloat(finePerDay.getText());
+        int ndays = Integer.parseInt(freeQuery_txt.getText());
+        float fine = Float.parseFloat(fileQuery_txt.getText());
     }
 
     private Stage getStage() {
-        return ((Stage) nDaysWithoutFine.getScene().getWindow());
+        return ((Stage) freeQuery_txt.getScene().getWindow());
     }
 
     private void initDefaultValues() {
     }
 
+    public void setBoogleClick() {
+        btn_boogle_search.addEventHandler(MouseEvent.MOUSE_CLICKED, this::handleBoogleClick);
+    }
+
     @FXML
-    private void handleTestAction(ActionEvent event) {
+    private void handleBoogleClick(MouseEvent event) {
+        SingleSelectionModel<Tab> selectionModel = tabManager.getSelectionModel();
+        selectionModel.select(1);
     }
 
     /**
@@ -70,8 +86,9 @@ public class SearchController implements Initializable {
      */
     private void showData(ObservableList<InvertedIndex.ShowDictionaryRecord> records) {
         if (records != null) {
-            tableCol_term.setCellValueFactory(cellData -> cellData.getValue().getTermProperty());
-            tableCol_count.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
+            tableCol_1.setCellValueFactory(cellData -> cellData.getValue().getTermProperty());
+            tableCol_2.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
+            tableCol_3.setCellValueFactory(cellData -> cellData.getValue().getCountProperty());
             table_showDic.setItems(records);
         }
         btn_show_data.setDisable(false);

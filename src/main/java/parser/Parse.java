@@ -1,7 +1,5 @@
 package parser;
 
-import edu.stanford.nlp.pipeline.CoreDocument;
-import edu.stanford.nlp.pipeline.CoreEntityMention;
 import model.Model;
 import org.apache.commons.lang3.StringUtils;
 
@@ -45,10 +43,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
-        ner.pipeline().annotate(doc);
-        for(CoreEntityMention em : doc.entityMentions())
-            miniDic.addWord(em.text().toUpperCase(), 0);
+//        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
+//        ner.pipeline().annotate(doc);
+//        for(CoreEntityMention em : doc.entityMentions())
+//            miniDic.addWord(em.text().toUpperCase(), 0);
 
 //        initMonthsData();
 //        nextWordsRules();

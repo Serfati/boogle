@@ -6,13 +6,10 @@ import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 
 /**
  * A class used to handle semantics.
@@ -21,10 +18,7 @@ import java.util.List;
  */
 public class SemanticHandler {
 
-    /**
-     * wordVectors collection as a hashmap
-     * he corpus and glove file paths
-     */
+    /* wordVectors collection */
     public static WordVectors wordVectors;
     //corpus path is set on engine run or load
     public static String corpusPath;
@@ -32,14 +26,28 @@ public class SemanticHandler {
     public static boolean includeSemantics = false;
     private Model model;
 
-    /* this will read  from the glove file and load the word vectors into wordsVectors hashmap*/
-    public static void readGloveFile() {
-        try {
-            wordVectors = WordVectorSerializer.loadTxtVectors(new File("src/main/resources/glove.6B.50d.txt"));
-        } catch(FileNotFoundException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+
+    public static void main(String[] args) {
+        new SemanticHandler().sample();
     }
+
+    /* this will read  from the glove file and load the word vectors into wordsVectors*/
+    public static void readGloveFile() {
+        wordVectors = WordVectorSerializer.readWord2VecModel(new File("src/main/resources/glove.6B.50d.txt"));
+    }
+
+    private void sample() {
+        readGloveFile();
+        //prints the 10 closest words to "israel"
+        System.out.println(wordVectors.wordsNearest("israel", 10));
+        //prints the 10 closest words to "kitten" - "cat" + "dog"
+        System.out.println(wordVectors.wordsNearest(Arrays.asList("kitten", "dog"), Collections.singletonList("cat"), 10));
+        //prints the closest word to "berlin" - "germany" + "france"
+        System.out.println(wordVectors.wordsNearest(Arrays.asList("berlin", "france"), Collections.singletonList("germany"), 1));
+    }
+
+
+    //-------------------------------------------------------------------//
 
     /**
      * this will return all the related words for a given query (3 for each word)
@@ -54,7 +62,6 @@ public class SemanticHandler {
             ans.addAll(wordRelatedWords);
         }
         return ans;
-
     }
 
     /**
@@ -78,32 +85,11 @@ public class SemanticHandler {
         return list.subList(1, 6);
     }
 
-    public static void main(String[] args) {
-        new SemanticHandler().init();
-    }
-
     /**
      * use it to clear the memory
      */
     public static void clearWordsVecs() {
         wordVectors = null;
-    }
-
-    private void init() {
-        try {
-            wordVectors = WordVectorSerializer.loadTxtVectors(new File("src/main/resources/glove.6B.50d.txt"));
-        } catch(FileNotFoundException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        //prints the 10 closest words to "cat"
-        System.out.println(wordVectors.wordsNearest("cat", 10));
-
-        //prints the 10 closest words to "kitten" - "cat" + "dog"
-        System.out.println(wordVectors.wordsNearest(Arrays.asList("kitten", "dog"), Collections.singletonList("cat"), 10));
-
-        //prints the closest word to "berlin" - "germany" + "france"
-        System.out.println(wordVectors.wordsNearest(Arrays.asList("berlin", "france"), Collections.singletonList("germany"), 1));
     }
 
     private double avgWeight(List<String> closest) {
