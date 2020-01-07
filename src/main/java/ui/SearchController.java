@@ -41,6 +41,7 @@ public class SearchController implements Initializable {
     public JFXTextField entite_text;
     @FXML
     public JFXCheckBox stem_checkbox;
+    public JFXButton btn_query_browse;
     @FXML
     private JFXTextField freeQuery_txt;
     @FXML
@@ -130,5 +131,9 @@ public class SearchController implements Initializable {
 
     @FXML
     private void handleDatabaseExportAction(ActionEvent event) {
+    }
+
+    public void browseQueryClick(ActionEvent actionEvent) {
+
     }
 }

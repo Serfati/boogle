@@ -308,7 +308,7 @@
 
 .checkbox-main {
     -fx-text-fill: -fx-secondary;
-    -jfx-checked-color: -fx-primary;
+    -jfx-checked-color: #5fa3a6;
     -fx-font-size: 10pt;
 }
 
