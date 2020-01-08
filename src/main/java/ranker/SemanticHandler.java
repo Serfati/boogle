@@ -70,6 +70,8 @@ public class SemanticHandler {
      * @return 3 related words by GLOVE model
      */
     public static ArrayList<String> getThreeBestMatches(String unProcessedWord) {
+
+
         return null;
     }
 

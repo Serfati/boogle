@@ -134,7 +134,7 @@ public class ReadFile {
         File postingFile = new File (filePath);
         LinkedList<String> postingLines = new LinkedList<>();
         try {
-            List l = FileUtils.readLines(postingFile);
+            List l = FileUtils.readLines(postingFile, "UTF-8");
             for (Integer i : indexes) postingLines.add(l.get(i).toString());
         } catch(IOException e) {
             e.printStackTrace();

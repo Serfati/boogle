@@ -66,4 +66,14 @@ public class BM25Algorithm extends ARankingAlgorithm {
         this.b = b;
     }
 
+    /**
+     * returns the IDF of a word in the corpus
+     *
+     * @param length number of docs the word appears in
+     * @return calculated IDF
+     */
+    private Double getIDF(int length) {
+        double docInCorpusCount = Model.documentDictionary.keySet().size();
+        return Math.log10((docInCorpusCount+1) / length);
+    }
 }

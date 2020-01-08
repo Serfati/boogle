@@ -49,4 +49,11 @@ public class ViewModel extends Observable implements Observer {
     public void loadDictionary(String path, boolean stem) {
         Platform.runLater(() -> model.loadDictionary(path, stem));
     }
+
+    public void showDataClick() {
+
+    }
+
+    public void onSearchBoogleClick(String query, String text, boolean selected, boolean selected1) {
+    }
 }

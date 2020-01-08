@@ -99,9 +99,7 @@ public class UIController implements IView, Observer, Initializable {
         boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openGoogle());
     }
 
-    /**
-     * This function starts the process of parse and index the dictionary
-     */
+    /* This function starts the process of parse and index the dictionary*/
     public void onStartClick() {
         if (txtfld_corpus_location.getText().equals("") || txtfld_output_location.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "path can not be empty");
@@ -242,7 +240,7 @@ public class UIController implements IView, Observer, Initializable {
             showAlert();
         }
         searchStage.setTitle("BOOGLE");
-        Scene scene = new Scene(root, 842, 456);
+        Scene scene = new Scene(root, 720, 456);
         scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         searchStage.setScene(scene);
         searchStage.initModality(Modality.WINDOW_MODAL);

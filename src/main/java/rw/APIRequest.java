@@ -9,10 +9,11 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class APIRequest {
+    private static final String URL = "https://api.datamuse.com/words?rel_syn=";
+
 
     public static void main(String[] args) throws IOException {
-        APIRequest api = new APIRequest();
-        api.dataBase("https://api.datamuse.com/sug?s=isra");
+        synonyms(URL+"ocean");
     }
 
     /**
@@ -36,17 +37,18 @@ public class APIRequest {
         return new JSONObject(sb.toString());
     }
 
-    public void dataBase(String apiURL) throws IOException {
-
+    public static StringBuilder synonyms(String wordToSyn) throws IOException {
+        StringBuilder backStnonyms = new StringBuilder();
         APIRequest request = new APIRequest();
-        JSONObject details = request.post(apiURL);
+        JSONObject details = request.post(URL+wordToSyn);
         JSONArray result = details.getJSONArray("result");
 
-        for(int i = 1; i < result.length() && i < 5; i++) {
+        for(int i = 0; i < result.length() && i <= 2; i++) {
             JSONObject data = (JSONObject) result.get(i);
             String word = data.get("word").toString();
             String score = data.get("score").toString();
-            System.out.println(word+":"+score);
+            backStnonyms.append(word);
         }
+        return backStnonyms;
     }
 }

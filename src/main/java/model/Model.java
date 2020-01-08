@@ -12,6 +12,8 @@ import parser.MiniDictionary;
 import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
+import ranker.Ranker;
+import ranker.Searcher;
 import rw.ReadFile;
 import rw.WriteFile;
 
@@ -29,12 +31,21 @@ import java.util.stream.IntStream;
 import static java.lang.System.exit;
 
 public class Model extends Observable implements IModel {
+    private static Model singleton = null;
     public static HashSet<String> stopWords;
     public static InvertedIndex invertedIndex;
     public static HashMap<String, DocumentIndex> documentDictionary;
+    private Searcher mySearcher;
+    private Ranker myRanker;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
     private final static Logger LOGGER = LogManager.getLogger(Model.class.getName());
 
+    //singleton
+    public static Model getInstance() {
+        if (singleton == null)
+            singleton = new Model();
+        return singleton;
+    }
 
     @Override
     public void startIndexing(String pathOfDocs, String destinationPath, boolean useStemming) {

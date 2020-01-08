@@ -75,12 +75,14 @@ public class MiniDictionary {
             maxFreq_word = word;
         }
     }
+
     /**
      * checks if the term has been already added
+     *
      * @param word the term to be checked
      * @return returns indicate
      */
-    private int containsKey(String word) {
+    protected int containsKey(String word) {
         if (!Character.isLetter(word.charAt(0)) && dictionary.containsKey(word))
             return 3;
         String upper = word.toUpperCase();
@@ -158,5 +160,9 @@ public class MiniDictionary {
 
     public String getTitle() {
         return docTI;
+    }
+
+    public void setEntitiesList(String aNull) {
+
     }
 }

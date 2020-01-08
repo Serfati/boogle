@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
 
 public class Ranker implements IRanker {
 
-    private double BM_25_B = 1.22, BM_25_K = 0.77, CONTAINING_WEIGHT = 0.4;
+    private double BM_25_B = 0.7, BM_25_K = 1.5, CONTAINING_WEIGHT = 0.4;
     private double IDF_DELTA = 1, TITLE_WEIGHT = 0.45, POSITIONS_WEIGHT = 0.08, BM25_WEIGHT = 0.25, IDF_LOWER_BOUND = 2;
     private int DOCUMENT_RETRIEVE_COUNT = 50;
     private Mutex rankMutex;
@@ -73,8 +73,8 @@ public class Ranker implements IRanker {
     }
 
     @Override
-    public void setAttributes(String termsPath, String docsPath, double docaAvgLength) {
-        this.avgDocLength = avgDocLength;
+    public void setAttributes(String termsPath, String docsPath, double docAvgLength) {
+        this.avgDocLength = docAvgLength;
         this.termOutPath = termsPath;
         this.docOutPath = docsPath;
     }

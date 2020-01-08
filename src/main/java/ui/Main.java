@@ -40,7 +40,7 @@ public class Main extends Application {
         Parent root = fxmlLoader.load(getClass().getResource("../ui.fxml").openStream());
         Scene scene = new Scene(root, 620, 700);
         scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
         //------------------------------//
         UIController viewController = fxmlLoader.getController();
         viewController.setViewModel(viewModel);
