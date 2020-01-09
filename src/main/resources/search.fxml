@@ -47,6 +47,8 @@
                                                      text="Enable Semantics"/>
                                         <JFXCheckBox fx:id="stem_checkbox" prefHeight="17.0" prefWidth="239.0"
                                                      selected="true" styleClass="checkbox-main" text="Enable Stemming"/>
+                                        <JFXCheckBox fx:id="offline_checkbox" prefHeight="17.0" prefWidth="239.0"
+                                                     styleClass="checkbox-main" text="Use offline"/>
                                         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
                                             <children>
                                                 <JFXButton fx:id="btn_query_browse" mnemonicParsing="false"

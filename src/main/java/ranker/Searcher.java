@@ -10,7 +10,7 @@ import parser.MiniDictionary;
 import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
-import rw.APIRequest;
+import rw.DatamuseAPI;
 import rw.Query;
 
 import java.io.BufferedWriter;
@@ -63,23 +63,18 @@ public class Searcher implements Callable<LinkedList<String>> {
         return null;
     }
 
-    private LinkedList<String> getQueryResults() throws IOException {
-        NamedEntitiesSearcher ner = null;
-        Parse parser;
-        String queryAfterSem;
-        parser = new Parse(new cDocument("", "", "", "", query.getQueryText()), enableStemming, ner);
-        MiniDictionary md = parser.parse();
-        if (enableSemantics) {
-            queryAfterSem = query.getQueryText()+""+useSemantics(md.dictionary).toString();
-            parser.parse();
-        }
+    /**
+     * Searcher
+     * parseQueryAndReturnRank
+     * synForQuery
+     * autoComplete(term)
+     */
 
+    public static ObservableList<ShowResultRecord> getRecord() {
+        ObservableList<ShowResultRecord> showDataRecords = FXCollections.observableArrayList();
+        //TODO
 
-        HashMap<String, Integer> wordsCountInQuery = null;
-
-        Ranker ranker = null;
-
-        return null;
+        return showDataRecords;
     }
 
     private String[] getAllDocsOptionalForRetrival(String wordPostingData) {
@@ -115,25 +110,31 @@ public class Searcher implements Callable<LinkedList<String>> {
         test.close();
     }
 
+    private LinkedList<String> getQueryResults() throws IOException {
+        NamedEntitiesSearcher ner = null;
+        Parse parser;
+        String queryAfterSem;
+        parser = new Parse(new cDocument("", "", "", "", query.getQueryText()), enableStemming, ner);
+        MiniDictionary md = parser.parse();
+        if (enableSemantics) {
+            queryAfterSem = query.getQueryText()+" "+useSemantics(md.dictionary).toString();
+            parser.parse();
+        }
+
+
+        HashMap<String, Integer> wordsCountInQuery = null;
+
+        Ranker ranker = null;
+
+        return null;
+    }
+
     //Allows the use of a semantic connection for the query
     public StringBuilder useSemantics(HashMap<String, LinkedList<Integer>> queryAfterParse) throws IOException {
         StringBuilder allSynonyms = new StringBuilder();
         for(HashMap.Entry<String, LinkedList<Integer>> entry : queryAfterParse.entrySet())
-            allSynonyms.append(APIRequest.synonyms(entry.getKey()));
+            allSynonyms.append(DatamuseAPI.synonyms(entry.getKey()));
         return allSynonyms;
-    }
-
-
-    /**
-     * Searcher
-     * parseQueryAndReturnRank
-     * synForQuery
-     * autoComplete(term)
-     */
-
-    public ObservableList<ShowResultRecord> getRecord() {
-        ObservableList<ShowResultRecord> showDataRecords = FXCollections.observableArrayList();
-        return showDataRecords;
     }
 
 

@@ -51,6 +51,7 @@ public class SearchController implements Observer, Initializable {
     public JFXCheckBox stem_checkbox;
     public JFXButton btn_query_browse;
     public JFXSpinner progressSpinner;
+    public JFXCheckBox offline_checkbox;
     @FXML
     private JFXTextField queryField_txt;
     @FXML

@@ -53,4 +53,5 @@ public interface IModel {
     void showDictionary();
 
 
+    void showData();
 }

@@ -129,6 +129,8 @@ public class Model extends Observable implements IModel {
         return new int[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
 
+    //TODO mainLogicUnit for query
+
     @Override
     public void loadDictionary(String path, boolean useStemming) {
         boolean foundInvertedIndex = false, foundDocumentDictionary = false;
@@ -426,6 +428,12 @@ public class Model extends Observable implements IModel {
     public void showDictionary() {
         setChanged();
         notifyObservers(invertedIndex.getRecord());
+    }
+
+    @Override
+    public void showData() {
+        setChanged();
+        notifyObservers(Searcher.getRecord());
     }
 
 }

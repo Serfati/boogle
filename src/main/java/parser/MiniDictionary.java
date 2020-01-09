@@ -1,11 +1,10 @@
 package parser;
 
+import javafx.util.Pair;
 import sun.awt.Mutex;
 
 import java.text.MessageFormat;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Objects;
+import java.util.*;
 
 
 public class MiniDictionary {
@@ -16,6 +15,7 @@ public class MiniDictionary {
     private String docTI;
     private Mutex mutex;
     private double rank;
+    private Pair<String, Integer>[] places = new Pair[5];
 
     /**
      * cTor new MiniDictionary
@@ -165,4 +165,26 @@ public class MiniDictionary {
     public void setEntitiesList(String aNull) {
 
     }
+
+    /**
+     * sets the 5 primary words
+     */
+    public void setPrimaryWords() {
+        TreeMap<String, LinkedList<Integer>> sorted = new TreeMap<>((o1, o2) -> o1.equals(o2) ? 0 : dictionary.get(o1).size() > dictionary.get(o2).size() ? -1 : 1);
+        sorted.putAll(dictionary);
+        int i = 0;
+        for(Map.Entry<String, LinkedList<Integer>> first : ((Map<String, LinkedList<Integer>>) sorted).entrySet()) {
+            if (Character.isUpperCase(first.getKey().charAt(0))) {
+                LinkedList<Integer> cur = first.getValue();
+                if (cur != null)
+                    places[i] = new Pair<>(first.getKey(), cur.size());
+            }
+            if (places[i] == null)
+                i--;
+            i++;
+            if (places[4] != null) break;
+        }
+    }
+
+
 }

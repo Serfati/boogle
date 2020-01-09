@@ -165,7 +165,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                 processedToken = tokenInLower;
         } else { //first char is in lower case
             processedToken = tokenInLower;
-            if (tokenExistInUpper) miniDic.addWord(tokenInLower, index);
+            if (tokenExistInUpper) {
+                miniDic.dictionary.remove(tokenInUpper);
+                miniDic.addWord(tokenInLower, index);
+            }
         }
         if (!Model.stopWords.contains(processedToken)) {
             miniDic.addWord(processedToken, index);

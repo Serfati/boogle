@@ -10,7 +10,6 @@ public class DocRankComparator implements Comparator<MiniDictionary> {
 
     @Override
     public int compare(MiniDictionary o1, MiniDictionary o2) {
-
         if (o1.getRank() > o2.getRank())
             return -1;
         else if (o1.getRank() == o2.getRank())

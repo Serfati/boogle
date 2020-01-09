@@ -8,12 +8,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class APIRequest {
+public class DatamuseAPI {
     private static final String URL = "https://api.datamuse.com/words?rel_syn=";
 
 
     public static void main(String[] args) throws IOException {
-        synonyms(URL+"ocean");
+        System.out.println(synonyms("ocean"));
     }
 
     /**
@@ -38,17 +38,17 @@ public class APIRequest {
     }
 
     public static StringBuilder synonyms(String wordToSyn) throws IOException {
-        StringBuilder backStnonyms = new StringBuilder();
-        APIRequest request = new APIRequest();
+        StringBuilder backSynonyms = new StringBuilder();
+        DatamuseAPI request = new DatamuseAPI();
         JSONObject details = request.post(URL+wordToSyn);
         JSONArray result = details.getJSONArray("result");
 
-        for(int i = 0; i < result.length() && i <= 2; i++) {
+        for(int i = 0; i < result.length() && i < 2; i++) {
             JSONObject data = (JSONObject) result.get(i);
             String word = data.get("word").toString();
             String score = data.get("score").toString();
-            backStnonyms.append(word);
+            backSynonyms.append(word);
         }
-        return backStnonyms;
+        return backSynonyms;
     }
 }
