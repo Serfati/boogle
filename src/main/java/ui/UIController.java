@@ -17,6 +17,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.*;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.Level;
@@ -31,10 +32,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.List;
+import java.util.*;
 
 public class UIController implements IView, Observer, Initializable {
     private final static Logger LOGGER = LogManager.getLogger(UIController.class.getName());
@@ -66,6 +65,7 @@ public class UIController implements IView, Observer, Initializable {
     public JFXButton btn_startOver;
     public JFXButton btn_load_dictionary;
     public Label lbl_totalTime;
+    public BorderPane rootPane;
     private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
@@ -213,16 +213,25 @@ public class UIController implements IView, Observer, Initializable {
     }
 
     public void exitCorrectly() {
+        List<JFXButton> controls = new ArrayList<>();
+        JFXButton yes = new JFXButton("stay");
+        JFXButton no = new JFXButton("Leave");
+        controls.add(yes);
+        controls.add(no);
+        AlertMaker.showMaterialDialog(rootPane, rootPane, controls, "exit", "Are you sure?");
+
         Alert alert = new Alert(Alert.AlertType.NONE);
+        AlertMaker.styleAlert(alert);
         ButtonType leaveButton = new ButtonType("Leave", ButtonBar.ButtonData.YES);
         ButtonType stayButton = new ButtonType("Stay", ButtonBar.ButtonData.NO);
         alert.getButtonTypes().setAll(stayButton, leaveButton);
-        alert.setContentText("Are you sure you want to exit?");
+        alert.setContentText("Are you sure?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == leaveButton)
             Platform.exit();
         else
             alert.close();
+        rootPane.setEffect(null);
     }
 
     private void searchView() {

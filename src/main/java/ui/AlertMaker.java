@@ -12,9 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.PrintWriter;
@@ -105,13 +105,14 @@ public class AlertMaker {
         alert.showAndWait();
     }
 
-    public static void showMaterialDialog(StackPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
+    public static void showMaterialDialog(BorderPane root, Node nodeToBeBlurred, List<JFXButton> controls, String header, String body) {
         BoxBlur blur = new BoxBlur(3, 3, 3);
         if (controls.isEmpty()) {
             controls.add(new JFXButton("Okay"));
         }
+
         JFXDialogLayout dialogLayout = new JFXDialogLayout();
-        JFXDialog dialog = new JFXDialog(root, dialogLayout, JFXDialog.DialogTransition.TOP);
+        JFXDialog dialog = new JFXDialog();
 
         controls.forEach(controlButton -> {
             controlButton.getStyleClass().add("dialog-button");
@@ -126,7 +127,7 @@ public class AlertMaker {
         nodeToBeBlurred.setEffect(blur);
     }
 
-    private static void styleAlert(Alert alert) {
+    static void styleAlert(Alert alert) {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(AlertMaker.class.getResource("../dark-style.css").toExternalForm());

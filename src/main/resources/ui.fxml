@@ -11,11 +11,12 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="685.0" prefWidth="618.0" styleClass="custom-pane"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" prefHeight="685.0" prefWidth="618.0"
+            styleClass="custom-pane"
             stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
             fx:controller="ui.UIController">
     <top>
-        <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="anchor" prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
                 <javafx.scene.control.MenuBar prefWidth="700.0">
                     <menus>
