@@ -18,26 +18,27 @@
                                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                                       AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <JFXTextField fx:id="queryField_txt" labelFloat="true"
-                                                      promptText="Search Boogle or browse for a file">
+                                        <JFXTextField fx:id="queryField_txt" onMouseClicked="#browseQueryClick"
+                                                      labelFloat="true"
+                                                      promptText="Search Boogle or browse file (double click)">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="25.0"/>
                                             </VBox.margin>
                                         </JFXTextField>
                                         <JFXTextField fx:id="outputField_txt" labelFloat="true"
-                                                      promptText="Output location">
+                                                      onMousePressed="#browseOutputClick"
+                                                      promptText="Output location (double click)">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </JFXTextField>
-                                        <JFXTextField fx:id="entite_text" labelFloat="true"
-                                                      promptText="Search for entitie">
+                                        <JFXTextField fx:id="DONE_txt" labelFloat="true" promptText="Search for Entity">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </JFXTextField>
-                                        <JFXTextField fx:id="goToOutputs_txt" labelFloat="true" text="Go to Outputs tab"
-                                                      visible="false">
+                                        <JFXTextField fx:id="google_txt" labelFloat="true"
+                                                      promptText="Search in google">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                                             </VBox.margin>
@@ -51,8 +52,6 @@
                                                      styleClass="checkbox-main" text="Use offline"/>
                                         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="512.0" spacing="25.0">
                                             <children>
-                                                <JFXButton fx:id="btn_query_browse" mnemonicParsing="false"
-                                                           onAction="#browseQueryClick" text="Browse"/>
                                                 <JFXButton fx:id="btn_boogle_search" prefHeight="100.0"
                                                            onAction="#onSearchBoogleClick" prefWidth="200.0"
                                                            text="Boogle Search"/>
@@ -81,7 +80,7 @@
                                 <TableColumn fx:id="numberCol" prefWidth="33.0" text="#"/>
                                 <TableColumn fx:id="tableCol_1" prefWidth="250.0" text="Results"/>
                                 <TableColumn fx:id="tableCol_2" prefWidth="300.0" text="TOP 5"/>
-                                <TableColumn fx:id="tableCol_3" prefWidth="100.0" text="Rank"/>
+                                <TableColumn fx:id="tableCol_3" prefWidth="100.0" text="Length"/>
                             </columns>
                         </TableView>
                         <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0" spacing="25.0">
@@ -90,8 +89,8 @@
                             </VBox.margin>
                             <children>
                                 <JFXButton fx:id="btn_show_data" prefHeight="100.0" prefWidth="170.0" text="Show Data"
-                                           disable="true"/>
-                                <JFXButton fx:id="btn_save_results" prefHeight="100.0" prefWidth="170.0"
+                                           onAction="#showDataClick" disable="true"/>
+                                <JFXButton onAction="#saveQueryResults" prefHeight="100.0" prefWidth="170.0"
                                            text="Save Results" disable="true"/>
                             </children>
                         </HBox>

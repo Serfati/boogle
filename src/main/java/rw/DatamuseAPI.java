@@ -45,7 +45,7 @@ public class DatamuseAPI {
 
         for(int i = 0; i < result.length() && i < 2; i++) {
             JSONObject data = (JSONObject) result.get(i);
-            String word = data.get("word").toString();
+            String word = data.get("word").toString()+" ";
             String score = data.get("score").toString();
             backSynonyms.append(word);
         }

@@ -477,3 +477,82 @@
 2020-01-09 12:52:45 INFO  Reflections:229 - Reflections took 207 ms to scan 12 urls, producing 368 keys and 1424 values 
 2020-01-09 12:52:45 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
 2020-01-09 12:56:06 INFO  Main:29 - Boogle is closing. Used for 3.4441 m
+2020-01-09 13:17:06 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 13:17:06 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 13:17:07 INFO  Reflections:229 - Reflections took 144 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 13:17:23 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 13:17:23 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 13:17:23 INFO  Reflections:229 - Reflections took 149 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 13:17:32 INFO  Reflections:229 - Reflections took 170 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 13:17:33 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 13:18:26 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 13:18:26 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 13:18:27 INFO  Reflections:229 - Reflections took 146 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 13:18:36 INFO  Reflections:229 - Reflections took 184 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 13:18:36 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 15:22:12 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:22:13 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:22:13 INFO  Reflections:229 - Reflections took 167 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:22:24 INFO  Main:26 - Boogle launched
+2020-01-09 15:23:38 INFO  Main:29 - Boogle is closing. Used for 1.2337333333333333 m
+2020-01-09 15:31:04 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:31:04 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:31:04 INFO  Reflections:229 - Reflections took 149 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:31:14 INFO  Reflections:229 - Reflections took 191 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 15:31:14 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 15:31:22 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:31:22 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:31:22 INFO  Reflections:229 - Reflections took 165 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:31:32 INFO  Reflections:229 - Reflections took 208 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 15:31:32 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 15:43:27 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:43:27 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:43:27 INFO  Reflections:229 - Reflections took 146 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:43:36 INFO  Reflections:229 - Reflections took 165 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 15:43:37 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 15:43:58 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:43:58 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:43:58 INFO  Reflections:229 - Reflections took 142 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:46:14 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-09 15:46:14 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-09 15:46:14 INFO  Reflections:229 - Reflections took 153 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-09 15:46:23 INFO  Reflections:229 - Reflections took 149 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-09 15:46:24 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-09 15:53:59 INFO  Main:26 - Boogle launched
+2020-01-09 17:32:38 INFO  Main:29 - Boogle is closing. Used for 98.64698333333334 m
+2020-01-12 12:11:32 INFO  Main:26 - Boogle launched
+2020-01-12 12:11:59 INFO  Main:29 - Boogle is closing. Used for 0.44665 m
+2020-01-12 12:18:22 INFO  Main:26 - Boogle launched
+2020-01-12 12:19:42 INFO  Main:26 - Boogle launched
+2020-01-12 12:23:27 INFO  Main:26 - Boogle launched
+2020-01-12 12:24:10 INFO  Main:26 - Boogle launched
+2020-01-12 12:43:44 INFO  Main:29 - Boogle is closing. Used for 19.566766666666666 m
+2020-01-12 12:48:57 INFO  Main:26 - Boogle launched
+2020-01-12 12:49:27 INFO  Main:29 - Boogle is closing. Used for 0.5056333333333334 m
+2020-01-12 12:50:05 INFO  Main:26 - Boogle launched
+2020-01-12 12:50:30 INFO  Main:29 - Boogle is closing. Used for 0.40835 m
+2020-01-12 12:51:09 INFO  Main:26 - Boogle launched
+2020-01-12 12:51:26 INFO  Main:29 - Boogle is closing. Used for 0.28723333333333334 m
+2020-01-12 12:52:10 INFO  Main:26 - Boogle launched
+2020-01-12 12:55:54 INFO  Main:26 - Boogle launched
+2020-01-12 12:56:23 INFO  Main:29 - Boogle is closing. Used for 0.4783833333333333 m
+2020-01-12 12:57:32 INFO  Main:26 - Boogle launched
+2020-01-12 12:58:20 INFO  Main:29 - Boogle is closing. Used for 0.8009166666666667 m
+2020-01-12 14:27:17 INFO  Main:27 - Boogle launched
+2020-01-12 14:27:35 INFO  Main:27 - Boogle launched
+2020-01-12 14:28:18 INFO  Main:27 - Boogle launched
+2020-01-12 14:28:22 INFO  SearchController:79 - Boogle Search page opened.
+2020-01-12 14:30:01 INFO  Main:30 - Boogle is closing. Used for 1.7139 m
+2020-01-12 23:47:08 INFO  Main:27 - Boogle launched
+2020-01-12 23:47:15 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-12 23:47:23 INFO  Main:30 - Boogle is closing. Used for 0.24723333333333333 m
+2020-01-12 23:50:08 INFO  Main:27 - Boogle launched
+2020-01-12 23:50:16 INFO  Main:30 - Boogle is closing. Used for 0.133 m
+2020-01-12 23:50:41 INFO  Main:27 - Boogle launched
+2020-01-12 23:50:48 INFO  Main:30 - Boogle is closing. Used for 0.11976666666666666 m
+2020-01-12 23:50:54 INFO  Main:27 - Boogle launched
+2020-01-12 23:50:57 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-12 23:52:25 INFO  Main:27 - Boogle launched
+2020-01-12 23:52:35 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-12 23:52:49 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-12 23:53:17 INFO  SearchController:75 - Boogle Search page opened.

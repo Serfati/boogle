@@ -4,9 +4,9 @@ package parser;
  */
 
 public class cDocument {
-    private String m_fileName;
+    String m_fileName;
     private String m_docNum;
-    private String m_docDate;
+    String m_docDate;
     private String m_docTitle;
     private String m_docText;
 

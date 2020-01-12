@@ -2,6 +2,8 @@ package model;
 
 import indexer.DocumentIndex;
 import indexer.InvertedIndex;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.util.Pair;
 import me.tongfei.progressbar.ProgressBar;
 import org.apache.commons.io.FileUtils;
@@ -14,6 +16,7 @@ import parser.Parse;
 import parser.cDocument;
 import ranker.Ranker;
 import ranker.Searcher;
+import rw.Query;
 import rw.ReadFile;
 import rw.WriteFile;
 
@@ -38,6 +41,7 @@ public class Model extends Observable implements IModel {
     private Searcher mySearcher;
     private Ranker myRanker;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
+    public HashMap<String, LinkedList<String>> m_results;
     private final static Logger LOGGER = LogManager.getLogger(Model.class.getName());
 
     //singleton
@@ -60,7 +64,7 @@ public class Model extends Observable implements IModel {
         documentDictionary = new HashMap<>();
 
         try {
-            results = mainLogicUnit(invertedIndex, paths[0], paths[1], useStemming);
+            results = indexMainLogic(invertedIndex, paths[0], paths[1], useStemming);
             WriteFile.writeDictionariesToDisk(destinationPath, useStemming);
         } catch(Exception e) {
             String[] update = {"Fail", "Indexing failed"};
@@ -78,7 +82,50 @@ public class Model extends Observable implements IModel {
     }
 
     @Override
-     public int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
+    public void startBoogleSearch(String postingPath, String queries, String outLocation, boolean stem, boolean semantic, boolean offline) {
+        LOGGER.log(Level.INFO, "Start Searching");
+        String[] paths = pathAreValid(postingPath, outLocation); // checks if the paths entered are valid
+        if (paths == null) return;
+        double startEngine = System.currentTimeMillis();
+        try {
+            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(paths[0], queries, paths[1], stem, semantic, offline);
+            resultsToObservableList(results);
+        } catch(Exception e) {
+            String[] update = {"Fail", "Boogle failed"};
+            LOGGER.log(Level.ERROR, "Boogle failed");
+            setChanged();
+            notifyObservers(update);
+            e.printStackTrace();
+            exit(0);
+        }
+        final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
+        double[] totalResults = new double[]{RUNTIME};
+        LOGGER.log(Level.INFO, "PROCESS DONE :: END Searching"+" in "+RUNTIME+" ms");
+        setChanged();
+        notifyObservers(totalResults);
+    }
+
+    HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, String outLocation, boolean stem, boolean semantic, boolean offline) {
+        Random r = new Random();
+        LinkedList<Query> queriesList = new LinkedList<>();
+        if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
+        else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
+
+        ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        HashMap<String, LinkedList<String>> queriesResults = new HashMap<>();
+        LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture;
+        try {
+            queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(q, outLocation, postingPath, stem, semantic, offline)))).collect(Collectors.toCollection(LinkedList::new));
+            for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
+                queriesResults.put(f.getKey(), mySearcher.returnOnlyFifty(f.getValue().get()));
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return queriesResults;
+    }
+
+    @Override
+    public int[] indexMainLogic(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
         int tempPostingValue = 650;
@@ -116,6 +163,7 @@ public class Model extends Observable implements IModel {
             WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting);
             //-------------------------Insert Data to II------------------------//
             insertData(dicList, invertedIndex);
+            setPrimaryWords(dicList);
             threadPool.shutdown();
             i++;
             pb.stepBy(1);
@@ -128,8 +176,6 @@ public class Model extends Observable implements IModel {
 
         return new int[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
     }
-
-    //TODO mainLogicUnit for query
 
     @Override
     public void loadDictionary(String path, boolean useStemming) {
@@ -183,14 +229,14 @@ public class Model extends Observable implements IModel {
                 return null;
             }
         } else {
-            String[] update = {"Fail", "Source path is illegal or unreachable"};
+            String[] update = {"Fail", ""};
             setChanged();
             notifyObservers(update);
             return null;
         }
         File dirDest = new File(destinationPath);
         if (!dirDest.isDirectory()) {
-            String[] update = {"Fail", "Destination path is illegal or unreachable"};
+            String[] update = {"Fail", "Destination"};
             setChanged();
             notifyObservers(update);
             return null;
@@ -205,8 +251,9 @@ public class Model extends Observable implements IModel {
             mini.dictionary.keySet().forEach(invertedIndex::addTerm);
         });
     }
+
     @Override
-     public void mergePosting(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) throws IOException {
+    public void mergePosting(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) throws IOException {
         //save buffers for each temp file
         LinkedList<BufferedReader> bufferedReaderList = initBufferedReaderList(tempPostingPath);
         //download all the first sentences of each file
@@ -402,6 +449,75 @@ public class Model extends Observable implements IModel {
         new Thread(() -> WriteFile.writeFinalPosting(file, sendToThread)).start();
     }
 
+    /**
+     * change results to observable list
+     *
+     * @param results the result
+     */
+    private void resultsToObservableList(HashMap<String, LinkedList<String>> results) {
+        ObservableList<Searcher.ShowResultRecord> observableResult = FXCollections.observableArrayList();
+        for(Map.Entry<String, LinkedList<String>> entry : results.entrySet()) {
+            if (documentDictionary.containsKey(entry.getKey())) {
+                StringBuilder fives = documentDictionary.get(entry.getKey()).getFiveEntities();
+                int dl = documentDictionary.get(entry.getKey()).getDocLength();
+                observableResult.add(new Searcher.ShowResultRecord(entry.getKey(), fives.toString(), dl));
+            }
+        }
+        setChanged();
+        notifyObservers(observableResult);
+    }
+
+    public StringBuilder showFiveEntities(String docName) {
+        if (documentDictionary.containsKey(docName)) {
+            try {
+                return documentDictionary.get(docName).getFiveEntities();
+            } catch(Exception e) {
+                System.out.println(docName);
+            }
+        }
+        return new StringBuilder();
+    }
+
+    private void setPrimaryWords(ConcurrentLinkedDeque<MiniDictionary> miniDicList) {
+        miniDicList.forEach(MiniDictionary::setPrimaryWords);
+    }
+
+    @Override
+    public boolean writeRes(String dest) {
+        FileWriter fileWriter;
+        StringBuilder toWrite = results();
+        try {
+            if (m_results.size() > 0) {
+                fileWriter = new FileWriter(dest+"/results.txt");
+                fileWriter.write(toWrite.toString());
+                fileWriter.close();
+                toWrite.delete(0, toWrite.length());
+            }
+            return true;
+        } catch(IOException e) {
+            return false;
+        }
+    }
+
+    /**
+     * returns a string builder with the results ready to be written to the disk
+     *
+     * @return a string builder ready to be written
+     */
+    private StringBuilder results() {
+        StringBuilder res = new StringBuilder();
+        ArrayList<String> queryIDs = new ArrayList<>(m_results.keySet());
+        queryIDs.sort(String.CASE_INSENSITIVE_ORDER);
+        if (m_results != null)
+            for(String m : queryIDs) {
+                for(String doc : m_results.get(m)) {
+                    String line = m+" 0 "+doc+" 0 0 ah\n";
+                    res.append(line);
+                }
+            }
+        return res;
+    }
+
     @Override
     public void reset(String path) {
         File dir = new File(path);
@@ -435,5 +551,4 @@ public class Model extends Observable implements IModel {
         setChanged();
         notifyObservers(Searcher.getRecord());
     }
-
 }

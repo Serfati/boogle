@@ -25,9 +25,9 @@ public class Ranker implements IRanker {
     private double avgDocLength;
     private ArrayList<cDocument> docRanks;
     private ArrayList<cDocument> docBuffer;
-    private HashMap<Integer, Pair> docPos;
+    private HashMap<String, Integer> docPos;
 
-    public Ranker(HashMap docPos, int blockSize) {
+    public Ranker(HashMap<String, Integer> docPos, int blockSize) {
         this.avgDocLength = 233;
         this.termOutPath = termOutPath;
         this.docOutPath = docOutPath;

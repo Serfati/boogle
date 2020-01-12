@@ -17,19 +17,22 @@ public interface IModel {
 
     /**
      * TManages the index process by separating it to a few bunches
-     * @param invertedIndex - the inverted index
-     * @param corpusPath - the path of the corpus
+     *
+     * @param invertedIndex   - the inverted index
+     * @param corpusPath      - the path of the corpus
      * @param destinationPath - the path where the postings will be written
-     * @param stem - if stemming should be done
+     * @param stem            - if stemming should be done
      * @return returns data about the current run [num of documents, number of unique terms]
      * @throws Exception .
      */
-    int[] mainLogicUnit(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception;
+    int[] indexMainLogic(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception;
+
     /**
      * Merges the temp postings to postings according to the letter of words
-     * @param invertedIndex - the inverted index
+     *
+     * @param invertedIndex   - the inverted index
      * @param tempPostingPath - the path of the temp postings
-     * @param stem - if should be stemmed
+     * @param stem            - if should be stemmed
      */
     void mergePosting(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) throws IOException;
 
@@ -54,4 +57,11 @@ public interface IModel {
 
 
     void showData();
+
+    void startBoogleSearch(String postingPath, String queries, String outLocation, boolean stem, boolean semantic, boolean offline);
+
+    StringBuilder showFiveEntities(String docName);
+
+    boolean writeRes(String dest);
+
 }

@@ -22,7 +22,6 @@ import org.apache.commons.lang3.SystemUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import ranker.SemanticHandler;
 import view_model.ViewModel;
 
 import java.awt.*;
@@ -56,8 +55,7 @@ public class UIController implements IView, Observer, Initializable {
     @FXML
     public JFXTextField txtfld_corpus_location;
     public JFXTextField txtfld_stopwords_location;
-    public JFXTextField queryField;
-    public JFXTextField txtfld_output_location;
+    public static JFXTextField txtfld_output_location;
 
     @FXML
     public JFXButton btn_corpus_browse;
@@ -95,8 +93,27 @@ public class UIController implements IView, Observer, Initializable {
         setSearchTabClick(searchTab);
     }
 
-    public void setBoogleClick() {
-        boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openGoogle());
+    /* WORKS ONLY ON - Windows OS */
+    public static void openGoogle(String ask) {
+        String OS = SystemUtils.OS_NAME;
+
+        if (OS.startsWith("Windows")) {
+            try {
+                Desktop desktop = Desktop.getDesktop();
+                if (desktop.isSupported(Desktop.Action.BROWSE))
+                    desktop.browse(new URL("https://www.google.com/search?q="+ask).toURI());
+            } catch(IOException | URISyntaxException e1) {
+                System.out.println("fail");
+                e1.printStackTrace();
+            }
+        } else { /* UNIX platform - Ubuntu OS */
+            try {
+                new ProcessBuilder("x-www-browser", "https://www.google.com/search?q="+ask).start();
+            } catch(IOException e) {
+                System.out.println("fail");
+                e.printStackTrace();
+            }
+        }
     }
 
     /* This function starts the process of parse and index the dictionary*/
@@ -139,27 +156,8 @@ public class UIController implements IView, Observer, Initializable {
         });
     }
 
-    /* WORKS ONLY ON - Windows OS */
-    public void openGoogle() {
-        String OS = SystemUtils.OS_NAME;
-
-        if (OS.startsWith("Windows")) {
-            try {
-                Desktop desktop = Desktop.getDesktop();
-                if (desktop.isSupported(Desktop.Action.BROWSE))
-                    desktop.browse(new URL("https://www.google.com/search?q=STOP+WITH+THIS+SHIT").toURI());
-            } catch(IOException | URISyntaxException e1) {
-                System.out.println("fail");
-                e1.printStackTrace();
-            }
-        } else { /* UNIX platform - Ubuntu OS */
-            try {
-                new ProcessBuilder("x-www-browser", "https://www.google.com/search?q=STOP+WITH+THIS+SHIT").start();
-            } catch(IOException e) {
-                System.out.println("fail");
-                e.printStackTrace();
-            }
-        }
+    public void setBoogleClick() {
+        boogleLogo.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> openGoogle("SISE"));
     }
 
     /**
@@ -229,9 +227,6 @@ public class UIController implements IView, Observer, Initializable {
 
     private void searchView() {
         Stage searchStage = new Stage();
-        searchStage.setAlwaysOnTop(true);
-        searchStage.setResizable(true);
-
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("../search.fxml"));
@@ -244,7 +239,6 @@ public class UIController implements IView, Observer, Initializable {
         scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         searchStage.setScene(scene);
         searchStage.initModality(Modality.WINDOW_MODAL);
-        searchStage.alwaysOnTopProperty();
         searchStage.show();
     }
 
@@ -406,43 +400,4 @@ public class UIController implements IView, Observer, Initializable {
         event.consume();
     }
 
-    //TODO  ---------------------- part II ------------------------ TODO //
-
-    @FXML
-    public void handleNoSemantic() {
-        SemanticHandler.clearWordsVecs();
-        SemanticHandler.includeSemantics = false;
-    }
-
-    @FXML
-    public void HandleSlimSemantics() {
-        SemanticHandler.gloveFile = "SlimWikiGlove200D.txt";
-        SemanticHandler.includeSemantics = true;
-        if (this.txtfld_corpus_location.getText().equals("")) {
-            AlertMaker.showErrorMessage("Invalid", "must specify target path first");
-            return;
-        }
-        if (SemanticHandler.corpusPath == null)
-            SemanticHandler.corpusPath = txtfld_corpus_location.getText();
-        SemanticHandler.readGloveFile();
-    }
-
-    @FXML
-    public void HandleStanfordSemantics() {
-        SemanticHandler.gloveFile = "Stanford_glove.6B.50d.txt";
-        SemanticHandler.includeSemantics = true;
-        if (SemanticHandler.corpusPath == null)
-            SemanticHandler.corpusPath = txtfld_corpus_location.getText();
-        if (SemanticHandler.wordVectors == null)
-            SemanticHandler.readGloveFile();
-    }
-
-    public void handleRunQuery() {
-        String query = queryField.getText();
-        int index = 0;
-        if (query.equals(null) || query.equals("")) {
-            AlertMaker.showErrorMessage("Invalid", "Must fill a query first");
-        }
-    }
-    //TODO  ---------------------- part II ------------------------ TODO //
 }

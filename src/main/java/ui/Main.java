@@ -17,6 +17,7 @@ public class Main extends Application {
     private final static Logger LOGGER = LogManager.getLogger(Main.class.getName());
 
     /**
+     *
      * The main function that runs the entire program
      *
      * @param args - ignored
@@ -27,6 +28,7 @@ public class Main extends Application {
         launch(args);
         long exitTime = System.currentTimeMillis();
         LOGGER.log(Level.INFO, "Boogle is closing. Used for "+(exitTime-startTime) / 60000.0+" m");
+
     }
 
     @Override
@@ -45,6 +47,10 @@ public class Main extends Application {
         UIController viewController = fxmlLoader.getController();
         viewController.setViewModel(viewModel);
         viewModel.addObserver(viewController);
+        //------------------------------//
+        SearchController searchController = new SearchController();
+        searchController.setViewModel(viewModel);
+        viewModel.addObserver(searchController);
         //------------------------------//
         primaryStage.setScene(scene);
         SetStageCloseEvent(primaryStage, viewController);

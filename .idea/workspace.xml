@@ -10,18 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a526c18-b9ae-4b27-9de6-d6434c5eb020" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/rw/GloVe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/serfati.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/indexer/DocumentIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/indexer/DocumentIndex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/indexer/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/indexer/InvertedIndex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/parser/MiniDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/MiniDictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parser/Parse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/Parse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/parser/cDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/cDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ranker/Ranker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/Ranker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ranker/algorithms/DocRankComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/algorithms/DocRankComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rw/APIRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rw/DatamuseAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rw/ReadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rw/ReadFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ranker/SemanticHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/SemanticHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rw/DatamuseAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rw/DatamuseAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rw/GloVe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rw/GloVe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ui/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ui/UIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ui/UIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view_model/ViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view_model/ViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logger.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/search.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/search.fxml" afterDir="false" />
@@ -30,6 +35,12 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Boogle-1.0" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,6 +76,9 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1UDTYjydU0G2NUEpgRf7OuPx1m8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -80,18 +94,19 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowFind.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../IRS/IR - Jun 19" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/ePark" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -130,19 +145,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DatamuseAPI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rw.DatamuseAPI" />
-      <module name="Boogle-1.0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="rw.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GloVe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rw.GloVe" />
       <module name="Boogle-1.0" />
@@ -169,12 +171,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableViewDoubleClickOnRow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.TableViewDoubleClickOnRow" />
+      <module name="Boogle-1.0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableViewDoubleClickOnRow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TableViewDoubleClickOnRow" />
+      <module name="Boogle-1.0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Boogle" />
-        <item itemvalue="Application.GloVe" />
-        <item itemvalue="Application.DatamuseAPI" />
+        <item itemvalue="Application.TableViewDoubleClickOnRow (1)" />
+        <item itemvalue="Application.TableViewDoubleClickOnRow" />
         <item itemvalue="Application.SemanticHandler" />
+        <item itemvalue="Application.GloVe" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +292,16 @@
       <workItem from="1578412456444" duration="5587000" />
       <workItem from="1578472236191" duration="22485000" />
       <workItem from="1578504832618" duration="544000" />
-      <workItem from="1578561469470" duration="5418000" />
+      <workItem from="1578561469470" duration="13204000" />
+      <workItem from="1578575666541" duration="4823000" />
+      <workItem from="1578776270153" duration="2255000" />
+      <workItem from="1578818633600" duration="7147000" />
+      <workItem from="1578828775096" duration="1038000" />
+      <workItem from="1578829945070" duration="88000" />
+      <workItem from="1578830044990" duration="153000" />
+      <workItem from="1578830227440" duration="124000" />
+      <workItem from="1578830382341" duration="259000" />
+      <workItem from="1578830667268" duration="11323000" />
     </task>
     <task id="LOCAL-00001" summary="1.12">
       <created>1575224365858</created>
@@ -523,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578505350587</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="9.1">
+      <created>1578567550617</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1578567550618</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +603,8 @@
     <MESSAGE value="6.1 part 2 UI" />
     <MESSAGE value="7.1" />
     <MESSAGE value="8.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="8.1" />
+    <MESSAGE value="9.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="9.1" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -582,18 +622,26 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="587" y="214" width="847" height="858" key="#Inspections/65.27.1855.1053@65.27.1855.1053" timestamp="1575479384486" />
+    <state x="587" y="214" width="800" height="677" key="#Notifications" timestamp="1578830247519">
+      <screen x="65" y="27" width="1855" height="1053" />
+    </state>
+    <state x="587" y="214" width="800" height="677" key="#Notifications/65.27.1855.1053@65.27.1855.1053" timestamp="1578830247519" />
+    <state x="587" y="214" width="800" height="677" key="#Plugins" timestamp="1578829813362">
+      <screen x="65" y="27" width="1855" height="1053" />
+    </state>
+    <state x="587" y="214" width="800" height="677" key="#Plugins/65.27.1855.1053@65.27.1855.1053" timestamp="1578829813362" />
     <state x="587" y="214" width="800" height="677" key="#Project_Structure" timestamp="1576586815282">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="587" y="214" width="800" height="677" key="#Project_Structure/65.27.1855.1053@65.27.1855.1053" timestamp="1576586815282" />
-    <state x="355" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576970619576">
+    <state x="355" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578865622092">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="355" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1576970619576" />
-    <state x="802" y="269" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1578565203072">
+    <state x="355" y="221" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1578865622092" />
+    <state x="802" y="269" width="374" height="575" key="#com.intellij.ide.util.MemberChooser" timestamp="1578823717253">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="802" y="269" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/65.27.1855.1053@65.27.1855.1053" timestamp="1578565203072" />
+    <state x="802" y="269" width="374" height="575" key="#com.intellij.ide.util.MemberChooser/65.27.1855.1053@65.27.1855.1053" timestamp="1578823717253" />
     <state x="773" y="339" width="525" height="426" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1576584833595">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -618,44 +666,44 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="727" y="307" width="524" height="499" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1575231172727" />
-    <state x="1177" y="303" width="524" height="499" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1576423740650">
+    <state x="1177" y="303" width="524" height="499" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1578568390012">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="1177" y="303" width="524" height="499" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1576423740650" />
+    <state x="1177" y="303" width="524" height="499" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1578568390012" />
     <state x="741" y="422" width="493" height="261" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578389187734">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="741" y="422" width="493" height="261" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/65.27.1855.1053@65.27.1855.1053" timestamp="1578389187734" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1578505349617">
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1578567550088">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="503" y="146" key="CommitChangelistDialog2/65.27.1301.741@65.27.1301.741" timestamp="1576052559931" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1578505349617" />
-    <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl" timestamp="1578488493864">
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1578567550088" />
+    <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl" timestamp="1578832562700">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="600" y="226" width="306" height="341" key="FileChooserDialogImpl/65.27.1301.741@65.27.1301.741" timestamp="1575370987679" />
-    <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl/65.27.1855.1053@65.27.1855.1053" timestamp="1578488493864" />
-    <state width="1813" height="231" key="GridCell.Tab.0.bottom" timestamp="1578567158839">
+    <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl/65.27.1855.1053@65.27.1855.1053" timestamp="1578832562700" />
+    <state width="312" height="844" key="GridCell.Tab.0.bottom" timestamp="1578866197506">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.bottom/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1813" height="231" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1578567158839" />
-    <state width="1813" height="231" key="GridCell.Tab.0.center" timestamp="1578567158838">
+    <state width="312" height="844" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1578866197506" />
+    <state width="312" height="844" key="GridCell.Tab.0.center" timestamp="1578866197504">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.center/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1813" height="231" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1578567158838" />
-    <state width="1813" height="231" key="GridCell.Tab.0.left" timestamp="1578567158838">
+    <state width="312" height="844" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1578866197504" />
+    <state width="312" height="844" key="GridCell.Tab.0.left" timestamp="1578866197503">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.left/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1813" height="231" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1578567158838" />
-    <state width="1813" height="231" key="GridCell.Tab.0.right" timestamp="1578567158839">
+    <state width="312" height="844" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1578866197503" />
+    <state width="312" height="844" key="GridCell.Tab.0.right" timestamp="1578866197505">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.right/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1813" height="231" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1578567158839" />
+    <state width="312" height="844" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1578866197505" />
     <state width="655" height="254" key="GridCell.Tab.1.bottom" timestamp="1578504734050">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -692,15 +740,15 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="745" y="266" width="484" height="572" key="RollbackChangesDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1576177620679" />
-    <state x="578" y="155" width="1024" height="845" key="SettingsEditor" timestamp="1578433893979">
+    <state x="578" y="155" width="1024" height="845" key="SettingsEditor" timestamp="1578832036223">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="578" y="155" width="1024" height="845" key="SettingsEditor/65.27.1855.1053@65.27.1855.1053" timestamp="1578433893979" />
-    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1578505356752">
+    <state x="578" y="155" width="1024" height="845" key="SettingsEditor/65.27.1855.1053@65.27.1855.1053" timestamp="1578832036223" />
+    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1578567555834">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="498" y="205" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1576052593516" />
-    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1855.1053@65.27.1855.1053" timestamp="1578505356752" />
+    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1855.1053@65.27.1855.1053" timestamp="1578567555834" />
     <state x="1148" y="299" width="762" height="781" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578434330015">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -709,22 +757,24 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="869" y="570" width="390" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/65.27.1855.1053@65.27.1855.1053" timestamp="1576498525825" />
-    <state x="165" y="125" width="1101" height="543" key="dock-window-1" timestamp="1575879161690">
-      <screen x="65" y="27" width="1301" height="741" />
+    <state x="359" y="119" width="1003" height="883" key="dock-window-1" timestamp="1578569263504">
+      <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="165" y="125" width="1101" height="543" key="dock-window-1/65.27.1301.741@65.27.1301.741" timestamp="1575879161690" />
-    <state x="165" y="125" width="1101" height="543" key="dock-window-2" timestamp="1575879161690">
-      <screen x="65" y="27" width="1301" height="741" />
+    <state x="359" y="119" width="1003" height="883" key="dock-window-1/65.27.1855.1053@65.27.1855.1053" timestamp="1578569263504" />
+    <state x="812" y="224" width="897" height="748" key="dock-window-2" timestamp="1578575669366">
+      <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="165" y="125" width="1101" height="543" key="dock-window-2/65.27.1301.741@65.27.1301.741" timestamp="1575879161690" />
+    <state x="812" y="224" width="897" height="748" key="dock-window-2/65.27.1855.1053@65.27.1855.1053" timestamp="1578575669366" />
     <state x="501" y="599" width="524" height="459" key="extract.method.dialog" timestamp="1578433828084">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="501" y="599" width="524" height="459" key="extract.method.dialog/65.27.1855.1053@65.27.1855.1053" timestamp="1578433828084" />
-    <state x="685" y="174" width="827" height="756" key="find.popup" timestamp="1578475360309">
+    <state x="685" y="174" width="827" height="756" key="find.popup" timestamp="1578832303974">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="685" y="174" width="827" height="756" key="find.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1578475360309" />
+    <state x="685" y="174" width="827" height="756" key="find.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1578832303974" />
     <state x="409" y="176" width="1157" height="752" key="new project wizard" timestamp="1578391141122">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -737,10 +787,10 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="1177" y="232" width="672" height="317" key="run.anything.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1577027727024" />
-    <state x="657" y="262" width="672" height="160" key="search.everywhere.popup" timestamp="1577962125346">
+    <state x="657" y="262" width="672" height="160" key="search.everywhere.popup" timestamp="1578830634600">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="480" y="192" width="672" height="478" key="search.everywhere.popup/65.27.1301.741@65.27.1301.741" timestamp="1575879148593" />
-    <state x="657" y="262" width="672" height="160" key="search.everywhere.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1577962125346" />
+    <state x="657" y="262" width="672" height="160" key="search.everywhere.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1578830634600" />
   </component>
 </project>

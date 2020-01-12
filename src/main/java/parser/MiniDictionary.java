@@ -5,6 +5,7 @@ import sun.awt.Mutex;
 
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class MiniDictionary {
@@ -164,6 +165,10 @@ public class MiniDictionary {
 
     public void setEntitiesList(String aNull) {
 
+    }
+
+    public HashMap<String, Integer> countAppearances() {
+        return dictionary.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().size(), (a, b) -> b, HashMap::new));
     }
 
     /**

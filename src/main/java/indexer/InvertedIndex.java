@@ -105,6 +105,12 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         }
     }
 
+    public String getPostingLink(String word) {
+        if (invertedIndexDic.get(word) == null)
+            return "";
+        return invertedIndexDic.get(word).getPostingLink();
+    }
+
     public int getNumOfUniqueTerms() {
         return invertedIndexDic.size();
     }
@@ -180,6 +186,10 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
         public void setPointer(int postingLine) {
             this.postingLine = postingLine;
+        }
+
+        String getPostingLink() {
+            return ""+postingLine;
         }
 
         public void setNumOfAppearance(int numOfAppearance) {

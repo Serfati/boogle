@@ -12,7 +12,7 @@ public class DocumentIndex {
     private int maxFreq_count;
     private int docLength;
     private int uniqueWords;
-    private Pair<String, Integer>[] mainEntities; //TODO
+    Pair<String, Integer>[] mainEntities;
 
     public DocumentIndex(String docName, int maxFreq, int numOfUniWords, String maxFreqWord, int docLength, String title) {
         this.maxFreq_word = maxFreqWord;
