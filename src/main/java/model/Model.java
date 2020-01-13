@@ -15,6 +15,7 @@ import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
 import ranker.Ranker;
+import ranker.ResultDisplay;
 import ranker.Searcher;
 import rw.Query;
 import rw.ReadFile;
@@ -22,16 +23,14 @@ import rw.WriteFile;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.lang.System.exit;
+import static sun.swing.SwingUtilities2.submit;
 
 public class Model extends Observable implements IModel {
     private static Model singleton = null;
@@ -43,13 +42,6 @@ public class Model extends Observable implements IModel {
     private AtomicInteger numOfPostings = new AtomicInteger(0);
     public HashMap<String, LinkedList<String>> m_results;
     private final static Logger LOGGER = LogManager.getLogger(Model.class.getName());
-
-    //singleton
-    public static Model getInstance() {
-        if (singleton == null)
-            singleton = new Model();
-        return singleton;
-    }
 
     @Override
     public void startIndexing(String pathOfDocs, String destinationPath, boolean useStemming) {
@@ -85,11 +77,13 @@ public class Model extends Observable implements IModel {
     public void startBoogleSearch(String postingPath, String queries, String outLocation, boolean stem, boolean semantic, boolean offline) {
         LOGGER.log(Level.INFO, "Start Searching");
         String[] paths = pathAreValid(postingPath, outLocation); // checks if the paths entered are valid
-        if (paths == null) return;
         double startEngine = System.currentTimeMillis();
         try {
-            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(paths[0], queries, paths[1], stem, semantic, offline);
+            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, outLocation, stem, semantic, offline);
+            LOGGER.log(Level.INFO, "Sending Results");
             resultsToObservableList(results);
+
+
         } catch(Exception e) {
             String[] update = {"Fail", "Boogle failed"};
             LOGGER.log(Level.ERROR, "Boogle failed");
@@ -102,7 +96,7 @@ public class Model extends Observable implements IModel {
         double[] totalResults = new double[]{RUNTIME};
         LOGGER.log(Level.INFO, "PROCESS DONE :: END Searching"+" in "+RUNTIME+" ms");
         setChanged();
-        notifyObservers(totalResults);
+        notifyObservers();
     }
 
     HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, String outLocation, boolean stem, boolean semantic, boolean offline) {
@@ -111,17 +105,35 @@ public class Model extends Observable implements IModel {
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
         else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
 
-        ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        //ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         HashMap<String, LinkedList<String>> queriesResults = new HashMap<>();
         LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture;
         try {
-            queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(q, outLocation, postingPath, stem, semantic, offline)))).collect(Collectors.toCollection(LinkedList::new));
+            queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), submit(new Searcher(q, outLocation, postingPath, stem, semantic, offline)))).collect(Collectors.toCollection(LinkedList::new));
             for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
-                queriesResults.put(f.getKey(), mySearcher.returnOnlyFifty(f.getValue().get()));
+                try {
+                    queriesResults.put(f.getKey(), getLimited(f.getValue().get()));
+                } catch(InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                }
         } catch(Exception e) {
             e.printStackTrace();
         }
         return queriesResults;
+    }
+
+    /**
+     * returns 50 or less results for a query
+     *
+     * @param queryResults the full results
+     * @return 50 relevant queries
+     */
+    private LinkedList<String> getLimited(LinkedList<String> queryResults) {
+        LinkedList<String> limited = new LinkedList<>();
+        for(int i = 0; i < 50 && !queryResults.isEmpty(); i++) {
+            limited.add(queryResults.pollFirst());
+        }
+        return limited;
     }
 
     @Override
@@ -451,31 +463,26 @@ public class Model extends Observable implements IModel {
 
     /**
      * change results to observable list
-     *
      * @param results the result
      */
     private void resultsToObservableList(HashMap<String, LinkedList<String>> results) {
-        ObservableList<Searcher.ShowResultRecord> observableResult = FXCollections.observableArrayList();
-        for(Map.Entry<String, LinkedList<String>> entry : results.entrySet()) {
-            if (documentDictionary.containsKey(entry.getKey())) {
-                StringBuilder fives = documentDictionary.get(entry.getKey()).getFiveEntities();
-                int dl = documentDictionary.get(entry.getKey()).getDocLength();
-                observableResult.add(new Searcher.ShowResultRecord(entry.getKey(), fives.toString(), dl));
-            }
-        }
+        ObservableList<ResultDisplay> observableResult;
+        observableResult = FXCollections.observableArrayList();
+        for(Map.Entry<String, LinkedList<String>> entry : results.entrySet())
+            observableResult.add(new ResultDisplay(entry.getKey(), entry.getValue()));
         setChanged();
         notifyObservers(observableResult);
     }
 
-    public StringBuilder showFiveEntities(String docName) {
+    public String showFiveEntities(String docName) {
         if (documentDictionary.containsKey(docName)) {
             try {
-                return documentDictionary.get(docName).getFiveEntities();
+                return documentDictionary.get(docName).get5words();
             } catch(Exception e) {
                 System.out.println(docName);
             }
         }
-        return new StringBuilder();
+        return "";
     }
 
     private void setPrimaryWords(ConcurrentLinkedDeque<MiniDictionary> miniDicList) {
@@ -546,9 +553,4 @@ public class Model extends Observable implements IModel {
         notifyObservers(invertedIndex.getRecord());
     }
 
-    @Override
-    public void showData() {
-        setChanged();
-        notifyObservers(Searcher.getRecord());
-    }
 }

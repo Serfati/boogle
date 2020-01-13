@@ -1,90 +1,62 @@
 package ranker;
 
-import indexer.InvertedIndex;
-import javafx.util.Pair;
-import parser.MiniDictionary;
-import parser.cDocument;
+import indexer.DocumentIndex;
+import model.Model;
+import ranker.algorithms.BM25Algorithm;
+import ranker.algorithms.ContainingAlgorithm;
+import ranker.algorithms.PositionsAlgorithm;
+import ranker.algorithms.TitleAlgorithm;
 import sun.awt.Mutex;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.PriorityQueue;
+import java.util.Set;
 
 /**
  * ranker class . gets a list of terms and ranks all relevant documents by them by the weights set below
  */
 
-public class Ranker implements IRanker {
+public class Ranker {
 
     private double BM_25_B = 0.7, BM_25_K = 1.5, CONTAINING_WEIGHT = 0.4;
     private double IDF_DELTA = 1, TITLE_WEIGHT = 0.45, POSITIONS_WEIGHT = 0.08, BM25_WEIGHT = 0.25, IDF_LOWER_BOUND = 2;
-    private int DOCUMENT_RETRIEVE_COUNT = 50;
     private Mutex rankMutex;
-    private String termOutPath, docOutPath;
-    private int blockSize;
     private double avgDocLength;
-    private ArrayList<cDocument> docRanks;
-    private ArrayList<cDocument> docBuffer;
-    private HashMap<String, Integer> docPos;
+    private double m_averageDocumentLength;//average document size in the corpus
+    private HashMap<String, Integer> wordsCountInQuery;//count of words in the query
+
+    Ranker(HashMap<String, Integer> wordsCount) {
+        this.m_averageDocumentLength = 233;
+        this.wordsCountInQuery = wordsCount;
+    }
 
     public Ranker(HashMap<String, Integer> docPos, int blockSize) {
         this.avgDocLength = 233;
-        this.termOutPath = termOutPath;
-        this.docOutPath = docOutPath;
-        this.blockSize = blockSize;
-        this.docPos = docPos;
-        this.docBuffer = new ArrayList<>();
         this.rankMutex = new Mutex();
-        this.docRanks = new ArrayList<>();
+    }
+
+    public double GetRank(HashMap<String, Double> score, Set<String> wordsPosting, String docName, String word, int tf, double idf) {
+        BM25Algorithm bm = new BM25Algorithm(BM25_WEIGHT, BM_25_B, BM_25_K);
+        ContainingAlgorithm ca = new ContainingAlgorithm(CONTAINING_WEIGHT);
+        PositionsAlgorithm pa = new PositionsAlgorithm(POSITIONS_WEIGHT);
+        TitleAlgorithm ta = new TitleAlgorithm(TITLE_WEIGHT);
+        double bmRank = bm.rank(wordsCountInQuery.get(word), docName, tf, idf);
+        double caRank = ca.rank(score, wordsCountInQuery.keySet());
+        double paRank = 0;
+        double taRank = ta.rank(docName, wordsPosting);
+        return bmRank+caRank+paRank+taRank;
     }
 
     /**
-     * get the best scores and return an array filled with the document's names from the best
-     * to the worst
+     * returns the average document length
      *
-     * @param rankQ
-     * @return
+     * @return the average length
      */
-    private ArrayList<cDocument> retrieveBestDocuments(PriorityQueue<cDocument> rankQ) {
-
-        int i = 0;
-        ArrayList<cDocument> bestDocumentsByOrder = new ArrayList<>();
-
-        while(i < DOCUMENT_RETRIEVE_COUNT && rankQ.size() > 0) {
-            bestDocumentsByOrder.add(i, rankQ.poll());
-            i++;
+    private double getDocumentAverageLength() {
+        double sum = 0, count = 0;
+        for(DocumentIndex node : Model.documentDictionary.values()) {
+            sum += node.getDocLength();
+            count++;
         }
-
-        return bestDocumentsByOrder;
-    }
-
-
-    private void dropTermsByIDF(ArrayList<InvertedIndex.Term> termList) {
-    }
-
-    private boolean idfMoreThanBound(double idf) {
-        return true;
-    }
-
-
-    @Override
-    public ArrayList<cDocument> rankByTerms(ArrayList<InvertedIndex.Term> termList) {
-        return null;
-    }
-
-    @Override
-    public void setAttributes(String termsPath, String docsPath, double docAvgLength) {
-        this.avgDocLength = docAvgLength;
-        this.termOutPath = termsPath;
-        this.docOutPath = docsPath;
-    }
-
-    @Override
-    public void setDictionaries(HashMap<Integer, Pair> docPositions) {
-
-    }
-
-    private void addRank(MiniDictionary doc, double rank) {
-        doc.addRank(rank);
+        return sum / count;
     }
 }

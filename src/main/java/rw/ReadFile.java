@@ -129,7 +129,7 @@ public class ReadFile {
     }
 
     public static LinkedList<String> readPostingLineAtIndex(String path, char c, List<Integer> indexes, boolean stem){
-        String filePath = path + ( stem ? "\\Stemmed\\" : "\\Unstemmed\\");
+        String filePath = path+(stem ? "/Stemmed" : "/Unstemmed\\");
         filePath += "_"+ c +".txt";
         File postingFile = new File (filePath);
         LinkedList<String> postingLines = new LinkedList<>();

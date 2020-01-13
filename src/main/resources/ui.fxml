@@ -16,7 +16,7 @@
             stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.172-ea"
             fx:controller="ui.UIController">
     <top>
-        <VBox fx:id="anchor" prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
+        <VBox prefHeight="133.0" prefWidth="618.0" BorderPane.alignment="CENTER">
             <children>
                 <javafx.scene.control.MenuBar prefWidth="700.0">
                     <menus>
@@ -24,8 +24,6 @@
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#browseCorpusClick"
                                                                text="Load corpus"/>
-                                <MenuItem disable="true" mnemonicParsing="false" onAction="#help"
-                                          text="Go to seach tab"/>
                                 <javafx.scene.control.MenuItem fx:id="load_MenuItem" disable="true"
                                                                mnemonicParsing="false" onAction="#loadDictionary"
                                                                text="Load"/>
@@ -36,6 +34,8 @@
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Options">
                             <items>
                                 <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help" text="Properties" />
+                                <javafx.scene.control.MenuItem mnemonicParsing="false" onAction="#help"
+                                                               text="Open Search Tab"/>
                             </items>
                         </javafx.scene.control.Menu>
                         <javafx.scene.control.Menu mnemonicParsing="false" text="Help">

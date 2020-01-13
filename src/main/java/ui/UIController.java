@@ -54,7 +54,7 @@ public class UIController implements IView, Observer, Initializable {
     @FXML
     public JFXTextField txtfld_corpus_location;
     public JFXTextField txtfld_stopwords_location;
-    public static JFXTextField txtfld_output_location;
+    public JFXTextField txtfld_output_location;
 
     @FXML
     public JFXButton btn_corpus_browse;
@@ -69,6 +69,7 @@ public class UIController implements IView, Observer, Initializable {
     private ViewModel viewModel;
     @FXML
     private JFXToggleButton checkbox_use_stemming;
+    SearchController searchController = new SearchController();
 
 
     /**
@@ -78,6 +79,8 @@ public class UIController implements IView, Observer, Initializable {
      */
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
+        searchController.setViewModel(viewModel);
+        viewModel.addObserver(searchController);
     }
 
     @Override
@@ -123,6 +126,10 @@ public class UIController implements IView, Observer, Initializable {
         else {
             viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
         }
+    }
+
+    public String get_output_location() {
+        return txtfld_output_location.getText();
     }
 
     private void setGenerateIndexClick(ImageView icon) {
@@ -191,12 +198,16 @@ public class UIController implements IView, Observer, Initializable {
     }
 
     public void browseOutputClick(ActionEvent actionEvent) {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Output Location");
-        directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
-        File corpusDir = directoryChooser.showDialog(new Stage());
-        if (null != corpusDir)  //directory chosen
-            txtfld_output_location.setText(corpusDir.getAbsolutePath());
+        try {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            directoryChooser.setTitle("Output Location");
+            directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+            File corpusDir = directoryChooser.showDialog(new Stage());
+            if (null != corpusDir)  //directory chosen
+                txtfld_output_location.setText(corpusDir.getAbsolutePath());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void browseStopwordsClick(ActionEvent actionEvent) {
@@ -325,7 +336,6 @@ public class UIController implements IView, Observer, Initializable {
                     showDictionary((ObservableList<InvertedIndex.ShowDictionaryRecord>) arg);
             } else if (arg instanceof double[]) {
                 double[] res = (double[]) arg;
-
                 AlertMaker.showSimpleAlert("Boogle Engine Analyze Summary",
                         "Number of Documents: "+res[0]+"\nTotal runtime complex: "
                                 +res[2]+" minutes"+"\n Unique terms: "+res[1]);
@@ -403,10 +413,8 @@ public class UIController implements IView, Observer, Initializable {
         if (file != null && file.exists() && file.isDirectory()) {
             viewModel.loadDictionary(file.getAbsolutePath(), checkbox_use_stemming.isSelected());
             LOGGER.log(Level.INFO, "Loaded::"+file.getName());
-
         } else
             AlertMaker.showErrorMessage("Invalid", "Please choose a vaild destination");
         event.consume();
     }
-
 }

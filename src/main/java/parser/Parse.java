@@ -1,10 +1,12 @@
 package parser;
 
-import edu.stanford.nlp.pipeline.CoreDocument;
-import edu.stanford.nlp.pipeline.CoreEntityMention;
 import model.Model;
+import org.apache.commons.lang3.StringUtils;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 public class Parse implements Callable<MiniDictionary>, IParse {
@@ -28,13 +30,13 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     }
 
     public MiniDictionary call() {
-        return parse();
+        return parse(false);
     }
 
-    public synchronized MiniDictionary parse() {
+    public synchronized MiniDictionary parse(boolean isQuery) {
+        entitiesDiscoveredInDoc = new HashMap<>();
         //split the <Text> label to list of terms
-        String[] tokens = corpus_doc.getDocText().split("\\?|\\||]|\\[|- |\"|''|--|\\*|=|:|\\+| |\\|\n|#|@|\t|<|>|;|\\(|\\{|}|\\)");
-        wordList = stringToList(tokens);
+        wordList = stringToList(StringUtils.split(corpus_doc.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         //list of next words from the current term
         LinkedList<String> nextWord = new LinkedList<>();
         //the mini dictionary that will be filled according to the terms
@@ -45,10 +47,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
         //TODO
         /* ------------------------------------------------------------------------- */
-        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
-        ner.pipeline().annotate(doc);
-        for(CoreEntityMention em : doc.entityMentions())
-            miniDic.addWord(em.text().toUpperCase(), 0);
+//        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
+//        ner.pipeline().annotate(doc);
+//        for(CoreEntityMention em : doc.entityMentions())
+//            miniDic.addWord(em.text().toUpperCase(), 0);
 
 //        initMonthsData();
 //        nextWordsRules();
@@ -141,13 +143,12 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                     wordList.addFirst(s);
             }
 
-            index = lastCheckAndAdd(miniDic, index, doStemIfTermWasNotManipulated, term);
+            index = lastCheckAndAdd(miniDic, index, doStemIfTermWasNotManipulated, term, isQuery);
         }
-        determineFiveDominantEntities(entitiesDiscoveredInDoc);
         return miniDic;
     }
 
-    private int lastCheckAndAdd(MiniDictionary miniDic, int index, boolean doStemIfTermWasNotManipulated, String token) {
+    private int lastCheckAndAdd(MiniDictionary miniDic, int index, boolean doStemIfTermWasNotManipulated, String token, boolean isQuery) {
         if (doStemIfTermWasNotManipulated) {
             ps.setTerm(token.toLowerCase());
             ps.stem();
@@ -170,89 +171,13 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                 miniDic.addWord(tokenInLower, index);
             }
         }
-        if (!Model.stopWords.contains(processedToken)) {
-            miniDic.addWord(processedToken, index);
-            processedToken = clearDelimiters(processedToken);
-            if (corpus_doc != null) {
-                //discover entities of given document
-                if (entitiesDiscoveredInDoc.containsKey(processedToken.toUpperCase()) ||
-                        entitiesDiscoveredInDoc.containsKey(processedToken.toLowerCase()) ||
-                        entitiesDiscoveredInDoc.containsKey(processedToken))
-                {
-                    if (Character.isLowerCase(processedToken.charAt(0)))
-                        if (entitiesDiscoveredInDoc.remove(processedToken.toUpperCase()) == null) {
-                            if (entitiesDiscoveredInDoc.remove(processedToken.toLowerCase()) == null)
-                                entitiesDiscoveredInDoc.remove(processedToken);
-                        }
-                } else if (Character.isUpperCase(processedToken.charAt(0)))
-                    entitiesDiscoveredInDoc.put(processedToken, 0.0);
-            }
+        if (isQuery || !Model.stopWords.contains(token.toLowerCase())) {
+            if (doStemIfTermWasNotManipulated)
+                token = ps.stemTerm(token);
+            miniDic.addWord(token, index);
             index++;
         }
-        determineFiveDominantEntities(entitiesDiscoveredInDoc);
         return index;
-    }
-
-    private void determineFiveDominantEntities(Map<String, Double> entitiesDiscoveredInDoc) {
-        StringBuilder docEntities = new StringBuilder();
-        if (miniDic != null) {
-            entitiesDiscoveredInDoc.replaceAll((e, v) -> getDominanceRank(e, miniDic.getDocLength()));
-            TreeMap<String, Double> target = new TreeMap<>((ent1, ent2) -> {
-                int result = entitiesDiscoveredInDoc.get(ent1).compareTo(entitiesDiscoveredInDoc.get(ent2));
-                return result == 0 ? 1 : result;
-            });
-            target.putAll(entitiesDiscoveredInDoc);
-            int counter = 1;
-            for(Map.Entry<String, Double> entity : target.entrySet()) {
-                if (counter > 5)
-                    break;
-                docEntities.append(",").append(entity.getKey()).append("*").append((int) Math.round(entity.getValue() * 1000) / (double) 1000);
-                counter++;
-            }
-            if (docEntities.toString().isEmpty())
-                miniDic.setEntitiesList("null");
-            else
-                miniDic.setEntitiesList(docEntities.toString().substring(1));
-            docEntities.setLength(0);
-            entitiesDiscoveredInDoc.clear();
-            target.clear();
-        }
-    }
-
-    /**
-     * Calculate the rank of a given entity when the rank is made based on the tf.
-     * In case the entity appears in the first 10% of the document, the rank is reinforced.
-     *
-     * @param entity - the entity we wish to rank based on it's document data
-     * @return the dominanace rank
-     */
-    private double getDominanceRank(String entity, int docLength) {
-        String entityData = "";
-        //get entity data of posting after parsing TODO
-//        if(miniDic.containsKey(entity) == 1 ) entityData = miniDic.get(entity);
-//        else if (miniDic.containsKey(entity.toLowerCase()) == 2) entityData = miniDic.get(entity.toLowerCase());
-//        else entityData = miniDic.get(entity.toUpperCase());
-
-        String lastDocData;
-        if (entityData.contains(" "))
-            lastDocData = entityData.substring(entityData.lastIndexOf(" "));
-        else
-            lastDocData = entityData;
-        int startOfTf = lastDocData.indexOf("*");
-        int startOfPositions = lastDocData.indexOf(":");
-        int endOfFirstPosition = lastDocData.indexOf(",");
-        int tf = Integer.parseInt(lastDocData.substring(startOfTf+1));
-        int firstPosition;
-        if (endOfFirstPosition != -1)
-            firstPosition = Integer.parseInt(lastDocData.substring(startOfPositions+1, endOfFirstPosition));
-        else
-            firstPosition = Integer.parseInt(lastDocData.substring(startOfPositions+1, startOfTf));
-        //consider the words appearing in the first 10% of the document to be important
-        int isEntityInTheHeadOfDoc = 0;
-        if ((firstPosition / docLength) <= 0.1)
-            isEntityInTheHeadOfDoc = 1;
-
-        return 0.9 * tf+0.1 * isEntityInTheHeadOfDoc;
     }
 
     private String handleRange(LinkedList<String> nextWord, String term) {
@@ -339,12 +264,29 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     private LinkedList<String> stringToList(String[] split) {
         LinkedList<String> wordsList = new LinkedList<>();
         for(String word : split) {
-            word = clearDelimiters(word);
-
+            word = cleanTerm(word);
             if (!word.equals(""))
                 wordsList.add(word);
         }
         return wordsList;
+    }
+
+    private String cleanTerm(String term) {
+        if (!term.equals("")) {
+            if (!(term.charAt(term.length()-1) == '%')) {
+                int i = term.length()-1;
+                while(i >= 0 && !Character.isLetterOrDigit(term.charAt(i))) {
+                    term = term.substring(0, i);
+                    i--;
+                }
+            }
+            if (term.length() > 1 && !(term.charAt(0) == '$') && !isNumber(term)) {
+                while(term.length() > 0 && !Character.isLetterOrDigit(term.charAt(0))) {
+                    term = term.substring(1);
+                }
+            }
+        }
+        return term;
     }
 
     /**

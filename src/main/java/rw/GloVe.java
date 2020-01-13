@@ -11,10 +11,11 @@ public class GloVe {
         this.wordVectors = wv;
     }
 
-    public StringBuilder synonyms(String wordToSyn) {
+    public String synonyms(String wordToSyn) {
         StringBuilder synonyms = new StringBuilder();
         Collection<String> syn = this.wordVectors.wordsNearest(wordToSyn, 2);
         syn.forEach(s -> synonyms.append(s).append(" "));
-        return synonyms;
+        System.out.println("GloVe::synonyms()");
+        return synonyms.toString();
     }
 }

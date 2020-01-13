@@ -163,22 +163,31 @@ public class MiniDictionary {
         return docTI;
     }
 
-    public void setEntitiesList(String aNull) {
-
-    }
-
+    /**
+     * returns number of appearnces of words
+     *
+     * @return number of appearnces of words
+     */
     public HashMap<String, Integer> countAppearances() {
         return dictionary.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().size(), (a, b) -> b, HashMap::new));
+    }
+
+    /**
+     * returns the primary words
+     *
+     * @return the primary words
+     */
+    public Pair<String, Integer>[] getPrimaryWords() {
+        return places;
     }
 
     /**
      * sets the 5 primary words
      */
     public void setPrimaryWords() {
-        TreeMap<String, LinkedList<Integer>> sorted = new TreeMap<>((o1, o2) -> o1.equals(o2) ? 0 : dictionary.get(o1).size() > dictionary.get(o2).size() ? -1 : 1);
-        sorted.putAll(dictionary);
+        Map<String, LinkedList<Integer>> inPlace = sorted(dictionary);
         int i = 0;
-        for(Map.Entry<String, LinkedList<Integer>> first : ((Map<String, LinkedList<Integer>>) sorted).entrySet()) {
+        for(Map.Entry<String, LinkedList<Integer>> first : inPlace.entrySet()) {
             if (Character.isUpperCase(first.getKey().charAt(0))) {
                 LinkedList<Integer> cur = first.getValue();
                 if (cur != null)
@@ -189,6 +198,24 @@ public class MiniDictionary {
             i++;
             if (places[4] != null) break;
         }
+    }
+
+
+    /**
+     * sorts a map
+     *
+     * @param toSort which map should be sorted
+     * @return a sorted map
+     */
+    private Map<String, LinkedList<Integer>> sorted(Map<String, LinkedList<Integer>> toSort) {
+        TreeMap<String, LinkedList<Integer>> sorted = new TreeMap<>((o1, o2) -> {
+            if (o1.equals(o2)) return 0;
+            if (dictionary.get(o1).size() > dictionary.get(o2).size())
+                return -1;
+            else return 1;
+        });
+        sorted.putAll(toSort);
+        return sorted;
     }
 
 

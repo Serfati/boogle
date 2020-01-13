@@ -37,7 +37,7 @@ public class DatamuseAPI {
         return new JSONObject(sb.toString());
     }
 
-    public static StringBuilder synonyms(String wordToSyn) throws IOException {
+    public static String synonyms(String wordToSyn) throws IOException {
         StringBuilder backSynonyms = new StringBuilder();
         DatamuseAPI request = new DatamuseAPI();
         JSONObject details = request.post(URL+wordToSyn);
@@ -46,9 +46,9 @@ public class DatamuseAPI {
         for(int i = 0; i < result.length() && i < 2; i++) {
             JSONObject data = (JSONObject) result.get(i);
             String word = data.get("word").toString()+" ";
-            String score = data.get("score").toString();
             backSynonyms.append(word);
         }
-        return backSynonyms;
+        System.out.println("DatamuseAPI::synonyms()");
+        return backSynonyms.toString();
     }
 }

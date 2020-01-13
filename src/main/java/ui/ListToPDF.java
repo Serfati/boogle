@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import ranker.Searcher;
+import ranker.ResultDisplay;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.Collections;
 
 public class ListToPDF {
 
-    public void doPrintToPdf(ObservableList<Searcher.ShowResultRecord> list, String saveLoc1, Orientation orientation) {
+    public void doPrintToPdf(ObservableList<ResultDisplay> list, String saveLoc1, Orientation orientation) {
         File saveLoc = null;
         try {
             if (saveLoc1 == null) return;

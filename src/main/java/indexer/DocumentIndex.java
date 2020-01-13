@@ -3,7 +3,6 @@ package indexer;
 import javafx.util.Pair;
 
 import java.text.MessageFormat;
-import java.util.Arrays;
 
 public class DocumentIndex {
     private String docId;
@@ -23,20 +22,67 @@ public class DocumentIndex {
         this.uniqueWords = numOfUniWords;
     }
 
+    public String getDocTI() {
+        return docTI;
+    }
+
     public int getDocLength() {
         return docLength;
     }
 
-    public StringBuilder getFiveEntities() {
-      StringBuilder pw = new StringBuilder();
-      Arrays.stream(mainEntities).map(Pair::getKey).forEach(pw::append);
-      return  pw;
+    public Pair<String, Integer>[] getFiveEntities() {
+        return mainEntities;
+    }
+
+    public String getDocId() {
+        return docId;
+    }
+
+    public String getMaxFreq_word() {
+        return maxFreq_word;
+    }
+
+    public int getMaxFreq_count() {
+        return maxFreq_count;
+    }
+
+    public int getUniqueWords() {
+        return uniqueWords;
+    }
+
+    public Pair<String, Integer>[] getMainEntities() {
+        return mainEntities;
+    }
+
+    /**
+     * returnd 5 strongest entities  in the document
+     *
+     * @return string of 5 entities
+     */
+    public String get5words() {
+        StringBuilder s = new StringBuilder();
+        int i = 0;
+        while(i < mainEntities.length) {
+            if (mainEntities[i] == null)
+                break;
+            s.append(mainEntities[i].getValue()).append("\t").append(mainEntities[i].getKey()).append("\n");
+            i++;
+        }
+        return s.toString();
     }
 
     @Override
     public String toString() {
-        return MessageFormat.format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t\n", docId, maxFreq_count, uniqueWords, maxFreq_word, docTI, docLength);
+        StringBuilder pw = new StringBuilder();
+        if (mainEntities != null) {
+            for(int i = 0; i < mainEntities.length-1; i++) {
+                if (mainEntities[i] != null)
+                    pw.append(mainEntities[i].getKey()).append("~").append(mainEntities[i].getValue()).append("#");
+            }
+            if (mainEntities[mainEntities.length-1] != null)
+                pw.append(mainEntities[mainEntities.length-1].getKey()).append("~").append(mainEntities[mainEntities.length-1].getValue());
+        }
+        return MessageFormat.format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\n", docId, maxFreq_count, uniqueWords, maxFreq_word, docTI, docLength, pw);
+
     }
 }
-
-

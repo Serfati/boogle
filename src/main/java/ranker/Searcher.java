@@ -1,9 +1,5 @@
 package ranker;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import model.Model;
 import parser.MiniDictionary;
 import parser.NamedEntitiesSearcher;
@@ -19,7 +15,6 @@ import java.io.OutputStreamWriter;
 import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Searcher implements Callable<LinkedList<String>> {
     Query query;
@@ -41,24 +36,6 @@ public class Searcher implements Callable<LinkedList<String>> {
         sh = new SemanticHandler(offline);
     }
 
-    /**
-     * This method proved a quicker implemtion of the str.split() method.
-     * Used to improve performances.
-     */
-    public static String[] split(String str, String delimter) {
-        ArrayList<String> splittedData = new ArrayList<>();
-        StringTokenizer tokenizer = new StringTokenizer(str, delimter);
-        while(tokenizer.hasMoreTokens()) {
-            splittedData.add(tokenizer.nextToken());
-        }
-        String[] splitResult = new String[splittedData.size()];
-        return splittedData.toArray(splitResult);
-    }
-
-    public static Object getRecord() {
-        return null;
-    }
-
     @Override
     public LinkedList<String> call() {
         try {
@@ -70,26 +47,37 @@ public class Searcher implements Callable<LinkedList<String>> {
 
     private LinkedList<String> mainLogic() throws IOException {
         NamedEntitiesSearcher ner = null;
-        Parse parser;
-        String queryAfterSem;
+        String queryAfterSem = query.getQueryText();
         LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
         if (enableSemantics) queryAfterSem = query.getQueryText()+" "+sh.getTwoBestMatches(argsAsLinkedList);
-        parser = new Parse(new cDocument("", "", "", "", query.getQueryText()), enableStemming, ner);
-        MiniDictionary md = parser.parse();
+        CaseInsensitiveMap wordsPosting;
+        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming, ner);
+        MiniDictionary md = p.parse(true);
         HashMap<String, Integer> wordsCountInQuery = md.countAppearances(); //count word in the query
-        CaseInsensitiveMap wordsPosting = getPosting(wordsCountInQuery.keySet());
-
-        //objects for the iteration
-        Ranker ranker = new Ranker(wordsCountInQuery, 200);
+        wordsPosting = getPosting(wordsCountInQuery.keySet());
+        Ranker ranker = new Ranker(wordsCountInQuery);
         HashMap<String, Double> score = new HashMap<>();
 
         //for each word go throw its posting with relevant documents
         for(String word : wordsCountInQuery.keySet()) {
-            if (!wordsPosting.get(word).equals("")) {
-
-
-                addToScore(score, "docName", 0.0);
-            }
+            if (wordsCountInQuery != null && wordsPosting.get(word) != null)
+                if (!wordsPosting.get(word).equals("")) {
+                    String postingLine = wordsPosting.get(word);
+                    String[] split = postingLine.split("\\|");
+                    double idf = getIDF(split.length-1);
+                    double weight = 1;
+                    if (word.contains("-"))
+                        weight = 1.15;
+                    for(String aSplit : split) {
+                        String[] splitLine = aSplit.split(",");
+                        String docName = splitLine[0];
+                        if (splitLine.length > 1) {
+                            int tf = Integer.parseInt(splitLine[1]);
+                            double totalRank = ranker.GetRank(score, wordsPosting.keySet(), docName, word, tf, idf);
+                            addToScore(score, docName, totalRank);
+                        }
+                    }
+                }
         }
         return sortByScore(score);
     }
@@ -101,22 +89,56 @@ public class Searcher implements Callable<LinkedList<String>> {
      * autoComplete(term)
      */
 
+
+    //Write the results to the file selected by the user
+    public void trecEval(String path) throws IOException {
+        String addToFile = docsThatReturned.stream().map(s -> "240 "+"0 "+s+" 1 "+"42.38 mt"+"\n").collect(Collectors.joining());
+        /////////\n
+        BufferedWriter test = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path+"/terc_eval_res.txt")));
+        test.write(addToFile);
+        test.flush();
+        test.close();
+    }
+
+    private LinkedList<String> sortByScore(HashMap<String, Double> score) {
+        List<Map.Entry<String, Double>> list = new ArrayList<>(score.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+
+        LinkedList<String> result = new LinkedList<>();
+        for(Map.Entry<String, Double> entry : list) {
+            result.add(entry.getKey());
+        }
+        return result;
+    }
+
+    private void addToScore(HashMap<String, Double> score, String docName, double newScore) {
+        if (newScore != 0) {
+            Double d = score.get(docName);
+            if (d != null)
+                newScore += d;
+            score.put(docName, newScore);
+        }
+    }
+
     private CaseInsensitiveMap getPosting(Set<String> query) {
         CaseInsensitiveMap words = new CaseInsensitiveMap();
         HashMap<Character, LinkedList<Integer>> allCharactersTogether = new HashMap<>();
         for(String word : query) {
-            char letter = !Character.isLetter(word.charAt(0)) ? '`' : Character.toLowerCase(word.charAt(0));
-            String lineNumber = Model.invertedIndex.getPostingLink(word.toLowerCase());
-            if (lineNumber.equals(""))
-                lineNumber = Model.invertedIndex.getPostingLink(word.toUpperCase());
-            if (!lineNumber.equals("")) if (allCharactersTogether.containsKey(letter))
-                allCharactersTogether.get(letter).add(Integer.parseInt(lineNumber));
-            else {
-                LinkedList<Integer> lettersLines = new LinkedList<>();
-                lettersLines.add(Integer.parseInt(lineNumber));
-                allCharactersTogether.put(letter, lettersLines);
-            }
+            char letter;
+            if (!Character.isLetter(word.charAt(0)))
+                letter = '`';
             else
+                letter = Character.toLowerCase(word.charAt(0));
+            String lineNumber = getPostingLineNumber(word);
+            if (!lineNumber.equals("")) {
+                if (allCharactersTogether.containsKey(letter))
+                    allCharactersTogether.get(letter).add(Integer.parseInt(lineNumber));
+                else {
+                    LinkedList<Integer> lettersLines = new LinkedList<>();
+                    lettersLines.add(Integer.parseInt(lineNumber));
+                    allCharactersTogether.put(letter, lettersLines);
+                }
+            } else
                 words.put(word, "");
         }
         for(Character letter : allCharactersTogether.keySet()) {
@@ -129,38 +151,11 @@ public class Searcher implements Callable<LinkedList<String>> {
         return words;
     }
 
-
-    public LinkedList<String> returnOnlyFifty(LinkedList bigList) {
-        while(bigList.size() > DOCS_RETURN_NUMBER) bigList.remove(DOCS_RETURN_NUMBER);
-        List<Object> list = new ArrayList();
-        for(int i = 0; i < bigList.size() && i < DOCS_RETURN_NUMBER; i++) list.add(bigList.get(i));
-        IntStream.range(0, list.size()).forEach(i -> docsThatReturned.add(list.get(i).toString().split("=")[0]));
-        return (LinkedList<String>) docsThatReturned;
-    }
-
-    //Write the results to the file selected by the user
-    public void writeResultsToDisk(String path) throws IOException {
-        String addToFile = docsThatReturned.stream().map(s -> "240 "+"0 "+s+" 1 "+"42.38 mt"+"\n").collect(Collectors.joining());
-        /////////\n
-        BufferedWriter test = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path+"/terc_eval_res.txt")));
-        test.write(addToFile);
-        test.flush();
-        test.close();
-    }
-
-    private LinkedList<String> sortByScore(HashMap<String, Double> score) {
-        List<Map.Entry<String, Double>> list = new ArrayList<>(score.entrySet());
-        list.sort(Map.Entry.comparingByValue());
-        return list.stream().map(Map.Entry::getKey).collect(Collectors.toCollection(LinkedList::new));
-    }
-
-    private void addToScore(HashMap<String, Double> score, String docName, double newScore) {
-        if (newScore != 0) {
-            Double d = score.get(docName);
-            if (d != null)
-                newScore += d;
-            score.put(docName, newScore);
-        }
+    private String getPostingLineNumber(String word) {
+        String lineNumber = Model.invertedIndex.getPostingLink(word.toLowerCase());
+        if (lineNumber.equals(""))
+            lineNumber = Model.invertedIndex.getPostingLink(word.toUpperCase());
+        return lineNumber;
     }
 
     private Double getIDF(int length) {
@@ -168,54 +163,17 @@ public class Searcher implements Callable<LinkedList<String>> {
         return Math.log10((docInCorpusCount+1) / length);
     }
 
-    public static class ShowResultRecord {
-        private StringProperty documentProperty;
-        private StringProperty topFiveProperty;
-        private IntegerProperty scoreProperty;
-
-        public ShowResultRecord(String term, String count, Integer rank) {
-            this.documentProperty = new SimpleStringProperty(term);
-            this.topFiveProperty = new SimpleStringProperty(count);
-            this.scoreProperty = new SimpleIntegerProperty(rank);
-        }
-
-        public StringProperty getDocumentProperty() {
-            return documentProperty;
-        }
-
-        public StringProperty getTopFiveProperty() {
-            return topFiveProperty;
-        }
-
-        public IntegerProperty getScoreProperty() {
-            return scoreProperty;
-        }
-    }
 
     public class CaseInsensitiveMap extends HashMap<String, String> {
-
-        /**
-         * put entries as lower case to ignore case
-         *
-         * @param key   key of entry
-         * @param value value of entry
-         * @return df
-         */
         @Override
         public String put(String key, String value) {
             return super.put(key.toLowerCase(), value);
         }
 
-        /**
-         * return the String of the value of the given key
-         *
-         * @param key key in the map
-         * @return value
-         */
         public String get(String key) {
             return super.get(key.toLowerCase());
         }
     }
-
-
 }
+
+

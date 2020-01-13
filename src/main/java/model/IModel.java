@@ -55,12 +55,9 @@ public interface IModel {
      */
     void showDictionary();
 
-
-    void showData();
-
     void startBoogleSearch(String postingPath, String queries, String outLocation, boolean stem, boolean semantic, boolean offline);
 
-    StringBuilder showFiveEntities(String docName);
+    String showFiveEntities(String docName);
 
     boolean writeRes(String dest);
 

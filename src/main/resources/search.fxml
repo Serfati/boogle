@@ -44,6 +44,7 @@
                                             </VBox.margin>
                                         </JFXTextField>
                                         <JFXCheckBox fx:id="semantic_checkbox" prefHeight="17.0" prefWidth="239.0"
+                                                     selected="true"
                                                      styleClass="checkbox-main"
                                                      text="Enable Semantics"/>
                                         <JFXCheckBox fx:id="stem_checkbox" prefHeight="17.0" prefWidth="239.0"
@@ -70,31 +71,34 @@
                     </content>
                 </Tab>
                 <Tab closable="false" styleClass="settings-tab" text="Results">
-                    <VBox alignment="CENTER" prefHeight="350.0" prefWidth="600.0">
-                        <TableView fx:id="table_showDic" layoutX="6.0" layoutY="257.0" prefHeight="350.0"
-                                   prefWidth="100.0">
-                            <placeholder>
-                                <Label text="Press 'Show Data' to see results "/>
-                            </placeholder>
-                            <columns>
-                                <TableColumn fx:id="numberCol" prefWidth="33.0" text="#"/>
-                                <TableColumn fx:id="tableCol_1" prefWidth="250.0" text="Results"/>
-                                <TableColumn fx:id="tableCol_2" prefWidth="300.0" text="TOP 5"/>
-                                <TableColumn fx:id="tableCol_3" prefWidth="100.0" text="Length"/>
-                            </columns>
-                        </TableView>
-                        <HBox alignment="CENTER" prefHeight="43.0" prefWidth="100.0" spacing="25.0">
-                            <VBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="25.0"/>
-                            </VBox.margin>
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0">
                             <children>
-                                <JFXButton fx:id="btn_show_data" prefHeight="100.0" prefWidth="170.0" text="Show Data"
-                                           onAction="#showDataClick" disable="true"/>
-                                <JFXButton onAction="#saveQueryResults" prefHeight="100.0" prefWidth="170.0"
-                                           text="Save Results" disable="true"/>
+                                <JFXButton fx:id="btn_show_data" layoutX="508.0" layoutY="200.0" text="Show Data"/>
+                                <JFXButton onAction="#saveResults" layoutX="500.0" layoutY="150.0" text="Save Results"
+                                           disable="true"/>
+                                <TableView fx:id="table_showResults" layoutX="24.0" layoutY="20.0" prefHeight="350.0"
+                                           prefWidth="212.0">
+                                    <placeholder>
+                                        <Label text="Press 'Show' to see data "/>
+                                    </placeholder>
+                                    <columns>
+                                        <TableColumn fx:id="tableCol_query" prefWidth="211.0" text="Query"/>
+                                    </columns>
+                                </TableView>
+                                <TableView fx:id="table_showDocs" layoutX="267.0" layoutY="20.0" prefHeight="350.0"
+                                           prefWidth="208.0">
+                                    <placeholder>
+                                        <Label prefHeight="64.0" prefWidth="206.0" text="Press on a query number "
+                                               textAlignment="CENTER" wrapText="true"/>
+                                    </placeholder>
+                                    <columns>
+                                        <TableColumn fx:id="tableCol_docs" prefWidth="206.0" text="Document"/>
+                                    </columns>
+                                </TableView>
                             </children>
-                        </HBox>
-                    </VBox>
+                        </AnchorPane>
+                    </content>
                 </Tab>
                 <Tab closable="false" styleClass="settings-tab" text="Export">
                     <content>

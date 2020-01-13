@@ -46,10 +46,6 @@ public class Main extends Application {
         UIController viewController = fxmlLoader.getController();
         viewController.setViewModel(viewModel);
         viewModel.addObserver(viewController);
-        //------------sc----------------//
-        SearchController searchController = new SearchController();
-        searchController.setViewModel(viewModel);
-        viewModel.addObserver(searchController);
         //------------------------------//
         primaryStage.setScene(scene);
         SetStageCloseEvent(primaryStage, viewController);

@@ -46,13 +46,6 @@ public class ViewModel extends Observable implements Observer {
         Platform.runLater(() -> model.showDictionary());
     }
 
-    /**
-     * transfers to the model a show results request
-     */
-    public void showData() {
-        Platform.runLater(() -> model.showData());
-    }
-
     public void loadDictionary(String path, boolean stem) {
         Platform.runLater(() -> model.loadDictionary(path, stem));
     }
@@ -61,7 +54,7 @@ public class ViewModel extends Observable implements Observer {
         Platform.runLater(() -> model.startBoogleSearch(posting, query, outLocation, stem, semantic, offline));
     }
 
-    public StringBuilder showFiveEntities(String docName) {
+    public String showFiveEntities(String docName) {
         return model.showFiveEntities(docName);
     }
 

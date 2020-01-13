@@ -1,10 +1,11 @@
 package ranker.algorithms;
 
-import indexer.InvertedIndex;
-import parser.MiniDictionary;
+import javafx.util.Pair;
+import model.Model;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Set;
 
 /* checks if a term is an entity of the given document */
 
@@ -14,17 +15,12 @@ public class ContainingAlgorithm extends ARankingAlgorithm {
         super(weight);
     }
 
-    @Override
-    public double rank(MiniDictionary document, ArrayList<InvertedIndex.Term> termList) {
-
+    public double rank(HashMap<String, Double> score, Set<String> wordsInQuery) {
         double rank = 0;
-        LinkedList<Integer> positions;
-        int inDoc = 0, numTerms = 0;
-
-        for(InvertedIndex.Term t : termList) {
-
-            //TODO
-            rank += 0.3;
+        for(String docs : score.keySet()) {
+            Pair<String, Integer>[] five = Model.documentDictionary.get(docs).getFiveEntities();
+            if (five != null)
+                rank += Arrays.stream(five).filter(aFive -> aFive != null && wordsInQuery.contains(aFive.getKey())).mapToDouble(aFive -> 0.3).sum();
         }
         return rank * weight;
     }
