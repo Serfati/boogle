@@ -28,7 +28,6 @@ public class Main extends Application {
         launch(args);
         long exitTime = System.currentTimeMillis();
         LOGGER.log(Level.INFO, "Boogle is closing. Used for "+(exitTime-startTime) / 60000.0+" m");
-
     }
 
     @Override
@@ -43,11 +42,11 @@ public class Main extends Application {
         Scene scene = new Scene(root, 620, 700);
         scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
         primaryStage.setResizable(false);
-        //------------------------------//
+        //------------ui---------------//
         UIController viewController = fxmlLoader.getController();
         viewController.setViewModel(viewModel);
         viewModel.addObserver(viewController);
-        //------------------------------//
+        //------------sc----------------//
         SearchController searchController = new SearchController();
         searchController.setViewModel(viewModel);
         viewModel.addObserver(searchController);

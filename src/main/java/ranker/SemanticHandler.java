@@ -7,7 +7,6 @@ import rw.GloVe;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,8 +14,9 @@ import java.util.List;
  * given a word check for her vector in a glove file and calculate similarity between it and other words
  * bring back the  most relevant words
  */
+
 public class SemanticHandler {
-    public static WordVectors wordVectors;
+    public WordVectors wordVectors;
     public boolean useOffline;
 
     public SemanticHandler(boolean useOffline) {
@@ -24,15 +24,6 @@ public class SemanticHandler {
         this.useOffline = useOffline;
     }
 
-    public static void main(String[] args) throws IOException {
-        SemanticHandler hs = new SemanticHandler(false);
-        LinkedList<String> qo = new LinkedList<>();
-        qo.add("israel");
-        qo.add("ocean");
-        qo.add("boat");
-        qo.add("if");
-        System.out.println(hs.getTwoBestMatches(qo));
-    }
     //-------------------------------------------------------------------//
 
     /**
@@ -48,3 +39,4 @@ public class SemanticHandler {
         return allSynonyms;
     }
 }
+

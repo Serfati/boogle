@@ -105,21 +105,18 @@ public class Searcher implements Callable<LinkedList<String>> {
         CaseInsensitiveMap words = new CaseInsensitiveMap();
         HashMap<Character, LinkedList<Integer>> allCharactersTogether = new HashMap<>();
         for(String word : query) {
-            char letter;
-            if (!Character.isLetter(word.charAt(0)))
-                letter = '`';
+            char letter = !Character.isLetter(word.charAt(0)) ? '`' : Character.toLowerCase(word.charAt(0));
+            String lineNumber = Model.invertedIndex.getPostingLink(word.toLowerCase());
+            if (lineNumber.equals(""))
+                lineNumber = Model.invertedIndex.getPostingLink(word.toUpperCase());
+            if (!lineNumber.equals("")) if (allCharactersTogether.containsKey(letter))
+                allCharactersTogether.get(letter).add(Integer.parseInt(lineNumber));
+            else {
+                LinkedList<Integer> lettersLines = new LinkedList<>();
+                lettersLines.add(Integer.parseInt(lineNumber));
+                allCharactersTogether.put(letter, lettersLines);
+            }
             else
-                letter = Character.toLowerCase(word.charAt(0));
-            String lineNumber = getPostingLineNumber(word);
-            if (!lineNumber.equals("")) {
-                if (allCharactersTogether.containsKey(letter))
-                    allCharactersTogether.get(letter).add(Integer.parseInt(lineNumber));
-                else {
-                    LinkedList<Integer> lettersLines = new LinkedList<>();
-                    lettersLines.add(Integer.parseInt(lineNumber));
-                    allCharactersTogether.put(letter, lettersLines);
-                }
-            } else
                 words.put(word, "");
         }
         for(Character letter : allCharactersTogether.keySet()) {
@@ -132,28 +129,6 @@ public class Searcher implements Callable<LinkedList<String>> {
         return words;
     }
 
-    private String getPostingLineNumber(String word) {
-        String lineNumber = Model.invertedIndex.getPostingLink(word.toLowerCase());
-        if (lineNumber.equals(""))
-            lineNumber = Model.invertedIndex.getPostingLink(word.toUpperCase());
-        return lineNumber;
-    }
-
-    private String[] getAllDocsOptionalForRetrival(String wordPostingData) {
-        wordPostingData = wordPostingData.substring(wordPostingData.indexOf("~")+1);
-        return split(wordPostingData, "|");
-    }
-
-    /**
-     * Returns the file into we need to write the term and it's posting.
-     *
-     * @param term - the term for whom we wish to discover the relevant posting.
-     * @return - a-z,0-9 or according to the prefix of given term.
-     */
-    private char returnDestinatoinPostFile(String term) {
-        char prefix = term.toLowerCase().charAt(0);
-        return !Character.isDigit(prefix) && !Character.isLetter(prefix) ? '`' : prefix;
-    }
 
     public LinkedList<String> returnOnlyFifty(LinkedList bigList) {
         while(bigList.size() > DOCS_RETURN_NUMBER) bigList.remove(DOCS_RETURN_NUMBER);
@@ -167,7 +142,7 @@ public class Searcher implements Callable<LinkedList<String>> {
     public void writeResultsToDisk(String path) throws IOException {
         String addToFile = docsThatReturned.stream().map(s -> "240 "+"0 "+s+" 1 "+"42.38 mt"+"\n").collect(Collectors.joining());
         /////////\n
-        BufferedWriter test = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path+"/Results.txt")));
+        BufferedWriter test = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path+"/terc_eval_res.txt")));
         test.write(addToFile);
         test.flush();
         test.close();
@@ -241,4 +216,6 @@ public class Searcher implements Callable<LinkedList<String>> {
             return super.get(key.toLowerCase());
         }
     }
+
+
 }

@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -29,11 +28,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import static ui.ListToPDF.Orientation.PORTRAIT;
 import static ui.UIController.openGoogle;
 
 public class SearchController implements Observer, Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(SearchController.class.getName());
+    ObservableList<Searcher.ShowResultRecord> recordsToPDF;
     public TabPane tabManager;
     public TableView<Searcher.ShowResultRecord> table_showDic;
     public TableColumn<Searcher.ShowResultRecord, String> tableCol_1;
@@ -125,7 +126,9 @@ public class SearchController implements Observer, Initializable {
     }
 
     @FXML
-    private void handleDatabaseExportAction(ActionEvent event) {
+    private void handleDatabaseExportAction() {
+        ListToPDF l2PDF = new ListToPDF();
+        l2PDF.doPrintToPdf(recordsToPDF, outputField_txt.getText(), PORTRAIT);
     }
 
     /**
@@ -155,6 +158,9 @@ public class SearchController implements Observer, Initializable {
                 ObservableList l = (ObservableList) arg;
                 if (!l.isEmpty() && l.get(0) instanceof Searcher.ShowResultRecord)
                     showData((ObservableList<Searcher.ShowResultRecord>) arg);
+                btn_export_pdf.setDisable(false);
+                btn_show_data.setDisable(false);
+                btn_boogle_search.setDisable(true);
             }
         }
     }
@@ -184,6 +190,7 @@ public class SearchController implements Observer, Initializable {
      * @param records all the data about the current indexing
      */
     private void showData(ObservableList<Searcher.ShowResultRecord> records) {
+        this.recordsToPDF = records;
         if (records != null) {
             tableCol_1.setCellValueFactory(cellData -> cellData.getValue().getDocumentProperty());
             tableCol_2.setCellValueFactory(cellData -> cellData.getValue().getTopFiveProperty());

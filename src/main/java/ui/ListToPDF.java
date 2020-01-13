@@ -2,20 +2,23 @@ package ui;
 
 import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.datatable.DataTable;
+import javafx.collections.ObservableList;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import ranker.Searcher;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
+import java.util.Collections;
 
 public class ListToPDF {
 
-    public boolean doPrintToPdf(List<List> list, File saveLoc, Orientation orientation) {
+    public void doPrintToPdf(ObservableList<Searcher.ShowResultRecord> list, String saveLoc1, Orientation orientation) {
+        File saveLoc = null;
         try {
-            if (saveLoc == null) return false;
-            if (!saveLoc.getName().endsWith(".pdf")) saveLoc = new File(saveLoc.getAbsolutePath()+".pdf");
+            if (saveLoc1 == null) return;
+            if (!saveLoc1.endsWith(".pdf")) saveLoc = new File(saveLoc1+".pdf");
             //Initialize Document
             PDDocument doc = new PDDocument();
             PDPage page = new PDPage();
@@ -37,16 +40,14 @@ public class ListToPDF {
             BaseTable dataTable = new BaseTable(yStart, yStartNewPage, bottomMargin, tableWidth, margin, doc, page, true,
                     true);
             DataTable t = new DataTable(dataTable, page);
-            t.addListToTable(list, DataTable.HASHEADER);
+            t.addListToTable(Collections.singletonList(list), DataTable.HASHEADER);
             dataTable.draw();
             doc.save(saveLoc);
             doc.close();
 
-            return true;
         } catch(IOException ex) {
             AlertMaker.showErrorMessage("Error occurred during PDF export", ex.getMessage());
         }
-        return false;
     }
 
     public enum Orientation {
