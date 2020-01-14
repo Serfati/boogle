@@ -76,7 +76,6 @@ public class Model extends Observable implements IModel {
         double startEngine = System.currentTimeMillis();
         try {
             HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, stem, semantic, offline);
-            resultsToObservableList(results);
         } catch(Exception e) {
             String[] update = {"Fail", "Boogle failed"};
             LOGGER.log(Level.ERROR, "Boogle failed");
@@ -85,7 +84,7 @@ public class Model extends Observable implements IModel {
             e.printStackTrace();
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
-        LOGGER.log(Level.INFO, "PROCESS DONE ::"+" ("+RUNTIME+" ms)");
+        LOGGER.log(Level.INFO, "DONE::"+"("+RUNTIME+" ms)");
         setChanged();
         notifyObservers();
     }
@@ -458,16 +457,16 @@ public class Model extends Observable implements IModel {
 
     /**
      * change results to observable list
+     *
      * @param results the result
      */
-    private void resultsToObservableList(HashMap<String, LinkedList<String>> results) {
+    private ObservableList<ResultDisplay> resultsToObservableList(HashMap<String, LinkedList<String>> results) {
         ObservableList<ResultDisplay> observableResult = FXCollections.observableArrayList();
         for(Map.Entry<String, LinkedList<String>> entry : results.entrySet()) {
             String queryID = entry.getKey();
             observableResult.add(new ResultDisplay(queryID.replace("\n", ""), entry.getValue()));
         }
-        setChanged();
-        notifyObservers(observableResult);
+        return observableResult;
     }
 
     public String showFiveEntities(String docName) {
@@ -580,5 +579,11 @@ public class Model extends Observable implements IModel {
     public void showDictionary() {
         setChanged();
         notifyObservers(invertedIndex.getRecord());
+    }
+
+    @Override
+    public void showData() {
+        setChanged();
+        notifyObservers(resultsToObservableList(m_results));
     }
 }

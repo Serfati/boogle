@@ -39,44 +39,13 @@ public class Searcher implements Callable<LinkedList<String>> {
         return null;
     }
 
-    private LinkedList<String> mainLogic() throws IOException {
-        NamedEntitiesSearcher ner = null;
-        String queryAfterSem = query.getQueryText();
-        LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
-        if (enableSemantics) queryAfterSem = query.getQueryText()+sh.getTwoBestMatches(argsAsLinkedList);
-        CaseInsensitiveMap wordsPosting;
-        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming, ner);
-        MiniDictionary md = p.parse(true);
-        HashMap<String, Integer> wordsCountInQuery = md.countAppearances(); //count word in the query
-        wordsPosting = getPosting(wordsCountInQuery.keySet());
-        Ranker ranker = new Ranker(wordsCountInQuery);
-        HashMap<String, Double> score = new HashMap<>();
-
-        //for each word go throw its posting with relevant documents
-        for(String word : wordsCountInQuery.keySet()) {
-            if (!wordsPosting.get(word).equals("")) {
-                String postingLine = wordsPosting.get(word);
-                String[] split = postingLine.split("\\|");
-                double docInCorpusCount = Model.documentDictionary.keySet().size();
-                double idf = Math.log10((docInCorpusCount+1) / split.length-1);
-                //one Doc handle
-                for(String aSplit : split) {
-                    String[] splitLine = aSplit.split(",");
-                    String docName = splitLine[0];
-                    if (splitLine.length > 1) {
-                        int tf = Integer.parseInt(splitLine[1]);
-                        //String positionsOfWord = splitLine[2];
-                        double BM25 = ranker.BM25Algorithm(word, docName, tf, idf);
-                        addToScore(score, docName, BM25);
-                        double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
-                        addToScore(score, docName, TI);
-                        double entityAlg = ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
-                        addToScore(score, docName, entityAlg);
-                    }
-                }
-            }
+    static void addToScore(HashMap<String, Double> score, String docName, double newScore) {
+        if (newScore != 0) {
+            Double d = score.get(docName);
+            if (d != null)
+                newScore += d;
+            score.put(docName, newScore);
         }
-        return sortByScore(score);
     }
 
     private CaseInsensitiveMap getPosting(Set<String> query) {
@@ -116,13 +85,43 @@ public class Searcher implements Callable<LinkedList<String>> {
         return list.stream().map(Map.Entry::getKey).collect(Collectors.toCollection(LinkedList::new));
     }
 
-    private void addToScore(HashMap<String, Double> score, String docName, double newScore) {
-        if (newScore != 0) {
-            Double d = score.get(docName);
-            if (d != null)
-                newScore += d;
-            score.put(docName, newScore);
+    private LinkedList<String> mainLogic() throws IOException {
+        NamedEntitiesSearcher ner = null;
+        String queryAfterSem = query.getQueryText();
+        LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
+        if (enableSemantics) queryAfterSem = query.getQueryText()+sh.getTwoBestMatches(argsAsLinkedList);
+        CaseInsensitiveMap wordsPosting;
+        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming, ner);
+        MiniDictionary md = p.parse(true);
+        HashMap<String, Integer> wordsCountInQuery = md.countAppearances(); //count word in the query
+        wordsPosting = getPosting(wordsCountInQuery.keySet());
+        Ranker ranker = new Ranker(wordsCountInQuery);
+        HashMap<String, Double> score = new HashMap<>();
+
+        //for each word go throw its posting with relevant documents
+        for(String word : wordsCountInQuery.keySet()) {
+            if (!wordsPosting.get(word).equals("")) {
+                String postingLine = wordsPosting.get(word);
+                String[] split = postingLine.split("\\|");
+                double docInCorpusCount = Model.documentDictionary.keySet().size();
+                double idf = Math.log10((docInCorpusCount+1) / split.length-1);
+                //one Doc handle
+                for(String aSplit : split) {
+                    String[] splitLine = aSplit.split(",");
+                    String docName = splitLine[0];
+                    if (splitLine.length > 1) {
+                        int tf = Integer.parseInt(splitLine[1]);
+                        //String positionsOfWord = splitLine[2];
+                        double BM25 = ranker.BM25Algorithm(word, docName, tf, idf);
+                        addToScore(score, docName, BM25);
+                        double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
+                        addToScore(score, docName, TI);
+                    }
+                }
+            }
+            ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
         }
+        return sortByScore(score);
     }
 
     public class CaseInsensitiveMap extends HashMap<String, String> {

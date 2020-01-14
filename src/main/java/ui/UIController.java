@@ -404,7 +404,6 @@ public class UIController implements IView, Observer, Initializable {
      * transfers to the view model a load dictionary request
      */
     public void loadDictionary(ActionEvent event) {
-        LOGGER.log(Level.INFO, "loadFile::");
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Choose a dictionary to load");
         directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));

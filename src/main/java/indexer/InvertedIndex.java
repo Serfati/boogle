@@ -53,7 +53,6 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
         }
     }
 
-
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
         HashMap<String, Pair<Integer, StringBuilder>> postingForm = new HashMap<>();

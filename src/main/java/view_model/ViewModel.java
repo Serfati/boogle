@@ -61,4 +61,8 @@ public class ViewModel extends Observable implements Observer {
     public boolean writeRes(String dest) {
         return model.writeResultsToDisk(dest);
     }
+
+    public void showDataClick() {
+        Platform.runLater(() -> model.showData());
+    }
 }

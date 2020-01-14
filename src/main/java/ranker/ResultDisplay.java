@@ -12,8 +12,8 @@ public class ResultDisplay {
     String queryID;
     LinkedList<QueryDisplay> docNames;
 
-    StringProperty sp_queryID;
-    StringProperty sp_docNames;
+    SimpleStringProperty sp_queryID;
+    SimpleStringProperty sp_docNames;
 
     public ResultDisplay(String queryID, LinkedList<String> docNames) {
         this.queryID = queryID;
@@ -27,12 +27,33 @@ public class ResultDisplay {
         return l.get();
     }
 
-
     public StringProperty sp_queryIDProperty() {
         return sp_queryID;
     }
 
+
+    public String getQueryID() {
+        return queryID;
+    }
+
     public LinkedList<QueryDisplay> getDocNames() {
         return docNames;
+    }
+
+    //----//
+    public class QueryDisplay {
+        private StringProperty sp_docName;
+
+        QueryDisplay(String docName) {
+            sp_docName = new SimpleStringProperty(docName);
+        }
+
+        public String getSp_docName() {
+            return sp_docName.get();
+        }
+
+        public StringProperty sp_docNameProperty() {
+            return sp_docName;
+        }
     }
 }

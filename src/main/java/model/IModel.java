@@ -61,4 +61,5 @@ public interface IModel {
 
     boolean writeResultsToDisk(String dest);
 
+    void showData();
 }
