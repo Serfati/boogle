@@ -70,11 +70,12 @@ public class Searcher implements Callable<LinkedList<String>> {
                         addToScore(score, docName, BM25);
                         double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
                         addToScore(score, docName, TI);
+                        ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
+                        addToScore(score, docName, TI);
                     }
                 }
             }
         }
-        ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
         return sortByScore(score);
     }
 
