@@ -1,4 +1,4 @@
-package rw;
+package ranker;
 
 /**
  * encapsulates a query
@@ -23,10 +23,6 @@ public class Query {
 
     public String getQueryText() {
         return queryText;
-    }
-
-    public void setQueryText(String queryText) {
-        this.queryText = queryText;
     }
 
     public String getQueryDesc() {

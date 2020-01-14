@@ -4,7 +4,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootContainer" prefHeight="459.0" prefWidth="581.0"
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="459.0" prefWidth="581.0"
            stylesheets="@/dark-style.css" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="ui.SearchController">
     <children>
         <TabPane fx:id="tabManager" nodeOrientation="LEFT_TO_RIGHT" prefHeight="414.0" prefWidth="400.0">
@@ -25,9 +25,9 @@
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="25.0"/>
                                             </VBox.margin>
                                         </JFXTextField>
-                                        <JFXTextField fx:id="outputField_txt" labelFloat="true"
+                                        <JFXTextField fx:id="corpusField_txt" labelFloat="true"
                                                       onMousePressed="#browseOutputClick"
-                                                      promptText="Output location (double click)">
+                                                      promptText="Data location (double click)">
                                             <VBox.margin>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                                             </VBox.margin>
@@ -44,7 +44,6 @@
                                             </VBox.margin>
                                         </JFXTextField>
                                         <JFXCheckBox fx:id="semantic_checkbox" prefHeight="17.0" prefWidth="239.0"
-                                                     selected="true"
                                                      styleClass="checkbox-main"
                                                      text="Enable Semantics"/>
                                         <JFXCheckBox fx:id="stem_checkbox" prefHeight="17.0" prefWidth="239.0"
@@ -75,8 +74,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0">
                             <children>
                                 <JFXButton fx:id="btn_show_data" layoutX="508.0" layoutY="200.0" text="Show Data"/>
-                                <JFXButton onAction="#saveResults" layoutX="500.0" layoutY="150.0" text="Save Results"
-                                           disable="true"/>
+                                <JFXButton onAction="#saveResults" layoutX="500.0" layoutY="150.0" text="Save Results"/>
                                 <TableView fx:id="table_showResults" layoutX="24.0" layoutY="20.0" prefHeight="350.0"
                                            prefWidth="212.0">
                                     <placeholder>

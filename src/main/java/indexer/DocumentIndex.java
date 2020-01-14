@@ -13,13 +13,14 @@ public class DocumentIndex {
     private int uniqueWords;
     Pair<String, Integer>[] mainEntities;
 
-    public DocumentIndex(String docName, int maxFreq, int numOfUniWords, String maxFreqWord, int docLength, String title) {
+    public DocumentIndex(String docName, int maxFreq, int numOfUniWords, String maxFreqWord, String title, int docLength, Pair<String, Integer>[] primaryWords) {
         this.maxFreq_word = maxFreqWord;
         this.docLength = docLength;
         this.docTI = title;
         this.docId = docName;
         this.maxFreq_count = maxFreq;
         this.uniqueWords = numOfUniWords;
+        this.mainEntities = primaryWords;
     }
 
     public String getDocTI() {
@@ -34,31 +35,6 @@ public class DocumentIndex {
         return mainEntities;
     }
 
-    public String getDocId() {
-        return docId;
-    }
-
-    public String getMaxFreq_word() {
-        return maxFreq_word;
-    }
-
-    public int getMaxFreq_count() {
-        return maxFreq_count;
-    }
-
-    public int getUniqueWords() {
-        return uniqueWords;
-    }
-
-    public Pair<String, Integer>[] getMainEntities() {
-        return mainEntities;
-    }
-
-    /**
-     * returnd 5 strongest entities  in the document
-     *
-     * @return string of 5 entities
-     */
     public String get5words() {
         StringBuilder s = new StringBuilder();
         int i = 0;
@@ -83,6 +59,5 @@ public class DocumentIndex {
                 pw.append(mainEntities[mainEntities.length-1].getKey()).append("~").append(mainEntities[mainEntities.length-1].getValue());
         }
         return MessageFormat.format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\n", docId, maxFreq_count, uniqueWords, maxFreq_word, docTI, docLength, pw);
-
     }
 }

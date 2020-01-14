@@ -59,6 +59,6 @@ public interface IModel {
 
     String showFiveEntities(String docName);
 
-    boolean writeRes(String dest);
+    boolean writeResultsToDisk(String dest);
 
 }

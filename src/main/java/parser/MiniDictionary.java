@@ -1,7 +1,6 @@
 package parser;
 
 import javafx.util.Pair;
-import sun.awt.Mutex;
 
 import java.text.MessageFormat;
 import java.util.*;
@@ -14,8 +13,6 @@ public class MiniDictionary {
     private int naxFreq_count;
     private String maxFreq_word;
     private String docTI;
-    private Mutex mutex;
-    private double rank;
     private Pair<String, Integer>[] places = new Pair[5];
 
     /**
@@ -29,7 +26,6 @@ public class MiniDictionary {
         naxFreq_count = 0;
         maxFreq_word = "";
         docTI = title;
-        this.mutex = new Mutex();
     }
 
     /**
@@ -102,16 +98,6 @@ public class MiniDictionary {
      */
     private LinkedList<Integer> getIndexOfWord(String word) {
         return containsKey(word) != 0 ? dictionary.get(word) : null;
-    }
-
-    public void addRank(double rank) {
-        this.mutex.lock();
-        this.rank += rank;
-        this.mutex.unlock();
-    }
-
-    public double getRank() {
-        return rank;
     }
 
     /**

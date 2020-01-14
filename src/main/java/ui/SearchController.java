@@ -55,9 +55,10 @@ public class SearchController implements Observer, Initializable {
     @FXML
     public JFXTextField queryField_txt;
     @FXML
-    public JFXTextField outputField_txt;
+    public JFXTextField corpusField_txt;
     @FXML
     public JFXCheckBox semantic_checkbox;
+    public JFXButton btn_show_data;
     ObservableList<ResultDisplay> recordsToPDF;
 
     /**
@@ -84,18 +85,18 @@ public class SearchController implements Observer, Initializable {
             openGoogle(google_txt.getText());
             AlertMaker.showSimpleAlert("Congratulation", "Good Choice");
         }
-        if (outputField_txt.getText().equals("") || queryField_txt.getText().equals(""))// check if the paths are not empty
+        if (corpusField_txt.getText().equals("") || queryField_txt.getText().equals(""))// check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "Must fill a query first");
         else {
-            String query = !queryField_txt.getText().equals("") ? queryField_txt.getText() : outputField_txt.getText();
-            viewModel.onSearchBoogleClick("/home/serfati/Desktop/Out", query, outputField_txt.getText(), semantic_checkbox.isSelected(), stem_checkbox.isSelected(), offline_checkbox.isSelected()); //transfer to the view Model
+            String query = !queryField_txt.getText().equals("") ? queryField_txt.getText() : corpusField_txt.getText();
+            viewModel.onSearchBoogleClick(corpusField_txt.getText(), query, corpusField_txt.getText(), stem_checkbox.isSelected(), semantic_checkbox.isSelected(), offline_checkbox.isSelected()); //transfer to the view Model
         }
     }
 
     @FXML
     private void handleDatabaseExportAction() {
         ListToPDF l2PDF = new ListToPDF();
-        l2PDF.doPrintToPdf(recordsToPDF, outputField_txt.getText(), PORTRAIT);
+        l2PDF.doPrintToPdf(recordsToPDF, corpusField_txt.getText(), PORTRAIT);
     }
 
     public void browseQueryClick(MouseEvent event) {
@@ -118,7 +119,7 @@ public class SearchController implements Observer, Initializable {
             directoryChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
             File corpusDir = directoryChooser.showDialog(new Stage());
             if (null != corpusDir)  //file chosen
-                outputField_txt.setText(corpusDir.getAbsolutePath());
+                corpusField_txt.setText(corpusDir.getAbsolutePath());
         }
     }
 
@@ -201,7 +202,6 @@ public class SearchController implements Observer, Initializable {
      * @param observable the
      */
     private void showQueryResult(ObservableValue<ResultDisplay> observable) {
-
         if (observable != null) {
             ObservableList<QueryDisplay> observableList = FXCollections.observableList(observable.getValue().getDocNames());
             tableCol_docs.setCellValueFactory(cellData -> cellData.getValue().sp_docNameProperty());
@@ -215,14 +215,13 @@ public class SearchController implements Observer, Initializable {
 
     @FXML
     public void saveResults() {
-        if (outputField_txt.getText().equals("")) {
+        if (corpusField_txt.getText().equals("")) {
             AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "You didnt choose output location");
             return;
         }
-        boolean isWrite = viewModel.writeRes(outputField_txt.getText());
+        boolean isWrite = viewModel.writeRes(corpusField_txt.getText());
         if (isWrite)
             AlertMaker.showErrorMessage(Alert.AlertType.INFORMATION.name(), "results saved!");
         else AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "Something went wrong");
     }
-
 }

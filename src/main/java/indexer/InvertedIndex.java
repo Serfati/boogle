@@ -22,15 +22,15 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Collectors;
 
 public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, StringBuilder>>> {
-    private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
 
+    private ConcurrentHashMap<String, Term> invertedIndexDic = new ConcurrentHashMap<>();
     private ConcurrentLinkedDeque<MiniDictionary> m_miniDicList;
+
+    public InvertedIndex() {
+    }
 
     public InvertedIndex(ConcurrentLinkedDeque<MiniDictionary> minidic) {
         m_miniDicList = minidic;
-    }
-
-    public InvertedIndex() {
     }
 
     public InvertedIndex(File file) {
@@ -40,19 +40,10 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             String line = bufferedReader.readLine();
             while(line != null) {
                 String[] curLine = line.split("\t");
-                int terf;
-                int noa;
-                int postingLine;
-                try {
-                    terf = Integer.parseInt(curLine[curLine.length-1]);
-                    noa = Integer.parseInt(curLine[curLine.length-2]);
-                    postingLine = Integer.parseInt(curLine[curLine.length-3]);
-                } catch(NumberFormatException e) {
-                    terf = 1;
-                    noa = 1;
-                    postingLine = 1;
-                }
-                Term cur = new Term(curLine[0], terf, noa, postingLine);
+                String terf = curLine[1].replace(",", "");
+                String noa = curLine[2].replace(",", "");
+                String postingLine = curLine[3].replace(",", "");
+                Term cur = new Term(curLine[0], Integer.parseInt(terf), Integer.parseInt(noa), Integer.parseInt(postingLine));
                 invertedIndexDic.put(curLine[0], cur);
                 line = bufferedReader.readLine();
             }
@@ -61,6 +52,7 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             e.printStackTrace();
         }
     }
+
 
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
@@ -168,10 +160,6 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             this.postingLine = postingLine;
         }
 
-        public String getWord() {
-            return word;
-        }
-
         public void increaseTermFreq(int termFreqCur) {
             freq += termFreqCur;
         }
@@ -201,6 +189,4 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
             return MessageFormat.format("{0}\t{1}\t{2}\t{3}\n", word, freq, numOfAppearancesTF, postingLine);
         }
     }
-
-
 }

@@ -14,10 +14,9 @@ import parser.MiniDictionary;
 import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
-import ranker.Ranker;
+import ranker.Query;
 import ranker.ResultDisplay;
 import ranker.Searcher;
-import rw.Query;
 import rw.ReadFile;
 import rw.WriteFile;
 
@@ -30,15 +29,12 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static java.lang.System.exit;
-import static sun.swing.SwingUtilities2.submit;
 
 public class Model extends Observable implements IModel {
-    private static Model singleton = null;
     public static HashSet<String> stopWords;
     public static InvertedIndex invertedIndex;
+    boolean dictionaryIsStemmed = false;
     public static HashMap<String, DocumentIndex> documentDictionary;
-    private Searcher mySearcher;
-    private Ranker myRanker;
     private AtomicInteger numOfPostings = new AtomicInteger(0);
     public HashMap<String, LinkedList<String>> m_results;
     private final static Logger LOGGER = LogManager.getLogger(Model.class.getName());
@@ -82,8 +78,6 @@ public class Model extends Observable implements IModel {
             HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, outLocation, stem, semantic, offline);
             LOGGER.log(Level.INFO, "Sending Results");
             resultsToObservableList(results);
-
-
         } catch(Exception e) {
             String[] update = {"Fail", "Boogle failed"};
             LOGGER.log(Level.ERROR, "Boogle failed");
@@ -93,33 +87,43 @@ public class Model extends Observable implements IModel {
             exit(0);
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
-        double[] totalResults = new double[]{RUNTIME};
         LOGGER.log(Level.INFO, "PROCESS DONE :: END Searching"+" in "+RUNTIME+" ms");
         setChanged();
         notifyObservers();
     }
 
-    HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, String outLocation, boolean stem, boolean semantic, boolean offline) {
+    public static String getPostingLineNumber(String word) {
+        String lineNumber = invertedIndex.getPostingLink(word.toLowerCase());
+        if (lineNumber.equals(""))
+            lineNumber = invertedIndex.getPostingLink(word.toUpperCase());
+        return lineNumber;
+    }
+
+    synchronized HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, String outLocation, boolean stem, boolean semantic, boolean offline) {
         Random r = new Random();
         LinkedList<Query> queriesList = new LinkedList<>();
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
         else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
 
-        //ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        HashMap<String, LinkedList<String>> queriesResults = new HashMap<>();
-        LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture;
-        try {
-            queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), submit(new Searcher(q, outLocation, postingPath, stem, semantic, offline)))).collect(Collectors.toCollection(LinkedList::new));
-            for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
-                try {
-                    queriesResults.put(f.getKey(), getLimited(f.getValue().get()));
-                } catch(InterruptedException | ExecutionException e) {
-                    e.printStackTrace();
-                }
-        } catch(Exception e) {
-            e.printStackTrace();
+
+        ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        HashMap<String, LinkedList<String>> queryResults = new HashMap<>();
+        LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = new LinkedList<>();
+
+        for(Query q : queriesList) {
+            Searcher searcher = new Searcher(q, outLocation, postingPath, offline, stem, semantic);
+            queryFuture.add(new Pair<>(q.getQueryNum(), pool.submit(searcher)));
         }
-        return queriesResults;
+
+        for(Pair<String, Future<LinkedList<String>>> f : queryFuture) {
+            try {
+                queryResults.put(f.getKey(), getLimited(f.getValue().get()));
+            } catch(InterruptedException | ExecutionException | NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return queryResults;
     }
 
     /**
@@ -129,9 +133,14 @@ public class Model extends Observable implements IModel {
      * @return 50 relevant queries
      */
     private LinkedList<String> getLimited(LinkedList<String> queryResults) {
+        System.out.println(queryResults);
         LinkedList<String> limited = new LinkedList<>();
-        for(int i = 0; i < 50 && !queryResults.isEmpty(); i++) {
-            limited.add(queryResults.pollFirst());
+        if (queryResults != null) {
+            int i = 0;
+            while(i < 50 && !queryResults.isEmpty()) {
+                limited.add(queryResults.pollFirst());
+                i++;
+            }
         }
         return limited;
     }
@@ -140,21 +149,19 @@ public class Model extends Observable implements IModel {
     public int[] indexMainLogic(InvertedIndex invertedIndex, String corpusPath, String destinationPath, boolean stem) throws Exception {
         LOGGER.log(Level.INFO, "Start manager Method :: runnable");
         int numOfDocs = 0;
-        int tempPostingValue = 650;
+        final int tempPostingValue = 450;
         ReadFile rf = new ReadFile();
         NamedEntitiesSearcher ner = new NamedEntitiesSearcher();
-        ProgressBar pb = new ProgressBar("Parse & Index", tempPostingValue).start();
-
+        ProgressBar pb = new ProgressBar("Parsing", tempPostingValue).start();
+        LinkedList<Thread> tmpPostingThread = new LinkedList<>();
         int i = 0;
         while(i < tempPostingValue) {
-            if (i == tempPostingValue / 2)
-                LOGGER.log(Level.INFO, "mainLogicUnit Method :: DONE HALF WAY");
             //-------------------------ReadFile------------------------//
             LinkedList<cDocument> l =
                     rf.readFiles(corpusPath, i, tempPostingValue);
             //--------------------Thread Pool 8 cores-----------------//
             ExecutorService threadPool =
-                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors() * 3);
+                    Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
             //-------------------------Parsing------------------------//
             ConcurrentLinkedDeque<Future<MiniDictionary>> futureMiniDicList =
                     l.stream().map(cd -> threadPool.submit(new Parse(cd, stem, ner)))
@@ -171,51 +178,25 @@ public class Model extends Observable implements IModel {
             Future<HashMap<String, Pair<Integer, StringBuilder>>> futureTemporaryPosting = threadPool.submit(index); // runnable build tempPost
             HashMap<String, Pair<Integer, StringBuilder>> temporaryPosting = futureTemporaryPosting.get(); // get it from future
             //-------------------------WriteFile------------------------//
-            //Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
-            WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting);
+            Thread t1 = new Thread(() -> WriteFile.writeTempPosting(destinationPath, numOfPostings.getAndIncrement(), temporaryPosting));
+            t1.start();
+            tmpPostingThread.add(t1);
             //-------------------------Insert Data to II------------------------//
+            dicList.forEach(MiniDictionary::setPrimaryWords);
             insertData(dicList, invertedIndex);
-            setPrimaryWords(dicList);
             threadPool.shutdown();
             i++;
             pb.stepBy(1);
             pb.setExtraMessage("Reading...");
         }
+        for(Thread t : tmpPostingThread)
+            t.join();
         pb.stop();
 
         LOGGER.log(Level.INFO, "Start merge Method :: single");
         mergePosting(invertedIndex, destinationPath, stem);
 
         return new int[]{numOfDocs, invertedIndex.getNumOfUniqueTerms()};
-    }
-
-    @Override
-    public void loadDictionary(String path, boolean useStemming) {
-        boolean foundInvertedIndex = false, foundDocumentDictionary = false;
-        File dirSource = new File(path);
-        File[] directoryListing = dirSource.listFiles();
-        String[] update;
-        if (directoryListing != null && dirSource.isDirectory()) {
-            for(int i = 0, directoryListingLength = directoryListing.length; i < directoryListingLength; i++) {
-                File file = directoryListing[i]; // search for the relevant file
-                if ((file.getName().equals("SIF.txt") && useStemming) || (file.getName().equals("IF.txt")) && !useStemming) {
-                    invertedIndex = new InvertedIndex(file);
-                    foundInvertedIndex = true;
-                }
-                if ((file.getName().equals("DocDic_PS.txt") && useStemming) || (file.getName().equals("DocDic.txt")) && !useStemming)
-                    foundDocumentDictionary = true;
-            }
-            if (!foundInvertedIndex || !foundDocumentDictionary) {
-                invertedIndex = null;
-                documentDictionary = null;
-                update = new String[]{"Fail", "could not find one or more dictionaries"};
-            } else
-                update = new String[]{"Successful", "Dictionary was loaded successfully"};
-        } else
-            update = new String[]{"Fail", "destination path is illegal or unreachable"};
-
-        setChanged();
-        notifyObservers(update);
     }
 
     /**
@@ -256,9 +237,40 @@ public class Model extends Observable implements IModel {
         return new String[]{pathOfDocs, destinationPath, pathOfStopWords};
     }
 
+    @Override
+    public void loadDictionary(String path, boolean useStemming) {
+        boolean foundInvertedIndex = false, foundDocumentDictionary = false;
+        File dirSource = new File(path);
+        File[] directoryListing = dirSource.listFiles();
+        String[] update;
+        if (directoryListing != null && dirSource.isDirectory()) {
+            for(File file : directoryListing) { // search for the relevant file
+                if ((file.getName().equals("SIF.txt") && useStemming) || (file.getName().equals("IF.txt")) && !useStemming) {
+                    dictionaryIsStemmed = useStemming;
+                    invertedIndex = new InvertedIndex(file);
+                    foundInvertedIndex = true;
+                }
+                if ((file.getName().equals("DocDic_PS.txt") && useStemming) || (file.getName().equals("DocDic.txt")) && !useStemming) {
+                    loadDocumentDictionary(file);
+                    foundDocumentDictionary = true;
+                }
+            }
+            if (!foundInvertedIndex || !foundDocumentDictionary) {
+                invertedIndex = null;
+                documentDictionary = null;
+                update = new String[]{"Fail", "could not find one or more dictionaries"};
+            } else
+                update = new String[]{"Successful", "Dictionary was loaded successfully"};
+        } else
+            update = new String[]{"Fail", "destination path is illegal or unreachable"};
+
+        setChanged();
+        notifyObservers(update);
+    }
+
     private void insertData(ConcurrentLinkedDeque<MiniDictionary> miniDicList, InvertedIndex invertedIndex) {
         miniDicList.forEach(mini -> {
-            DocumentIndex cur = new DocumentIndex(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getDocLength(), mini.getTitle());
+            DocumentIndex cur = new DocumentIndex(mini.getName(), mini.getMaxFrequency(), mini.size(), mini.getMaxFreqWord(), mini.getTitle(), mini.getDocLength(), mini.getPrimaryWords());
             documentDictionary.put(mini.getName(), cur);
             mini.dictionary.keySet().forEach(invertedIndex::addTerm);
         });
@@ -485,14 +497,67 @@ public class Model extends Observable implements IModel {
         return "";
     }
 
-    private void setPrimaryWords(ConcurrentLinkedDeque<MiniDictionary> miniDicList) {
-        miniDicList.forEach(MiniDictionary::setPrimaryWords);
+    /**
+     * loads the document dictionary
+     *
+     * @param file the file of the doc dic
+     */
+    private void loadDocumentDictionary(File file) {
+        String line = null;
+        documentDictionary = new HashMap<>();
+        try {
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            line = bufferedReader.readLine();
+            Pair[] toFill;
+            while(line != null) {
+                String[] curLine = line.split("\t");
+                if (curLine.length == 7) {
+                    String[] data = curLine[6].split("#");
+                    toFill = new Pair[data.length];
+                    String[] words = new String[data.length];
+                    String[] numbers = new String[data.length];
+                    for(int i = 0; i < data.length; i++) {
+                        String[] part = data[i].split("~");
+                        words[i] = part[0];
+                        numbers[i] = part[1];
+                        toFill[i] = new Pair<>(words[i], Integer.parseInt(numbers[i]));
+                    }
+
+                } else
+                    toFill = new Pair[0];
+                String one = curLine[1].replace(",", "");
+                String two = curLine[2].replace(",", "");
+                String five = curLine[5].replace(",", "");
+                DocumentIndex cur = new DocumentIndex(curLine[0], Integer.parseInt(one), Integer.parseInt(two), curLine[3], curLine[4], Integer.parseInt(five), toFill);
+                documentDictionary.put(curLine[0], cur);
+
+                line = bufferedReader.readLine();
+            }
+            bufferedReader.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * returns a string builder with the results ready to be written to the disk
+     *
+     * @return a string builder ready to be written
+     */
     @Override
-    public boolean writeRes(String dest) {
+    public boolean writeResultsToDisk(String dest) {
         FileWriter fileWriter;
-        StringBuilder toWrite = results();
+        StringBuilder toWrite = new StringBuilder();
+        ArrayList<String> queryIDs = new ArrayList<>(m_results.keySet());
+        queryIDs.sort(String.CASE_INSENSITIVE_ORDER);
+        if (m_results != null)
+            queryIDs.forEach(m -> {
+                for(String doc : m_results.get(m)) {
+                    String line = m+" 0 "+doc+" 0 0 ah\n";
+                    toWrite.append(line);
+                }
+            });
         try {
             if (m_results.size() > 0) {
                 fileWriter = new FileWriter(dest+"/results.txt");
@@ -504,25 +569,6 @@ public class Model extends Observable implements IModel {
         } catch(IOException e) {
             return false;
         }
-    }
-
-    /**
-     * returns a string builder with the results ready to be written to the disk
-     *
-     * @return a string builder ready to be written
-     */
-    private StringBuilder results() {
-        StringBuilder res = new StringBuilder();
-        ArrayList<String> queryIDs = new ArrayList<>(m_results.keySet());
-        queryIDs.sort(String.CASE_INSENSITIVE_ORDER);
-        if (m_results != null)
-            for(String m : queryIDs) {
-                for(String doc : m_results.get(m)) {
-                    String line = m+" 0 "+doc+" 0 0 ah\n";
-                    res.append(line);
-                }
-            }
-        return res;
     }
 
     @Override
@@ -552,5 +598,4 @@ public class Model extends Observable implements IModel {
         setChanged();
         notifyObservers(invertedIndex.getRecord());
     }
-
 }

@@ -1,5 +1,6 @@
 package rw;
 
+import com.sun.corba.se.impl.orbutil.concurrent.Mutex;
 import org.apache.commons.io.FileUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 import parser.cDocument;
+import ranker.Query;
 
 import java.io.*;
 import java.util.Arrays;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ReadFile {
+    private static Mutex m = new Mutex();
 
     /**
      * this function reads a bunch of files
@@ -101,7 +104,6 @@ public class ReadFile {
             queryList = new LinkedList<>();
             for(Element element : elements) {
                 String numberWithOtherData = element.getElementsByTag("num").text();
-                //String queryNum = getNumberOfQuery(numberWithOtherData);
                 String num = "Number: ";
                 int startNumIndex = numberWithOtherData.indexOf(num)+num.length();
                 int endNumIndex = numberWithOtherData.indexOf(' ', startNumIndex+1);
@@ -128,17 +130,23 @@ public class ReadFile {
         return queryList;
     }
 
-    public static LinkedList<String> readPostingLineAtIndex(String path, char c, List<Integer> indexes, boolean stem){
-        String filePath = path+(stem ? "/Stemmed" : "/Unstemmed\\");
-        filePath += "_"+ c +".txt";
-        File postingFile = new File (filePath);
+    public static LinkedList<String> readPostingLineAtIndex(String path, char c, List<Integer> indexes, boolean stem) {
+        try {
+            m.acquire();
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        String filePath = path+(stem ? "/Stemmed" : "/Unstemmed");
+        filePath += "_"+c+".txt";
+        File postingFile = new File(filePath);
         LinkedList<String> postingLines = new LinkedList<>();
         try {
             List l = FileUtils.readLines(postingFile, "UTF-8");
-            for (Integer i : indexes) postingLines.add(l.get(i).toString());
+            for(Integer i : indexes) postingLines.add(l.get(i).toString());
         } catch(IOException e) {
             e.printStackTrace();
         }
+        m.release();
         return postingLines;
     }
 

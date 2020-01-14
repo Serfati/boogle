@@ -1126,3 +1126,250 @@
 2020-01-14 11:04:34 INFO  UIController:407 - loadFile::
 2020-01-14 11:04:38 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:04:43 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:23:31 INFO  Main:27 - Boogle launched
+2020-01-14 11:23:35 INFO  UIController:407 - loadFile::
+2020-01-14 11:23:40 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:23:45 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:24:04 INFO  Model:78 - Start Searching
+2020-01-14 11:24:04 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-14 11:24:04 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-14 11:24:04 INFO  Reflections:229 - Reflections took 107 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-14 11:30:41 INFO  Main:27 - Boogle launched
+2020-01-14 11:30:47 INFO  UIController:407 - loadFile::
+2020-01-14 11:30:51 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:30:55 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:31:00 INFO  Model:78 - Start Searching
+2020-01-14 11:31:00 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-14 11:31:00 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-14 11:31:00 INFO  Reflections:229 - Reflections took 98 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-14 11:31:24 INFO  Model:83 - Sending Results
+2020-01-14 11:31:24 INFO  Model:97 - PROCESS DONE :: END Searching in 24178.0 ms
+2020-01-14 11:33:26 INFO  Main:27 - Boogle launched
+2020-01-14 11:33:38 INFO  UIController:407 - loadFile::
+2020-01-14 11:33:43 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:33:47 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:33:53 INFO  Model:78 - Start Searching
+2020-01-14 11:33:53 INFO  Model:83 - Sending Results
+2020-01-14 11:33:53 INFO  Model:97 - PROCESS DONE :: END Searching in 247.0 ms
+2020-01-14 11:38:32 INFO  Main:27 - Boogle launched
+2020-01-14 11:38:36 INFO  UIController:407 - loadFile::
+2020-01-14 11:38:41 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:38:43 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:38:48 INFO  Model:78 - Start Searching
+2020-01-14 11:38:48 INFO  Model:83 - Sending Results
+2020-01-14 11:38:48 INFO  Model:95 - PROCESS DONE :: END Searching in 198.0 ms
+2020-01-14 11:46:51 INFO  Main:27 - Boogle launched
+2020-01-14 11:46:55 INFO  UIController:407 - loadFile::
+2020-01-14 11:46:58 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:47:01 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:47:09 INFO  Model:78 - Start Searching
+2020-01-14 11:47:09 INFO  Model:83 - Sending Results
+2020-01-14 11:47:09 INFO  Model:95 - PROCESS DONE :: END Searching in 249.0 ms
+2020-01-14 11:50:51 INFO  Main:27 - Boogle launched
+2020-01-14 11:50:55 INFO  UIController:407 - loadFile::
+2020-01-14 11:50:59 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:51:09 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:51:23 INFO  Model:78 - Start Searching
+2020-01-14 11:51:23 INFO  Model:83 - Sending Results
+2020-01-14 11:51:23 INFO  Model:95 - PROCESS DONE :: END Searching in 246.0 ms
+2020-01-14 11:59:34 INFO  Main:27 - Boogle launched
+2020-01-14 11:59:38 INFO  UIController:407 - loadFile::
+2020-01-14 11:59:43 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:59:47 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 11:59:52 INFO  Model:78 - Start Searching
+2020-01-14 11:59:52 INFO  Model:83 - Sending Results
+2020-01-14 11:59:52 INFO  Model:95 - PROCESS DONE :: END Searching in 190.0 ms
+2020-01-14 12:03:51 INFO  Main:27 - Boogle launched
+2020-01-14 12:03:55 INFO  UIController:407 - loadFile::
+2020-01-14 12:03:58 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:04:02 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:04:06 INFO  Model:78 - Start Searching
+2020-01-14 12:04:07 INFO  Model:83 - Sending Results
+2020-01-14 12:04:07 INFO  Model:95 - PROCESS DONE :: END Searching in 190.0 ms
+2020-01-14 12:07:28 INFO  Main:27 - Boogle launched
+2020-01-14 12:07:35 INFO  Main:30 - Boogle is closing. Used for 0.11816666666666667 m
+2020-01-14 12:14:36 INFO  Main:27 - Boogle launched
+2020-01-14 12:14:46 INFO  UIController:407 - loadFile::
+2020-01-14 12:14:50 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:14:54 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:15:00 INFO  Model:78 - Start Searching
+2020-01-14 12:15:00 INFO  Model:83 - Sending Results
+2020-01-14 12:15:00 INFO  Model:95 - PROCESS DONE :: END Searching in 198.0 ms
+2020-01-14 12:17:12 INFO  Main:27 - Boogle launched
+2020-01-14 12:17:15 INFO  UIController:407 - loadFile::
+2020-01-14 12:17:21 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:17:23 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:17:28 INFO  Model:78 - Start Searching
+2020-01-14 12:17:28 INFO  Model:83 - Sending Results
+2020-01-14 12:17:28 INFO  Model:95 - PROCESS DONE :: END Searching in 177.0 ms
+2020-01-14 12:17:47 INFO  Main:30 - Boogle is closing. Used for 0.58015 m
+2020-01-14 12:23:00 INFO  Main:27 - Boogle launched
+2020-01-14 12:23:10 INFO  UIController:407 - loadFile::
+2020-01-14 12:23:13 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:23:17 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:23:21 INFO  Model:81 - Start Searching
+2020-01-14 12:23:26 INFO  Model:86 - Sending Results
+2020-01-14 12:23:26 INFO  Model:98 - PROCESS DONE :: END Searching in 5123.0 ms
+2020-01-14 12:23:45 INFO  Main:30 - Boogle is closing. Used for 0.7518666666666667 m
+2020-01-14 12:27:04 INFO  Main:27 - Boogle launched
+2020-01-14 12:27:07 INFO  UIController:407 - loadFile::
+2020-01-14 12:27:11 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:27:16 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:27:23 INFO  Model:81 - Start Searching
+2020-01-14 12:27:28 INFO  Model:86 - Sending Results
+2020-01-14 12:27:28 INFO  Model:98 - PROCESS DONE :: END Searching in 4747.0 ms
+2020-01-14 12:29:47 INFO  Main:27 - Boogle launched
+2020-01-14 12:29:52 INFO  UIController:407 - loadFile::
+2020-01-14 12:29:55 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:29:59 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:30:07 INFO  Model:81 - Start Searching
+2020-01-14 12:30:11 INFO  Model:86 - Sending Results
+2020-01-14 12:30:11 INFO  Model:98 - PROCESS DONE :: END Searching in 4824.0 ms
+2020-01-14 12:37:41 INFO  Main:27 - Boogle launched
+2020-01-14 12:37:46 INFO  UIController:407 - loadFile::
+2020-01-14 12:37:51 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:38:01 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:38:07 INFO  Model:82 - Start Searching
+2020-01-14 12:38:12 INFO  Model:87 - Sending Results
+2020-01-14 12:38:12 INFO  Model:99 - PROCESS DONE :: END Searching in 4622.0 ms
+2020-01-14 12:46:53 INFO  Main:27 - Boogle launched
+2020-01-14 12:46:59 INFO  UIController:407 - loadFile::
+2020-01-14 12:47:02 INFO  UIController:415 - Loaded::Out
+2020-01-14 12:47:08 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:47:08 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 12:47:14 INFO  Model:77 - Start Searching
+2020-01-14 12:47:14 ERROR Model:86 - Boogle failed
+2020-01-14 13:11:51 INFO  Main:27 - Boogle launched
+2020-01-14 13:12:24 INFO  Model:46 - Start Parsing and Indexing
+2020-01-14 13:12:25 INFO  Model:137 - Start manager Method :: runnable
+2020-01-14 13:12:27 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
+2020-01-14 13:12:28 INFO  StanfordCoreNLP:88 - Adding annotator ssplit
+2020-01-14 13:12:28 INFO  StanfordCoreNLP:88 - Adding annotator pos
+2020-01-14 13:12:29 INFO  MaxentTagger:88 - Loading POS tagger from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [0.8 sec].
+2020-01-14 13:12:29 INFO  StanfordCoreNLP:88 - Adding annotator lemma
+2020-01-14 13:12:29 INFO  StanfordCoreNLP:88 - Adding annotator ner
+2020-01-14 13:12:29 INFO  SeqClassifierFlags:88 - maxAdditionalKnownLCWords=0
+2020-01-14 13:12:29 INFO  SeqClassifierFlags:88 - ner.combinationMode=NORMAL
+2020-01-14 13:12:31 INFO  AbstractSequenceClassifier:88 - Loading classifier from edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz ... done [2.1 sec].
+2020-01-14 13:12:31 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
+2020-01-14 13:12:32 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
+2020-01-14 13:14:54 INFO  Model:147 - mainLogicUnit Method :: DONE HALF WAY
+2020-01-14 13:17:19 INFO  Model:185 - Start merge Method :: single
+2020-01-14 13:18:15 INFO  Model:69 - PROCESS DONE :: END INDEXING in 5.84 minutes
+2020-01-14 13:19:04 INFO  Main:30 - Boogle is closing. Used for 7.216866666666666 m
+2020-01-14 13:25:25 INFO  Main:27 - Boogle launched
+2020-01-14 13:25:40 INFO  Model:46 - Start Parsing and Indexing
+2020-01-14 13:25:40 INFO  Model:137 - Start manager Method :: runnable
+2020-01-14 13:25:40 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
+2020-01-14 13:25:40 INFO  StanfordCoreNLP:88 - Adding annotator ssplit
+2020-01-14 13:25:40 INFO  StanfordCoreNLP:88 - Adding annotator pos
+2020-01-14 13:25:41 INFO  MaxentTagger:88 - Loading POS tagger from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [1.1 sec].
+2020-01-14 13:25:41 INFO  StanfordCoreNLP:88 - Adding annotator lemma
+2020-01-14 13:25:41 INFO  StanfordCoreNLP:88 - Adding annotator ner
+2020-01-14 13:25:41 INFO  SeqClassifierFlags:88 - maxAdditionalKnownLCWords=0
+2020-01-14 13:25:41 INFO  SeqClassifierFlags:88 - ner.combinationMode=NORMAL
+2020-01-14 13:25:45 INFO  AbstractSequenceClassifier:88 - Loading classifier from edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz ... done [3.2 sec].
+2020-01-14 13:25:45 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
+2020-01-14 13:25:45 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
+2020-01-14 13:26:03 INFO  Model:183 - Start merge Method :: single
+2020-01-14 13:26:05 INFO  Model:69 - PROCESS DONE :: END INDEXING in 0.41 minutes
+2020-01-14 13:27:06 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 13:27:14 INFO  Model:76 - Start Searching
+2020-01-14 13:27:18 ERROR Model:85 - Boogle failed
+2020-01-14 13:29:34 INFO  Main:27 - Boogle launched
+2020-01-14 13:29:39 INFO  UIController:407 - loadFile::
+2020-01-14 13:29:46 INFO  UIController:415 - Loaded::res
+2020-01-14 13:30:17 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 13:30:24 INFO  Model:76 - Start Searching
+2020-01-14 13:30:26 INFO  Model:81 - Sending Results
+2020-01-14 13:30:26 INFO  Model:93 - PROCESS DONE :: END Searching in 2756.0 ms
+2020-01-14 13:30:53 INFO  Main:30 - Boogle is closing. Used for 1.3212333333333333 m
+2020-01-14 13:32:44 INFO  Main:27 - Boogle launched
+2020-01-14 13:32:50 INFO  UIController:407 - loadFile::
+2020-01-14 13:32:59 INFO  UIController:415 - Loaded::res
+2020-01-14 13:33:32 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 13:33:40 INFO  Model:76 - Start Searching
+2020-01-14 13:33:41 INFO  Model:81 - Sending Results
+2020-01-14 13:33:41 INFO  Model:93 - PROCESS DONE :: END Searching in 1617.0 ms
+2020-01-14 13:33:56 INFO  Main:30 - Boogle is closing. Used for 1.1993333333333334 m
+2020-01-14 13:52:01 INFO  Main:27 - Boogle launched
+2020-01-14 13:52:07 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 13:52:20 INFO  Model:73 - Start Searching
+2020-01-14 13:52:22 INFO  Model:78 - Sending Results
+2020-01-14 13:52:22 INFO  Model:89 - PROCESS DONE :: END Searching in 1620.0 ms
+2020-01-14 13:54:55 INFO  Main:27 - Boogle launched
+2020-01-14 13:55:05 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 13:55:09 INFO  UIController:407 - loadFile::
+2020-01-14 13:55:13 INFO  UIController:415 - Loaded::res
+2020-01-14 13:55:17 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 13:55:29 INFO  Model:73 - Start Searching
+2020-01-14 14:04:47 INFO  Model:78 - Sending Results
+2020-01-14 14:04:47 INFO  Model:89 - PROCESS DONE :: END Searching in 557560.0 ms
+2020-01-14 14:05:21 INFO  Main:27 - Boogle launched
+2020-01-14 14:05:36 INFO  Model:43 - Start Parsing and Indexing
+2020-01-14 14:06:15 INFO  Main:27 - Boogle launched
+2020-01-14 14:06:23 INFO  Model:43 - Start Parsing and Indexing
+2020-01-14 14:06:23 INFO  Model:142 - Start manager Method :: runnable
+2020-01-14 14:06:23 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
+2020-01-14 14:06:23 INFO  StanfordCoreNLP:88 - Adding annotator ssplit
+2020-01-14 14:06:23 INFO  StanfordCoreNLP:88 - Adding annotator pos
+2020-01-14 14:06:24 INFO  MaxentTagger:88 - Loading POS tagger from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [0.8 sec].
+2020-01-14 14:06:24 INFO  StanfordCoreNLP:88 - Adding annotator lemma
+2020-01-14 14:06:24 INFO  StanfordCoreNLP:88 - Adding annotator ner
+2020-01-14 14:06:24 INFO  SeqClassifierFlags:88 - maxAdditionalKnownLCWords=0
+2020-01-14 14:06:24 INFO  SeqClassifierFlags:88 - ner.combinationMode=NORMAL
+2020-01-14 14:06:26 INFO  AbstractSequenceClassifier:88 - Loading classifier from edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz ... done [1.8 sec].
+2020-01-14 14:06:26 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
+2020-01-14 14:06:26 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
+2020-01-14 14:11:08 INFO  Model:188 - Start merge Method :: single
+2020-01-14 14:12:02 INFO  Model:66 - PROCESS DONE :: END INDEXING in 5.65 minutes
+2020-01-14 14:12:18 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 14:12:36 INFO  Model:73 - Start Searching
+2020-01-14 14:12:38 INFO  Model:78 - Sending Results
+2020-01-14 14:12:38 INFO  Model:89 - PROCESS DONE :: END Searching in 1810.0 ms
+2020-01-14 14:16:15 INFO  Main:27 - Boogle launched
+2020-01-14 14:16:19 INFO  UIController:407 - loadFile::
+2020-01-14 14:16:23 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:16:43 INFO  Main:30 - Boogle is closing. Used for 0.45725 m
+2020-01-14 14:25:48 INFO  Main:27 - Boogle launched
+2020-01-14 14:25:52 INFO  UIController:407 - loadFile::
+2020-01-14 14:25:55 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:26:03 INFO  Main:30 - Boogle is closing. Used for 0.24943333333333334 m
+2020-01-14 14:28:34 INFO  Main:27 - Boogle launched
+2020-01-14 14:28:38 INFO  UIController:407 - loadFile::
+2020-01-14 14:28:46 INFO  Main:30 - Boogle is closing. Used for 0.18895 m
+2020-01-14 14:31:28 INFO  Main:27 - Boogle launched
+2020-01-14 14:31:44 INFO  UIController:407 - loadFile::
+2020-01-14 14:31:48 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:39:14 INFO  Main:27 - Boogle launched
+2020-01-14 14:39:17 INFO  UIController:407 - loadFile::
+2020-01-14 14:39:21 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:43:22 INFO  Main:27 - Boogle launched
+2020-01-14 14:43:26 INFO  UIController:407 - loadFile::
+2020-01-14 14:43:29 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:47:02 INFO  Main:27 - Boogle launched
+2020-01-14 14:47:08 INFO  UIController:407 - loadFile::
+2020-01-14 14:47:11 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:47:26 INFO  Main:27 - Boogle launched
+2020-01-14 14:47:30 INFO  UIController:407 - loadFile::
+2020-01-14 14:47:33 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:47:50 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 14:47:57 INFO  Model:74 - Start Searching
+2020-01-14 14:55:46 INFO  Main:27 - Boogle launched
+2020-01-14 14:55:51 INFO  UIController:407 - loadFile::
+2020-01-14 14:55:54 INFO  UIController:415 - Loaded::Out
+2020-01-14 14:56:02 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:04:39 INFO  Main:27 - Boogle launched
+2020-01-14 15:04:43 INFO  UIController:407 - loadFile::
+2020-01-14 15:04:46 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:04:51 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:05:04 INFO  Model:74 - Start Searching
+2020-01-14 15:05:04 INFO  Model:79 - Sending Results
+2020-01-14 15:05:04 INFO  Model:90 - PROCESS DONE :: END Searching in 169.0 ms
+2020-01-14 15:06:56 INFO  Main:27 - Boogle launched
+2020-01-14 15:07:06 INFO  UIController:407 - loadFile::
+2020-01-14 15:07:10 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:07:13 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:07:32 INFO  Model:74 - Start Searching
+2020-01-14 15:07:32 INFO  Model:79 - Sending Results
+2020-01-14 15:07:32 INFO  Model:90 - PROCESS DONE :: END Searching in 194.0 ms

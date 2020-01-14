@@ -59,6 +59,6 @@ public class ViewModel extends Observable implements Observer {
     }
 
     public boolean writeRes(String dest) {
-        return model.writeRes(dest);
+        return model.writeResultsToDisk(dest);
     }
 }
