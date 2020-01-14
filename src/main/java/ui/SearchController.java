@@ -81,11 +81,14 @@ public class SearchController implements Observer, Initializable {
         if (!google_txt.getText().equalsIgnoreCase("")) {
             openGoogle(google_txt.getText());
             AlertMaker.showSimpleAlert("Congratulation", "Good Choice");
+
         }
-        if (corpusField_txt.getText().equals("") || queryField_txt.getText().equals(""))// check if the paths are not empty
+        if (corpusField_txt.getText().equals("") || queryField_txt.getText().equals("")) // check if the paths are not empty
             AlertMaker.showErrorMessage("Error", "Must fill a query first");
+
         else {
             String query = !queryField_txt.getText().equals("") ? queryField_txt.getText() : corpusField_txt.getText();
+            tabManager.getSelectionModel().select(1);
             viewModel.onSearchBoogleClick(corpusField_txt.getText(), query, corpusField_txt.getText(), stem_checkbox.isSelected(), semantic_checkbox.isSelected(), offline_checkbox.isSelected()); //transfer to the view Model
         }
     }
@@ -134,8 +137,7 @@ public class SearchController implements Observer, Initializable {
         if (Model.documentDictionary.containsKey(docName)) {
             try {
                 Model.documentDictionary.get(docName).get5words();
-            } catch(Exception e) {
-                System.out.println(docName);
+            } catch(Exception ignored) {
             }
         }
     }
@@ -179,7 +181,7 @@ public class SearchController implements Observer, Initializable {
         }
         boolean isWrite = viewModel.writeRes(corpusField_txt.getText());
         if (isWrite)
-            AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), "results saved!");
+            AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), "results saved ->\n "+corpusField_txt.getText());
         else AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "Something went wrong");
     }
 }

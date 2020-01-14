@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 public class Searcher implements Callable<LinkedList<String>> {
     Query query;
-    String outputPath;
     boolean enableStemming;
     boolean enableSemantics;
     final String postingPath;
@@ -60,23 +59,22 @@ public class Searcher implements Callable<LinkedList<String>> {
                 String[] split = postingLine.split("\\|");
                 double docInCorpusCount = Model.documentDictionary.keySet().size();
                 double idf = Math.log10((docInCorpusCount+1) / split.length-1);
-                double weight = 1;
-                if (word.contains("-"))
-                    weight = 1.15;
-
                 //one Doc handle
                 for(String aSplit : split) {
                     String[] splitLine = aSplit.split(",");
                     String docName = splitLine[0];
                     if (splitLine.length > 1) {
                         int tf = Integer.parseInt(splitLine[1]);
-                        String positionsOfWord = splitLine[2];
-                        double BM25 = weight * ranker.BM25(word, docName, tf, idf);
+                        //String positionsOfWord = splitLine[2];
+                        double BM25 = ranker.BM25Algorithm(word, docName, tf, idf);
                         addToScore(score, docName, BM25);
+                        double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
+                        addToScore(score, docName, TI);
                     }
                 }
             }
         }
+        ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
         return sortByScore(score);
     }
 

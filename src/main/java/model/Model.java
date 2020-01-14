@@ -76,7 +76,6 @@ public class Model extends Observable implements IModel {
         double startEngine = System.currentTimeMillis();
         try {
             HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, stem, semantic, offline);
-            LOGGER.log(Level.INFO, "Sending Results");
             resultsToObservableList(results);
         } catch(Exception e) {
             String[] update = {"Fail", "Boogle failed"};
@@ -104,24 +103,16 @@ public class Model extends Observable implements IModel {
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
         else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
 
-
         ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         HashMap<String, LinkedList<String>> queryResults = new HashMap<>();
-        LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = new LinkedList<>();
+        try {
+            LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(q, postingPath, offline, stem, semantic)))).collect(Collectors.toCollection(LinkedList::new));
 
-        for(Query q : queriesList) {
-            Searcher searcher = new Searcher(q, postingPath, offline, stem, semantic);
-            queryFuture.add(new Pair<>(q.getQueryNum(), pool.submit(searcher)));
-        }
-
-        for(Pair<String, Future<LinkedList<String>>> f : queryFuture) {
-            try {
+            for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
                 queryResults.put(f.getKey(), getLimited(f.getValue().get()));
-            } catch(InterruptedException | ExecutionException | NullPointerException e) {
-                e.printStackTrace();
-            }
-        }
 
+        } catch(InterruptedException | ExecutionException ignored) {
+        }
         return queryResults;
     }
 
@@ -133,9 +124,8 @@ public class Model extends Observable implements IModel {
      */
     private LinkedList<String> getLimited(LinkedList<String> queryResults) {
         LinkedList<String> limited = new LinkedList<>();
-        queryResults.stream().filter(s -> !queryResults.isEmpty() && limited.size() < 11).forEach(limited::add);
-        System.out.println(limited);
-        return queryResults;
+        queryResults.stream().filter(s -> !queryResults.isEmpty() && limited.size() < 50).forEach(limited::add);
+        return limited;
     }
 
     @Override
@@ -472,8 +462,10 @@ public class Model extends Observable implements IModel {
      */
     private void resultsToObservableList(HashMap<String, LinkedList<String>> results) {
         ObservableList<ResultDisplay> observableResult = FXCollections.observableArrayList();
-        for(Map.Entry<String, LinkedList<String>> entry : results.entrySet())
-            observableResult.add(new ResultDisplay(entry.getKey(), entry.getValue()));
+        for(Map.Entry<String, LinkedList<String>> entry : results.entrySet()) {
+            String queryID = entry.getKey();
+            observableResult.add(new ResultDisplay(queryID.replace("\n", ""), entry.getValue()));
+        }
         setChanged();
         notifyObservers(observableResult);
     }
@@ -482,8 +474,7 @@ public class Model extends Observable implements IModel {
         if (documentDictionary.containsKey(docName)) {
             try {
                 return documentDictionary.get(docName).get5words();
-            } catch(Exception e) {
-                System.out.println(docName);
+            } catch(Exception ignored) {
             }
         }
         return "";
@@ -495,7 +486,7 @@ public class Model extends Observable implements IModel {
      * @param file the file of the doc dic
      */
     private void loadDocumentDictionary(File file) {
-        String line = null;
+        String line;
         documentDictionary = new HashMap<>();
         try {
             FileReader fileReader = new FileReader(file);
@@ -523,7 +514,6 @@ public class Model extends Observable implements IModel {
                 String five = curLine[5].replace(",", "");
                 DocumentIndex cur = new DocumentIndex(curLine[0], Integer.parseInt(one), Integer.parseInt(two), curLine[3], curLine[4], Integer.parseInt(five), toFill);
                 documentDictionary.put(curLine[0], cur);
-
                 line = bufferedReader.readLine();
             }
             bufferedReader.close();
@@ -543,13 +533,14 @@ public class Model extends Observable implements IModel {
         StringBuilder toWrite = new StringBuilder();
         ArrayList<String> queryIDs = new ArrayList<>(m_results.keySet());
         queryIDs.sort(String.CASE_INSENSITIVE_ORDER);
-        if (m_results != null)
-            queryIDs.forEach(m -> {
+        if (m_results != null) {
+            for(String m : queryIDs) {
                 for(String doc : m_results.get(m)) {
-                    String line = m+" 0 "+doc+" 0 0 ah\n";
+                    String line = m.replace("\n", "")+" 0 "+doc+" 0 0 ah\n";
                     toWrite.append(line);
                 }
-            });
+            }
+        }
         try {
             if (m_results.size() > 0) {
                 fileWriter = new FileWriter(dest+"/results.txt");
