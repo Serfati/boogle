@@ -73,12 +73,12 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0">
                             <children>
-                                <JFXButton fx:id="btn_show_data" layoutX="508.0" layoutY="200.0" text="Show Data"/>
+                                <JFXButton fx:id="btn_show_data" layoutX="508.0" layoutY="200.0" text="NONE"/>
                                 <JFXButton onAction="#saveResults" layoutX="500.0" layoutY="150.0" text="Save Results"/>
                                 <TableView fx:id="table_showResults" layoutX="24.0" layoutY="20.0" prefHeight="350.0"
                                            prefWidth="212.0">
                                     <placeholder>
-                                        <Label text="Press 'Show' to see data "/>
+                                        <Label text="First Type Query!"/>
                                     </placeholder>
                                     <columns>
                                         <TableColumn fx:id="tableCol_query" prefWidth="211.0" text="Query"/>

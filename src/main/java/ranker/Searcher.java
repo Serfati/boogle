@@ -22,9 +22,8 @@ public class Searcher implements Callable<LinkedList<String>> {
     List<String> docsThatReturned;
 
 
-    public Searcher(Query q, String outputPath, String postingPath, boolean offline, boolean useStemming, boolean useSemantics) {
+    public Searcher(Query q, String postingPath, boolean offline, boolean useStemming, boolean useSemantics) {
         this.query = q;
-        this.outputPath = outputPath;
         this.postingPath = postingPath;
         this.enableStemming = useStemming;
         this.enableSemantics = useSemantics;
@@ -57,7 +56,6 @@ public class Searcher implements Callable<LinkedList<String>> {
         //for each word go throw its posting with relevant documents
         for(String word : wordsCountInQuery.keySet()) {
             if (!wordsPosting.get(word).equals("")) {
-                System.out.println("Ranking: "+word);
                 String postingLine = wordsPosting.get(word);
                 String[] split = postingLine.split("\\|");
                 double docInCorpusCount = Model.documentDictionary.keySet().size();
@@ -65,14 +63,16 @@ public class Searcher implements Callable<LinkedList<String>> {
                 double weight = 1;
                 if (word.contains("-"))
                     weight = 1.15;
+
+                //one Doc handle
                 for(String aSplit : split) {
                     String[] splitLine = aSplit.split(",");
                     String docName = splitLine[0];
                     if (splitLine.length > 1) {
                         int tf = Integer.parseInt(splitLine[1]);
-                        double totalRank = ranker.GetRank(score, wordsPosting.keySet(), docName, word, tf, idf);
-                        addToScore(score, docName, weight * totalRank);
-                        System.out.print(":: ");
+                        String positionsOfWord = splitLine[2];
+                        double BM25 = weight * ranker.BM25(word, docName, tf, idf);
+                        addToScore(score, docName, BM25);
                     }
                 }
             }
@@ -104,7 +104,6 @@ public class Searcher implements Callable<LinkedList<String>> {
         for(Character letter : allCharactersTogether.keySet()) {
             LinkedList<String> postings = ReadFile.readPostingLineAtIndex(postingPath, Character.toLowerCase(letter), allCharactersTogether.get(letter), enableStemming);
             for(String posting : postings) {
-                System.out.println(posting);
                 String[] wordAndRestOfPosting = posting.split("~");
                 words.put(wordAndRestOfPosting[0], wordAndRestOfPosting[1]);
             }

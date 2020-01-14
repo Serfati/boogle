@@ -26,6 +26,15 @@ public class Ranker {
         this.wordsCountInQuery = wordsCount;
     }
 
+    double BM25(String word, String documentName, int tf, double idf) {
+        double k = 1.2, b = 0.75;
+        int documentLength = Model.documentDictionary.get(documentName).getDocLength();
+        int wordInQueryCount = wordsCountInQuery.get(word);
+        double numeratorBM25 = wordInQueryCount * (k+1) * tf * idf;
+        double denominatorBM25 = tf+k * (1-b+(b * (documentLength / m_averageDocumentLength)));
+        return numeratorBM25 / denominatorBM25;
+    }
+
     public double GetRank(HashMap<String, Double> score, Set<String> wordsPosting, String docName, String word, int tf, double idf) {
         BM25Algorithm bm = new BM25Algorithm(BM25_WEIGHT, BM_25_B, BM_25_K);
         ContainingAlgorithm ca = new ContainingAlgorithm(CONTAINING_WEIGHT);

@@ -4,14 +4,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 public class ResultDisplay {
 
-    private String queryID;
-    private LinkedList<QueryDisplay> docNames;
+    String queryID;
+    LinkedList<QueryDisplay> docNames;
 
-    private StringProperty sp_queryID;
-    private StringProperty sp_docNames;
+    StringProperty sp_queryID;
+    StringProperty sp_docNames;
 
     public ResultDisplay(String queryID, LinkedList<String> docNames) {
         this.queryID = queryID;
@@ -20,34 +22,14 @@ public class ResultDisplay {
         this.sp_docNames = new SimpleStringProperty(docNames.toString());
     }
 
-    /**
-     * returns list of QueryResult object
-     *
-     * @param docNames document names
-     * @return list of query result object
-     */
     private LinkedList<QueryDisplay> toQueryResultList(LinkedList<String> docNames) {
-        LinkedList<QueryDisplay> l = new LinkedList<>();
-        for(String s : docNames) {
-            l.add(new QueryDisplay(s));
-        }
-        return l;
+        AtomicReference<LinkedList<QueryDisplay>> l = new AtomicReference<>(docNames.stream().map(QueryDisplay::new).collect(Collectors.toCollection(LinkedList::new)));
+        return l.get();
     }
 
-    public String getSp_queryID() {
-        return sp_queryID.get();
-    }
 
     public StringProperty sp_queryIDProperty() {
         return sp_queryID;
-    }
-
-    public String getSp_docNames() {
-        return sp_docNames.get();
-    }
-
-    public StringProperty sp_docNamesProperty() {
-        return sp_docNames;
     }
 
     public LinkedList<QueryDisplay> getDocNames() {

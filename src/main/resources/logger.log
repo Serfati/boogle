@@ -1373,3 +1373,225 @@
 2020-01-14 15:07:32 INFO  Model:74 - Start Searching
 2020-01-14 15:07:32 INFO  Model:79 - Sending Results
 2020-01-14 15:07:32 INFO  Model:90 - PROCESS DONE :: END Searching in 194.0 ms
+2020-01-14 15:29:04 INFO  Main:27 - Boogle launched
+2020-01-14 15:29:08 INFO  UIController:407 - loadFile::
+2020-01-14 15:29:11 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:29:16 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:29:38 INFO  Model:74 - Start Searching
+2020-01-14 15:29:39 INFO  Model:79 - Sending Results
+2020-01-14 15:29:39 INFO  Model:90 - PROCESS DONE :: END Searching in 201.0 ms
+2020-01-14 15:30:02 INFO  Main:30 - Boogle is closing. Used for 0.9664666666666667 m
+2020-01-14 15:31:36 INFO  Main:27 - Boogle launched
+2020-01-14 15:31:40 INFO  UIController:407 - loadFile::
+2020-01-14 15:31:43 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:31:48 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:32:11 INFO  Model:74 - Start Searching
+2020-01-14 15:32:12 INFO  Model:79 - Sending Results
+2020-01-14 15:32:12 INFO  Model:90 - PROCESS DONE :: END Searching in 147.0 ms
+2020-01-14 15:32:29 INFO  Main:30 - Boogle is closing. Used for 0.8866833333333334 m
+2020-01-14 15:34:18 INFO  Main:27 - Boogle launched
+2020-01-14 15:34:22 INFO  UIController:407 - loadFile::
+2020-01-14 15:34:25 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:34:29 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:34:41 INFO  Model:74 - Start Searching
+2020-01-14 15:34:41 INFO  Model:79 - Sending Results
+2020-01-14 15:34:41 INFO  Model:90 - PROCESS DONE :: END Searching in 121.0 ms
+2020-01-14 15:35:17 INFO  Model:74 - Start Searching
+2020-01-14 15:35:17 INFO  Model:79 - Sending Results
+2020-01-14 15:35:17 INFO  Model:90 - PROCESS DONE :: END Searching in 87.0 ms
+2020-01-14 15:52:47 INFO  Main:27 - Boogle launched
+2020-01-14 15:52:51 INFO  UIController:407 - loadFile::
+2020-01-14 15:52:56 INFO  UIController:415 - Loaded::Out
+2020-01-14 15:53:01 INFO  SearchController:75 - Boogle Search page opened.
+2020-01-14 15:53:16 INFO  Model:74 - Start Searching
+2020-01-14 15:53:16 INFO  Model:79 - Sending Results
+2020-01-14 15:53:16 ERROR Model:83 - Boogle failed
+2020-01-14 15:53:16 INFO  Model:89 - PROCESS DONE :: (123.0 ms)
+2020-01-14 16:01:22 INFO  Main:27 - Boogle launched
+2020-01-14 16:01:25 INFO  UIController:407 - loadFile::
+2020-01-14 16:01:29 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:01:33 INFO  SearchController:76 - Boogle Search page opened.
+2020-01-14 16:01:46 INFO  Model:74 - Start Searching
+2020-01-14 16:01:46 INFO  Model:79 - Sending Results
+2020-01-14 16:01:46 ERROR Model:83 - Boogle failed
+2020-01-14 16:01:46 INFO  Model:89 - PROCESS DONE :: (128.0 ms)
+2020-01-14 16:07:04 INFO  Main:27 - Boogle launched
+2020-01-14 16:07:12 INFO  UIController:407 - loadFile::
+2020-01-14 16:07:16 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:07:30 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:07:43 INFO  Model:74 - Start Searching
+2020-01-14 16:07:47 INFO  Model:79 - Sending Results
+2020-01-14 16:07:47 ERROR Model:83 - Boogle failed
+2020-01-14 16:07:49 INFO  Model:89 - PROCESS DONE :: (1827.0 ms)
+2020-01-14 16:13:44 INFO  Main:27 - Boogle launched
+2020-01-14 16:13:50 INFO  UIController:407 - loadFile::
+2020-01-14 16:13:54 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:14:00 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:14:12 INFO  Model:74 - Start Searching
+2020-01-14 16:14:12 INFO  Model:79 - Sending Results
+2020-01-14 16:14:12 ERROR Model:83 - Boogle failed
+2020-01-14 16:14:12 INFO  Model:89 - PROCESS DONE :: (180.0 ms)
+2020-01-14 16:15:54 INFO  Main:27 - Boogle launched
+2020-01-14 16:15:59 INFO  UIController:407 - loadFile::
+2020-01-14 16:16:02 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:16:06 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:16:21 INFO  Model:74 - Start Searching
+2020-01-14 16:16:21 INFO  Model:79 - Sending Results
+2020-01-14 16:16:21 ERROR Model:83 - Boogle failed
+2020-01-14 16:16:21 INFO  Model:89 - PROCESS DONE :: (177.0 ms)
+2020-01-14 16:21:01 INFO  Main:27 - Boogle launched
+2020-01-14 16:21:04 INFO  UIController:407 - loadFile::
+2020-01-14 16:21:11 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:21:15 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:21:25 INFO  Model:74 - Start Searching
+2020-01-14 16:21:26 ERROR Model:83 - Boogle failed
+2020-01-14 16:21:26 INFO  Model:89 - PROCESS DONE :: (1000.0 ms)
+2020-01-14 16:22:08 INFO  Main:27 - Boogle launched
+2020-01-14 16:22:12 INFO  UIController:407 - loadFile::
+2020-01-14 16:22:14 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:22:19 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:22:27 INFO  Model:74 - Start Searching
+2020-01-14 16:22:27 INFO  Model:79 - Sending Results
+2020-01-14 16:22:27 ERROR Model:83 - Boogle failed
+2020-01-14 16:22:27 INFO  Model:89 - PROCESS DONE :: (179.0 ms)
+2020-01-14 16:25:34 INFO  Main:27 - Boogle launched
+2020-01-14 16:25:37 INFO  UIController:407 - loadFile::
+2020-01-14 16:25:40 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:25:44 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:25:54 INFO  Model:74 - Start Searching
+2020-01-14 16:25:54 INFO  Model:79 - Sending Results
+2020-01-14 16:25:54 ERROR Model:83 - Boogle failed
+2020-01-14 16:25:54 INFO  Model:89 - PROCESS DONE :: (143.0 ms)
+2020-01-14 16:33:53 INFO  Main:27 - Boogle launched
+2020-01-14 16:33:57 INFO  UIController:407 - loadFile::
+2020-01-14 16:34:00 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:34:08 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:34:18 INFO  Model:74 - Start Searching
+2020-01-14 16:34:20 INFO  Model:79 - Sending Results
+2020-01-14 16:34:20 ERROR Model:83 - Boogle failed
+2020-01-14 16:34:20 INFO  Model:89 - PROCESS DONE :: (2393.0 ms)
+2020-01-14 16:36:02 INFO  Main:27 - Boogle launched
+2020-01-14 16:36:09 INFO  UIController:407 - loadFile::
+2020-01-14 16:36:12 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:36:18 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:36:25 INFO  Model:74 - Start Searching
+2020-01-14 16:36:27 INFO  Model:79 - Sending Results
+2020-01-14 16:36:27 ERROR Model:83 - Boogle failed
+2020-01-14 16:36:27 INFO  Model:89 - PROCESS DONE :: (1909.0 ms)
+2020-01-14 16:49:38 INFO  Main:27 - Boogle launched
+2020-01-14 16:49:42 INFO  UIController:407 - loadFile::
+2020-01-14 16:49:45 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:49:49 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:49:57 INFO  Model:74 - Start Searching
+2020-01-14 16:49:58 INFO  Model:79 - Sending Results
+2020-01-14 16:49:58 ERROR Model:83 - Boogle failed
+2020-01-14 16:49:58 INFO  Model:89 - PROCESS DONE :: (1761.0 ms)
+2020-01-14 16:55:57 INFO  Main:27 - Boogle launched
+2020-01-14 16:56:03 INFO  UIController:407 - loadFile::
+2020-01-14 16:56:07 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:56:13 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:56:20 INFO  Model:74 - Start Searching
+2020-01-14 16:56:22 INFO  Model:79 - Sending Results
+2020-01-14 16:56:22 ERROR Model:83 - Boogle failed
+2020-01-14 16:56:22 INFO  Model:89 - PROCESS DONE :: (2007.0 ms)
+2020-01-14 16:56:48 INFO  Main:27 - Boogle launched
+2020-01-14 16:56:52 INFO  UIController:407 - loadFile::
+2020-01-14 16:56:55 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:57:00 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:57:08 INFO  Model:74 - Start Searching
+2020-01-14 16:57:10 INFO  Model:79 - Sending Results
+2020-01-14 16:57:10 ERROR Model:83 - Boogle failed
+2020-01-14 16:57:10 INFO  Model:89 - PROCESS DONE :: (1740.0 ms)
+2020-01-14 16:57:30 INFO  Model:74 - Start Searching
+2020-01-14 16:57:31 INFO  Model:79 - Sending Results
+2020-01-14 16:57:31 ERROR Model:83 - Boogle failed
+2020-01-14 16:57:31 INFO  Model:89 - PROCESS DONE :: (901.0 ms)
+2020-01-14 16:57:33 INFO  Model:74 - Start Searching
+2020-01-14 16:57:34 INFO  Model:79 - Sending Results
+2020-01-14 16:57:34 ERROR Model:83 - Boogle failed
+2020-01-14 16:57:34 INFO  Model:89 - PROCESS DONE :: (863.0 ms)
+2020-01-14 16:57:40 INFO  Model:74 - Start Searching
+2020-01-14 16:57:41 INFO  Model:79 - Sending Results
+2020-01-14 16:57:41 ERROR Model:83 - Boogle failed
+2020-01-14 16:57:41 INFO  Model:89 - PROCESS DONE :: (882.0 ms)
+2020-01-14 16:57:56 INFO  Main:27 - Boogle launched
+2020-01-14 16:57:59 INFO  UIController:407 - loadFile::
+2020-01-14 16:58:03 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:58:07 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:58:13 INFO  Model:74 - Start Searching
+2020-01-14 16:58:15 INFO  Model:79 - Sending Results
+2020-01-14 16:58:15 ERROR Model:83 - Boogle failed
+2020-01-14 16:58:15 INFO  Model:89 - PROCESS DONE :: (1979.0 ms)
+2020-01-14 16:58:42 INFO  Main:27 - Boogle launched
+2020-01-14 16:58:53 INFO  UIController:407 - loadFile::
+2020-01-14 16:58:56 INFO  UIController:415 - Loaded::Out
+2020-01-14 16:59:02 INFO  SearchController:77 - Boogle Search page opened.
+2020-01-14 16:59:13 INFO  Model:74 - Start Searching
+2020-01-14 16:59:15 INFO  Model:79 - Sending Results
+2020-01-14 17:00:48 ERROR Model:83 - Boogle failed
+2020-01-14 17:00:48 INFO  Model:89 - PROCESS DONE :: (95275.0 ms)
+2020-01-14 17:00:52 INFO  Main:27 - Boogle launched
+2020-01-14 17:00:55 INFO  UIController:407 - loadFile::
+2020-01-14 17:00:59 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:01:04 INFO  SearchController:86 - Boogle Search page opened.
+2020-01-14 17:01:10 INFO  Model:74 - Start Searching
+2020-01-14 17:01:12 INFO  Model:79 - Sending Results
+2020-01-14 17:01:12 ERROR Model:83 - Boogle failed
+2020-01-14 17:01:12 INFO  Model:89 - PROCESS DONE :: (1831.0 ms)
+2020-01-14 17:06:42 INFO  Main:27 - Boogle launched
+2020-01-14 17:06:48 INFO  UIController:407 - loadFile::
+2020-01-14 17:06:51 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:06:55 INFO  SearchController:68 - Boogle Search page opened.
+2020-01-14 17:07:00 INFO  Model:74 - Start Searching
+2020-01-14 17:07:02 INFO  Model:79 - Sending Results
+2020-01-14 17:07:02 ERROR Model:83 - Boogle failed
+2020-01-14 17:07:02 INFO  Model:89 - PROCESS DONE :: (1993.0 ms)
+2020-01-14 17:07:50 INFO  Main:27 - Boogle launched
+2020-01-14 17:07:54 INFO  UIController:407 - loadFile::
+2020-01-14 17:07:57 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:08:02 INFO  SearchController:68 - Boogle Search page opened.
+2020-01-14 17:08:07 INFO  Model:74 - Start Searching
+2020-01-14 17:08:09 INFO  Model:79 - Sending Results
+2020-01-14 17:08:09 INFO  Model:89 - PROCESS DONE :: (1840.0 ms)
+2020-01-14 17:08:33 INFO  Model:74 - Start Searching
+2020-01-14 17:08:34 INFO  Model:79 - Sending Results
+2020-01-14 17:08:34 INFO  Model:89 - PROCESS DONE :: (905.0 ms)
+2020-01-14 17:09:50 INFO  Main:30 - Boogle is closing. Used for 1.98665 m
+2020-01-14 17:10:34 INFO  Main:27 - Boogle launched
+2020-01-14 17:10:40 INFO  UIController:407 - loadFile::
+2020-01-14 17:10:43 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:10:50 INFO  SearchController:68 - Boogle Search page opened.
+2020-01-14 17:10:55 INFO  Model:74 - Start Searching
+2020-01-14 17:10:57 INFO  Model:79 - Sending Results
+2020-01-14 17:15:45 INFO  Main:27 - Boogle launched
+2020-01-14 17:15:48 INFO  UIController:407 - loadFile::
+2020-01-14 17:15:54 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:15:58 INFO  SearchController:68 - Boogle Search page opened.
+2020-01-14 17:16:04 INFO  Model:74 - Start Searching
+2020-01-14 17:16:05 INFO  Model:79 - Sending Results
+2020-01-14 17:16:05 INFO  Model:89 - PROCESS DONE :: (1752.0 ms)
+2020-01-14 17:16:23 INFO  Main:30 - Boogle is closing. Used for 0.6307 m
+2020-01-14 17:17:13 INFO  Main:27 - Boogle launched
+2020-01-14 17:17:17 INFO  UIController:407 - loadFile::
+2020-01-14 17:17:20 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:17:24 INFO  SearchController:68 - Boogle Search page opened.
+2020-01-14 17:17:28 INFO  Model:74 - Start Searching
+2020-01-14 17:17:30 INFO  Model:79 - Sending Results
+2020-01-14 17:17:30 INFO  Model:89 - PROCESS DONE :: (1849.0 ms)
+2020-01-14 17:17:51 INFO  Main:30 - Boogle is closing. Used for 0.6420333333333333 m
+2020-01-14 17:21:53 INFO  Main:27 - Boogle launched
+2020-01-14 17:21:56 INFO  UIController:407 - loadFile::
+2020-01-14 17:21:59 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:22:03 INFO  SearchController:65 - Boogle Search page opened.
+2020-01-14 17:22:12 INFO  Model:74 - Start Searching
+2020-01-14 17:22:14 INFO  Model:79 - Sending Results
+2020-01-14 17:22:14 ERROR Model:83 - Boogle failed
+2020-01-14 17:22:14 INFO  Model:89 - PROCESS DONE :: (1750.0 ms)
+2020-01-14 17:23:58 INFO  Main:27 - Boogle launched
+2020-01-14 17:24:01 INFO  UIController:407 - loadFile::
+2020-01-14 17:24:03 INFO  UIController:415 - Loaded::Out
+2020-01-14 17:24:07 INFO  SearchController:65 - Boogle Search page opened.
+2020-01-14 17:24:13 INFO  Model:74 - Start Searching
+2020-01-14 17:24:15 INFO  Model:79 - Sending Results
+2020-01-14 17:24:15 INFO  Model:89 - PROCESS DONE :: (1808.0 ms)
+2020-01-14 17:24:50 INFO  Main:30 - Boogle is closing. Used for 0.8681833333333333 m

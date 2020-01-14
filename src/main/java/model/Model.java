@@ -75,7 +75,7 @@ public class Model extends Observable implements IModel {
         String[] paths = pathAreValid(postingPath, outLocation); // checks if the paths entered are valid
         double startEngine = System.currentTimeMillis();
         try {
-            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, outLocation, stem, semantic, offline);
+            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, stem, semantic, offline);
             LOGGER.log(Level.INFO, "Sending Results");
             resultsToObservableList(results);
         } catch(Exception e) {
@@ -84,10 +84,9 @@ public class Model extends Observable implements IModel {
             setChanged();
             notifyObservers(update);
             e.printStackTrace();
-            exit(0);
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
-        LOGGER.log(Level.INFO, "PROCESS DONE :: END Searching"+" in "+RUNTIME+" ms");
+        LOGGER.log(Level.INFO, "PROCESS DONE ::"+" ("+RUNTIME+" ms)");
         setChanged();
         notifyObservers();
     }
@@ -99,7 +98,7 @@ public class Model extends Observable implements IModel {
         return lineNumber;
     }
 
-    synchronized HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, String outLocation, boolean stem, boolean semantic, boolean offline) {
+    synchronized HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, boolean stem, boolean semantic, boolean offline) {
         Random r = new Random();
         LinkedList<Query> queriesList = new LinkedList<>();
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
@@ -111,7 +110,7 @@ public class Model extends Observable implements IModel {
         LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = new LinkedList<>();
 
         for(Query q : queriesList) {
-            Searcher searcher = new Searcher(q, outLocation, postingPath, offline, stem, semantic);
+            Searcher searcher = new Searcher(q, postingPath, offline, stem, semantic);
             queryFuture.add(new Pair<>(q.getQueryNum(), pool.submit(searcher)));
         }
 
@@ -133,16 +132,10 @@ public class Model extends Observable implements IModel {
      * @return 50 relevant queries
      */
     private LinkedList<String> getLimited(LinkedList<String> queryResults) {
-        System.out.println(queryResults);
         LinkedList<String> limited = new LinkedList<>();
-        if (queryResults != null) {
-            int i = 0;
-            while(i < 50 && !queryResults.isEmpty()) {
-                limited.add(queryResults.pollFirst());
-                i++;
-            }
-        }
-        return limited;
+        queryResults.stream().filter(s -> !queryResults.isEmpty() && limited.size() < 11).forEach(limited::add);
+        System.out.println(limited);
+        return queryResults;
     }
 
     @Override
@@ -478,8 +471,7 @@ public class Model extends Observable implements IModel {
      * @param results the result
      */
     private void resultsToObservableList(HashMap<String, LinkedList<String>> results) {
-        ObservableList<ResultDisplay> observableResult;
-        observableResult = FXCollections.observableArrayList();
+        ObservableList<ResultDisplay> observableResult = FXCollections.observableArrayList();
         for(Map.Entry<String, LinkedList<String>> entry : results.entrySet())
             observableResult.add(new ResultDisplay(entry.getKey(), entry.getValue()));
         setChanged();

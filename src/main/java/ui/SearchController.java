@@ -9,7 +9,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -37,26 +40,19 @@ public class SearchController implements Observer, Initializable {
     private final static Logger LOGGER = LogManager.getLogger(SearchController.class.getName());
     private static ViewModel viewModel;
     public TabPane tabManager;
-    public TableView<QueryDisplay> table_showDocs;
-    public TableColumn<QueryDisplay, String> tableCol_docs;
-
-    public TableView<ResultDisplay> table_showResults;
-    public TableColumn<ResultDisplay, String> tableCol_query;
-
+    public TableView<QueryDisplay> table_showDocs = new TableView<>();
+    public TableColumn<QueryDisplay, String> tableCol_docs = new TableColumn<>();
+    public TableView<ResultDisplay> table_showResults = new TableView<>();
+    public TableColumn<ResultDisplay, String> tableCol_query = new TableColumn<>();
     public JFXButton btn_export_pdf;
     public JFXButton btn_boogle_search;
-    @FXML
     public JFXTextField google_txt;
-    @FXML
     public JFXCheckBox stem_checkbox;
     public JFXSpinner progressSpinner;
     public JFXCheckBox offline_checkbox;
     public JFXTextField DONE_txt;
-    @FXML
     public JFXTextField queryField_txt;
-    @FXML
     public JFXTextField corpusField_txt;
-    @FXML
     public JFXCheckBox semantic_checkbox;
     public JFXButton btn_show_data;
     ObservableList<ResultDisplay> recordsToPDF;
@@ -80,7 +76,8 @@ public class SearchController implements Observer, Initializable {
      */
     public void onSearchBoogleClick() {
         viewModel.getClass();
-        clearTables();
+        table_showResults.getItems().clear();
+        table_showDocs.getItems().clear();
         if (!google_txt.getText().equalsIgnoreCase("")) {
             openGoogle(google_txt.getText());
             AlertMaker.showSimpleAlert("Congratulation", "Good Choice");
@@ -123,51 +120,14 @@ public class SearchController implements Observer, Initializable {
         }
     }
 
-    /**
-     * a function that gets called when an observer has raised a flag for something that changed
-     *
-     * @param o   - who changed
-     * @param arg - the change
-     */
     public void update(Observable o, Object arg) {
         if (o == viewModel) {
-            if (arg instanceof String[]) {
-//                String[] toUpdate = (String[]) arg;
-//                switch(toUpdate[0]) {
-//                    case "Successful": // if we received a successful message from the model
-//                        AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), toUpdate[1]);
-//                        if (toUpdate[1].equalsIgnoreCase("The folder is clean now"))
-//                            btn_boogle_search.setDisable(true);
-//                        if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary"))
-//                            btn_show_data.setDisable(false);
-//                        break;
-//                    case "Fail":
-//                        if (toUpdate[1].equals("could not find one or more dictionaries"))
-//                            AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), toUpdate[1]);
-//                        break;
+            if (arg instanceof ObservableList) { // a show dictionary operation was finished and can be shown on display
+                List l = (ObservableList) arg;
+                if (!l.isEmpty() && l.get(0) instanceof ResultDisplay)
+                    showQueryResults((ObservableList<ResultDisplay>) l);
             }
-        } else if (arg instanceof ObservableList) {
-            List l = (ObservableList) arg;
-            if (!l.isEmpty() && l.get(0) instanceof ResultDisplay)
-                showQueryResults((ObservableList<ResultDisplay>) l);
-            btn_export_pdf.setDisable(false);
-            btn_boogle_search.setDisable(true);
-
-            btn_boogle_search.setText("DONE!");
-
-            btn_boogle_search.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                SingleSelectionModel<Tab> selectionModel = tabManager.getSelectionModel();
-                selectionModel.select(1);
-            });
         }
-    }
-
-    /**
-     * clears table when a new query is entered
-     */
-    private void clearTables() {
-        table_showResults.getItems().clear();
-        table_showDocs.getItems().clear();
     }
 
     public void show5words(String docName) {
@@ -182,7 +142,6 @@ public class SearchController implements Observer, Initializable {
 
     /**
      * show the query number that were searched
-     *
      * @param results query numbers
      */
     private void showQueryResults(ObservableList<ResultDisplay> results) {
@@ -198,7 +157,6 @@ public class SearchController implements Observer, Initializable {
 
     /**
      * show the docs relevant for each query
-     *
      * @param observable the
      */
     private void showQueryResult(ObservableValue<ResultDisplay> observable) {
@@ -221,7 +179,7 @@ public class SearchController implements Observer, Initializable {
         }
         boolean isWrite = viewModel.writeRes(corpusField_txt.getText());
         if (isWrite)
-            AlertMaker.showErrorMessage(Alert.AlertType.INFORMATION.name(), "results saved!");
+            AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), "results saved!");
         else AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "Something went wrong");
     }
 }
