@@ -49,7 +49,7 @@ public class Searcher implements Callable<LinkedList<String>> {
         NamedEntitiesSearcher ner = null;
         String queryAfterSem = query.getQueryText();
         LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
-        if (enableSemantics) queryAfterSem = query.getQueryText()+" "+sh.getTwoBestMatches(argsAsLinkedList);
+        if (enableSemantics) queryAfterSem = query.getQueryText()+sh.getTwoBestMatches(argsAsLinkedList);
         CaseInsensitiveMap wordsPosting;
         Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming, ner);
         MiniDictionary md = p.parse(true);
@@ -60,8 +60,10 @@ public class Searcher implements Callable<LinkedList<String>> {
 
         //for each word go throw its posting with relevant documents
         for(String word : wordsCountInQuery.keySet()) {
-            if (wordsCountInQuery != null && wordsPosting.get(word) != null)
+
+            if (wordsCountInQuery != null && wordsCountInQuery.get(word) != null)
                 if (!wordsPosting.get(word).equals("")) {
+                    System.out.println("Ranking: "+word);
                     String postingLine = wordsPosting.get(word);
                     String[] split = postingLine.split("\\|");
                     double idf = getIDF(split.length-1);
@@ -75,20 +77,13 @@ public class Searcher implements Callable<LinkedList<String>> {
                             int tf = Integer.parseInt(splitLine[1]);
                             double totalRank = ranker.GetRank(score, wordsPosting.keySet(), docName, word, tf, idf);
                             addToScore(score, docName, totalRank);
+                            System.out.println("::");
                         }
                     }
                 }
         }
         return sortByScore(score);
     }
-
-    /**
-     * Searcher
-     * parseQueryAndReturnRank
-     * synForQuery
-     * autoComplete(term)
-     */
-
 
     //Write the results to the file selected by the user
     public void trecEval(String path) throws IOException {

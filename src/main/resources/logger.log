@@ -1095,3 +1095,34 @@
 2020-01-14 01:25:18 INFO  Reflections:229 - Reflections took 93 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:25:40 INFO  Model:83 - Sending Results
 2020-01-14 01:25:40 INFO  Model:97 - PROCESS DONE :: END Searching in 22290.0 ms
+2020-01-14 01:29:44 INFO  Main:30 - Boogle is closing. Used for 4.925933333333333 m
+2020-01-14 10:54:34 INFO  Main:27 - Boogle launched
+2020-01-14 10:55:35 INFO  UIController:407 - loadFile::
+2020-01-14 10:55:39 INFO  UIController:415 - Loaded::Out
+2020-01-14 10:55:45 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 10:56:01 INFO  Model:78 - Start Searching
+2020-01-14 10:56:02 INFO  Model:83 - Sending Results
+2020-01-14 10:56:02 INFO  Model:97 - PROCESS DONE :: END Searching in 335.0 ms
+2020-01-14 10:57:09 INFO  Main:27 - Boogle launched
+2020-01-14 10:57:11 INFO  UIController:407 - loadFile::
+2020-01-14 10:57:15 INFO  UIController:415 - Loaded::Out
+2020-01-14 10:57:18 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 10:57:36 INFO  Model:78 - Start Searching
+2020-01-14 10:57:36 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-14 10:57:37 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-14 10:57:37 INFO  Reflections:229 - Reflections took 77 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-14 10:58:02 INFO  Model:83 - Sending Results
+2020-01-14 10:58:02 INFO  Model:97 - PROCESS DONE :: END Searching in 25431.0 ms
+2020-01-14 10:58:54 INFO  Main:27 - Boogle launched
+2020-01-14 10:59:15 INFO  UIController:407 - loadFile::
+2020-01-14 10:59:23 INFO  UIController:415 - Loaded::Out
+2020-01-14 10:59:38 INFO  SearchController:74 - Boogle Search page opened.
+2020-01-14 10:59:51 INFO  Model:78 - Start Searching
+2020-01-14 10:59:51 INFO  Model:83 - Sending Results
+2020-01-14 10:59:51 INFO  Model:97 - PROCESS DONE :: END Searching in 280.0 ms
+2020-01-14 11:00:07 INFO  Main:30 - Boogle is closing. Used for 1.2259666666666666 m
+2020-01-14 11:02:20 INFO  Main:27 - Boogle launched
+2020-01-14 11:02:25 INFO  UIController:407 - loadFile::
+2020-01-14 11:04:34 INFO  UIController:407 - loadFile::
+2020-01-14 11:04:38 INFO  UIController:415 - Loaded::Out
+2020-01-14 11:04:43 INFO  SearchController:74 - Boogle Search page opened.

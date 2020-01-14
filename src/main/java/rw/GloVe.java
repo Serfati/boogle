@@ -13,6 +13,7 @@ public class GloVe {
 
     public String synonyms(String wordToSyn) {
         StringBuilder synonyms = new StringBuilder();
+        synonyms.append(" ");
         Collection<String> syn = this.wordVectors.wordsNearest(wordToSyn, 2);
         syn.forEach(s -> synonyms.append(s).append(" "));
         System.out.println("GloVe::synonyms()");

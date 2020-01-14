@@ -39,6 +39,7 @@ public class DatamuseAPI {
 
     public static String synonyms(String wordToSyn) throws IOException {
         StringBuilder backSynonyms = new StringBuilder();
+        backSynonyms.append(" ");
         DatamuseAPI request = new DatamuseAPI();
         JSONObject details = request.post(URL+wordToSyn);
         JSONArray result = details.getJSONArray("result");
