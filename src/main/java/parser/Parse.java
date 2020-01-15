@@ -3,15 +3,12 @@ package parser;
 import model.Model;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
-public class Parse implements Callable<MiniDictionary>, IParse {
 
-    HashMap<String, String> wordsRulesData;
-    NamedEntitiesSearcher ner;
+public class Parse implements Callable<MiniDictionary> {
     private LinkedList<String> wordList;
     private cDocument corpus_doc;
     private Stemmer ps;
@@ -19,23 +16,40 @@ public class Parse implements Callable<MiniDictionary>, IParse {
     private static String[] shortMonth = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     private static String[] longMonth = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-    public Parse(cDocument corpus_doc, boolean stm, NamedEntitiesSearcher ner) {
+
+    /**
+     * a constructor that receives a document from the corpus and if the terms should be stemmed
+     *
+     * @param corpus_doc a document from the corpus
+     * @param stm        if the terms should be stemmed
+     */
+    public Parse(cDocument corpus_doc, boolean stm) {
         this.corpus_doc = corpus_doc;
         this.stm = stm;
         this.ps = new Stemmer();
-        this.ner = ner;
     }
 
+    /**
+     * returns a Mini dictionary that was retrieved from the parse
+     *
+     * @return a Mini dictionary that was retrieved from the parse
+     */
     public MiniDictionary call() {
         return parse(false);
     }
 
+    /**
+     * goes over all the terms of label <TEXT>  and parses them according to the rules of the work
+     *
+     * @return a Mini Dictionary that contains all the data about the terms and the doc
+     */
     public MiniDictionary parse(boolean isQuery) {
         //split the <Text> label to list of terms
         wordList = stringToList(StringUtils.split(corpus_doc.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         //list of next words from the current term
         LinkedList<String> nextWord = new LinkedList<>();
         //the mini dictionary that will be filled according to the terms
+
         MiniDictionary miniDic = new MiniDictionary(corpus_doc.getDocNum(), corpus_doc.getDocTitle());
         //the index of the
         int index = 0;
@@ -44,10 +58,10 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             String term = wordList.remove();
             if (isNumber(term)) { //if current term is a number
                 nextWord.add(nextWord());
-                if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && checkIsFraction(nextWord.peekFirst().substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
+                if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && isFraction(nextWord.peekFirst().substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
                     term += " "+nextWord.pollLast();
-                    if (checkIsFraction(nextWord.peekFirst())) {
+                    if (isFraction(nextWord.peekFirst())) {
                         term += " "+nextWord.pollLast();
                     }
                 } else if (isMonth(nextWord.peekFirst()) != -1 && isInteger(term)) {  //if it is rule Hei - it is a Month term
@@ -64,6 +78,8 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                     term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
                 } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
                     term = handlePercent(term, nextWord.pollFirst());
+                } else if (nextWord.peekFirst().equalsIgnoreCase("Min") || nextWord.peekFirst().equalsIgnoreCase("Sec")) {
+                    term = handleTime(term, Objects.requireNonNull(nextWord.pollFirst()));
                 } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
                     term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
                 } else {
@@ -82,7 +98,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
 
                         if (!wordList.isEmpty()) {
                             nextWord.addLast(wordList.poll());
-                            if (checkIsFraction(nextWord.peekFirst())) { //rule Alef 2 - fraction rule
+                            if (isFraction(nextWord.peekFirst())) { //rule Alef 2 - fraction rule
                                 term += " "+nextWord.pollFirst();
                                 nextWord.addFirst(nextWord());
                                 if (nextWord.peekFirst().equals("Dollars"))
@@ -140,19 +156,19 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (term.equalsIgnoreCase("between")) {
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.poll());
-                    if ((isNumber(nextWord.peekFirst()) || checkIsFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
+                    if ((isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
                         nextWord.addFirst(wordList.pollFirst());
-                        if (checkIsFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                        if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
                             nextWord.addFirst(wordList.pollFirst());
 
                         if (nextWord.peekFirst().equalsIgnoreCase("and") && !wordList.isEmpty()) {
                             nextWord.addFirst(wordList.pollFirst());
-                            if (isNumber(nextWord.peekFirst()) || checkIsFraction(nextWord.peekFirst())) {
+                            if (isNumber(nextWord.peekFirst()) || isFraction(nextWord.peekFirst())) {
                                 while(!nextWord.isEmpty())
                                     term += " "+nextWord.pollLast();
                                 if (!wordList.isEmpty()) {
                                     nextWord.addFirst(wordList.pollFirst());
-                                    if (checkIsFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                                    if (isFraction(nextWord.peekFirst()) && !wordList.isEmpty())
                                         term += " "+nextWord.pollFirst();
 
                                 }
@@ -164,7 +180,7 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (term.contains("-") && isRangeNumbers(term)) {
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
-                    if (checkIsFraction(nextWord.peekFirst()))
+                    if (isFraction(nextWord.peekFirst()))
                         term += " "+nextWord.pollFirst();
                 }
             } else if (term.contains("-")) {
@@ -191,45 +207,52 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return miniDic;
     }
 
-    private String handleRange(LinkedList<String> nextWord, String term) {
-        if (wordList.isEmpty())
-            return term;
-        nextWord.addFirst(wordList.poll());
-        if ((isNumber(Objects.requireNonNull(nextWord.peekFirst())) || checkIsFraction(Objects.requireNonNull(nextWord.peekFirst()))) && !wordList.isEmpty()) {
-            nextWord.addFirst(wordList.pollFirst());
-            if (checkIsFraction(Objects.requireNonNull(nextWord.peekFirst())) && !wordList.isEmpty())
-                nextWord.addFirst(wordList.pollFirst());
-
-            if (Objects.requireNonNull(nextWord.peekFirst()).equalsIgnoreCase("and") && !wordList.isEmpty()) {
-                nextWord.addFirst(wordList.pollFirst());
-                if (isNumber(Objects.requireNonNull(nextWord.peekFirst())) || checkIsFraction(Objects.requireNonNull(nextWord.peekFirst()))) {
-                    StringBuilder termBuilder = new StringBuilder(term);
-                    while(!nextWord.isEmpty())
-                        termBuilder.append(" ").append(nextWord.pollLast());
-                    term = termBuilder.toString();
-                    if (!wordList.isEmpty()) {
-                        nextWord.addFirst(wordList.pollFirst());
-                        if (checkIsFraction(Objects.requireNonNull(nextWord.peekFirst())) && !wordList.isEmpty())
-                            term += " "+nextWord.pollFirst();
-
-                    }
-                }
-            }
-
+    /**
+     * removes unwanted letters from language
+     *
+     * @param lang the language
+     * @return clean word
+     */
+    private String cleanLanguage(String lang) {
+        String language = lang;
+        int idx = lang.indexOf(" ");
+        if (idx != -1)
+            language = language.substring(0, idx);
+        int i = language.length()-1;
+        while(i >= 0 && !Character.isLetter(language.charAt(i))) {
+            language = language.substring(0, i);
+            i--;
         }
-        return term;
+        while(language.length() > 0 && !Character.isLetter(language.charAt(0))) {
+            language = language.substring(1);
+        }
+        return language;
     }
 
+    /**
+     * gets an array of String and returns it has a List
+     * each term is cleaned from the unwanted signs
+     *
+     * @param split the array to separate
+     * @return a list of the terms
+     */
     private LinkedList<String> stringToList(String[] split) {
         LinkedList<String> wordsList = new LinkedList<>();
         for(String word : split) {
             word = cleanTerm(word);
+
             if (!word.equals(""))
                 wordsList.add(word);
         }
         return wordsList;
     }
 
+    /**
+     * this function deletes all irrelevant signs from a term
+     *
+     * @param term the term to clean
+     * @return a cleaned term
+     */
     private String cleanTerm(String term) {
         if (!term.equals("")) {
             if (!(term.charAt(term.length()-1) == '%')) {
@@ -248,6 +271,12 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return term;
     }
 
+    /**
+     * deletes a double -- if exists
+     *
+     * @param term the term to be handled
+     * @return the term without --
+     */
     private String handleRangesSign(String term) {
         int idx = term.indexOf('-');
         if (idx != -1) {
@@ -257,6 +286,13 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return term;
     }
 
+    /**
+     * transforms terms that contain Tons or Grams to Kilograms
+     *
+     * @param term the term to be changed
+     * @param unit the unit of the number
+     * @return the term after change as kilogram
+     */
     private String handleWeight(String term, String unit) {
         switch(unit) {
             case "Ton":
@@ -268,13 +304,45 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return term+" Kilograms";
     }
 
+    /**
+     * transforms terms that contain Seconds or Minutes to Hours
+     *
+     * @param term the term to be changed
+     * @param unit the unit of the number
+     * @return the term after change as hours
+     */
+    private String handleTime(String term, String unit) {
+        switch(unit) {
+            case "Sec":
+                term = numberValue(Double.parseDouble(term.replace(",", "")) / 3600);
+                break;
+            case "Min":
+                term = numberValue(Double.parseDouble(term.replace(",", "")) / 60);
+        }
+        return term+" Hours";
+    }
+
+    /**
+     * adds to term the % sign
+     *
+     * @param term        the term
+     * @param percentSign % sign
+     * @return the term with percent sign
+     */
     private String handlePercent(String term, String percentSign) {
         return term+percentSign;
     }
 
+    /**
+     * transforms a term that is written as DAY MONTH / MONTH DAY to mm-dd
+     *
+     * @param month the month
+     * @param day   the day
+     * @return mm-dd
+     */
     private String handleMonthDay(String month, String day) {
         int monthNum = isMonth(month);
-        int dayNum;
+        int dayNum = 0;
         dayNum = Integer.parseInt(day);
         if (dayNum < 10)
             day = "0"+day;
@@ -285,6 +353,13 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return newTerm;
     }
 
+    /**
+     * transforms a MONTH YEAR to yyyy-mm
+     *
+     * @param month the month
+     * @param year  the year
+     * @return yyyy-mm
+     */
     private String handleMonthYear(String month, String year) {
         int monthNum = isMonth(month);
         String newTerm = year+"-";
@@ -293,6 +368,13 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return newTerm+monthNum;
     }
 
+    /**
+     * Rule DALET - changed number according to the rule
+     *
+     * @param number        the number to be changed
+     * @param containsComma if the number contains comma
+     * @return the number after rule
+     */
     private String handleDollar(double number, boolean containsComma) {
         String ans = "";
         int multi = 1000000;
@@ -307,28 +389,37 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             number *= 1000;
             ans = "M";
         }
-        switch(ans) {
-            case "":
-                return containsComma ? addCommas(numberValue(number))+" Dollars" : numberValue(number)+" Dollars";
+        if (ans.equals("")) {
+            if (containsComma)
+                return addCommas(numberValue(number))+" Dollars";
+            else
+                return numberValue(number)+" Dollars";
         }
         return numberValue(number)+" "+ans+" Dollars";
     }
 
+    /**
+     * Rule ALEF - change numbers according to their size
+     *
+     * @param number - number to be changed
+     * @return the number after changed
+     */
     public String handleNumber(double number) {
         String ans = "";
         int multi = 1000;
-        if (number > multi) {
+        if (number > multi) {//smaller than 1000
             multi *= 1000;
             if (number > multi) {
                 multi *= 1000;
-                if (number > multi) {
+                if (number > multi) { // is billion or trillion
                     ans = "B";
-                } else {
+                    number = (number / multi);
+                } else { // is million
                     ans = "M";
                     multi /= 1000;
+                    number = number / multi;
                 }
-                number = (number / multi);
-            } else {
+            } else { // is thousand
                 ans = "K";
                 multi /= 1000;
                 number = number / multi;
@@ -337,6 +428,12 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return numberValue(number)+ans;
     }
 
+    /**
+     * adds commas to a number
+     *
+     * @param number number to add commas to
+     * @return returns number as a String with commas
+     */
     private String addCommas(String number) {
         String saveFraction = "";
         if (number.indexOf('.') != -1) {
@@ -349,12 +446,23 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return number+saveFraction;
     }
 
+    /**
+     * checks if the number is int or double
+     *
+     * @param d number to be checked
+     * @return returns a string with the correct number
+     */
     private String numberValue(Double d) {
         if (isInteger(d))
             return ""+d.intValue();
         return ""+d;
     }
 
+    /**
+     * Checks if the next word is one of certain rules given to the parser
+     *
+     * @return returns a string according to the rules
+     */
     private String nextWord() {
         String nextWord = "";
         if (!wordList.isEmpty()) {
@@ -400,17 +508,35 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return nextWord;
     }
 
-    private boolean checkIsFraction(String nextWord) {
+    /**
+     * Checks if the string given is a fraction of a number
+     *
+     * @param nextWord string to be checked
+     * @return true if string is a fraction, false otherwise
+     */
+    private boolean isFraction(String nextWord) {
         int idx = nextWord.indexOf('/');
         if (idx != -1)
             return isNumber(nextWord.substring(0, idx)) && isNumber(nextWord.substring(idx+1));
         return false;
     }
 
+    /**
+     * Checks if a number is integer or double
+     *
+     * @param word number to be checked
+     * @return returns true if it is integer, false it is double
+     */
     private boolean isInteger(double word) {
         return word == Math.floor(word) && !Double.isInfinite(word);
     }
 
+    /**
+     * checks if a number is an integer or not
+     *
+     * @param word the number to be checked
+     * @return true if it is integer
+     */
     private boolean isInteger(String word) {
         try {
             Integer.parseInt(word);
@@ -420,6 +546,12 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         }
     }
 
+    /**
+     * Checks if a string is a month
+     *
+     * @param month - the string to be checked
+     * @return true if it is a month, false otherwise
+     */
     private int isMonth(String month) {
         for(int i = 0; i < shortMonth.length; i++)
             if (month.equalsIgnoreCase(shortMonth[i]) || month.equalsIgnoreCase(longMonth[i]))
@@ -427,6 +559,12 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return -1;
     }
 
+    /**
+     * Checks is a string is a number
+     *
+     * @param word - the string to be checked
+     * @return returns true if it is a number, false otherwise
+     */
     private boolean isNumber(String word) {
         try {
             Double.parseDouble(word.replace(",", ""));
@@ -436,63 +574,21 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         }
     }
 
+    /**
+     * checks if a range term is a range of numbers
+     *
+     * @param range the range to be checked
+     * @return tr
+     */
     private boolean isRangeNumbers(String range) {
         int idx = range.indexOf('-');
         if (idx != -1) {
-            if (checkIsFraction(range.substring(0, idx)))
-                return isNumber(range.substring(idx+1)) || checkIsFraction(range.substring(idx+1));
-            else if (isNumber(range.substring(0, idx)))
-                return isNumber(range.substring(idx+1));
+            if (isFraction(range.substring(0, idx)))
+                return isNumber(range.substring(idx+1)) || isFraction(range.substring(idx+1));
+            else if(isNumber(range.substring(0,idx)))
+                return isNumber(range.substring(idx + 1));
 
         }
         return false;
-    }
-
-    private void nextWordsRules() {
-        wordsRulesData = new HashMap<String, String>() {{
-            put("Thousand", "K");
-            put("Thousands", "K");
-            put("Million", "M");
-            put("Millions", "M");
-            put("billion", "B");
-            put("billions", "B");
-            put("trillion", "T");
-            put("trillions", "T");
-            put("Tons", "Tons");
-            put("Ton", "Tons");
-            put("Grams", "gr");
-            put("Gram", "gr");
-            put("gr", "gr");
-            put("kilogram", "kg");
-            put("Kilogram", "kg");
-            put("kilograms", "kg");
-            put("Kilograms", "kg");
-            put("kg", "kg");
-            put("kgs", "kg");
-            put("percent", "%");
-            put("percentage", "%");
-            put("%", "%");
-            put("Dollars", "Dollars");
-            put("Dollar", "Dollars");
-            put("$", "Dollars");
-            put("centimeter", "cm");
-            put("centimeters", "cm");
-            put("cm", "cm");
-            put("CM", "cm");
-            put("meter", "m");
-            put("Meter", "m");
-            put("METER", "m");
-            put("meters", "m");
-            put("Meters", "m");
-            put("METERS", "m");
-            put("kilometer", "km");
-            put("Kilometer", "km");
-            put("kilometers", "km");
-            put("Kilometers", "km");
-            put("km", "km");
-            put("KILOMETER", "km");
-            put("KILOMETERS", "km");
-            put("KM", "km");
-        }};
     }
 }

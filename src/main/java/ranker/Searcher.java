@@ -2,7 +2,6 @@ package ranker;
 
 import model.Model;
 import parser.MiniDictionary;
-import parser.NamedEntitiesSearcher;
 import parser.Parse;
 import parser.cDocument;
 import rw.ReadFile;
@@ -86,12 +85,11 @@ public class Searcher implements Callable<LinkedList<String>> {
     }
 
     private LinkedList<String> mainLogic() throws IOException {
-        NamedEntitiesSearcher ner = null;
         String queryAfterSem = query.getQueryText();
         LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
         if (enableSemantics) queryAfterSem = query.getQueryText()+sh.getTwoBestMatches(argsAsLinkedList);
         CaseInsensitiveMap wordsPosting;
-        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming, ner);
+        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming);
         MiniDictionary md = p.parse(true);
         HashMap<String, Integer> wordsCountInQuery = md.countAppearances(); //count word in the query
         wordsPosting = getPosting(wordsCountInQuery.keySet());
@@ -102,6 +100,7 @@ public class Searcher implements Callable<LinkedList<String>> {
         for(String word : wordsCountInQuery.keySet()) {
             if (!wordsPosting.get(word).equals("")) {
                 String postingLine = wordsPosting.get(word);
+                System.out.println(postingLine);
                 String[] split = postingLine.split("\\|");
                 double docInCorpusCount = Model.documentDictionary.keySet().size();
                 double idf = Math.log10((docInCorpusCount+1) / split.length-1);
@@ -111,7 +110,6 @@ public class Searcher implements Callable<LinkedList<String>> {
                     String docName = splitLine[0];
                     if (splitLine.length > 1) {
                         int tf = Integer.parseInt(splitLine[1]);
-                        //String positionsOfWord = splitLine[2];
                         double BM25 = ranker.BM25Algorithm(word, docName, tf, idf);
                         addToScore(score, docName, BM25);
                         double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());

@@ -55,22 +55,28 @@ public class InvertedIndex implements Callable<HashMap<String, Pair<Integer, Str
 
     @Override
     public HashMap<String, Pair<Integer, StringBuilder>> call() {
-        HashMap<String, Pair<Integer, StringBuilder>> postingForm = new HashMap<>();
-        if (m_miniDicList != null) m_miniDicList.forEach(miniDic -> miniDic.dictionary.keySet().forEach(word -> {
-            if (!postingForm.containsKey(word)) { //if the word doesn't exist
-                int shows = miniDic.getFrequency(word);
-                StringBuilder sb = new StringBuilder(miniDic.listData(word)+"|");
-                Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
-                postingForm.put(word, all);
-            } else { //if the word already exists
-                Pair<Integer, StringBuilder> all = postingForm.remove(word);
-                int newShows = all.getKey()+miniDic.getFrequency(word);
-                StringBuilder sb2 = all.getValue().append(miniDic.listData(word)).append("|");
-                Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, sb2);
-                postingForm.put(word, newAll);
+        // adding to inverted index the term and the other data
+        // AND adding to the map (temporary posting)
+        HashMap<String, Pair<Integer, StringBuilder>> toReturn = new HashMap<>();
+        if (m_miniDicList != null) {
+            for(MiniDictionary miniDic : m_miniDicList) {
+                for(String word : miniDic.dictionary.keySet()) {
+                    if (toReturn.containsKey(word)) { //if the word already exists
+                        Pair<Integer, StringBuilder> all = toReturn.remove(word);
+                        int newShows = all.getKey()+miniDic.getFrequency(word);
+                        StringBuilder newSb = all.getValue().append(miniDic.listData(word)).append("|");
+                        Pair<Integer, StringBuilder> newAll = new Pair<>(newShows, newSb);
+                        toReturn.put(word, newAll);
+                    } else {
+                        int shows = miniDic.getFrequency(word);
+                        StringBuilder sb = new StringBuilder(miniDic.listData(word)+"|");
+                        Pair<Integer, StringBuilder> all = new Pair<>(shows, sb);
+                        toReturn.put(word, all);
+                    }
+                }
             }
-        }));
-        return postingForm;
+        }
+        return toReturn;
     }
 
     public void addTerm(String term) {

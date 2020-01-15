@@ -2126,3 +2126,35 @@
 2020-01-15 17:36:01 INFO  Main:27 - Boogle launched
 2020-01-15 17:36:39 INFO  Model:44 - Start Parsing and Indexing
 2020-01-15 17:36:39 INFO  Model:132 - Start manager Method :: runnable
+2020-01-15 17:52:57 INFO  Model:178 - Start merge Method :: single
+2020-01-15 17:55:30 INFO  Model:67 - PROCESS DONE :: END INDEXING in 18.85 minutes
+2020-01-15 18:43:46 INFO  Main:27 - Boogle launched
+2020-01-15 18:44:11 INFO  Model:44 - Start Parsing and Indexing
+2020-01-15 18:44:11 INFO  Model:132 - Start manager Method :: runnable
+2020-01-15 19:00:21 INFO  Model:172 - Start merge Method :: single
+2020-01-15 19:04:45 INFO  Model:67 - PROCESS DONE :: END INDEXING in 20.57 minutes
+2020-01-15 19:06:05 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:08:05 INFO  Model:74 - Start Searching
+2020-01-15 19:10:27 INFO  Model:87 - DONE::(142274.0 ms)
+2020-01-15 19:12:35 INFO  Main:30 - Boogle is closing. Used for 28.81365 m
+2020-01-15 19:16:46 INFO  Main:27 - Boogle launched
+2020-01-15 19:17:39 INFO  UIController:411 - Loaded::allOut
+2020-01-15 19:18:08 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:18:59 INFO  Model:74 - Start Searching
+2020-01-15 19:19:01 ERROR Model:81 - Boogle failed
+2020-01-15 19:19:02 INFO  Model:87 - DONE::(2104.0 ms)
+2020-01-15 19:20:16 INFO  Main:27 - Boogle launched
+2020-01-15 19:20:25 INFO  UIController:411 - Loaded::allOut
+2020-01-15 19:20:38 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:20:43 INFO  Model:74 - Start Searching
+2020-01-15 19:25:40 INFO  Main:27 - Boogle launched
+2020-01-15 19:25:55 INFO  UIController:411 - Loaded::allOut
+2020-01-15 19:26:06 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:26:24 INFO  Model:74 - Start Searching
+2020-01-15 19:26:28 INFO  Model:87 - DONE::(4028.0 ms)
+2020-01-15 19:33:23 INFO  Main:27 - Boogle launched
+2020-01-15 19:33:35 INFO  UIController:411 - Loaded::allOut
+2020-01-15 19:35:03 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:35:22 INFO  SearchController:76 - Search Tab Switch
+2020-01-15 19:35:28 INFO  Model:74 - Start Searching
+2020-01-15 19:35:32 INFO  Model:87 - DONE::(3728.0 ms)

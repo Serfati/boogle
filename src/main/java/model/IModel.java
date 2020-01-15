@@ -2,8 +2,6 @@ package model;
 
 import indexer.InvertedIndex;
 
-import java.io.IOException;
-
 public interface IModel {
 
     /**
@@ -34,7 +32,7 @@ public interface IModel {
      * @param tempPostingPath - the path of the temp postings
      * @param stem            - if should be stemmed
      */
-    void mergePosting(InvertedIndex invertedIndex, String tempPostingPath, boolean stem) throws IOException;
+    void mergePosting(InvertedIndex invertedIndex, String tempPostingPath, boolean stem);
 
     /**
      * Loads the dictionary that is present in the path given according to the stem sign
