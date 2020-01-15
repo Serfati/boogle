@@ -32,7 +32,7 @@ public class Ranker {
         int wordInQueryCount = wordsCountInQuery.get(word);
         double numeratorBM25 = wordInQueryCount * (BM_25_K+1) * tf * idf;
         double denominatorBM25 = tf+BM_25_K * (1-BM_25_B+(BM_25_B * (documentLength / averageDocumentLength)));
-        return BM25_WEIGHT * numeratorBM25 / denominatorBM25;
+        return numeratorBM25 / denominatorBM25;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Ranker {
             String[] split = StringUtils.split(title, " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t");
             rank = Arrays.stream(split).filter(wordsSet::contains).mapToDouble(wordTitle -> 0.1).sum();
         }
-        return TITLE_WEIGHT * rank;
+        return rank;
     }
 
     /**
@@ -64,7 +64,7 @@ public class Ranker {
             Pair<String, Integer>[] five = Model.documentDictionary.get(docName).getFiveEntities();
             if (five != null) {
                 rank += Arrays.stream(five).filter(aFive -> aFive != null && wordsInQuery.contains(aFive.getKey())).mapToDouble(aFive -> 0.1).sum();
-                Searcher.addToScore(score, docName, rank * CONTAINING_WEIGHT);
+                Searcher.addToScore(score, docName, rank);
             }
         }
     }

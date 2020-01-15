@@ -5,22 +5,19 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 
 public class Parse implements Callable<MiniDictionary>, IParse {
 
-    HashMap<String, String> monthsData;
     HashMap<String, String> wordsRulesData;
     NamedEntitiesSearcher ner;
     private LinkedList<String> wordList;
     private cDocument corpus_doc;
-    MiniDictionary miniDic;
     private Stemmer ps;
     private boolean stm;
-    private Map<String, Double> entitiesDiscoveredInDoc;
-
+    private static String[] shortMonth = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    private static String[] longMonth = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     public Parse(cDocument corpus_doc, boolean stm, NamedEntitiesSearcher ner) {
         this.corpus_doc = corpus_doc;
@@ -33,103 +30,141 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return parse(false);
     }
 
-    public synchronized MiniDictionary parse(boolean isQuery) {
-        entitiesDiscoveredInDoc = new HashMap<>();
+    public MiniDictionary parse(boolean isQuery) {
         //split the <Text> label to list of terms
         wordList = stringToList(StringUtils.split(corpus_doc.getDocText(), " ~;!?=#&^*+\\|:\"(){}[]<>\n\r\t"));
         //list of next words from the current term
         LinkedList<String> nextWord = new LinkedList<>();
         //the mini dictionary that will be filled according to the terms
-        miniDic = new MiniDictionary(corpus_doc.getDocNum(), corpus_doc.getDocTitle());
+        MiniDictionary miniDic = new MiniDictionary(corpus_doc.getDocNum(), corpus_doc.getDocTitle());
         //the index of the
-
-        //FRACTION, RANGES,
-        /* Stanford CoreNLP 3.9.2 provides a set of human language technology tools. */
-        //TODO
-        /* ------------------------------------------------------------------------- */
-//        CoreDocument doc = new CoreDocument(corpus_doc.getDocText());
-//        ner.pipeline().annotate(doc);
-//        for(CoreEntityMention em : doc.entityMentions())
-//            miniDic.addWord(em.text().toUpperCase(), 0);
-
-//        initMonthsData();
-//        nextWordsRules();
         int index = 0;
         while(!wordList.isEmpty()) {
             boolean doStemIfTermWasNotManipulated = false;
             String term = wordList.remove();
             if (isNumber(term)) { //if current term is a number
                 nextWord.add(nextWord());
-                assert nextWord.peekFirst() != null;
-                if (nextWord.peekFirst() != null) {
-                    if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && checkIsFraction(Objects.requireNonNull(nextWord.peekFirst()).substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
-                        nextWord.addFirst(wordList.pollFirst());
+                if (nextWord.peekFirst().contains("-") && isRangeNumbers(nextWord.peekFirst()) && checkIsFraction(nextWord.peekFirst().substring(0, nextWord.peekFirst().indexOf("-"))) && !wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.pollFirst());
+                    term += " "+nextWord.pollLast();
+                    if (checkIsFraction(nextWord.peekFirst())) {
                         term += " "+nextWord.pollLast();
-                        if (nextWord.peekFirst() != null && checkIsFraction(nextWord.peekFirst())) {
-                            term += " "+nextWord.pollLast();
+                    }
+                } else if (isMonth(nextWord.peekFirst()) != -1 && isInteger(term)) {  //if it is rule Hei - it is a Month term
+                    String save = nextWord.pollFirst();
+                    term = handleMonthDay(save, term);
+                    if (!wordList.isEmpty()) {
+                        nextWord.add(wordList.pollFirst());
+                        if (nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && nextWord.peekFirst().length() == 4) {
+                            nextWord.addFirst(save);
                         }
-                    } else if (isMonth(nextWord.peekFirst()) != -1 && isInteger(term)) {  //if it is rule Hei - it is a Month term
-                        term = handleMonth(nextWord, term);
-                    } else {
-                        assert nextWord.peekFirst() != null;
-                        if (nextWord.peekFirst().equalsIgnoreCase("Dollars")) {  //if it is rule Dalet - it is a Dollar term
+                    }
+                } else if (nextWord.peekFirst().equalsIgnoreCase("Dollars")) {  //if it is rule Dalet - it is a Dollar term
+                    nextWord.pollFirst();
+                    term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
+                } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
+                    term = handlePercent(term, nextWord.pollFirst());
+                } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
+                    term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
+                } else {
+                    term = handleNumber(Double.parseDouble(term.replace(",", "")));
+                    if (!(term.charAt(term.length()-1) > 'A' && term.charAt(term.length()-1) < 'Z')) { //if a number returned is smaller than 1000
+                        if (nextWord.peekFirst().equals("T")) {
+                            term = numberValue(Double.parseDouble(term) * 1000);
                             nextWord.pollFirst();
-                            term = handleDollar(Double.parseDouble(term.replace(",", "")), term.contains(","));
-                        } else if (nextWord.peekFirst().equals("%")) { // if it is rule Gimel - it is a percent term
-                            term = handlePercent(term, nextWord.pollFirst());
-                        } else if (nextWord.peekFirst().equalsIgnoreCase("centimeter") || nextWord.peekFirst().equalsIgnoreCase("meter")) {
-                            term = handleDistance(term, Objects.requireNonNull(nextWord.pollFirst()));
-                        } else if (nextWord.peekFirst().equals("Ton") || nextWord.peekFirst().equals("Gram")) {
-                            term = handleWeight(term, Objects.requireNonNull(nextWord.pollFirst()));
-                        } else {
-                            term = handleNumber(Double.parseDouble(term.replace(",", "")));
-                            if (!(term.charAt(term.length()-1) > 'A' && term.charAt(term.length()-1) < 'Z')) { //if a number returned is smaller than 1000
-                                if (nextWord.peekFirst() != null && Objects.equals(nextWord.peekFirst(), "T")) {
-                                    term = numberValue(Double.parseDouble(term) * 1000);
-                                    nextWord.pollFirst();
-                                    nextWord.addFirst("B");
-                                }
-                                if (Objects.requireNonNull(nextWord.peekFirst()).length() == 1)
-                                    term += nextWord.pollFirst();
+                            nextWord.addFirst("B");
+                        }
+                        if (nextWord.peekFirst().length() == 1)
+                            term += nextWord.pollFirst();
 
-                                if (!nextWord.isEmpty() && nextWord.peekFirst().equals(""))
+                        if (!nextWord.isEmpty() && nextWord.peekFirst().equals(""))
+                            nextWord.clear();
+
+                        if (!wordList.isEmpty()) {
+                            nextWord.addLast(wordList.poll());
+                            if (checkIsFraction(nextWord.peekFirst())) { //rule Alef 2 - fraction rule
+                                term += " "+nextWord.pollFirst();
+                                nextWord.addFirst(nextWord());
+                                if (nextWord.peekFirst().equals("Dollars"))
+                                    term += " "+nextWord.pollFirst();
+                            } else if (!wordList.isEmpty() && nextWord.peekFirst().equals("U.S")) {
+                                nextWord.addFirst(wordList.poll());
+                                if (nextWord.peekFirst().equalsIgnoreCase("dollars")) {
                                     nextWord.clear();
-
-                                term = dealWithDollars(nextWord, term);
+                                    double d;
+                                    if (Character.isLetter(term.charAt(term.length()-1)))
+                                        d = Double.parseDouble(term.substring(0, term.length()-1));
+                                    else
+                                        d = Double.parseDouble(term);
+                                    if (term.charAt(term.length()-1) == 'M')
+                                        d *= 1000000;
+                                    else if (term.charAt(term.length()-1) == 'B') {
+                                        d *= 1000000000;
+                                    }
+                                    term = handleDollar(d, term.contains(","));
+                                }
                             }
                         }
                     }
                 }
             } else if (term.length() >= 1 && isNumber(term.substring(1))) {
-                term = startWithDollar(term);
+                if (term.charAt(0) == '$') { //rule Dalet - dollar sign at the beginning of a number
+                    try {
+                        term = handleDollar(Double.parseDouble(term.substring(1).replace(",", "")), term.contains(","));
+                    } catch(NumberFormatException e) {
+                        e.getCause();
+                    }
+                }
 
 
             } else if (term.length() >= 1 && isNumber(term.substring(0, term.length()-1))) {
                 if (!term.substring(0, term.length()-1).equals("%")) {
                     nextWord.addFirst(nextWord());
-                    if (term.substring(term.length()-1).equals("m") && Objects.requireNonNull(nextWord.peekFirst()).equals("Dollars"))
+                    if (term.substring(term.length()-1).equals("m") && nextWord.peekFirst().equals("Dollars"))
                         term = numberValue(Double.parseDouble(term.substring(0, term.length()-1).replace(",", "")))+" M "+nextWord.pollFirst();
 
                 }
             } else if (term.length() >= 2 && isNumber(term.substring(0, term.length()-2)) && term.substring(term.length()-2).equals("bn")) {
                 nextWord.addFirst(nextWord());
-                if (Objects.requireNonNull(nextWord.peekFirst()).equals("Dollars"))
+                if (nextWord.peekFirst().equals("Dollars"))
                     term = numberValue(Double.parseDouble(term.substring(0, term.length()-2).replace(",", "")) * 1000)+" M "+nextWord.pollFirst();
 
 
             } else if (isMonth(term) != -1) { // rule Vav - month year rule
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.poll());
-                    if (isNumber(Objects.requireNonNull(nextWord.peekFirst()))) {
+                    if (isNumber(nextWord.peekFirst())) {
                         term = handleMonthYear(term, nextWord.pollFirst());
                     }
                 }
             } else if (term.equalsIgnoreCase("between")) {
-                term = handleRange(nextWord, term);
+                if (!wordList.isEmpty()) {
+                    nextWord.addFirst(wordList.poll());
+                    if ((isNumber(nextWord.peekFirst()) || checkIsFraction(nextWord.peekFirst())) && !wordList.isEmpty()) {
+                        nextWord.addFirst(wordList.pollFirst());
+                        if (checkIsFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                            nextWord.addFirst(wordList.pollFirst());
+
+                        if (nextWord.peekFirst().equalsIgnoreCase("and") && !wordList.isEmpty()) {
+                            nextWord.addFirst(wordList.pollFirst());
+                            if (isNumber(nextWord.peekFirst()) || checkIsFraction(nextWord.peekFirst())) {
+                                while(!nextWord.isEmpty())
+                                    term += " "+nextWord.pollLast();
+                                if (!wordList.isEmpty()) {
+                                    nextWord.addFirst(wordList.pollFirst());
+                                    if (checkIsFraction(nextWord.peekFirst()) && !wordList.isEmpty())
+                                        term += " "+nextWord.pollFirst();
+
+                                }
+                            }
+                        }
+
+                    }
+                }
             } else if (term.contains("-") && isRangeNumbers(term)) {
                 if (!wordList.isEmpty()) {
                     nextWord.addFirst(wordList.pollFirst());
-                    if (checkIsFraction(Objects.requireNonNull(nextWord.peekFirst())))
+                    if (checkIsFraction(nextWord.peekFirst()))
                         term += " "+nextWord.pollFirst();
                 }
             } else if (term.contains("-")) {
@@ -137,47 +172,23 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             } else if (stm) {
                 doStemIfTermWasNotManipulated = true;
             }
+
+
             while(!nextWord.isEmpty()) {
                 String s = nextWord.pollLast();
                 if (s != null && !s.equals(""))
                     wordList.addFirst(s);
+
             }
 
-            index = lastCheckAndAdd(miniDic, index, doStemIfTermWasNotManipulated, term, isQuery);
+            if (isQuery || !Model.stopWords.contains(term.toLowerCase())) {
+                if (doStemIfTermWasNotManipulated)
+                    term = ps.stemTerm(term);
+                miniDic.addWord(term, index);
+                index++;
+            }
         }
         return miniDic;
-    }
-
-    private int lastCheckAndAdd(MiniDictionary miniDic, int index, boolean doStemIfTermWasNotManipulated, String token, boolean isQuery) {
-        if (doStemIfTermWasNotManipulated) {
-            ps.setTerm(token.toLowerCase());
-            ps.stem();
-            if (token.equals(token.toUpperCase()))
-                ps.setTerm(ps.getTerm().toUpperCase());
-            token = ps.getTerm();
-        }
-        String processedToken;
-
-        String tokenInUpper = token.toUpperCase(), tokenInLower = token.toLowerCase();
-        boolean tokenExistInLower = miniDic.containsKey(tokenInLower) == 2, tokenExistInUpper = miniDic.containsKey(tokenInUpper) == 1;
-        if (Character.isUpperCase(token.charAt(0))) { // the first char is a capital letter
-            processedToken = tokenInUpper;
-            if (tokenExistInLower)
-                processedToken = tokenInLower;
-        } else { //first char is in lower case
-            processedToken = tokenInLower;
-            if (tokenExistInUpper) {
-                miniDic.dictionary.remove(tokenInUpper);
-                miniDic.addWord(tokenInLower, index);
-            }
-        }
-        if (isQuery || !Model.stopWords.contains(token.toLowerCase())) {
-            if (doStemIfTermWasNotManipulated)
-                token = ps.stemTerm(token);
-            miniDic.addWord(token, index);
-            index++;
-        }
-        return index;
     }
 
     private String handleRange(LinkedList<String> nextWord, String term) {
@@ -205,58 +216,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                 }
             }
 
-        }
-        return term;
-    }
-
-    private String handleMonth(LinkedList<String> nextWord, String term) {
-        String save = nextWord.pollFirst();
-        term = handleMonthDay(save, term);
-        if (!wordList.isEmpty()) {
-            nextWord.add(wordList.pollFirst());
-            if (nextWord.peekFirst() != null && nextWord.peekFirst() != null && isNumber(nextWord.peekFirst()) && Objects.requireNonNull(nextWord.peekFirst()).length() == 4) {
-                nextWord.addFirst(save);
-            }
-        }
-        return term;
-    }
-
-    private String startWithDollar(String term) {
-        if (term.charAt(0) == '$') { //rule Dalet - dollar sign at the beginning of a number
-            try {
-                term = handleDollar(Double.parseDouble(term.substring(1).replace(",", "")), term.contains(","));
-            } catch(NumberFormatException e) {
-                e.getCause();
-            }
-        }
-        return term;
-    }
-
-    private String dealWithDollars(LinkedList<String> nextWord, String term) {
-        if (!wordList.isEmpty()) {
-            nextWord.addLast(wordList.poll());
-            if (checkIsFraction(Objects.requireNonNull(nextWord.peekFirst()))) { //rule Alef 2 - fraction rule
-                term += " "+nextWord.pollFirst();
-                nextWord.addFirst(nextWord());
-                if (Objects.equals(nextWord.peekFirst(), "Dollars"))
-                    term += " "+nextWord.pollFirst();
-            } else if (!wordList.isEmpty() && Objects.equals(nextWord.peekFirst(), "U.S")) {
-                nextWord.addFirst(wordList.poll());
-                if (Objects.requireNonNull(nextWord.peekFirst()).equalsIgnoreCase("dollars")) {
-                    nextWord.clear();
-                    double d;
-                    if (Character.isLetter(term.charAt(term.length()-1)))
-                        d = Double.parseDouble(term.substring(0, term.length()-1));
-                    else
-                        d = Double.parseDouble(term);
-                    if (term.charAt(term.length()-1) == 'M')
-                        d *= 1000000;
-                    else if (term.charAt(term.length()-1) == 'B') {
-                        d *= 1000000000;
-                    }
-                    term = handleDollar(d, term.contains(","));
-                }
-            }
         }
         return term;
     }
@@ -289,38 +248,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return term;
     }
 
-    /**
-     * Clear the token from unnecessary delimiters.
-     *
-     * @param token - the token we wish to clean from delimiters.
-     * @return a cleaned form of the token.
-     */
-    public String clearDelimiters(String token) {
-        if (token.startsWith(".") || token.startsWith("'") || token.startsWith(",") || token.startsWith(";") || token.startsWith(":")
-                || token.startsWith("\"") || token.startsWith("?") || token.startsWith("!") || token.startsWith("(") || token.startsWith(")")
-                || token.startsWith("-") || token.startsWith("+") || token.startsWith("`") || token.startsWith("\"") || token.startsWith("#")
-                || token.startsWith("@") || token.startsWith("&") || token.startsWith("{") || token.startsWith("}") || token.startsWith("[")
-                || token.startsWith("]"))
-        {
-            token = token.substring(1);
-            token = clearDelimiters(token);
-        }
-        if (token.endsWith(".") || token.endsWith(",") || token.endsWith("'") || token.endsWith(";") || token.endsWith(":")
-                || token.endsWith("(") || token.endsWith(")") || token.endsWith("?") || token.endsWith("!") || token.endsWith("\"")
-                || token.endsWith("-") || token.endsWith("+") || token.endsWith("`") || token.endsWith("\"") || token.endsWith("#")
-                || token.endsWith("@") || token.endsWith("&") || token.endsWith("{") || token.endsWith("}") || token.endsWith("[")
-                || token.endsWith("]"))
-        {
-            token = token.substring(0, token.length()-1);
-            token = clearDelimiters(token);
-        }
-        if (token.endsWith("'s") || token.endsWith("./") || token.endsWith("'S")) {
-            token = token.substring(0, token.length()-2);
-            token = clearDelimiters(token);
-        }
-        return token;
-    }
-
     private String handleRangesSign(String term) {
         int idx = term.indexOf('-');
         if (idx != -1) {
@@ -339,17 +266,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
                 term = numberValue(Double.parseDouble(term.replace(",", "")) / 1000);
         }
         return term+" Kilograms";
-    }
-
-    private String handleDistance(String term, String unit) {
-        switch(unit) {
-            case "cm":
-                term = numberValue(Double.parseDouble(term.replace(",", "")) / 1000);
-                break;
-            case "m":
-                term = numberValue(Double.parseDouble(term.replace(",", "")) / 100);
-        }
-        return term+" km";
     }
 
     private String handlePercent(String term, String percentSign) {
@@ -532,9 +448,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
         return false;
     }
 
-    private static String[] shortMonth = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    private static String[] longMonth = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-
     private void nextWordsRules() {
         wordsRulesData = new HashMap<String, String>() {{
             put("Thousand", "K");
@@ -580,36 +493,6 @@ public class Parse implements Callable<MiniDictionary>, IParse {
             put("KILOMETER", "km");
             put("KILOMETERS", "km");
             put("KM", "km");
-
-        }};
-    }
-
-    private void initMonthsData() {
-        monthsData = new HashMap<String, String>() {{
-            put("Jan", "01");
-            put("Feb", "02");
-            put("Mar", "03");
-            put("Apr", "04");
-            put("May", "05");
-            put("Jun", "06");
-            put("Jul", "0");
-            put("Aug", "08");
-            put("Sep", "09");
-            put("Oct", "10");
-            put("Nov", "11");
-            put("Dec", "12");
-            put("Sept", "09");
-            put("January", "01");
-            put("February", "02");
-            put("March", "03");
-            put("April", "04");
-            put("June", "06");
-            put("July", "07");
-            put("August", "08");
-            put("September", "09");
-            put("October", "10");
-            put("November", "11");
-            put("December", "12");
         }};
     }
 }

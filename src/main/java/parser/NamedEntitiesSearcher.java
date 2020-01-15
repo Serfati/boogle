@@ -1,11 +1,11 @@
 package parser;
 
-import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+//import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 
 import java.util.Properties;
 
 public class NamedEntitiesSearcher {
-    private static StanfordCoreNLP pipeline;
+    //private static StanfordCoreNLP pipeline;
 
     public NamedEntitiesSearcher() {
         buildPipeLine();
@@ -24,10 +24,10 @@ public class NamedEntitiesSearcher {
         props.setProperty("ner.useSUTime", "true");
         props.setProperty("maxAdditionalKnownLCWords", "0");
         props.setProperty("annotators", "tokenize,ssplit,pos,lemma,ner");
-        pipeline = new StanfordCoreNLP(props);
+        //pipeline = new StanfordCoreNLP(props);
     }
 
-    public StanfordCoreNLP pipeline() {
-        return pipeline;
-    }
+//    public StanfordCoreNLP pipeline() {
+//        return pipeline;
+//    }
 }

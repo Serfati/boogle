@@ -29,21 +29,10 @@ public class ResultDisplay extends RecursiveTreeObject<ResultDisplay> {
         return l;
     }
 
-    public String getSp_queryID() {
-        return sp_queryID.get();
-    }
-
     public StringProperty sp_queryIDProperty() {
         return sp_queryID;
     }
 
-    public String getSp_docNames() {
-        return sp_docNames.get();
-    }
-
-    public StringProperty sp_docNamesProperty() {
-        return sp_docNames;
-    }
 
     public LinkedList<QueryDisplay> getDocNames() {
         return docNames;

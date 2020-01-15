@@ -2106,3 +2106,23 @@
 2020-01-15 16:34:23 INFO  Model:74 - Start Searching
 2020-01-15 16:34:26 INFO  Model:87 - DONE::(2411.0 ms)
 2020-01-15 16:36:14 INFO  Main:30 - Boogle is closing. Used for 2.2728333333333333 m
+2020-01-15 16:47:22 INFO  Main:27 - Boogle launched
+2020-01-15 16:48:20 INFO  Model:44 - Start Parsing and Indexing
+2020-01-15 16:48:20 INFO  Model:132 - Start manager Method :: runnable
+2020-01-15 16:48:20 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
+2020-01-15 16:48:20 INFO  StanfordCoreNLP:88 - Adding annotator ssplit
+2020-01-15 16:48:20 INFO  StanfordCoreNLP:88 - Adding annotator pos
+2020-01-15 16:48:22 INFO  MaxentTagger:88 - Loading POS tagger from edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger ... done [1.2 sec].
+2020-01-15 16:48:22 INFO  StanfordCoreNLP:88 - Adding annotator lemma
+2020-01-15 16:48:22 INFO  StanfordCoreNLP:88 - Adding annotator ner
+2020-01-15 16:48:22 INFO  SeqClassifierFlags:88 - maxAdditionalKnownLCWords=0
+2020-01-15 16:48:22 INFO  SeqClassifierFlags:88 - ner.combinationMode=NORMAL
+2020-01-15 16:48:26 INFO  AbstractSequenceClassifier:88 - Loading classifier from edu/stanford/nlp/models/ner/english.all.3class.distsim.crf.ser.gz ... done [3.5 sec].
+2020-01-15 16:48:26 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
+2020-01-15 16:48:27 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
+2020-01-15 17:05:56 INFO  Model:178 - Start merge Method :: single
+2020-01-15 17:13:13 INFO  Model:67 - PROCESS DONE :: END INDEXING in 24.88 minutes
+2020-01-15 17:14:43 INFO  Main:30 - Boogle is closing. Used for 27.337 m
+2020-01-15 17:36:01 INFO  Main:27 - Boogle launched
+2020-01-15 17:36:39 INFO  Model:44 - Start Parsing and Indexing
+2020-01-15 17:36:39 INFO  Model:132 - Start manager Method :: runnable
