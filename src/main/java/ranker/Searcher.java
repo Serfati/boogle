@@ -89,7 +89,7 @@ public class Searcher implements Callable<LinkedList<String>> {
         LinkedList<String> argsAsLinkedList = new LinkedList<>(Arrays.asList(query.getQueryText().split(" ")));
         if (enableSemantics) queryAfterSem = query.getQueryText()+sh.getTwoBestMatches(argsAsLinkedList);
         CaseInsensitiveMap wordsPosting;
-        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem+" "+query.getQueryDesc()), enableStemming);
+        Parse p = new Parse(new cDocument("", "", "", "", queryAfterSem), enableStemming);
         MiniDictionary md = p.parse(true);
         HashMap<String, Integer> wordsCountInQuery = md.countAppearances(); //count word in the query
         wordsPosting = getPosting(wordsCountInQuery.keySet());
@@ -100,7 +100,6 @@ public class Searcher implements Callable<LinkedList<String>> {
         for(String word : wordsCountInQuery.keySet()) {
             if (!wordsPosting.get(word).equals("")) {
                 String postingLine = wordsPosting.get(word);
-                System.out.println(postingLine);
                 String[] split = postingLine.split("\\|");
                 double docInCorpusCount = Model.documentDictionary.keySet().size();
                 double idf = Math.log10((docInCorpusCount+1) / split.length-1);
@@ -112,12 +111,12 @@ public class Searcher implements Callable<LinkedList<String>> {
                         int tf = Integer.parseInt(splitLine[1]);
                         double BM25 = ranker.BM25Algorithm(word, docName, tf, idf);
                         addToScore(score, docName, BM25);
-                        double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
-                        addToScore(score, docName, TI);
+//                      double TI = ranker.titleAlgorithm(docName, wordsPosting.keySet());
+//                      addToScore(score, docName, TI);
                     }
                 }
             }
-            ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
+//            ranker.containingAlgorithm(score, wordsCountInQuery.keySet());
         }
         return sortByScore(score);
     }

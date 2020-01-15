@@ -12,10 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5a526c18-b9ae-4b27-9de6-d6434c5eb020" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/indexer/InvertedIndex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/indexer/InvertedIndex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/IModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/parser/Parse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/parser/Parse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/Searcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logger.log" afterDir="false" />
     </list>
@@ -295,14 +292,9 @@
       <workItem from="1578991558968" duration="14281000" />
       <workItem from="1579006512550" duration="21857000" />
       <workItem from="1579077486402" duration="20418000" />
-      <workItem from="1579099202497" duration="9295000" />
-    </task>
-    <task id="LOCAL-00003" summary="5.12">
-      <created>1575562927153</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1575562927153</updated>
+      <workItem from="1579099202497" duration="10409000" />
+      <workItem from="1579110934814" duration="254000" />
+      <workItem from="1579111842581" duration="881000" />
     </task>
     <task id="LOCAL-00004" summary="2.12">
       <created>1575971553889</created>
@@ -640,14 +632,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579102992747</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="15.1 way to finish">
+      <created>1579109823272</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1579109823272</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="UpdateCopyrightCheckinHandler">
-    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -663,7 +659,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="SHOW_UNVERSIONED_FILES_WHILE_COMMIT" value="false" />
@@ -686,7 +682,8 @@
     <MESSAGE value="13.1 way to finish" />
     <MESSAGE value="15.1 way to finish finish" />
     <MESSAGE value="14.1 way to finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="14.1 way to finish" />
+    <MESSAGE value="15.1 way to finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="15.1 way to finish" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -756,36 +753,36 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="741" y="422" width="493" height="261" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/65.27.1855.1053@65.27.1855.1053" timestamp="1578389187734" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1579102991834">
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2" timestamp="1579109822038">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="503" y="146" key="CommitChangelistDialog2/65.27.1301.741@65.27.1301.741" timestamp="1576052559931" />
-    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1579102991834" />
+    <state x="689" y="196" width="756" height="616" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1579109822038" />
     <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl" timestamp="1579081809560">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="600" y="226" width="306" height="341" key="FileChooserDialogImpl/65.27.1301.741@65.27.1301.741" timestamp="1575370987679" />
     <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl/65.27.1855.1053@65.27.1855.1053" timestamp="1579081809560" />
-    <state width="1356" height="258" key="GridCell.Tab.0.bottom" timestamp="1579109601557">
+    <state width="1813" height="241" key="GridCell.Tab.0.bottom" timestamp="1579112731154">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.bottom/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1356" height="258" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1579109601557" />
-    <state width="1356" height="258" key="GridCell.Tab.0.center" timestamp="1579109601556">
+    <state width="1813" height="241" key="GridCell.Tab.0.bottom/65.27.1855.1053@65.27.1855.1053" timestamp="1579112731154" />
+    <state width="1813" height="241" key="GridCell.Tab.0.center" timestamp="1579112731154">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.center/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1356" height="258" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1579109601556" />
-    <state width="1356" height="258" key="GridCell.Tab.0.left" timestamp="1579109601556">
+    <state width="1813" height="241" key="GridCell.Tab.0.center/65.27.1855.1053@65.27.1855.1053" timestamp="1579112731154" />
+    <state width="1813" height="241" key="GridCell.Tab.0.left" timestamp="1579112731153">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.left/65.27.1301.741@65.27.1301.741" timestamp="1576052952661" />
-    <state width="1356" height="258" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1579109601556" />
-    <state width="1356" height="258" key="GridCell.Tab.0.right" timestamp="1579109601557">
+    <state width="1813" height="241" key="GridCell.Tab.0.left/65.27.1855.1053@65.27.1855.1053" timestamp="1579112731153" />
+    <state width="1813" height="241" key="GridCell.Tab.0.right" timestamp="1579112731154">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state width="1121" height="121" key="GridCell.Tab.0.right/65.27.1301.741@65.27.1301.741" timestamp="1576052952662" />
-    <state width="1356" height="258" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1579109601557" />
+    <state width="1813" height="241" key="GridCell.Tab.0.right/65.27.1855.1053@65.27.1855.1053" timestamp="1579112731154" />
     <state width="627" height="199" key="GridCell.Tab.1.bottom" timestamp="1579098968090">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -826,11 +823,11 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="578" y="155" width="1024" height="845" key="SettingsEditor/65.27.1855.1053@65.27.1855.1053" timestamp="1579081818026" />
-    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579102995983">
+    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579109827288">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="498" y="205" key="Vcs.Push.Dialog.v2/65.27.1301.741@65.27.1301.741" timestamp="1576052593516" />
-    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1855.1053@65.27.1855.1053" timestamp="1579102995983" />
+    <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2/65.27.1855.1053@65.27.1855.1053" timestamp="1579109827288" />
     <state x="1148" y="299" width="762" height="781" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578434330015">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -853,10 +850,10 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="501" y="599" width="524" height="459" key="extract.method.dialog/65.27.1855.1053@65.27.1855.1053" timestamp="1578433828084" />
-    <state x="422" y="160" width="827" height="756" key="find.popup" timestamp="1579108951971">
+    <state x="422" y="160" width="827" height="756" key="find.popup" timestamp="1579110985271">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="422" y="160" width="827" height="756" key="find.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1579108951971" />
+    <state x="422" y="160" width="827" height="756" key="find.popup/65.27.1855.1053@65.27.1855.1053" timestamp="1579110985271" />
     <state x="409" y="176" width="1157" height="752" key="new project wizard" timestamp="1578391141122">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>

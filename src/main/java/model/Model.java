@@ -511,7 +511,7 @@ public class Model extends Observable implements IModel {
         if (m_results != null) {
             for(String m : queryIDs) {
                 for(String doc : m_results.get(m)) {
-                    String line = m.replace("\n", "")+" 0 "+doc+" 0 0 mt\n";
+                    String line = m.replace("\n", "")+" 5 "+doc+" 19 11.3 mt\n";
                     toWrite.append(line);
                 }
             }
