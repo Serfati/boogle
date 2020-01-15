@@ -42,10 +42,10 @@ public class SearchController implements Observer, Initializable {
     @FXML
     public TabPane tabManager;
     public TableView<QueryDisplay> table_showDocs = new TableView<>();
-    public TableColumn<QueryDisplay, String> tableCol_docs = new TableColumn<>("Docs");
+    public TableColumn<QueryDisplay, String> tableCol_docs = new TableColumn<>("Documents");
 
     public TableView<ResultDisplay> table_showResults = new TableView<>();
-    public TableColumn<ResultDisplay, String> tableCol_query = new TableColumn<>("Query");
+    public TableColumn<ResultDisplay, String> tableCol_query = new TableColumn<>("Query List");
 
     @FXML
     public JFXButton btn_export_pdf;
@@ -74,6 +74,8 @@ public class SearchController implements Observer, Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         LOGGER.log(Level.INFO, "Search Tab Switch");
+        table_showDocs.getColumns().addAll(tableCol_docs);
+        table_showResults.getColumns().addAll(tableCol_query);
     }
 
     /**
@@ -142,38 +144,31 @@ public class SearchController implements Observer, Initializable {
         String fiveIdentities = viewModel.showFiveEntities(docName);
         if (fiveIdentities.equals(""))
             System.out.println("No identities found");
-        lbl_docSpecialWords.setText(fiveIdentities);
-        lbl_docSpecialWords.setVisible(true);
+        else AlertMaker.showSimpleAlert("Top Entities for "+docName, fiveIdentities);
     }
 
     private void showQueryResults() {
         Stage stage = new Stage();
-        tableCol_query.setCellValueFactory(cellData -> cellData.getValue().sp_queryIDProperty());
-        // Simple Interface
-
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(10));
-
-        TableView<ResultDisplay> tableView = new TableView<>();
-        TableColumn<ResultDisplay, String> colQuery = new TableColumn<>("Query");
-
-        colQuery.setCellValueFactory(tf -> tf.getValue().sp_queryIDProperty());
-        tableView.getColumns().addAll(colQuery);
-
-        tableView.setItems(mainResults);
-
-        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (observable != null && tableView.getItems().size() > 0) {
+        tableCol_query.setCellValueFactory(tf -> tf.getValue().sp_queryIDProperty());
+        if (table_showResults.getColumns().size() != 1)
+            table_showResults.getColumns().addAll(tableCol_query);
+        table_showResults.setItems(mainResults);
+        table_showResults.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (observable != null && table_showResults.getItems().size() > 0) {
                 showQueryResult((ObservableValue<ResultDisplay>) observable);
             }
         });
-        root.getChildren().add(tableView);
-        stage.setScene(new Scene(root));
-        stage.setTitle("Query Results");
+        stage.setTitle("Query List");
+        root.getChildren().add(table_showResults);
+        Scene scene = new Scene(root, 212, 350);
+        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        stage.setScene(scene);
+
         stage.show();
     }
-
 
     /**
      * show the docs relevant for each query
@@ -181,27 +176,26 @@ public class SearchController implements Observer, Initializable {
      */
     private void showQueryResult(ObservableValue<ResultDisplay> observable) {
         Stage stage = new Stage();
-        tableCol_query.setCellValueFactory(cellData -> cellData.getValue().sp_queryIDProperty());
-        // Simple Interface
         VBox root = new VBox(10);
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(10));
-        TableView<QueryDisplay> tableView2 = new TableView<>();
-        TableColumn<QueryDisplay, String> colDocuments = new TableColumn<>("Documents");
-        colDocuments.setCellValueFactory(tf -> tf.getValue().sp_docNameProperty());
-        tableView2.getColumns().addAll(colDocuments);
         if (observable != null) {
+            tableCol_docs.setCellValueFactory(tf -> tf.getValue().sp_docNameProperty());
+            if (table_showDocs.getColumns().size() != 1)
+                table_showDocs.getColumns().addAll(tableCol_docs);
             ObservableList<QueryDisplay> observableList = FXCollections.observableList(observable.getValue().getDocNames());
-            colDocuments.setCellValueFactory(cellData -> cellData.getValue().sp_docNameProperty());
-            tableView2.setItems(observableList);
-            tableView2.getSelectionModel().selectedItemProperty().addListener((observable1, oldValue, newValue) -> {
+            tableCol_docs.setCellValueFactory(cellData -> cellData.getValue().sp_docNameProperty());
+            table_showDocs.setItems(observableList);
+            table_showDocs.getSelectionModel().selectedItemProperty().addListener((observable1, oldValue, newValue) -> {
                 if (observable1 != null && newValue != null)
                     showFiveEntities(observable1.getValue().getSp_docName());
             });
         }
-        root.getChildren().add(tableView2);
-        stage.setScene(new Scene(root));
+        root.getChildren().add(table_showDocs);
         stage.setTitle("Query Results");
+        Scene scene = new Scene(root, 212, 350);
+        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        stage.setScene(scene);
         stage.show();
     }
 

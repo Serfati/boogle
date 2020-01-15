@@ -84,9 +84,9 @@
                                                text="Press 'Show Data' to see results "
                                                textAlignment="CENTER" wrapText="true"/>
                                     </placeholder>
-                                    <columns>
-                                        <TableColumn fx:id="tableCol_query" prefWidth="211.0" text="Query"/>
-                                    </columns>
+                                    <!--                                    <columns>-->
+                                    <!--                                        <TableColumn fx:id="tableCol_query" prefWidth="211.0" text="Query"/>-->
+                                    <!--                                    </columns>-->
                                 </TableView>
                                 <TableView fx:id="table_showDocs" layoutX="267.0" layoutY="20.0" prefHeight="350.0"
                                            prefWidth="208.0">
@@ -94,9 +94,9 @@
                                         <Label prefHeight="64.0" prefWidth="206.0" text="Press on a query number "
                                                textAlignment="CENTER" wrapText="true"/>
                                     </placeholder>
-                                    <columns>
-                                        <TableColumn fx:id="tableCol_docs" prefWidth="206.0" text="Document"/>
-                                    </columns>
+                                    <!--                                    <columns>-->
+                                    <!--                                        <TableColumn fx:id="tableCol_docs" prefWidth="206.0" text="Document"/>-->
+                                    <!--                                    </columns>-->
                                 </TableView>
                             </children>
                         </AnchorPane>
