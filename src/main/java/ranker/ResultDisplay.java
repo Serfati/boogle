@@ -1,13 +1,12 @@
 package ranker;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 
-public class ResultDisplay {
+public class ResultDisplay extends RecursiveTreeObject<ResultDisplay> {
 
     String queryID;
     LinkedList<QueryDisplay> docNames;
@@ -23,17 +22,27 @@ public class ResultDisplay {
     }
 
     private LinkedList<QueryDisplay> toQueryResultList(LinkedList<String> docNames) {
-        AtomicReference<LinkedList<QueryDisplay>> l = new AtomicReference<>(docNames.stream().map(QueryDisplay::new).collect(Collectors.toCollection(LinkedList::new)));
-        return l.get();
+        LinkedList<QueryDisplay> l = new LinkedList<>();
+        for(String s : docNames) {
+            l.add(new QueryDisplay(s));
+        }
+        return l;
+    }
+
+    public String getSp_queryID() {
+        return sp_queryID.get();
     }
 
     public StringProperty sp_queryIDProperty() {
         return sp_queryID;
     }
 
+    public String getSp_docNames() {
+        return sp_docNames.get();
+    }
 
-    public String getQueryID() {
-        return queryID;
+    public StringProperty sp_docNamesProperty() {
+        return sp_docNames;
     }
 
     public LinkedList<QueryDisplay> getDocNames() {
@@ -41,7 +50,7 @@ public class ResultDisplay {
     }
 
     //----//
-    public class QueryDisplay {
+    public class QueryDisplay extends RecursiveTreeObject<QueryDisplay> {
         private StringProperty sp_docName;
 
         QueryDisplay(String docName) {

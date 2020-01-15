@@ -2,18 +2,18 @@ package ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -37,27 +37,30 @@ import static ui.UIController.openGoogle;
 public class SearchController implements Observer, Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(SearchController.class.getName());
+
     private static ViewModel viewModel;
+    @FXML
     public TabPane tabManager;
+    public TableView<QueryDisplay> table_showDocs = new TableView<>();
+    public TableColumn<QueryDisplay, String> tableCol_docs = new TableColumn<>("Docs");
 
-    public TableView<QueryDisplay> table_showDocs;
-    public TableColumn<QueryDisplay, String> tableCol_docs;
+    public TableView<ResultDisplay> table_showResults = new TableView<>();
+    public TableColumn<ResultDisplay, String> tableCol_query = new TableColumn<>("Query");
 
-    public TableView<ResultDisplay> table_showResults;
-    public TableColumn<ResultDisplay, String> tableCol_query;
-
+    @FXML
     public JFXButton btn_export_pdf;
     public JFXButton btn_boogle_search;
     public JFXTextField google_txt;
     public JFXCheckBox stem_checkbox;
-    public JFXSpinner progressSpinner;
     public JFXCheckBox offline_checkbox;
     public JFXTextField DONE_txt;
     public JFXTextField queryField_txt;
     public JFXTextField corpusField_txt;
     public JFXCheckBox semantic_checkbox;
     public JFXButton btn_show_data;
-    ObservableList<ResultDisplay> recordsToPDF;
+    public ObservableList<ResultDisplay> recordsToPDF;
+    public Label lbl_docSpecialWords;
+    public ObservableList<ResultDisplay> mainResults;
 
     /**
      * constructor of view, connect the view to the viewModel
@@ -123,8 +126,10 @@ public class SearchController implements Observer, Initializable {
     public void update(Observable o, Object arg) {
         if (o == viewModel && arg instanceof ObservableList) { // a show dictionary operation was finished and can be shown on display
             List l = (ObservableList) arg;
-            if (!l.isEmpty() && l.get(0) instanceof ResultDisplay)
-                showQueryResults((ObservableList<ResultDisplay>) l);
+            if (!l.isEmpty() && l.get(0) instanceof ResultDisplay) {
+                mainResults = (ObservableList<ResultDisplay>) l;
+                showQueryResults();
+            }
         }
     }
 
@@ -137,37 +142,67 @@ public class SearchController implements Observer, Initializable {
         String fiveIdentities = viewModel.showFiveEntities(docName);
         if (fiveIdentities.equals(""))
             System.out.println("No identities found");
+        lbl_docSpecialWords.setText(fiveIdentities);
+        lbl_docSpecialWords.setVisible(true);
     }
 
-    /**
-     * show the query number that were searched
-     *
-     * @param results query numbers
-     */
-    private void showQueryResults(ObservableList<ResultDisplay> results) {
-        System.out.println("size of result is "+results.size());
+    private void showQueryResults() {
+        Stage stage = new Stage();
         tableCol_query.setCellValueFactory(cellData -> cellData.getValue().sp_queryIDProperty());
-        table_showResults.setItems(results);
-            table_showResults.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                if (observable != null && table_showResults.getItems().size() > 0)
-                    showQueryResult((ObservableValue<ResultDisplay>) observable);
-            });
+        // Simple Interface
+
+        VBox root = new VBox(10);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(10));
+
+        TableView<ResultDisplay> tableView = new TableView<>();
+        TableColumn<ResultDisplay, String> colQuery = new TableColumn<>("Query");
+
+        colQuery.setCellValueFactory(tf -> tf.getValue().sp_queryIDProperty());
+        tableView.getColumns().addAll(colQuery);
+
+        tableView.setItems(mainResults);
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (observable != null && tableView.getItems().size() > 0) {
+                showQueryResult((ObservableValue<ResultDisplay>) observable);
+            }
+        });
+        root.getChildren().add(tableView);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Query Results");
+        stage.show();
     }
+
 
     /**
      * show the docs relevant for each query
      * @param observable the
      */
     private void showQueryResult(ObservableValue<ResultDisplay> observable) {
+        Stage stage = new Stage();
+        tableCol_query.setCellValueFactory(cellData -> cellData.getValue().sp_queryIDProperty());
+        // Simple Interface
+        VBox root = new VBox(10);
+        root.setAlignment(Pos.CENTER);
+        root.setPadding(new Insets(10));
+        TableView<QueryDisplay> tableView2 = new TableView<>();
+        TableColumn<QueryDisplay, String> colDocuments = new TableColumn<>("Documents");
+        colDocuments.setCellValueFactory(tf -> tf.getValue().sp_docNameProperty());
+        tableView2.getColumns().addAll(colDocuments);
         if (observable != null) {
             ObservableList<QueryDisplay> observableList = FXCollections.observableList(observable.getValue().getDocNames());
-            tableCol_docs.setCellValueFactory(cellData -> cellData.getValue().sp_docNameProperty());
-            table_showDocs.setItems(observableList);
-            table_showDocs.getSelectionModel().selectedItemProperty().addListener((observable1, oldValue, newValue) -> {
+            colDocuments.setCellValueFactory(cellData -> cellData.getValue().sp_docNameProperty());
+            tableView2.setItems(observableList);
+            tableView2.getSelectionModel().selectedItemProperty().addListener((observable1, oldValue, newValue) -> {
                 if (observable1 != null && newValue != null)
                     showFiveEntities(observable1.getValue().getSp_docName());
             });
         }
+        root.getChildren().add(tableView2);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Query Results");
+        stage.show();
     }
 
     @FXML

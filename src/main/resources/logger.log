@@ -1728,3 +1728,292 @@
 2020-01-14 20:49:08 INFO  Main:27 - Boogle launched
 2020-01-14 20:49:11 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 20:50:07 INFO  Main:30 - Boogle is closing. Used for 0.9807666666666667 m
+2020-01-14 20:53:25 INFO  Main:27 - Boogle launched
+2020-01-14 20:53:32 INFO  UIController:414 - Loaded::Out
+2020-01-14 20:53:38 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 20:53:42 INFO  Model:74 - Start Searching
+2020-01-14 20:53:44 INFO  Model:87 - DONE::(2638.0 ms)
+2020-01-14 20:54:39 INFO  Main:27 - Boogle launched
+2020-01-14 20:54:46 INFO  UIController:414 - Loaded::Out
+2020-01-14 20:54:52 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 20:54:57 INFO  Model:74 - Start Searching
+2020-01-14 20:54:58 INFO  Model:87 - DONE::(1699.0 ms)
+2020-01-14 20:55:22 INFO  Main:30 - Boogle is closing. Used for 0.7197333333333333 m
+2020-01-14 21:10:48 INFO  Main:27 - Boogle launched
+2020-01-14 21:10:54 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:10:59 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:11:05 INFO  Model:74 - Start Searching
+2020-01-14 21:11:07 INFO  Model:87 - DONE::(2398.0 ms)
+2020-01-14 21:12:20 INFO  Main:27 - Boogle launched
+2020-01-14 21:13:02 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:13:05 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:13:10 INFO  Model:74 - Start Searching
+2020-01-14 21:13:13 INFO  Model:87 - DONE::(2567.0 ms)
+2020-01-14 21:13:30 INFO  Main:30 - Boogle is closing. Used for 1.1671166666666666 m
+2020-01-14 21:13:49 INFO  Main:27 - Boogle launched
+2020-01-14 21:14:43 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:14:47 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:14:51 INFO  Model:74 - Start Searching
+2020-01-14 21:14:54 INFO  Model:87 - DONE::(2548.0 ms)
+2020-01-14 21:23:33 INFO  Main:27 - Boogle launched
+2020-01-14 21:23:41 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:23:45 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:23:50 INFO  Model:74 - Start Searching
+2020-01-14 21:23:52 INFO  Model:87 - DONE::(2353.0 ms)
+2020-01-14 21:24:36 INFO  Main:27 - Boogle launched
+2020-01-14 21:24:46 INFO  UIController:414 - Loaded::QA
+2020-01-14 21:24:51 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:24:54 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:25:00 INFO  Model:74 - Start Searching
+2020-01-14 21:25:03 INFO  Model:87 - DONE::(2615.0 ms)
+2020-01-14 21:25:22 INFO  Main:30 - Boogle is closing. Used for 0.77015 m
+2020-01-14 21:34:30 INFO  Main:27 - Boogle launched
+2020-01-14 21:35:17 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:35:34 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:39:36 INFO  Main:27 - Boogle launched
+2020-01-14 21:39:43 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:39:48 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:39:54 INFO  Model:74 - Start Searching
+2020-01-14 21:39:56 INFO  Model:87 - DONE::(2423.0 ms)
+2020-01-14 21:42:37 INFO  Main:30 - Boogle is closing. Used for 3.0215666666666667 m
+2020-01-14 21:45:08 INFO  Main:27 - Boogle launched
+2020-01-14 21:45:15 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:45:19 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:45:56 INFO  Main:27 - Boogle launched
+2020-01-14 21:46:02 INFO  UIController:414 - Loaded::Out
+2020-01-14 21:46:06 INFO  SearchController:73 - Search Tab Switch
+2020-01-14 21:46:16 INFO  Model:74 - Start Searching
+2020-01-14 21:46:18 INFO  Model:87 - DONE::(2453.0 ms)
+2020-01-14 21:47:13 INFO  Main:30 - Boogle is closing. Used for 1.2839166666666666 m
+2020-01-15 10:42:29 INFO  Main:27 - Boogle launched
+2020-01-15 10:42:37 INFO  UIController:414 - Loaded::Out
+2020-01-15 10:42:42 INFO  SearchController:72 - Search Tab Switch
+2020-01-15 10:42:49 INFO  Model:74 - Start Searching
+2020-01-15 10:42:54 INFO  Model:87 - DONE::(4954.0 ms)
+2020-01-15 11:04:28 INFO  Main:27 - Boogle launched
+2020-01-15 11:04:34 INFO  UIController:414 - Loaded::Out
+2020-01-15 11:04:39 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 11:04:44 INFO  Model:74 - Start Searching
+2020-01-15 11:04:47 INFO  Model:87 - DONE::(2599.0 ms)
+2020-01-15 11:18:16 INFO  Main:27 - Boogle launched
+2020-01-15 11:18:19 INFO  SearchController:69 - Search Tab Switch
+2020-01-15 11:18:44 INFO  Main:30 - Boogle is closing. Used for 0.4676 m
+2020-01-15 11:27:18 INFO  Main:27 - Boogle launched
+2020-01-15 11:27:23 INFO  SearchController:68 - Search Tab Switch
+2020-01-15 11:27:30 INFO  UIController:414 - Loaded::Out
+2020-01-15 11:27:36 INFO  SearchController:68 - Search Tab Switch
+2020-01-15 11:27:46 INFO  Model:74 - Start Searching
+2020-01-15 11:27:49 INFO  Model:87 - DONE::(2427.0 ms)
+2020-01-15 11:28:54 INFO  Main:27 - Boogle launched
+2020-01-15 11:29:27 INFO  Main:27 - Boogle launched
+2020-01-15 11:29:35 INFO  UIController:414 - Loaded::Out
+2020-01-15 11:29:40 INFO  SearchController:68 - Search Tab Switch
+2020-01-15 11:29:49 INFO  Model:74 - Start Searching
+2020-01-15 11:29:51 INFO  Model:87 - DONE::(2367.0 ms)
+2020-01-15 11:30:18 INFO  Main:30 - Boogle is closing. Used for 0.8421833333333333 m
+2020-01-15 11:38:11 INFO  Main:27 - Boogle launched
+2020-01-15 11:38:18 INFO  UIController:414 - Loaded::Out
+2020-01-15 11:38:22 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 11:38:28 INFO  Model:74 - Start Searching
+2020-01-15 11:38:31 INFO  Model:87 - DONE::(2517.0 ms)
+2020-01-15 11:56:15 INFO  Main:27 - Boogle launched
+2020-01-15 11:56:21 INFO  UIController:413 - Loaded::Out
+2020-01-15 11:56:26 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 11:56:33 INFO  Model:74 - Start Searching
+2020-01-15 11:56:36 INFO  Model:87 - DONE::(2854.0 ms)
+2020-01-15 11:57:44 INFO  Main:27 - Boogle launched
+2020-01-15 11:57:55 INFO  UIController:413 - Loaded::Out
+2020-01-15 11:58:00 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 11:58:06 INFO  Model:74 - Start Searching
+2020-01-15 11:58:09 INFO  Model:87 - DONE::(2572.0 ms)
+2020-01-15 11:58:23 INFO  Main:30 - Boogle is closing. Used for 0.65425 m
+2020-01-15 11:59:22 INFO  Main:27 - Boogle launched
+2020-01-15 11:59:30 INFO  UIController:413 - Loaded::Out
+2020-01-15 11:59:36 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 11:59:42 INFO  Model:74 - Start Searching
+2020-01-15 11:59:44 INFO  Model:87 - DONE::(2675.0 ms)
+2020-01-15 12:00:06 INFO  Main:30 - Boogle is closing. Used for 0.7262666666666666 m
+2020-01-15 12:23:09 INFO  Main:27 - Boogle launched
+2020-01-15 12:23:17 INFO  UIController:411 - Loaded::Out
+2020-01-15 12:23:50 INFO  Main:27 - Boogle launched
+2020-01-15 12:23:58 INFO  UIController:411 - Loaded::Out
+2020-01-15 12:24:03 INFO  SearchController:75 - Search Tab Switch
+2020-01-15 12:24:08 INFO  Model:74 - Start Searching
+2020-01-15 12:24:11 INFO  Model:87 - DONE::(2460.0 ms)
+2020-01-15 12:24:26 INFO  Main:30 - Boogle is closing. Used for 0.5873833333333334 m
+2020-01-15 12:36:10 INFO  Main:27 - Boogle launched
+2020-01-15 12:36:20 INFO  UIController:411 - Loaded::Out
+2020-01-15 12:36:25 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 12:36:31 INFO  Model:74 - Start Searching
+2020-01-15 12:36:34 INFO  Model:87 - DONE::(2555.0 ms)
+2020-01-15 12:42:46 INFO  Main:27 - Boogle launched
+2020-01-15 12:42:56 INFO  UIController:411 - Loaded::Out
+2020-01-15 12:42:59 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 12:43:04 INFO  Model:74 - Start Searching
+2020-01-15 12:43:06 INFO  Model:87 - DONE::(2526.0 ms)
+2020-01-15 12:53:21 INFO  Main:27 - Boogle launched
+2020-01-15 12:53:27 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 12:55:06 INFO  Main:27 - Boogle launched
+2020-01-15 12:55:09 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 12:55:47 INFO  Main:27 - Boogle launched
+2020-01-15 12:55:51 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 12:56:12 INFO  Main:30 - Boogle is closing. Used for 0.4049 m
+2020-01-15 12:59:46 INFO  Main:27 - Boogle launched
+2020-01-15 12:59:53 INFO  Main:27 - Boogle launched
+2020-01-15 12:59:59 INFO  UIController:411 - Loaded::Out
+2020-01-15 13:00:06 INFO  SearchController:67 - Search Tab Switch
+2020-01-15 13:00:11 INFO  Model:74 - Start Searching
+2020-01-15 13:00:13 INFO  Model:87 - DONE::(2476.0 ms)
+2020-01-15 13:12:14 INFO  Main:27 - Boogle launched
+2020-01-15 13:12:26 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:12:34 INFO  Main:30 - Boogle is closing. Used for 0.3258 m
+2020-01-15 13:12:57 INFO  Main:27 - Boogle launched
+2020-01-15 13:13:05 INFO  UIController:412 - Loaded::Out
+2020-01-15 13:13:08 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 13:51:54 INFO  Main:27 - Boogle launched
+2020-01-15 13:51:58 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 13:52:08 INFO  Main:30 - Boogle is closing. Used for 0.2314 m
+2020-01-15 13:52:58 INFO  Main:27 - Boogle launched
+2020-01-15 13:53:02 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 13:53:09 INFO  Main:30 - Boogle is closing. Used for 0.18511666666666668 m
+2020-01-15 13:55:16 INFO  Main:27 - Boogle launched
+2020-01-15 13:55:20 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 13:55:26 INFO  Main:30 - Boogle is closing. Used for 0.16208333333333333 m
+2020-01-15 14:01:52 INFO  Main:27 - Boogle launched
+2020-01-15 14:01:56 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:08:07 INFO  Main:27 - Boogle launched
+2020-01-15 14:08:14 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:08:21 INFO  SearchController:70 - Search Tab Switch
+2020-01-15 14:08:36 INFO  Model:74 - Start Searching
+2020-01-15 14:08:39 INFO  Model:87 - DONE::(2779.0 ms)
+2020-01-15 14:12:53 INFO  Main:27 - Boogle launched
+2020-01-15 14:13:00 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:13:05 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:13:10 INFO  Model:74 - Start Searching
+2020-01-15 14:13:12 INFO  Model:87 - DONE::(2695.0 ms)
+2020-01-15 14:14:02 INFO  Main:27 - Boogle launched
+2020-01-15 14:14:08 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:14:11 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:14:16 INFO  Model:74 - Start Searching
+2020-01-15 14:14:19 INFO  Model:87 - DONE::(2648.0 ms)
+2020-01-15 14:14:42 INFO  Main:30 - Boogle is closing. Used for 0.6607166666666666 m
+2020-01-15 14:18:37 INFO  Main:27 - Boogle launched
+2020-01-15 14:18:44 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:18:48 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:18:54 INFO  Model:74 - Start Searching
+2020-01-15 14:18:57 INFO  Model:87 - DONE::(2435.0 ms)
+2020-01-15 14:19:22 INFO  Main:30 - Boogle is closing. Used for 0.7534666666666666 m
+2020-01-15 14:28:38 INFO  Main:27 - Boogle launched
+2020-01-15 14:28:45 INFO  SearchController:72 - Search Tab Switch
+2020-01-15 14:33:39 INFO  Main:27 - Boogle launched
+2020-01-15 14:33:47 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:33:56 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 14:34:00 INFO  Model:74 - Start Searching
+2020-01-15 14:34:02 INFO  Model:87 - DONE::(1853.0 ms)
+2020-01-15 14:38:59 INFO  Main:27 - Boogle launched
+2020-01-15 14:39:07 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:39:11 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 14:39:16 INFO  Model:74 - Start Searching
+2020-01-15 14:39:19 INFO  Model:87 - DONE::(2588.0 ms)
+2020-01-15 14:41:20 INFO  Main:27 - Boogle launched
+2020-01-15 14:41:25 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 14:41:34 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:41:38 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 14:41:42 INFO  Model:74 - Start Searching
+2020-01-15 14:41:44 INFO  Model:87 - DONE::(2328.0 ms)
+2020-01-15 14:41:56 INFO  Main:30 - Boogle is closing. Used for 0.6103333333333333 m
+2020-01-15 14:43:51 INFO  Main:27 - Boogle launched
+2020-01-15 14:44:01 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:44:06 INFO  SearchController:73 - Search Tab Switch
+2020-01-15 14:44:16 INFO  Model:74 - Start Searching
+2020-01-15 14:44:19 INFO  Model:87 - DONE::(2563.0 ms)
+2020-01-15 14:45:35 INFO  Main:27 - Boogle launched
+2020-01-15 14:45:42 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:45:46 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:45:50 INFO  Model:74 - Start Searching
+2020-01-15 14:45:53 INFO  Model:87 - DONE::(2804.0 ms)
+2020-01-15 14:46:38 INFO  Main:27 - Boogle launched
+2020-01-15 14:46:43 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:46:51 INFO  Model:74 - Start Searching
+2020-01-15 14:46:51 ERROR Model:81 - Boogle failed
+2020-01-15 14:46:51 INFO  Model:87 - DONE::(130.0 ms)
+2020-01-15 14:47:18 INFO  Main:27 - Boogle launched
+2020-01-15 14:47:25 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:47:29 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:47:38 INFO  Model:74 - Start Searching
+2020-01-15 14:47:40 INFO  Model:87 - DONE::(1806.0 ms)
+2020-01-15 14:48:10 INFO  Main:30 - Boogle is closing. Used for 0.8698166666666667 m
+2020-01-15 14:51:31 INFO  Main:27 - Boogle launched
+2020-01-15 14:51:40 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:51:43 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:51:48 INFO  Model:74 - Start Searching
+2020-01-15 14:51:51 INFO  Model:87 - DONE::(2442.0 ms)
+2020-01-15 14:52:08 INFO  Main:30 - Boogle is closing. Used for 0.6230333333333333 m
+2020-01-15 14:57:33 INFO  Main:27 - Boogle launched
+2020-01-15 14:57:47 INFO  UIController:412 - Loaded::Out
+2020-01-15 14:57:52 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:58:01 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 14:58:06 INFO  Model:74 - Start Searching
+2020-01-15 14:58:08 INFO  Model:87 - DONE::(2483.0 ms)
+2020-01-15 15:03:15 INFO  Main:27 - Boogle launched
+2020-01-15 15:03:24 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:03:27 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:03:32 INFO  Model:74 - Start Searching
+2020-01-15 15:03:34 INFO  Model:87 - DONE::(1766.0 ms)
+2020-01-15 15:15:20 INFO  Main:27 - Boogle launched
+2020-01-15 15:15:30 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:15:36 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:15:42 INFO  Model:74 - Start Searching
+2020-01-15 15:15:45 INFO  Model:87 - DONE::(2595.0 ms)
+2020-01-15 15:17:25 INFO  Main:27 - Boogle launched
+2020-01-15 15:17:29 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:17:53 INFO  Main:27 - Boogle launched
+2020-01-15 15:17:57 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:18:44 INFO  Main:27 - Boogle launched
+2020-01-15 15:18:50 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:19:10 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:19:15 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:19:19 INFO  Model:74 - Start Searching
+2020-01-15 15:19:22 INFO  Model:87 - DONE::(2384.0 ms)
+2020-01-15 15:20:35 INFO  Main:27 - Boogle launched
+2020-01-15 15:20:40 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:21:16 INFO  Main:27 - Boogle launched
+2020-01-15 15:21:20 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:21:29 INFO  Main:30 - Boogle is closing. Used for 0.21268333333333334 m
+2020-01-15 15:22:03 INFO  Main:27 - Boogle launched
+2020-01-15 15:22:12 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:22:16 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:22:26 INFO  Model:74 - Start Searching
+2020-01-15 15:22:28 INFO  Model:87 - DONE::(2599.0 ms)
+2020-01-15 15:24:09 INFO  Main:27 - Boogle launched
+2020-01-15 15:24:18 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:24:22 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:24:27 INFO  Model:74 - Start Searching
+2020-01-15 15:24:29 INFO  Model:87 - DONE::(2293.0 ms)
+2020-01-15 15:24:56 INFO  Main:27 - Boogle launched
+2020-01-15 15:25:21 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:25:24 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:25:29 INFO  Model:74 - Start Searching
+2020-01-15 15:25:31 INFO  Model:87 - DONE::(2387.0 ms)
+2020-01-15 15:25:57 INFO  Main:27 - Boogle launched
+2020-01-15 15:26:37 INFO  Main:27 - Boogle launched
+2020-01-15 15:26:41 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:26:49 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:26:52 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:26:56 INFO  Model:74 - Start Searching
+2020-01-15 15:26:58 INFO  Model:87 - DONE::(2412.0 ms)
+2020-01-15 15:27:53 INFO  Main:27 - Boogle launched
+2020-01-15 15:28:05 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:28:09 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:28:15 INFO  Model:74 - Start Searching
+2020-01-15 15:28:17 INFO  Model:87 - DONE::(2424.0 ms)
+2020-01-15 15:28:32 INFO  Main:30 - Boogle is closing. Used for 0.6610333333333334 m
+2020-01-15 15:32:05 INFO  Main:27 - Boogle launched
+2020-01-15 15:32:11 INFO  UIController:412 - Loaded::Out
+2020-01-15 15:32:15 INFO  SearchController:71 - Search Tab Switch
+2020-01-15 15:32:19 INFO  Model:74 - Start Searching
+2020-01-15 15:32:22 INFO  Model:87 - DONE::(2432.0 ms)

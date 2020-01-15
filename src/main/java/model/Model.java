@@ -461,6 +461,7 @@ public class Model extends Observable implements IModel {
      * @param results the result
      */
     private ObservableList<ResultDisplay> resultsToObservableList(HashMap<String, LinkedList<String>> results) {
+        if (results == null) return null;
         ObservableList<ResultDisplay> observableResult = FXCollections.observableArrayList();
         for(Map.Entry<String, LinkedList<String>> entry : results.entrySet()) {
             String queryID = entry.getKey();

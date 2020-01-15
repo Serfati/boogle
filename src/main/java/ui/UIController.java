@@ -37,6 +37,7 @@ import java.util.*;
 
 public class UIController implements IView, Observer, Initializable {
     private final static Logger LOGGER = LogManager.getLogger(UIController.class.getName());
+
     @FXML
     public ImageView saveIcon;
     public ImageView boogleLogo;
@@ -126,10 +127,6 @@ public class UIController implements IView, Observer, Initializable {
         else {
             viewModel.onStartClick(txtfld_corpus_location.getText(), txtfld_output_location.getText(), checkbox_use_stemming.isSelected()); //transfer to the view Model
         }
-    }
-
-    public String get_output_location() {
-        return txtfld_output_location.getText();
     }
 
     private void setGenerateIndexClick(ImageView icon) {
@@ -330,8 +327,8 @@ public class UIController implements IView, Observer, Initializable {
                     if (toUpdate[1].substring(0, toUpdate[1].indexOf(" ")).equals("Dictionary"))
                         btn_show_dictionary.setDisable(false);
                 }
-            } else if (arg instanceof ObservableList) {
-                ObservableList l = (ObservableList) arg;
+            } else if (arg instanceof ObservableList) { // a show dictionary operation was finished and can be shown on display
+                List l = (ObservableList) arg;
                 if (!l.isEmpty() && l.get(0) instanceof InvertedIndex.ShowDictionaryRecord)
                     showDictionary((ObservableList<InvertedIndex.ShowDictionaryRecord>) arg);
             } else if (arg instanceof double[]) {
