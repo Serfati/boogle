@@ -254,125 +254,125 @@
 2020-01-06 23:59:16 INFO  Model:40 - Start Parsing and Indexing
 2020-01-06 23:59:16 INFO  Model:69 - Start manager Method :: runnable
 2020-01-06 23:59:16 ERROR Model:55 - Indexing failed
-2020-01-07 00:02:44 INFO  Main:28 - Boogle launched on 20-01-07 at 00:02
-2020-01-07 00:03:16 INFO  Main:28 - Boogle launched on 20-01-07 at 00:03
+2020-01-07 00:02:44 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:02
+2020-01-07 00:03:16 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:03
 2020-01-07 00:04:02 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:04:02 INFO  Model:70 - Start manager Method :: runnable
 2020-01-07 00:04:02 ERROR Model:55 - Indexing failed
-2020-01-07 00:06:50 INFO  Main:28 - Boogle launched on 20-01-07 at 00:06
+2020-01-07 00:06:50 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:06
 2020-01-07 00:07:03 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:07:03 INFO  Model:70 - Start manager Method :: runnable
-2020-01-07 00:08:45 INFO  Main:28 - Boogle launched on 20-01-07 at 00:08
+2020-01-07 00:08:45 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:08
 2020-01-07 00:08:58 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:08:58 INFO  Model:70 - Start manager Method :: runnable
-2020-01-07 00:11:08 INFO  Main:28 - Boogle launched on 20-01-07 at 00:11
+2020-01-07 00:11:08 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:11
 2020-01-07 00:11:15 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:11:15 INFO  Model:70 - Start manager Method :: runnable
-2020-01-07 00:13:04 INFO  Main:28 - Boogle launched on 20-01-07 at 00:13
-2020-01-07 00:13:21 INFO  Main:28 - Boogle launched on 20-01-07 at 00:13
+2020-01-07 00:13:04 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:13
+2020-01-07 00:13:21 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:13
 2020-01-07 00:13:29 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:13:29 INFO  Model:70 - Start manager Method :: runnable
-2020-01-07 00:14:20 INFO  Main:28 - Boogle launched on 20-01-07 at 00:14
+2020-01-07 00:14:20 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:14
 2020-01-07 00:14:29 INFO  Model:40 - Start Parsing and Indexing
 2020-01-07 00:14:29 INFO  Model:70 - Start manager Method :: runnable
-2020-01-07 00:30:18 INFO  Main:28 - Boogle launched on 20-01-07 at 00:30
-2020-01-07 00:31:23 INFO  Main:28 - Boogle launched on 20-01-07 at 00:31
-2020-01-07 00:33:47 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:31. Used for 2.4071666666666665 m
-2020-01-07 00:34:28 INFO  Main:28 - Boogle launched on 20-01-07 at 00:34
+2020-01-07 00:30:18 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:30
+2020-01-07 00:31:23 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:31
+2020-01-07 00:33:47 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 00:31. Used for 2.4071666666666665 m
+2020-01-07 00:34:28 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:34
 2020-01-07 00:35:04 INFO  UIController:401 - loadFile::
-2020-01-07 00:37:00 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:34. Used for 2.52125 m
-2020-01-07 00:38:36 INFO  Main:28 - Boogle launched on 20-01-07 at 00:38
-2020-01-07 00:38:42 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:38. Used for 0.09891666666666667 m
-2020-01-07 00:39:08 INFO  Main:28 - Boogle launched on 20-01-07 at 00:39
-2020-01-07 00:45:04 INFO  Main:28 - Boogle launched on 20-01-07 at 00:45
-2020-01-07 00:45:08 INFO  Main:31 - Boogle is closing on 20-01-07 at 00:45. Used for 0.0761 m
-2020-01-07 00:45:48 INFO  Main:28 - Boogle launched on 20-01-07 at 00:45
-2020-01-07 00:46:21 INFO  Main:28 - Boogle launched on 20-01-07 at 00:46
-2020-01-07 00:46:47 INFO  Main:28 - Boogle launched on 20-01-07 at 00:46
-2020-01-07 00:47:15 INFO  Main:28 - Boogle launched on 20-01-07 at 00:47
+2020-01-07 00:37:00 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 00:34. Used for 2.52125 m
+2020-01-07 00:38:36 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:38
+2020-01-07 00:38:42 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 00:38. Used for 0.09891666666666667 m
+2020-01-07 00:39:08 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:39
+2020-01-07 00:45:04 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:45
+2020-01-07 00:45:08 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 00:45. Used for 0.0761 m
+2020-01-07 00:45:48 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:45
+2020-01-07 00:46:21 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:46
+2020-01-07 00:46:47 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:46
+2020-01-07 00:47:15 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:47
 2020-01-07 00:47:20 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:47:20 INFO  Model:71 - Start manager Method :: runnable
-2020-01-07 00:49:20 INFO  Main:28 - Boogle launched on 20-01-07 at 00:49
-2020-01-07 00:49:37 INFO  Main:28 - Boogle launched on 20-01-07 at 00:49
+2020-01-07 00:49:20 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:49
+2020-01-07 00:49:37 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:49
 2020-01-07 00:49:45 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:49:45 INFO  Model:71 - Start manager Method :: runnable
-2020-01-07 00:53:40 INFO  Main:28 - Boogle launched on 20-01-07 at 00:53
+2020-01-07 00:53:40 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:53
 2020-01-07 00:54:52 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:54:52 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 00:54:58 ERROR Model:56 - Indexing failed
-2020-01-07 00:56:00 INFO  Main:28 - Boogle launched on 20-01-07 at 00:56
+2020-01-07 00:56:00 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:56
 2020-01-07 00:56:14 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:56:14 INFO  Model:71 - Start manager Method :: runnable
-2020-01-07 00:58:31 INFO  Main:28 - Boogle launched on 20-01-07 at 00:58
+2020-01-07 00:58:31 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 00:58
 2020-01-07 00:58:52 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 00:58:52 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 00:58:59 ERROR Model:56 - Indexing failed
-2020-01-07 01:00:16 INFO  Main:28 - Boogle launched on 20-01-07 at 01:00
+2020-01-07 01:00:16 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:00
 2020-01-07 01:00:23 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:00:23 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 01:00:29 ERROR Model:56 - Indexing failed
-2020-01-07 01:00:48 INFO  Main:28 - Boogle launched on 20-01-07 at 01:00
+2020-01-07 01:00:48 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:00
 2020-01-07 01:00:57 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:00:57 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 01:01:04 ERROR Model:56 - Indexing failed
-2020-01-07 01:03:32 INFO  Main:28 - Boogle launched on 20-01-07 at 01:03
+2020-01-07 01:03:32 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:03
 2020-01-07 01:03:39 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:03:39 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 01:03:44 ERROR Model:56 - Indexing failed
-2020-01-07 01:08:23 INFO  Main:28 - Boogle launched on 20-01-07 at 01:08
-2020-01-07 01:08:52 INFO  Main:28 - Boogle launched on 20-01-07 at 01:08
+2020-01-07 01:08:23 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:08
+2020-01-07 01:08:52 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:08
 2020-01-07 01:09:00 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:09:05 INFO  Model:72 - Start manager Method :: runnable
 2020-01-07 01:09:07 ERROR Model:57 - Indexing failed
-2020-01-07 01:10:48 INFO  Main:28 - Boogle launched on 20-01-07 at 01:10
+2020-01-07 01:10:48 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 01:10
 2020-01-07 01:11:21 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 01:11:21 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 01:25:54 INFO  Model:81 - mainLogicUnit Method :: DONE HALF WAY
 2020-01-07 01:39:51 INFO  Model:115 - Start merge Method :: single
 2020-01-07 01:41:09 INFO  Model:64 - PROCESS DONE :: END INDEXING in 29.8 minutes
-2020-01-07 09:57:25 INFO  Main:31 - Boogle is closing on 20-01-07 at 01:10. Used for 526.6101333333334 m
-2020-01-07 09:58:27 INFO  Main:28 - Boogle launched on 20-01-07 at 09:58
+2020-01-07 09:57:25 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 01:10. Used for 526.6101333333334 m
+2020-01-07 09:58:27 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 09:58
 2020-01-07 09:58:49 INFO  UIController:396 - loadFile::
 2020-01-07 09:58:56 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:04:48 INFO  Main:28 - Boogle launched on 20-01-07 at 10:04
+2020-01-07 10:04:48 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:04
 2020-01-07 10:04:52 INFO  UIController:396 - loadFile::
 2020-01-07 10:04:57 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:06:17 INFO  Main:28 - Boogle launched on 20-01-07 at 10:06
+2020-01-07 10:06:17 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:06
 2020-01-07 10:06:20 INFO  UIController:396 - loadFile::
 2020-01-07 10:06:24 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:07:51 INFO  Main:28 - Boogle launched on 20-01-07 at 10:07
+2020-01-07 10:07:51 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:07
 2020-01-07 10:07:55 INFO  UIController:396 - loadFile::
 2020-01-07 10:08:00 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:09:24 INFO  Main:28 - Boogle launched on 20-01-07 at 10:09
+2020-01-07 10:09:24 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:09
 2020-01-07 10:09:28 INFO  UIController:396 - loadFile::
 2020-01-07 10:09:28 INFO  UIController:396 - loadFile::
 2020-01-07 10:09:32 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:18:23 INFO  Main:28 - Boogle launched on 20-01-07 at 10:18
+2020-01-07 10:18:23 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:18
 2020-01-07 10:18:27 INFO  UIController:396 - loadFile::
 2020-01-07 10:18:30 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:18:56 INFO  Main:28 - Boogle launched on 20-01-07 at 10:18
+2020-01-07 10:18:56 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:18
 2020-01-07 10:18:59 INFO  UIController:396 - loadFile::
 2020-01-07 10:19:05 INFO  UIController:404 - Loaded::Out
-2020-01-07 10:20:08 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:18. Used for 1.1867166666666666 m
-2020-01-07 10:22:22 INFO  Main:28 - Boogle launched on 20-01-07 at 10:22
+2020-01-07 10:20:08 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 10:18. Used for 1.1867166666666666 m
+2020-01-07 10:22:22 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:22
 2020-01-07 10:23:15 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 10:23:15 INFO  Model:71 - Start manager Method :: runnable
-2020-01-07 10:30:03 INFO  Main:28 - Boogle launched on 20-01-07 at 10:30
+2020-01-07 10:30:03 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:30
 2020-01-07 10:30:10 INFO  Model:41 - Start Parsing and Indexing
 2020-01-07 10:30:10 INFO  Model:71 - Start manager Method :: runnable
 2020-01-07 10:32:39 INFO  Model:81 - mainLogicUnit Method :: DONE HALF WAY
 2020-01-07 10:34:54 INFO  Model:115 - Start merge Method :: single
 2020-01-07 10:35:46 INFO  Model:64 - PROCESS DONE :: END INDEXING in 5.61 minutes
-2020-01-07 10:36:46 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:30. Used for 6.72375 m
-2020-01-07 10:39:27 INFO  Main:28 - Boogle launched on 20-01-07 at 10:39
-2020-01-07 10:40:09 INFO  Main:28 - Boogle launched on 20-01-07 at 10:40
-2020-01-07 10:40:20 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.19291666666666665 m
-2020-01-07 10:40:56 INFO  Main:28 - Boogle launched on 20-01-07 at 10:40
-2020-01-07 10:41:55 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.9723833333333334 m
-2020-01-07 10:58:23 INFO  Main:28 - Boogle launched on 20-01-07 at 10:58
-2020-01-07 10:59:06 INFO  Main:31 - Boogle is closing on 20-01-07 at 10:58. Used for 0.7138666666666666 m
-2020-01-07 11:10:24 INFO  Main:28 - Boogle launched on 20-01-07 at 11:10
-2020-01-07 11:11:06 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:10. Used for 0.6927833333333333 m
+2020-01-07 10:36:46 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 10:30. Used for 6.72375 m
+2020-01-07 10:39:27 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:39
+2020-01-07 10:40:09 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:40
+2020-01-07 10:40:20 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.19291666666666665 m
+2020-01-07 10:40:56 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:40
+2020-01-07 10:41:55 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 10:40. Used for 0.9723833333333334 m
+2020-01-07 10:58:23 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 10:58
+2020-01-07 10:59:06 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 10:58. Used for 0.7138666666666666 m
+2020-01-07 11:10:24 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 11:10
+2020-01-07 11:11:06 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 11:10. Used for 0.6927833333333333 m
 2020-01-07 11:41:16 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-07 11:41:17 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-07 11:41:17 INFO  Reflections:229 - Reflections took 155 ms to scan 12 urls, producing 29 keys and 176 values 
@@ -383,72 +383,72 @@
 2020-01-07 11:42:13 INFO  Reflections:229 - Reflections took 167 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-07 11:42:22 INFO  Reflections:229 - Reflections took 157 ms to scan 12 urls, producing 368 keys and 1424 values 
 2020-01-07 11:42:22 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
-2020-01-07 11:42:39 INFO  Main:28 - Boogle launched on 20-01-07 at 11:42
-2020-01-07 11:43:14 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:42. Used for 0.5791333333333334 m
-2020-01-07 11:43:23 INFO  Main:28 - Boogle launched on 20-01-07 at 11:43
-2020-01-07 11:43:27 INFO  Main:31 - Boogle is closing on 20-01-07 at 11:43. Used for 0.07838333333333333 m
-2020-01-07 11:46:36 INFO  Main:28 - Boogle launched
-2020-01-07 11:46:43 INFO  Main:31 - Boogle is closing. Used for 0.13145 m
-2020-01-07 11:53:38 INFO  Main:26 - Boogle launched
-2020-01-07 11:54:40 INFO  Main:29 - Boogle is closing. Used for 1.0239666666666667 m
-2020-01-07 12:52:48 INFO  Main:26 - Boogle launched
-2020-01-07 12:54:57 INFO  Main:26 - Boogle launched
-2020-01-07 12:55:17 INFO  Main:29 - Boogle is closing. Used for 0.32725 m
-2020-01-07 12:56:18 INFO  Main:26 - Boogle launched
-2020-01-07 12:59:09 INFO  Main:26 - Boogle launched
-2020-01-07 12:59:42 INFO  Main:29 - Boogle is closing. Used for 0.5459333333333334 m
-2020-01-07 13:04:16 INFO  Main:26 - Boogle launched
-2020-01-07 13:07:34 INFO  Main:26 - Boogle launched
-2020-01-07 13:08:21 INFO  Main:26 - Boogle launched
-2020-01-07 13:08:41 INFO  Main:29 - Boogle is closing. Used for 0.3425 m
-2020-01-07 13:10:40 INFO  Main:26 - Boogle launched
-2020-01-07 13:10:49 INFO  Main:29 - Boogle is closing. Used for 0.14976666666666666 m
-2020-01-07 13:11:03 INFO  Main:26 - Boogle launched
-2020-01-07 13:11:26 INFO  Main:29 - Boogle is closing. Used for 0.36888333333333334 m
-2020-01-07 13:12:41 INFO  Main:26 - Boogle launched
-2020-01-07 13:12:59 INFO  Main:29 - Boogle is closing. Used for 0.30073333333333335 m
-2020-01-07 13:13:48 INFO  Main:26 - Boogle launched
-2020-01-07 13:13:54 INFO  Main:29 - Boogle is closing. Used for 0.09943333333333333 m
-2020-01-07 13:14:01 INFO  Main:26 - Boogle launched
-2020-01-07 13:14:18 INFO  Main:29 - Boogle is closing. Used for 0.28135 m
-2020-01-07 13:16:26 INFO  Main:26 - Boogle launched
-2020-01-07 13:16:51 INFO  Main:29 - Boogle is closing. Used for 0.41041666666666665 m
-2020-01-07 13:17:13 INFO  Main:26 - Boogle launched
-2020-01-07 13:17:27 INFO  Main:29 - Boogle is closing. Used for 0.2229 m
-2020-01-07 13:17:49 INFO  Main:26 - Boogle launched
-2020-01-07 13:18:21 INFO  Main:29 - Boogle is closing. Used for 0.5388 m
-2020-01-07 13:19:58 INFO  Main:26 - Boogle launched
-2020-01-07 13:20:06 INFO  Main:29 - Boogle is closing. Used for 0.13608333333333333 m
-2020-01-07 13:21:00 INFO  Main:26 - Boogle launched
-2020-01-07 13:22:15 INFO  Main:29 - Boogle is closing. Used for 1.2589166666666667 m
-2020-01-07 17:56:56 INFO  Main:26 - Boogle launched
-2020-01-07 18:00:10 INFO  Main:29 - Boogle is closing. Used for 3.2352666666666665 m
-2020-01-07 18:08:19 INFO  Main:26 - Boogle launched
-2020-01-07 18:10:51 INFO  Main:29 - Boogle is closing. Used for 2.5233166666666667 m
-2020-01-08 11:56:35 INFO  Main:26 - Boogle launched
-2020-01-08 11:58:15 INFO  Main:29 - Boogle is closing. Used for 1.6671333333333334 m
-2020-01-08 12:02:25 INFO  Main:26 - Boogle launched
-2020-01-08 12:03:09 INFO  Main:26 - Boogle launched
-2020-01-08 12:04:20 INFO  Main:29 - Boogle is closing. Used for 1.1809 m
-2020-01-08 12:04:41 INFO  Main:26 - Boogle launched
-2020-01-08 12:05:50 INFO  Main:26 - Boogle launched
-2020-01-08 12:06:32 INFO  Main:26 - Boogle launched
-2020-01-08 12:06:48 INFO  Main:29 - Boogle is closing. Used for 0.27126666666666666 m
-2020-01-08 12:08:58 INFO  Main:26 - Boogle launched
-2020-01-08 12:11:03 INFO  Main:29 - Boogle is closing. Used for 2.0718833333333335 m
-2020-01-08 13:09:37 INFO  Main:26 - Boogle launched
-2020-01-08 13:09:49 INFO  Main:29 - Boogle is closing. Used for 0.195 m
-2020-01-08 13:10:28 INFO  Main:26 - Boogle launched
-2020-01-08 13:10:47 INFO  Main:29 - Boogle is closing. Used for 0.32671666666666666 m
-2020-01-08 13:11:02 INFO  Main:26 - Boogle launched
-2020-01-08 13:11:33 INFO  Main:29 - Boogle is closing. Used for 0.5134166666666666 m
-2020-01-08 15:11:02 INFO  Main:26 - Boogle launched
-2020-01-08 19:34:06 INFO  Main:26 - Boogle launched
-2020-01-08 19:38:28 INFO  Main:29 - Boogle is closing. Used for 4.3583 m
-2020-01-08 19:39:29 INFO  Main:26 - Boogle launched
-2020-01-08 19:40:08 INFO  Main:29 - Boogle is closing. Used for 0.6502833333333333 m
-2020-01-09 11:18:03 INFO  Main:26 - Boogle launched
-2020-01-09 11:18:50 INFO  Main:29 - Boogle is closing. Used for 0.7904333333333333 m
+2020-01-07 11:42:39 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 11:42
+2020-01-07 11:43:14 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 11:42. Used for 0.5791333333333334 m
+2020-01-07 11:43:23 INFO  ui.Main:28 - Boogle launched on 20-01-07 at 11:43
+2020-01-07 11:43:27 INFO  ui.Main:31 - Boogle is closing on 20-01-07 at 11:43. Used for 0.07838333333333333 m
+2020-01-07 11:46:36 INFO  ui.Main:28 - Boogle launched
+2020-01-07 11:46:43 INFO  ui.Main:31 - Boogle is closing. Used for 0.13145 m
+2020-01-07 11:53:38 INFO  ui.Main:26 - Boogle launched
+2020-01-07 11:54:40 INFO  ui.Main:29 - Boogle is closing. Used for 1.0239666666666667 m
+2020-01-07 12:52:48 INFO  ui.Main:26 - Boogle launched
+2020-01-07 12:54:57 INFO  ui.Main:26 - Boogle launched
+2020-01-07 12:55:17 INFO  ui.Main:29 - Boogle is closing. Used for 0.32725 m
+2020-01-07 12:56:18 INFO  ui.Main:26 - Boogle launched
+2020-01-07 12:59:09 INFO  ui.Main:26 - Boogle launched
+2020-01-07 12:59:42 INFO  ui.Main:29 - Boogle is closing. Used for 0.5459333333333334 m
+2020-01-07 13:04:16 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:07:34 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:08:21 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:08:41 INFO  ui.Main:29 - Boogle is closing. Used for 0.3425 m
+2020-01-07 13:10:40 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:10:49 INFO  ui.Main:29 - Boogle is closing. Used for 0.14976666666666666 m
+2020-01-07 13:11:03 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:11:26 INFO  ui.Main:29 - Boogle is closing. Used for 0.36888333333333334 m
+2020-01-07 13:12:41 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:12:59 INFO  ui.Main:29 - Boogle is closing. Used for 0.30073333333333335 m
+2020-01-07 13:13:48 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:13:54 INFO  ui.Main:29 - Boogle is closing. Used for 0.09943333333333333 m
+2020-01-07 13:14:01 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:14:18 INFO  ui.Main:29 - Boogle is closing. Used for 0.28135 m
+2020-01-07 13:16:26 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:16:51 INFO  ui.Main:29 - Boogle is closing. Used for 0.41041666666666665 m
+2020-01-07 13:17:13 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:17:27 INFO  ui.Main:29 - Boogle is closing. Used for 0.2229 m
+2020-01-07 13:17:49 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:18:21 INFO  ui.Main:29 - Boogle is closing. Used for 0.5388 m
+2020-01-07 13:19:58 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:20:06 INFO  ui.Main:29 - Boogle is closing. Used for 0.13608333333333333 m
+2020-01-07 13:21:00 INFO  ui.Main:26 - Boogle launched
+2020-01-07 13:22:15 INFO  ui.Main:29 - Boogle is closing. Used for 1.2589166666666667 m
+2020-01-07 17:56:56 INFO  ui.Main:26 - Boogle launched
+2020-01-07 18:00:10 INFO  ui.Main:29 - Boogle is closing. Used for 3.2352666666666665 m
+2020-01-07 18:08:19 INFO  ui.Main:26 - Boogle launched
+2020-01-07 18:10:51 INFO  ui.Main:29 - Boogle is closing. Used for 2.5233166666666667 m
+2020-01-08 11:56:35 INFO  ui.Main:26 - Boogle launched
+2020-01-08 11:58:15 INFO  ui.Main:29 - Boogle is closing. Used for 1.6671333333333334 m
+2020-01-08 12:02:25 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:03:09 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:04:20 INFO  ui.Main:29 - Boogle is closing. Used for 1.1809 m
+2020-01-08 12:04:41 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:05:50 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:06:32 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:06:48 INFO  ui.Main:29 - Boogle is closing. Used for 0.27126666666666666 m
+2020-01-08 12:08:58 INFO  ui.Main:26 - Boogle launched
+2020-01-08 12:11:03 INFO  ui.Main:29 - Boogle is closing. Used for 2.0718833333333335 m
+2020-01-08 13:09:37 INFO  ui.Main:26 - Boogle launched
+2020-01-08 13:09:49 INFO  ui.Main:29 - Boogle is closing. Used for 0.195 m
+2020-01-08 13:10:28 INFO  ui.Main:26 - Boogle launched
+2020-01-08 13:10:47 INFO  ui.Main:29 - Boogle is closing. Used for 0.32671666666666666 m
+2020-01-08 13:11:02 INFO  ui.Main:26 - Boogle launched
+2020-01-08 13:11:33 INFO  ui.Main:29 - Boogle is closing. Used for 0.5134166666666666 m
+2020-01-08 15:11:02 INFO  ui.Main:26 - Boogle launched
+2020-01-08 19:34:06 INFO  ui.Main:26 - Boogle launched
+2020-01-08 19:38:28 INFO  ui.Main:29 - Boogle is closing. Used for 4.3583 m
+2020-01-08 19:39:29 INFO  ui.Main:26 - Boogle launched
+2020-01-08 19:40:08 INFO  ui.Main:29 - Boogle is closing. Used for 0.6502833333333333 m
+2020-01-09 11:18:03 INFO  ui.Main:26 - Boogle launched
+2020-01-09 11:18:50 INFO  ui.Main:29 - Boogle is closing. Used for 0.7904333333333333 m
 2020-01-09 11:20:10 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 11:20:11 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 11:20:11 INFO  Reflections:229 - Reflections took 206 ms to scan 12 urls, producing 29 keys and 176 values 
@@ -462,9 +462,9 @@
 2020-01-09 12:01:25 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 12:01:25 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 12:01:25 INFO  Reflections:229 - Reflections took 173 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-09 12:01:34 INFO  Main:26 - Boogle launched
-2020-01-09 12:02:41 INFO  Main:26 - Boogle launched
-2020-01-09 12:03:58 INFO  Main:29 - Boogle is closing. Used for 1.2837166666666666 m
+2020-01-09 12:01:34 INFO  ui.Main:26 - Boogle launched
+2020-01-09 12:02:41 INFO  ui.Main:26 - Boogle launched
+2020-01-09 12:03:58 INFO  ui.Main:29 - Boogle is closing. Used for 1.2837166666666666 m
 2020-01-09 12:39:35 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 12:39:35 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 12:39:35 INFO  Reflections:229 - Reflections took 184 ms to scan 12 urls, producing 29 keys and 176 values 
@@ -473,10 +473,10 @@
 2020-01-09 12:52:34 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 12:52:34 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 12:52:34 INFO  Reflections:229 - Reflections took 150 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-09 12:52:39 INFO  Main:26 - Boogle launched
+2020-01-09 12:52:39 INFO  ui.Main:26 - Boogle launched
 2020-01-09 12:52:45 INFO  Reflections:229 - Reflections took 207 ms to scan 12 urls, producing 368 keys and 1424 values 
 2020-01-09 12:52:45 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
-2020-01-09 12:56:06 INFO  Main:29 - Boogle is closing. Used for 3.4441 m
+2020-01-09 12:56:06 INFO  ui.Main:29 - Boogle is closing. Used for 3.4441 m
 2020-01-09 13:17:06 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 13:17:06 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 13:17:07 INFO  Reflections:229 - Reflections took 144 ms to scan 12 urls, producing 29 keys and 176 values 
@@ -493,8 +493,8 @@
 2020-01-09 15:22:12 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 15:22:13 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 15:22:13 INFO  Reflections:229 - Reflections took 167 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-09 15:22:24 INFO  Main:26 - Boogle launched
-2020-01-09 15:23:38 INFO  Main:29 - Boogle is closing. Used for 1.2337333333333333 m
+2020-01-09 15:22:24 INFO  ui.Main:26 - Boogle launched
+2020-01-09 15:23:38 INFO  ui.Main:29 - Boogle is closing. Used for 1.2337333333333333 m
 2020-01-09 15:31:04 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-09 15:31:04 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-09 15:31:04 INFO  Reflections:229 - Reflections took 149 ms to scan 12 urls, producing 29 keys and 176 values 
@@ -518,194 +518,194 @@
 2020-01-09 15:46:14 INFO  Reflections:229 - Reflections took 153 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-09 15:46:23 INFO  Reflections:229 - Reflections took 149 ms to scan 12 urls, producing 368 keys and 1424 values 
 2020-01-09 15:46:24 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
-2020-01-09 15:53:59 INFO  Main:26 - Boogle launched
-2020-01-09 17:32:38 INFO  Main:29 - Boogle is closing. Used for 98.64698333333334 m
-2020-01-12 12:11:32 INFO  Main:26 - Boogle launched
-2020-01-12 12:11:59 INFO  Main:29 - Boogle is closing. Used for 0.44665 m
-2020-01-12 12:18:22 INFO  Main:26 - Boogle launched
-2020-01-12 12:19:42 INFO  Main:26 - Boogle launched
-2020-01-12 12:23:27 INFO  Main:26 - Boogle launched
-2020-01-12 12:24:10 INFO  Main:26 - Boogle launched
-2020-01-12 12:43:44 INFO  Main:29 - Boogle is closing. Used for 19.566766666666666 m
-2020-01-12 12:48:57 INFO  Main:26 - Boogle launched
-2020-01-12 12:49:27 INFO  Main:29 - Boogle is closing. Used for 0.5056333333333334 m
-2020-01-12 12:50:05 INFO  Main:26 - Boogle launched
-2020-01-12 12:50:30 INFO  Main:29 - Boogle is closing. Used for 0.40835 m
-2020-01-12 12:51:09 INFO  Main:26 - Boogle launched
-2020-01-12 12:51:26 INFO  Main:29 - Boogle is closing. Used for 0.28723333333333334 m
-2020-01-12 12:52:10 INFO  Main:26 - Boogle launched
-2020-01-12 12:55:54 INFO  Main:26 - Boogle launched
-2020-01-12 12:56:23 INFO  Main:29 - Boogle is closing. Used for 0.4783833333333333 m
-2020-01-12 12:57:32 INFO  Main:26 - Boogle launched
-2020-01-12 12:58:20 INFO  Main:29 - Boogle is closing. Used for 0.8009166666666667 m
-2020-01-12 14:27:17 INFO  Main:27 - Boogle launched
-2020-01-12 14:27:35 INFO  Main:27 - Boogle launched
-2020-01-12 14:28:18 INFO  Main:27 - Boogle launched
+2020-01-09 15:53:59 INFO  ui.Main:26 - Boogle launched
+2020-01-09 17:32:38 INFO  ui.Main:29 - Boogle is closing. Used for 98.64698333333334 m
+2020-01-12 12:11:32 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:11:59 INFO  ui.Main:29 - Boogle is closing. Used for 0.44665 m
+2020-01-12 12:18:22 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:19:42 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:23:27 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:24:10 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:43:44 INFO  ui.Main:29 - Boogle is closing. Used for 19.566766666666666 m
+2020-01-12 12:48:57 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:49:27 INFO  ui.Main:29 - Boogle is closing. Used for 0.5056333333333334 m
+2020-01-12 12:50:05 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:50:30 INFO  ui.Main:29 - Boogle is closing. Used for 0.40835 m
+2020-01-12 12:51:09 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:51:26 INFO  ui.Main:29 - Boogle is closing. Used for 0.28723333333333334 m
+2020-01-12 12:52:10 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:55:54 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:56:23 INFO  ui.Main:29 - Boogle is closing. Used for 0.4783833333333333 m
+2020-01-12 12:57:32 INFO  ui.Main:26 - Boogle launched
+2020-01-12 12:58:20 INFO  ui.Main:29 - Boogle is closing. Used for 0.8009166666666667 m
+2020-01-12 14:27:17 INFO  ui.Main:27 - Boogle launched
+2020-01-12 14:27:35 INFO  ui.Main:27 - Boogle launched
+2020-01-12 14:28:18 INFO  ui.Main:27 - Boogle launched
 2020-01-12 14:28:22 INFO  SearchController:79 - Boogle Search page opened.
-2020-01-12 14:30:01 INFO  Main:30 - Boogle is closing. Used for 1.7139 m
-2020-01-12 23:47:08 INFO  Main:27 - Boogle launched
+2020-01-12 14:30:01 INFO  ui.Main:30 - Boogle is closing. Used for 1.7139 m
+2020-01-12 23:47:08 INFO  ui.Main:27 - Boogle launched
 2020-01-12 23:47:15 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-12 23:47:23 INFO  Main:30 - Boogle is closing. Used for 0.24723333333333333 m
-2020-01-12 23:50:08 INFO  Main:27 - Boogle launched
-2020-01-12 23:50:16 INFO  Main:30 - Boogle is closing. Used for 0.133 m
-2020-01-12 23:50:41 INFO  Main:27 - Boogle launched
-2020-01-12 23:50:48 INFO  Main:30 - Boogle is closing. Used for 0.11976666666666666 m
-2020-01-12 23:50:54 INFO  Main:27 - Boogle launched
+2020-01-12 23:47:23 INFO  ui.Main:30 - Boogle is closing. Used for 0.24723333333333333 m
+2020-01-12 23:50:08 INFO  ui.Main:27 - Boogle launched
+2020-01-12 23:50:16 INFO  ui.Main:30 - Boogle is closing. Used for 0.133 m
+2020-01-12 23:50:41 INFO  ui.Main:27 - Boogle launched
+2020-01-12 23:50:48 INFO  ui.Main:30 - Boogle is closing. Used for 0.11976666666666666 m
+2020-01-12 23:50:54 INFO  ui.Main:27 - Boogle launched
 2020-01-12 23:50:57 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-12 23:52:25 INFO  Main:27 - Boogle launched
+2020-01-12 23:52:25 INFO  ui.Main:27 - Boogle launched
 2020-01-12 23:52:35 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-12 23:52:49 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-12 23:53:17 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-13 00:27:21 INFO  Main:27 - Boogle launched
+2020-01-13 00:27:21 INFO  ui.Main:27 - Boogle launched
 2020-01-13 00:27:50 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-13 00:29:33 INFO  Main:30 - Boogle is closing. Used for 2.2054 m
-2020-01-13 00:50:26 INFO  Main:27 - Boogle launched
-2020-01-13 00:51:43 INFO  Main:27 - Boogle launched
-2020-01-13 00:53:22 INFO  Main:27 - Boogle launched
-2020-01-13 00:53:58 INFO  Main:27 - Boogle launched
-2020-01-13 00:54:33 INFO  Main:27 - Boogle launched
-2020-01-13 00:54:57 INFO  Main:27 - Boogle launched
-2020-01-13 00:59:43 INFO  Main:27 - Boogle launched
-2020-01-13 01:05:02 INFO  Main:27 - Boogle launched
-2020-01-13 01:05:22 INFO  Main:30 - Boogle is closing. Used for 0.33036666666666664 m
-2020-01-13 01:07:08 INFO  Main:27 - Boogle launched
-2020-01-13 01:07:18 INFO  Main:30 - Boogle is closing. Used for 0.17235 m
-2020-01-13 01:07:34 INFO  Main:27 - Boogle launched
-2020-01-13 01:07:49 INFO  Main:30 - Boogle is closing. Used for 0.2557333333333333 m
-2020-01-13 01:09:05 INFO  Main:27 - Boogle launched
-2020-01-13 01:09:32 INFO  Main:30 - Boogle is closing. Used for 0.4399166666666667 m
-2020-01-13 01:10:24 INFO  Main:27 - Boogle launched
-2020-01-13 01:10:37 INFO  Main:30 - Boogle is closing. Used for 0.21105 m
-2020-01-13 01:10:42 INFO  Main:27 - Boogle launched
-2020-01-13 01:11:55 INFO  Main:30 - Boogle is closing. Used for 1.2287333333333332 m
-2020-01-13 01:16:48 INFO  Main:27 - Boogle launched
-2020-01-13 01:17:23 INFO  Main:30 - Boogle is closing. Used for 0.5847166666666667 m
-2020-01-13 10:21:09 INFO  Main:27 - Boogle launched
+2020-01-13 00:29:33 INFO  ui.Main:30 - Boogle is closing. Used for 2.2054 m
+2020-01-13 00:50:26 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:51:43 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:53:22 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:53:58 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:54:33 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:54:57 INFO  ui.Main:27 - Boogle launched
+2020-01-13 00:59:43 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:05:02 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:05:22 INFO  ui.Main:30 - Boogle is closing. Used for 0.33036666666666664 m
+2020-01-13 01:07:08 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:07:18 INFO  ui.Main:30 - Boogle is closing. Used for 0.17235 m
+2020-01-13 01:07:34 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:07:49 INFO  ui.Main:30 - Boogle is closing. Used for 0.2557333333333333 m
+2020-01-13 01:09:05 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:09:32 INFO  ui.Main:30 - Boogle is closing. Used for 0.4399166666666667 m
+2020-01-13 01:10:24 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:10:37 INFO  ui.Main:30 - Boogle is closing. Used for 0.21105 m
+2020-01-13 01:10:42 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:11:55 INFO  ui.Main:30 - Boogle is closing. Used for 1.2287333333333332 m
+2020-01-13 01:16:48 INFO  ui.Main:27 - Boogle launched
+2020-01-13 01:17:23 INFO  ui.Main:30 - Boogle is closing. Used for 0.5847166666666667 m
+2020-01-13 10:21:09 INFO  ui.Main:27 - Boogle launched
 2020-01-13 10:21:30 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-13 10:22:23 INFO  Main:30 - Boogle is closing. Used for 1.2291666666666667 m
-2020-01-13 14:54:03 INFO  Main:27 - Boogle launched
-2020-01-13 14:54:27 INFO  Main:30 - Boogle is closing. Used for 0.396 m
-2020-01-13 15:03:18 INFO  Main:27 - Boogle launched
+2020-01-13 10:22:23 INFO  ui.Main:30 - Boogle is closing. Used for 1.2291666666666667 m
+2020-01-13 14:54:03 INFO  ui.Main:27 - Boogle launched
+2020-01-13 14:54:27 INFO  ui.Main:30 - Boogle is closing. Used for 0.396 m
+2020-01-13 15:03:18 INFO  ui.Main:27 - Boogle launched
 2020-01-13 15:03:31 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-13 15:09:48 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-13 15:10:21 INFO  Main:27 - Boogle launched
+2020-01-13 15:10:21 INFO  ui.Main:27 - Boogle launched
 2020-01-13 15:10:29 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-13 16:12:26 INFO  Main:27 - Boogle launched
-2020-01-13 16:14:44 INFO  Main:30 - Boogle is closing. Used for 2.29725 m
-2020-01-13 16:37:15 INFO  Main:27 - Boogle launched
+2020-01-13 16:12:26 INFO  ui.Main:27 - Boogle launched
+2020-01-13 16:14:44 INFO  ui.Main:30 - Boogle is closing. Used for 2.29725 m
+2020-01-13 16:37:15 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:37:21 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:40:03 INFO  Main:27 - Boogle launched
+2020-01-13 16:40:03 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:40:06 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:40:20 INFO  Main:30 - Boogle is closing. Used for 0.28041666666666665 m
-2020-01-13 16:41:14 INFO  Main:27 - Boogle launched
+2020-01-13 16:40:20 INFO  ui.Main:30 - Boogle is closing. Used for 0.28041666666666665 m
+2020-01-13 16:41:14 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:41:17 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:41:39 INFO  Main:30 - Boogle is closing. Used for 0.40795 m
-2020-01-13 16:43:05 INFO  Main:27 - Boogle launched
+2020-01-13 16:41:39 INFO  ui.Main:30 - Boogle is closing. Used for 0.40795 m
+2020-01-13 16:43:05 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:43:08 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:43:22 INFO  Main:30 - Boogle is closing. Used for 0.28933333333333333 m
-2020-01-13 16:44:08 INFO  Main:27 - Boogle launched
+2020-01-13 16:43:22 INFO  ui.Main:30 - Boogle is closing. Used for 0.28933333333333333 m
+2020-01-13 16:44:08 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:44:11 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:47:30 INFO  Main:27 - Boogle launched
+2020-01-13 16:47:30 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:47:33 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:47:40 INFO  Main:30 - Boogle is closing. Used for 0.17058333333333334 m
-2020-01-13 16:47:49 INFO  Main:27 - Boogle launched
+2020-01-13 16:47:40 INFO  ui.Main:30 - Boogle is closing. Used for 0.17058333333333334 m
+2020-01-13 16:47:49 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:47:53 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:48:01 INFO  Main:30 - Boogle is closing. Used for 0.2041 m
-2020-01-13 16:48:24 INFO  Main:27 - Boogle launched
+2020-01-13 16:48:01 INFO  ui.Main:30 - Boogle is closing. Used for 0.2041 m
+2020-01-13 16:48:24 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:48:27 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:48:34 INFO  Main:30 - Boogle is closing. Used for 0.16295 m
-2020-01-13 16:49:45 INFO  Main:27 - Boogle launched
+2020-01-13 16:48:34 INFO  ui.Main:30 - Boogle is closing. Used for 0.16295 m
+2020-01-13 16:49:45 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:49:48 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:49:58 INFO  Main:30 - Boogle is closing. Used for 0.21081666666666668 m
-2020-01-13 16:50:05 INFO  Main:27 - Boogle launched
+2020-01-13 16:49:58 INFO  ui.Main:30 - Boogle is closing. Used for 0.21081666666666668 m
+2020-01-13 16:50:05 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:50:09 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:50:53 INFO  Main:27 - Boogle launched
+2020-01-13 16:50:53 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:50:57 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 16:52:09 INFO  Main:27 - Boogle launched
+2020-01-13 16:52:09 INFO  ui.Main:27 - Boogle launched
 2020-01-13 16:52:12 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:07:37 INFO  Main:27 - Boogle launched
+2020-01-13 17:07:37 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:10:18 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:10:25 INFO  Main:30 - Boogle is closing. Used for 2.8025166666666665 m
-2020-01-13 17:11:34 INFO  Main:27 - Boogle launched
+2020-01-13 17:10:25 INFO  ui.Main:30 - Boogle is closing. Used for 2.8025166666666665 m
+2020-01-13 17:11:34 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:11:38 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:12:01 INFO  Main:30 - Boogle is closing. Used for 0.4542 m
-2020-01-13 17:16:14 INFO  Main:27 - Boogle launched
+2020-01-13 17:12:01 INFO  ui.Main:30 - Boogle is closing. Used for 0.4542 m
+2020-01-13 17:16:14 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:16:17 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:16:24 INFO  Main:30 - Boogle is closing. Used for 0.16631666666666667 m
-2020-01-13 17:16:56 INFO  Main:27 - Boogle launched
+2020-01-13 17:16:24 INFO  ui.Main:30 - Boogle is closing. Used for 0.16631666666666667 m
+2020-01-13 17:16:56 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:16:58 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:17:57 INFO  Main:30 - Boogle is closing. Used for 1.0274 m
-2020-01-13 17:18:35 INFO  Main:27 - Boogle launched
+2020-01-13 17:17:57 INFO  ui.Main:30 - Boogle is closing. Used for 1.0274 m
+2020-01-13 17:18:35 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:18:38 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:18:46 INFO  Main:30 - Boogle is closing. Used for 0.18563333333333334 m
-2020-01-13 17:19:28 INFO  Main:27 - Boogle launched
+2020-01-13 17:18:46 INFO  ui.Main:30 - Boogle is closing. Used for 0.18563333333333334 m
+2020-01-13 17:19:28 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:19:31 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:20:06 INFO  Main:30 - Boogle is closing. Used for 0.6338666666666667 m
-2020-01-13 17:21:21 INFO  Main:27 - Boogle launched
+2020-01-13 17:20:06 INFO  ui.Main:30 - Boogle is closing. Used for 0.6338666666666667 m
+2020-01-13 17:21:21 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:21:25 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:22:01 INFO  Main:27 - Boogle launched
+2020-01-13 17:22:01 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:22:04 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:22:13 INFO  Main:30 - Boogle is closing. Used for 0.20223333333333332 m
-2020-01-13 17:23:09 INFO  Main:27 - Boogle launched
+2020-01-13 17:22:13 INFO  ui.Main:30 - Boogle is closing. Used for 0.20223333333333332 m
+2020-01-13 17:23:09 INFO  ui.Main:27 - Boogle launched
 2020-01-13 17:23:12 INFO  SearchController:76 - Boogle Search page opened.
-2020-01-13 17:23:34 INFO  Main:30 - Boogle is closing. Used for 0.4179333333333333 m
-2020-01-13 18:11:58 INFO  Main:27 - Boogle launched
+2020-01-13 17:23:34 INFO  ui.Main:30 - Boogle is closing. Used for 0.4179333333333333 m
+2020-01-13 18:11:58 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:12:02 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 18:12:51 INFO  Main:30 - Boogle is closing. Used for 0.88435 m
-2020-01-13 18:23:12 INFO  Main:27 - Boogle launched
+2020-01-13 18:12:51 INFO  ui.Main:30 - Boogle is closing. Used for 0.88435 m
+2020-01-13 18:23:12 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:23:16 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 18:23:32 INFO  Main:30 - Boogle is closing. Used for 0.3379 m
-2020-01-13 18:23:48 INFO  Main:27 - Boogle launched
+2020-01-13 18:23:32 INFO  ui.Main:30 - Boogle is closing. Used for 0.3379 m
+2020-01-13 18:23:48 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:23:53 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 18:24:05 INFO  Main:30 - Boogle is closing. Used for 0.2721 m
-2020-01-13 18:24:29 INFO  Main:27 - Boogle launched
+2020-01-13 18:24:05 INFO  ui.Main:30 - Boogle is closing. Used for 0.2721 m
+2020-01-13 18:24:29 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:24:33 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 18:24:43 INFO  Main:30 - Boogle is closing. Used for 0.24145 m
-2020-01-13 18:24:50 INFO  Main:27 - Boogle launched
+2020-01-13 18:24:43 INFO  ui.Main:30 - Boogle is closing. Used for 0.24145 m
+2020-01-13 18:24:50 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:24:53 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 18:25:27 INFO  Main:30 - Boogle is closing. Used for 0.6077333333333333 m
-2020-01-13 18:54:15 INFO  Main:27 - Boogle launched
+2020-01-13 18:25:27 INFO  ui.Main:30 - Boogle is closing. Used for 0.6077333333333333 m
+2020-01-13 18:54:15 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:54:19 INFO  SearchController:82 - Boogle Search page opened.
-2020-01-13 18:55:15 INFO  Main:27 - Boogle launched
+2020-01-13 18:55:15 INFO  ui.Main:27 - Boogle launched
 2020-01-13 18:55:19 INFO  SearchController:82 - Boogle Search page opened.
 2020-01-13 19:56:21 INFO  SearchController:82 - Boogle Search page opened.
-2020-01-13 19:57:02 INFO  Main:30 - Boogle is closing. Used for 61.775816666666664 m
-2020-01-13 21:15:43 INFO  Main:27 - Boogle launched
-2020-01-13 21:19:01 INFO  Main:27 - Boogle launched
+2020-01-13 19:57:02 INFO  ui.Main:30 - Boogle is closing. Used for 61.775816666666664 m
+2020-01-13 21:15:43 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:19:01 INFO  ui.Main:27 - Boogle launched
 2020-01-13 21:19:31 INFO  UIController:397 - loadFile::
 2020-01-13 21:19:39 INFO  UIController:405 - Loaded::Out2
-2020-01-13 21:20:57 INFO  Main:27 - Boogle launched
-2020-01-13 21:22:27 INFO  Main:27 - Boogle launched
-2020-01-13 21:24:40 INFO  Main:27 - Boogle launched
-2020-01-13 21:27:03 INFO  Main:27 - Boogle launched
+2020-01-13 21:20:57 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:22:27 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:24:40 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:27:03 INFO  ui.Main:27 - Boogle launched
 2020-01-13 21:27:08 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 21:29:25 INFO  Main:27 - Boogle launched
-2020-01-13 21:29:46 INFO  Main:27 - Boogle launched
-2020-01-13 21:30:06 INFO  Main:27 - Boogle launched
-2020-01-13 21:30:20 INFO  Main:27 - Boogle launched
-2020-01-13 21:30:41 INFO  Main:27 - Boogle launched
-2020-01-13 21:31:08 INFO  Main:27 - Boogle launched
-2020-01-13 21:31:28 INFO  Main:27 - Boogle launched
-2020-01-13 21:32:05 INFO  Main:27 - Boogle launched
-2020-01-13 21:32:51 INFO  Main:27 - Boogle launched
+2020-01-13 21:29:25 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:29:46 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:30:06 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:30:20 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:30:41 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:31:08 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:31:28 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:32:05 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:32:51 INFO  ui.Main:27 - Boogle launched
 2020-01-13 21:32:55 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 21:37:29 INFO  Main:27 - Boogle launched
-2020-01-13 21:38:02 INFO  Main:30 - Boogle is closing. Used for 0.5409333333333334 m
-2020-01-13 21:40:16 INFO  Main:27 - Boogle launched
-2020-01-13 21:40:57 INFO  Main:27 - Boogle launched
-2020-01-13 21:41:03 INFO  Main:30 - Boogle is closing. Used for 0.10706666666666667 m
-2020-01-13 21:41:17 INFO  Main:27 - Boogle launched
-2020-01-13 21:41:25 INFO  Main:27 - Boogle launched
-2020-01-13 21:46:36 INFO  Main:27 - Boogle launched
-2020-01-13 21:47:46 INFO  Main:27 - Boogle launched
-2020-01-13 21:50:12 INFO  Main:27 - Boogle launched
-2020-01-13 21:53:17 INFO  Main:29 - Boogle launched
-2020-01-13 21:53:56 INFO  Main:29 - Boogle launched
-2020-01-13 21:55:40 INFO  Main:27 - Boogle launched
-2020-01-13 21:57:16 INFO  Main:30 - Boogle is closing. Used for 1.6106666666666667 m
-2020-01-13 21:58:57 INFO  Main:27 - Boogle launched
-2020-01-13 22:16:16 INFO  Main:30 - Boogle is closing. Used for 17.327966666666665 m
-2020-01-13 22:21:07 INFO  Main:27 - Boogle launched
+2020-01-13 21:37:29 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:38:02 INFO  ui.Main:30 - Boogle is closing. Used for 0.5409333333333334 m
+2020-01-13 21:40:16 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:40:57 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:41:03 INFO  ui.Main:30 - Boogle is closing. Used for 0.10706666666666667 m
+2020-01-13 21:41:17 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:41:25 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:46:36 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:47:46 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:50:12 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:53:17 INFO  ui.Main:29 - Boogle launched
+2020-01-13 21:53:56 INFO  ui.Main:29 - Boogle launched
+2020-01-13 21:55:40 INFO  ui.Main:27 - Boogle launched
+2020-01-13 21:57:16 INFO  ui.Main:30 - Boogle is closing. Used for 1.6106666666666667 m
+2020-01-13 21:58:57 INFO  ui.Main:27 - Boogle launched
+2020-01-13 22:16:16 INFO  ui.Main:30 - Boogle is closing. Used for 17.327966666666665 m
+2020-01-13 22:21:07 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:21:30 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:21:31 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:21:31 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -720,7 +720,7 @@
 2020-01-13 22:21:35 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
 2020-01-13 22:21:36 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
 2020-01-13 22:21:38 ERROR Model:65 - Indexing failed
-2020-01-13 22:29:28 INFO  Main:27 - Boogle launched
+2020-01-13 22:29:28 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:29:37 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:29:37 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:29:37 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -735,7 +735,7 @@
 2020-01-13 22:29:40 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
 2020-01-13 22:29:40 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
 2020-01-13 22:29:41 ERROR Model:65 - Indexing failed
-2020-01-13 22:31:06 INFO  Main:27 - Boogle launched
+2020-01-13 22:31:06 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:31:13 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:31:13 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:31:13 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -750,7 +750,7 @@
 2020-01-13 22:31:17 INFO  JollyDayHolidays:88 - Initializing JollyDayHoliday for SUTime from classpath edu/stanford/nlp/models/sutime/jollyday/Holidays_sutime.xml as sutime.binder.1.
 2020-01-13 22:31:17 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
 2020-01-13 22:31:19 ERROR Model:65 - Indexing failed
-2020-01-13 22:32:10 INFO  Main:27 - Boogle launched
+2020-01-13 22:32:10 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:32:18 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:32:18 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:32:18 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -767,7 +767,7 @@
 2020-01-13 22:34:41 INFO  Model:133 - mainLogicUnit Method :: DONE HALF WAY
 2020-01-13 22:36:55 INFO  Model:168 - Start merge Method :: single
 2020-01-13 22:37:41 ERROR Model:65 - Indexing failed
-2020-01-13 22:52:12 INFO  Main:27 - Boogle launched
+2020-01-13 22:52:12 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:52:20 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:52:20 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:52:20 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -784,8 +784,8 @@
 2020-01-13 22:52:34 INFO  Model:133 - mainLogicUnit Method :: DONE HALF WAY
 2020-01-13 22:52:42 INFO  Model:168 - Start merge Method :: single
 2020-01-13 22:52:44 INFO  Model:73 - PROCESS DONE :: END INDEXING in 0.4 minutes
-2020-01-13 22:53:51 INFO  Main:30 - Boogle is closing. Used for 1.6552833333333334 m
-2020-01-13 22:59:22 INFO  Main:27 - Boogle launched
+2020-01-13 22:53:51 INFO  ui.Main:30 - Boogle is closing. Used for 1.6552833333333334 m
+2020-01-13 22:59:22 INFO  ui.Main:27 - Boogle launched
 2020-01-13 22:59:39 INFO  Model:50 - Start Parsing and Indexing
 2020-01-13 22:59:39 INFO  Model:123 - Start manager Method :: runnable
 2020-01-13 22:59:39 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -803,43 +803,43 @@
 2020-01-13 22:59:59 INFO  Model:168 - Start merge Method :: single
 2020-01-13 23:00:01 INFO  Model:73 - PROCESS DONE :: END INDEXING in 0.38 minutes
 2020-01-13 23:01:39 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:04:45 INFO  Main:30 - Boogle is closing. Used for 5.385166666666667 m
-2020-01-13 23:04:51 INFO  Main:27 - Boogle launched
+2020-01-13 23:04:45 INFO  ui.Main:30 - Boogle is closing. Used for 5.385166666666667 m
+2020-01-13 23:04:51 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:04:55 INFO  UIController:403 - loadFile::
 2020-01-13 23:05:03 INFO  UIController:411 - Loaded::Out
-2020-01-13 23:06:42 INFO  Main:27 - Boogle launched
+2020-01-13 23:06:42 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:06:46 INFO  UIController:403 - loadFile::
 2020-01-13 23:06:49 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:06:58 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:09:16 INFO  Main:27 - Boogle launched
+2020-01-13 23:09:16 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:09:21 INFO  UIController:403 - loadFile::
 2020-01-13 23:09:28 INFO  UIController:403 - loadFile::
 2020-01-13 23:09:38 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:09:43 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:11:49 INFO  Main:27 - Boogle launched
+2020-01-13 23:11:49 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:11:52 INFO  UIController:403 - loadFile::
 2020-01-13 23:11:58 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:12:05 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:17:39 INFO  Main:27 - Boogle launched
+2020-01-13 23:17:39 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:17:46 INFO  UIController:403 - loadFile::
 2020-01-13 23:17:53 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:17:58 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:19:04 INFO  Main:27 - Boogle launched
+2020-01-13 23:19:04 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:19:08 INFO  UIController:403 - loadFile::
 2020-01-13 23:19:12 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:19:19 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:23:37 INFO  Main:27 - Boogle launched
+2020-01-13 23:23:37 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:23:45 INFO  UIController:403 - loadFile::
 2020-01-13 23:23:50 INFO  UIController:411 - Loaded::Out
 2020-01-13 23:23:54 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:28:28 INFO  Main:27 - Boogle launched
+2020-01-13 23:28:28 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:28:33 INFO  UIController:406 - loadFile::
 2020-01-13 23:28:38 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:28:44 INFO  SearchController:83 - Boogle Search page opened.
 2020-01-13 23:29:04 INFO  Model:80 - Start Searching
 2020-01-13 23:34:41 INFO  SearchController:83 - Boogle Search page opened.
-2020-01-13 23:34:50 INFO  Main:30 - Boogle is closing. Used for 6.359383333333334 m
-2020-01-13 23:36:27 INFO  Main:27 - Boogle launched
+2020-01-13 23:34:50 INFO  ui.Main:30 - Boogle is closing. Used for 6.359383333333334 m
+2020-01-13 23:36:27 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:36:30 INFO  UIController:406 - loadFile::
 2020-01-13 23:36:33 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:36:44 INFO  SearchController:78 - Boogle Search page opened.
@@ -848,55 +848,55 @@
 2020-01-13 23:37:24 INFO  Model:80 - Start Searching
 2020-01-13 23:37:39 INFO  SearchController:78 - Boogle Search page opened.
 2020-01-13 23:38:01 INFO  Model:80 - Start Searching
-2020-01-13 23:38:38 INFO  Main:30 - Boogle is closing. Used for 2.1845166666666667 m
-2020-01-13 23:41:57 INFO  Main:27 - Boogle launched
-2020-01-13 23:42:01 INFO  Main:30 - Boogle is closing. Used for 0.061766666666666664 m
-2020-01-13 23:42:15 INFO  Main:27 - Boogle launched
+2020-01-13 23:38:38 INFO  ui.Main:30 - Boogle is closing. Used for 2.1845166666666667 m
+2020-01-13 23:41:57 INFO  ui.Main:27 - Boogle launched
+2020-01-13 23:42:01 INFO  ui.Main:30 - Boogle is closing. Used for 0.061766666666666664 m
+2020-01-13 23:42:15 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:42:24 INFO  UIController:406 - loadFile::
 2020-01-13 23:42:29 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:42:33 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:42:43 INFO  Model:80 - Start Searching
-2020-01-13 23:44:24 INFO  Main:27 - Boogle launched
+2020-01-13 23:44:24 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:44:28 INFO  UIController:406 - loadFile::
 2020-01-13 23:44:32 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:44:37 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:44:48 INFO  Model:80 - Start Searching
 2020-01-13 23:45:25 INFO  Model:80 - Start Searching
-2020-01-13 23:45:33 INFO  Main:30 - Boogle is closing. Used for 1.1589333333333334 m
-2020-01-13 23:46:08 INFO  Main:27 - Boogle launched
+2020-01-13 23:45:33 INFO  ui.Main:30 - Boogle is closing. Used for 1.1589333333333334 m
+2020-01-13 23:46:08 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:46:14 INFO  UIController:406 - loadFile::
 2020-01-13 23:46:24 INFO  UIController:406 - loadFile::
 2020-01-13 23:46:27 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:46:31 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:46:44 INFO  Model:80 - Start Searching
 2020-01-13 23:47:05 INFO  Model:80 - Start Searching
-2020-01-13 23:49:25 INFO  Main:27 - Boogle launched
+2020-01-13 23:49:25 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:49:29 INFO  UIController:406 - loadFile::
 2020-01-13 23:49:32 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:49:36 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:50:00 INFO  Model:80 - Start Searching
-2020-01-13 23:51:33 INFO  Main:27 - Boogle launched
-2020-01-13 23:51:41 INFO  Main:27 - Boogle launched
+2020-01-13 23:51:33 INFO  ui.Main:27 - Boogle launched
+2020-01-13 23:51:41 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:51:45 INFO  UIController:406 - loadFile::
 2020-01-13 23:51:49 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:51:54 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:52:00 INFO  Model:80 - Start Searching
-2020-01-13 23:52:21 INFO  Main:30 - Boogle is closing. Used for 0.6730166666666667 m
-2020-01-13 23:53:11 INFO  Main:27 - Boogle launched
+2020-01-13 23:52:21 INFO  ui.Main:30 - Boogle is closing. Used for 0.6730166666666667 m
+2020-01-13 23:53:11 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:53:14 INFO  UIController:406 - loadFile::
 2020-01-13 23:53:18 INFO  UIController:414 - Loaded::Out
 2020-01-13 23:53:23 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:53:28 INFO  Model:80 - Start Searching
-2020-01-13 23:53:57 INFO  Main:30 - Boogle is closing. Used for 0.7654166666666666 m
-2020-01-13 23:54:51 INFO  Main:27 - Boogle launched
-2020-01-13 23:55:03 INFO  Main:27 - Boogle launched
+2020-01-13 23:53:57 INFO  ui.Main:30 - Boogle is closing. Used for 0.7654166666666666 m
+2020-01-13 23:54:51 INFO  ui.Main:27 - Boogle launched
+2020-01-13 23:55:03 INFO  ui.Main:27 - Boogle launched
 2020-01-13 23:55:13 INFO  SearchController:79 - Boogle Search page opened.
 2020-01-13 23:55:18 INFO  Model:80 - Start Searching
 2020-01-13 23:55:43 INFO  Model:84 - Pass try
 2020-01-13 23:56:22 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-13 23:56:23 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-13 23:56:25 INFO  Reflections:229 - Reflections took 1745 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-14 00:00:28 INFO  Main:27 - Boogle launched
+2020-01-14 00:00:28 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:00:34 INFO  UIController:406 - loadFile::
 2020-01-14 00:00:39 INFO  UIController:414 - Loaded::Out
 2020-01-14 00:00:48 INFO  SearchController:79 - Boogle Search page opened.
@@ -910,7 +910,7 @@
 2020-01-14 00:01:21 INFO  Model:100 - PROCESS DONE :: END Searching in 15220.0 ms
 2020-01-14 00:01:52 INFO  Model:80 - Start Searching
 2020-01-14 00:02:14 INFO  Model:84 - Pass try
-2020-01-14 00:02:20 INFO  Main:27 - Boogle launched
+2020-01-14 00:02:20 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:02:25 INFO  UIController:406 - loadFile::
 2020-01-14 00:02:29 INFO  UIController:414 - Loaded::Out
 2020-01-14 00:02:33 INFO  SearchController:79 - Boogle Search page opened.
@@ -922,7 +922,7 @@
 2020-01-14 00:02:58 INFO  Model:86 - Pass logic
 2020-01-14 00:02:58 INFO  Model:88 - Pass BP
 2020-01-14 00:02:58 INFO  Model:100 - PROCESS DONE :: END Searching in 9261.0 ms
-2020-01-14 00:07:03 INFO  Main:27 - Boogle launched
+2020-01-14 00:07:03 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:07:08 INFO  UIController:405 - loadFile::
 2020-01-14 00:07:11 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:07:14 INFO  SearchController:79 - Boogle Search page opened.
@@ -932,7 +932,7 @@
 2020-01-14 00:07:31 INFO  Reflections:229 - Reflections took 69 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:07:40 INFO  Model:85 - Sending Results
 2020-01-14 00:07:40 INFO  Model:99 - PROCESS DONE :: END Searching in 8352.0 ms
-2020-01-14 00:11:50 INFO  Main:27 - Boogle launched
+2020-01-14 00:11:50 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:11:58 INFO  UIController:405 - loadFile::
 2020-01-14 00:12:03 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:12:12 INFO  SearchController:79 - Boogle Search page opened.
@@ -942,7 +942,7 @@
 2020-01-14 00:12:30 INFO  Reflections:229 - Reflections took 137 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:12:40 INFO  Model:82 - Sending Results
 2020-01-14 00:12:40 INFO  Model:96 - PROCESS DONE :: END Searching in 9949.0 ms
-2020-01-14 00:28:24 INFO  Main:27 - Boogle launched
+2020-01-14 00:28:24 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:28:30 INFO  UIController:405 - loadFile::
 2020-01-14 00:28:35 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:28:38 INFO  SearchController:79 - Boogle Search page opened.
@@ -954,7 +954,7 @@
 2020-01-14 00:28:54 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
 2020-01-14 00:30:33 INFO  Model:82 - Sending Results
 2020-01-14 00:30:33 INFO  Model:96 - PROCESS DONE :: END Searching in 108292.0 ms
-2020-01-14 00:34:13 INFO  Main:27 - Boogle launched
+2020-01-14 00:34:13 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:35:16 INFO  UIController:405 - loadFile::
 2020-01-14 00:35:21 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:35:25 INFO  SearchController:79 - Boogle Search page opened.
@@ -966,7 +966,7 @@
 2020-01-14 00:35:43 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
 2020-01-14 00:35:57 INFO  Model:82 - Sending Results
 2020-01-14 00:35:57 INFO  Model:96 - PROCESS DONE :: END Searching in 25579.0 ms
-2020-01-14 00:38:03 INFO  Main:27 - Boogle launched
+2020-01-14 00:38:03 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:38:07 INFO  UIController:405 - loadFile::
 2020-01-14 00:38:11 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:38:14 INFO  SearchController:79 - Boogle Search page opened.
@@ -976,7 +976,7 @@
 2020-01-14 00:38:30 INFO  Reflections:229 - Reflections took 93 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:38:52 INFO  Model:82 - Sending Results
 2020-01-14 00:38:52 INFO  Model:96 - PROCESS DONE :: END Searching in 22469.0 ms
-2020-01-14 00:44:46 INFO  Main:27 - Boogle launched
+2020-01-14 00:44:46 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:44:57 INFO  UIController:405 - loadFile::
 2020-01-14 00:45:01 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:45:05 INFO  SearchController:79 - Boogle Search page opened.
@@ -994,8 +994,8 @@
 2020-01-14 00:47:43 INFO  Model:77 - Start Searching
 2020-01-14 00:47:43 INFO  Model:82 - Sending Results
 2020-01-14 00:47:43 INFO  Model:96 - PROCESS DONE :: END Searching in 7.0 ms
-2020-01-14 00:47:53 INFO  Main:30 - Boogle is closing. Used for 3.1098333333333334 m
-2020-01-14 00:48:01 INFO  Main:27 - Boogle launched
+2020-01-14 00:47:53 INFO  ui.Main:30 - Boogle is closing. Used for 3.1098333333333334 m
+2020-01-14 00:48:01 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:48:09 INFO  UIController:405 - loadFile::
 2020-01-14 00:48:12 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:48:15 INFO  SearchController:79 - Boogle Search page opened.
@@ -1003,7 +1003,7 @@
 2020-01-14 00:48:21 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-14 00:48:21 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-14 00:48:21 INFO  Reflections:229 - Reflections took 87 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-14 00:53:19 INFO  Main:27 - Boogle launched
+2020-01-14 00:53:19 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:53:24 INFO  UIController:405 - loadFile::
 2020-01-14 00:53:28 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:53:31 INFO  SearchController:79 - Boogle Search page opened.
@@ -1013,7 +1013,7 @@
 2020-01-14 00:53:36 INFO  Reflections:229 - Reflections took 72 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:53:59 INFO  Model:82 - Sending Results
 2020-01-14 00:53:59 INFO  Model:96 - PROCESS DONE :: END Searching in 22576.0 ms
-2020-01-14 00:54:31 INFO  Main:27 - Boogle launched
+2020-01-14 00:54:31 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:54:48 INFO  UIController:405 - loadFile::
 2020-01-14 00:54:51 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:54:54 INFO  SearchController:79 - Boogle Search page opened.
@@ -1023,7 +1023,7 @@
 2020-01-14 00:55:00 INFO  Reflections:229 - Reflections took 78 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:55:21 INFO  Model:82 - Sending Results
 2020-01-14 00:55:21 INFO  Model:96 - PROCESS DONE :: END Searching in 22034.0 ms
-2020-01-14 00:57:37 INFO  Main:27 - Boogle launched
+2020-01-14 00:57:37 INFO  ui.Main:27 - Boogle launched
 2020-01-14 00:57:45 INFO  UIController:405 - loadFile::
 2020-01-14 00:57:50 INFO  UIController:413 - Loaded::Out
 2020-01-14 00:57:55 INFO  SearchController:79 - Boogle Search page opened.
@@ -1033,7 +1033,7 @@
 2020-01-14 00:58:00 INFO  Reflections:229 - Reflections took 68 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 00:58:22 INFO  Model:82 - Sending Results
 2020-01-14 00:58:22 INFO  Model:96 - PROCESS DONE :: END Searching in 23184.0 ms
-2020-01-14 01:03:55 INFO  Main:27 - Boogle launched
+2020-01-14 01:03:55 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:03:59 INFO  UIController:405 - loadFile::
 2020-01-14 01:04:04 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:04:08 INFO  SearchController:79 - Boogle Search page opened.
@@ -1043,7 +1043,7 @@
 2020-01-14 01:04:15 INFO  Reflections:229 - Reflections took 105 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:04:40 INFO  Model:82 - Sending Results
 2020-01-14 01:04:40 INFO  Model:96 - PROCESS DONE :: END Searching in 25524.0 ms
-2020-01-14 01:06:04 INFO  Main:27 - Boogle launched
+2020-01-14 01:06:04 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:06:07 INFO  UIController:405 - loadFile::
 2020-01-14 01:06:10 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:06:13 INFO  SearchController:79 - Boogle Search page opened.
@@ -1053,7 +1053,7 @@
 2020-01-14 01:06:19 INFO  Reflections:229 - Reflections took 70 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:06:42 INFO  Model:83 - Sending Results
 2020-01-14 01:06:42 INFO  Model:97 - PROCESS DONE :: END Searching in 23269.0 ms
-2020-01-14 01:12:07 INFO  Main:27 - Boogle launched
+2020-01-14 01:12:07 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:12:13 INFO  UIController:405 - loadFile::
 2020-01-14 01:12:16 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:12:21 INFO  SearchController:79 - Boogle Search page opened.
@@ -1061,9 +1061,9 @@
 2020-01-14 01:12:30 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-14 01:12:30 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-14 01:12:30 INFO  Reflections:229 - Reflections took 116 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-14 01:18:02 INFO  Main:27 - Boogle launched
-2020-01-14 01:18:05 INFO  Main:30 - Boogle is closing. Used for 0.059166666666666666 m
-2020-01-14 01:18:14 INFO  Main:27 - Boogle launched
+2020-01-14 01:18:02 INFO  ui.Main:27 - Boogle launched
+2020-01-14 01:18:05 INFO  ui.Main:30 - Boogle is closing. Used for 0.059166666666666666 m
+2020-01-14 01:18:14 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:18:19 INFO  UIController:405 - loadFile::
 2020-01-14 01:18:23 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:18:28 INFO  SearchController:79 - Boogle Search page opened.
@@ -1073,7 +1073,7 @@
 2020-01-14 01:18:33 INFO  Reflections:229 - Reflections took 95 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:18:55 INFO  Model:83 - Sending Results
 2020-01-14 01:18:55 INFO  Model:97 - PROCESS DONE :: END Searching in 22261.0 ms
-2020-01-14 01:20:20 INFO  Main:27 - Boogle launched
+2020-01-14 01:20:20 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:20:27 INFO  UIController:405 - loadFile::
 2020-01-14 01:20:30 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:20:33 INFO  SearchController:79 - Boogle Search page opened.
@@ -1083,9 +1083,9 @@
 2020-01-14 01:20:38 INFO  Reflections:229 - Reflections took 76 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:21:02 INFO  Model:83 - Sending Results
 2020-01-14 01:21:02 INFO  Model:97 - PROCESS DONE :: END Searching in 24549.0 ms
-2020-01-14 01:23:41 INFO  Main:27 - Boogle launched
-2020-01-14 01:23:45 INFO  Main:30 - Boogle is closing. Used for 0.0688 m
-2020-01-14 01:24:48 INFO  Main:27 - Boogle launched
+2020-01-14 01:23:41 INFO  ui.Main:27 - Boogle launched
+2020-01-14 01:23:45 INFO  ui.Main:30 - Boogle is closing. Used for 0.0688 m
+2020-01-14 01:24:48 INFO  ui.Main:27 - Boogle launched
 2020-01-14 01:24:54 INFO  UIController:405 - loadFile::
 2020-01-14 01:24:57 INFO  UIController:413 - Loaded::Out
 2020-01-14 01:25:01 INFO  SearchController:79 - Boogle Search page opened.
@@ -1095,15 +1095,15 @@
 2020-01-14 01:25:18 INFO  Reflections:229 - Reflections took 93 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 01:25:40 INFO  Model:83 - Sending Results
 2020-01-14 01:25:40 INFO  Model:97 - PROCESS DONE :: END Searching in 22290.0 ms
-2020-01-14 01:29:44 INFO  Main:30 - Boogle is closing. Used for 4.925933333333333 m
-2020-01-14 10:54:34 INFO  Main:27 - Boogle launched
+2020-01-14 01:29:44 INFO  ui.Main:30 - Boogle is closing. Used for 4.925933333333333 m
+2020-01-14 10:54:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 10:55:35 INFO  UIController:407 - loadFile::
 2020-01-14 10:55:39 INFO  UIController:415 - Loaded::Out
 2020-01-14 10:55:45 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 10:56:01 INFO  Model:78 - Start Searching
 2020-01-14 10:56:02 INFO  Model:83 - Sending Results
 2020-01-14 10:56:02 INFO  Model:97 - PROCESS DONE :: END Searching in 335.0 ms
-2020-01-14 10:57:09 INFO  Main:27 - Boogle launched
+2020-01-14 10:57:09 INFO  ui.Main:27 - Boogle launched
 2020-01-14 10:57:11 INFO  UIController:407 - loadFile::
 2020-01-14 10:57:15 INFO  UIController:415 - Loaded::Out
 2020-01-14 10:57:18 INFO  SearchController:74 - Boogle Search page opened.
@@ -1113,20 +1113,20 @@
 2020-01-14 10:57:37 INFO  Reflections:229 - Reflections took 77 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 10:58:02 INFO  Model:83 - Sending Results
 2020-01-14 10:58:02 INFO  Model:97 - PROCESS DONE :: END Searching in 25431.0 ms
-2020-01-14 10:58:54 INFO  Main:27 - Boogle launched
+2020-01-14 10:58:54 INFO  ui.Main:27 - Boogle launched
 2020-01-14 10:59:15 INFO  UIController:407 - loadFile::
 2020-01-14 10:59:23 INFO  UIController:415 - Loaded::Out
 2020-01-14 10:59:38 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 10:59:51 INFO  Model:78 - Start Searching
 2020-01-14 10:59:51 INFO  Model:83 - Sending Results
 2020-01-14 10:59:51 INFO  Model:97 - PROCESS DONE :: END Searching in 280.0 ms
-2020-01-14 11:00:07 INFO  Main:30 - Boogle is closing. Used for 1.2259666666666666 m
-2020-01-14 11:02:20 INFO  Main:27 - Boogle launched
+2020-01-14 11:00:07 INFO  ui.Main:30 - Boogle is closing. Used for 1.2259666666666666 m
+2020-01-14 11:02:20 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:02:25 INFO  UIController:407 - loadFile::
 2020-01-14 11:04:34 INFO  UIController:407 - loadFile::
 2020-01-14 11:04:38 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:04:43 INFO  SearchController:74 - Boogle Search page opened.
-2020-01-14 11:23:31 INFO  Main:27 - Boogle launched
+2020-01-14 11:23:31 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:23:35 INFO  UIController:407 - loadFile::
 2020-01-14 11:23:40 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:23:45 INFO  SearchController:74 - Boogle Search page opened.
@@ -1134,7 +1134,7 @@
 2020-01-14 11:24:04 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
 2020-01-14 11:24:04 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
 2020-01-14 11:24:04 INFO  Reflections:229 - Reflections took 107 ms to scan 12 urls, producing 29 keys and 176 values 
-2020-01-14 11:30:41 INFO  Main:27 - Boogle launched
+2020-01-14 11:30:41 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:30:47 INFO  UIController:407 - loadFile::
 2020-01-14 11:30:51 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:30:55 INFO  SearchController:74 - Boogle Search page opened.
@@ -1144,102 +1144,102 @@
 2020-01-14 11:31:00 INFO  Reflections:229 - Reflections took 98 ms to scan 12 urls, producing 29 keys and 176 values 
 2020-01-14 11:31:24 INFO  Model:83 - Sending Results
 2020-01-14 11:31:24 INFO  Model:97 - PROCESS DONE :: END Searching in 24178.0 ms
-2020-01-14 11:33:26 INFO  Main:27 - Boogle launched
+2020-01-14 11:33:26 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:33:38 INFO  UIController:407 - loadFile::
 2020-01-14 11:33:43 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:33:47 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 11:33:53 INFO  Model:78 - Start Searching
 2020-01-14 11:33:53 INFO  Model:83 - Sending Results
 2020-01-14 11:33:53 INFO  Model:97 - PROCESS DONE :: END Searching in 247.0 ms
-2020-01-14 11:38:32 INFO  Main:27 - Boogle launched
+2020-01-14 11:38:32 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:38:36 INFO  UIController:407 - loadFile::
 2020-01-14 11:38:41 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:38:43 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 11:38:48 INFO  Model:78 - Start Searching
 2020-01-14 11:38:48 INFO  Model:83 - Sending Results
 2020-01-14 11:38:48 INFO  Model:95 - PROCESS DONE :: END Searching in 198.0 ms
-2020-01-14 11:46:51 INFO  Main:27 - Boogle launched
+2020-01-14 11:46:51 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:46:55 INFO  UIController:407 - loadFile::
 2020-01-14 11:46:58 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:47:01 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 11:47:09 INFO  Model:78 - Start Searching
 2020-01-14 11:47:09 INFO  Model:83 - Sending Results
 2020-01-14 11:47:09 INFO  Model:95 - PROCESS DONE :: END Searching in 249.0 ms
-2020-01-14 11:50:51 INFO  Main:27 - Boogle launched
+2020-01-14 11:50:51 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:50:55 INFO  UIController:407 - loadFile::
 2020-01-14 11:50:59 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:51:09 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 11:51:23 INFO  Model:78 - Start Searching
 2020-01-14 11:51:23 INFO  Model:83 - Sending Results
 2020-01-14 11:51:23 INFO  Model:95 - PROCESS DONE :: END Searching in 246.0 ms
-2020-01-14 11:59:34 INFO  Main:27 - Boogle launched
+2020-01-14 11:59:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 11:59:38 INFO  UIController:407 - loadFile::
 2020-01-14 11:59:43 INFO  UIController:415 - Loaded::Out
 2020-01-14 11:59:47 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 11:59:52 INFO  Model:78 - Start Searching
 2020-01-14 11:59:52 INFO  Model:83 - Sending Results
 2020-01-14 11:59:52 INFO  Model:95 - PROCESS DONE :: END Searching in 190.0 ms
-2020-01-14 12:03:51 INFO  Main:27 - Boogle launched
+2020-01-14 12:03:51 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:03:55 INFO  UIController:407 - loadFile::
 2020-01-14 12:03:58 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:04:02 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:04:06 INFO  Model:78 - Start Searching
 2020-01-14 12:04:07 INFO  Model:83 - Sending Results
 2020-01-14 12:04:07 INFO  Model:95 - PROCESS DONE :: END Searching in 190.0 ms
-2020-01-14 12:07:28 INFO  Main:27 - Boogle launched
-2020-01-14 12:07:35 INFO  Main:30 - Boogle is closing. Used for 0.11816666666666667 m
-2020-01-14 12:14:36 INFO  Main:27 - Boogle launched
+2020-01-14 12:07:28 INFO  ui.Main:27 - Boogle launched
+2020-01-14 12:07:35 INFO  ui.Main:30 - Boogle is closing. Used for 0.11816666666666667 m
+2020-01-14 12:14:36 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:14:46 INFO  UIController:407 - loadFile::
 2020-01-14 12:14:50 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:14:54 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:15:00 INFO  Model:78 - Start Searching
 2020-01-14 12:15:00 INFO  Model:83 - Sending Results
 2020-01-14 12:15:00 INFO  Model:95 - PROCESS DONE :: END Searching in 198.0 ms
-2020-01-14 12:17:12 INFO  Main:27 - Boogle launched
+2020-01-14 12:17:12 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:17:15 INFO  UIController:407 - loadFile::
 2020-01-14 12:17:21 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:17:23 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:17:28 INFO  Model:78 - Start Searching
 2020-01-14 12:17:28 INFO  Model:83 - Sending Results
 2020-01-14 12:17:28 INFO  Model:95 - PROCESS DONE :: END Searching in 177.0 ms
-2020-01-14 12:17:47 INFO  Main:30 - Boogle is closing. Used for 0.58015 m
-2020-01-14 12:23:00 INFO  Main:27 - Boogle launched
+2020-01-14 12:17:47 INFO  ui.Main:30 - Boogle is closing. Used for 0.58015 m
+2020-01-14 12:23:00 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:23:10 INFO  UIController:407 - loadFile::
 2020-01-14 12:23:13 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:23:17 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:23:21 INFO  Model:81 - Start Searching
 2020-01-14 12:23:26 INFO  Model:86 - Sending Results
 2020-01-14 12:23:26 INFO  Model:98 - PROCESS DONE :: END Searching in 5123.0 ms
-2020-01-14 12:23:45 INFO  Main:30 - Boogle is closing. Used for 0.7518666666666667 m
-2020-01-14 12:27:04 INFO  Main:27 - Boogle launched
+2020-01-14 12:23:45 INFO  ui.Main:30 - Boogle is closing. Used for 0.7518666666666667 m
+2020-01-14 12:27:04 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:27:07 INFO  UIController:407 - loadFile::
 2020-01-14 12:27:11 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:27:16 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:27:23 INFO  Model:81 - Start Searching
 2020-01-14 12:27:28 INFO  Model:86 - Sending Results
 2020-01-14 12:27:28 INFO  Model:98 - PROCESS DONE :: END Searching in 4747.0 ms
-2020-01-14 12:29:47 INFO  Main:27 - Boogle launched
+2020-01-14 12:29:47 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:29:52 INFO  UIController:407 - loadFile::
 2020-01-14 12:29:55 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:29:59 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:30:07 INFO  Model:81 - Start Searching
 2020-01-14 12:30:11 INFO  Model:86 - Sending Results
 2020-01-14 12:30:11 INFO  Model:98 - PROCESS DONE :: END Searching in 4824.0 ms
-2020-01-14 12:37:41 INFO  Main:27 - Boogle launched
+2020-01-14 12:37:41 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:37:46 INFO  UIController:407 - loadFile::
 2020-01-14 12:37:51 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:38:01 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:38:07 INFO  Model:82 - Start Searching
 2020-01-14 12:38:12 INFO  Model:87 - Sending Results
 2020-01-14 12:38:12 INFO  Model:99 - PROCESS DONE :: END Searching in 4622.0 ms
-2020-01-14 12:46:53 INFO  Main:27 - Boogle launched
+2020-01-14 12:46:53 INFO  ui.Main:27 - Boogle launched
 2020-01-14 12:46:59 INFO  UIController:407 - loadFile::
 2020-01-14 12:47:02 INFO  UIController:415 - Loaded::Out
 2020-01-14 12:47:08 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:47:08 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 12:47:14 INFO  Model:77 - Start Searching
 2020-01-14 12:47:14 ERROR Model:86 - Boogle failed
-2020-01-14 13:11:51 INFO  Main:27 - Boogle launched
+2020-01-14 13:11:51 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:12:24 INFO  Model:46 - Start Parsing and Indexing
 2020-01-14 13:12:25 INFO  Model:137 - Start manager Method :: runnable
 2020-01-14 13:12:27 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -1256,8 +1256,8 @@
 2020-01-14 13:14:54 INFO  Model:147 - mainLogicUnit Method :: DONE HALF WAY
 2020-01-14 13:17:19 INFO  Model:185 - Start merge Method :: single
 2020-01-14 13:18:15 INFO  Model:69 - PROCESS DONE :: END INDEXING in 5.84 minutes
-2020-01-14 13:19:04 INFO  Main:30 - Boogle is closing. Used for 7.216866666666666 m
-2020-01-14 13:25:25 INFO  Main:27 - Boogle launched
+2020-01-14 13:19:04 INFO  ui.Main:30 - Boogle is closing. Used for 7.216866666666666 m
+2020-01-14 13:25:25 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:25:40 INFO  Model:46 - Start Parsing and Indexing
 2020-01-14 13:25:40 INFO  Model:137 - Start manager Method :: runnable
 2020-01-14 13:25:40 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -1276,28 +1276,28 @@
 2020-01-14 13:27:06 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 13:27:14 INFO  Model:76 - Start Searching
 2020-01-14 13:27:18 ERROR Model:85 - Boogle failed
-2020-01-14 13:29:34 INFO  Main:27 - Boogle launched
+2020-01-14 13:29:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:29:39 INFO  UIController:407 - loadFile::
 2020-01-14 13:29:46 INFO  UIController:415 - Loaded::res
 2020-01-14 13:30:17 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 13:30:24 INFO  Model:76 - Start Searching
 2020-01-14 13:30:26 INFO  Model:81 - Sending Results
 2020-01-14 13:30:26 INFO  Model:93 - PROCESS DONE :: END Searching in 2756.0 ms
-2020-01-14 13:30:53 INFO  Main:30 - Boogle is closing. Used for 1.3212333333333333 m
-2020-01-14 13:32:44 INFO  Main:27 - Boogle launched
+2020-01-14 13:30:53 INFO  ui.Main:30 - Boogle is closing. Used for 1.3212333333333333 m
+2020-01-14 13:32:44 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:32:50 INFO  UIController:407 - loadFile::
 2020-01-14 13:32:59 INFO  UIController:415 - Loaded::res
 2020-01-14 13:33:32 INFO  SearchController:74 - Boogle Search page opened.
 2020-01-14 13:33:40 INFO  Model:76 - Start Searching
 2020-01-14 13:33:41 INFO  Model:81 - Sending Results
 2020-01-14 13:33:41 INFO  Model:93 - PROCESS DONE :: END Searching in 1617.0 ms
-2020-01-14 13:33:56 INFO  Main:30 - Boogle is closing. Used for 1.1993333333333334 m
-2020-01-14 13:52:01 INFO  Main:27 - Boogle launched
+2020-01-14 13:33:56 INFO  ui.Main:30 - Boogle is closing. Used for 1.1993333333333334 m
+2020-01-14 13:52:01 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:52:07 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 13:52:20 INFO  Model:73 - Start Searching
 2020-01-14 13:52:22 INFO  Model:78 - Sending Results
 2020-01-14 13:52:22 INFO  Model:89 - PROCESS DONE :: END Searching in 1620.0 ms
-2020-01-14 13:54:55 INFO  Main:27 - Boogle launched
+2020-01-14 13:54:55 INFO  ui.Main:27 - Boogle launched
 2020-01-14 13:55:05 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 13:55:09 INFO  UIController:407 - loadFile::
 2020-01-14 13:55:13 INFO  UIController:415 - Loaded::res
@@ -1305,9 +1305,9 @@
 2020-01-14 13:55:29 INFO  Model:73 - Start Searching
 2020-01-14 14:04:47 INFO  Model:78 - Sending Results
 2020-01-14 14:04:47 INFO  Model:89 - PROCESS DONE :: END Searching in 557560.0 ms
-2020-01-14 14:05:21 INFO  Main:27 - Boogle launched
+2020-01-14 14:05:21 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:05:36 INFO  Model:43 - Start Parsing and Indexing
-2020-01-14 14:06:15 INFO  Main:27 - Boogle launched
+2020-01-14 14:06:15 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:06:23 INFO  Model:43 - Start Parsing and Indexing
 2020-01-14 14:06:23 INFO  Model:142 - Start manager Method :: runnable
 2020-01-14 14:06:23 INFO  StanfordCoreNLP:88 - Adding annotator tokenize
@@ -1327,69 +1327,69 @@
 2020-01-14 14:12:36 INFO  Model:73 - Start Searching
 2020-01-14 14:12:38 INFO  Model:78 - Sending Results
 2020-01-14 14:12:38 INFO  Model:89 - PROCESS DONE :: END Searching in 1810.0 ms
-2020-01-14 14:16:15 INFO  Main:27 - Boogle launched
+2020-01-14 14:16:15 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:16:19 INFO  UIController:407 - loadFile::
 2020-01-14 14:16:23 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:16:43 INFO  Main:30 - Boogle is closing. Used for 0.45725 m
-2020-01-14 14:25:48 INFO  Main:27 - Boogle launched
+2020-01-14 14:16:43 INFO  ui.Main:30 - Boogle is closing. Used for 0.45725 m
+2020-01-14 14:25:48 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:25:52 INFO  UIController:407 - loadFile::
 2020-01-14 14:25:55 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:26:03 INFO  Main:30 - Boogle is closing. Used for 0.24943333333333334 m
-2020-01-14 14:28:34 INFO  Main:27 - Boogle launched
+2020-01-14 14:26:03 INFO  ui.Main:30 - Boogle is closing. Used for 0.24943333333333334 m
+2020-01-14 14:28:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:28:38 INFO  UIController:407 - loadFile::
-2020-01-14 14:28:46 INFO  Main:30 - Boogle is closing. Used for 0.18895 m
-2020-01-14 14:31:28 INFO  Main:27 - Boogle launched
+2020-01-14 14:28:46 INFO  ui.Main:30 - Boogle is closing. Used for 0.18895 m
+2020-01-14 14:31:28 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:31:44 INFO  UIController:407 - loadFile::
 2020-01-14 14:31:48 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:39:14 INFO  Main:27 - Boogle launched
+2020-01-14 14:39:14 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:39:17 INFO  UIController:407 - loadFile::
 2020-01-14 14:39:21 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:43:22 INFO  Main:27 - Boogle launched
+2020-01-14 14:43:22 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:43:26 INFO  UIController:407 - loadFile::
 2020-01-14 14:43:29 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:47:02 INFO  Main:27 - Boogle launched
+2020-01-14 14:47:02 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:47:08 INFO  UIController:407 - loadFile::
 2020-01-14 14:47:11 INFO  UIController:415 - Loaded::Out
-2020-01-14 14:47:26 INFO  Main:27 - Boogle launched
+2020-01-14 14:47:26 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:47:30 INFO  UIController:407 - loadFile::
 2020-01-14 14:47:33 INFO  UIController:415 - Loaded::Out
 2020-01-14 14:47:50 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 14:47:57 INFO  Model:74 - Start Searching
-2020-01-14 14:55:46 INFO  Main:27 - Boogle launched
+2020-01-14 14:55:46 INFO  ui.Main:27 - Boogle launched
 2020-01-14 14:55:51 INFO  UIController:407 - loadFile::
 2020-01-14 14:55:54 INFO  UIController:415 - Loaded::Out
 2020-01-14 14:56:02 INFO  SearchController:75 - Boogle Search page opened.
-2020-01-14 15:04:39 INFO  Main:27 - Boogle launched
+2020-01-14 15:04:39 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:04:43 INFO  UIController:407 - loadFile::
 2020-01-14 15:04:46 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:04:51 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 15:05:04 INFO  Model:74 - Start Searching
 2020-01-14 15:05:04 INFO  Model:79 - Sending Results
 2020-01-14 15:05:04 INFO  Model:90 - PROCESS DONE :: END Searching in 169.0 ms
-2020-01-14 15:06:56 INFO  Main:27 - Boogle launched
+2020-01-14 15:06:56 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:07:06 INFO  UIController:407 - loadFile::
 2020-01-14 15:07:10 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:07:13 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 15:07:32 INFO  Model:74 - Start Searching
 2020-01-14 15:07:32 INFO  Model:79 - Sending Results
 2020-01-14 15:07:32 INFO  Model:90 - PROCESS DONE :: END Searching in 194.0 ms
-2020-01-14 15:29:04 INFO  Main:27 - Boogle launched
+2020-01-14 15:29:04 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:29:08 INFO  UIController:407 - loadFile::
 2020-01-14 15:29:11 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:29:16 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 15:29:38 INFO  Model:74 - Start Searching
 2020-01-14 15:29:39 INFO  Model:79 - Sending Results
 2020-01-14 15:29:39 INFO  Model:90 - PROCESS DONE :: END Searching in 201.0 ms
-2020-01-14 15:30:02 INFO  Main:30 - Boogle is closing. Used for 0.9664666666666667 m
-2020-01-14 15:31:36 INFO  Main:27 - Boogle launched
+2020-01-14 15:30:02 INFO  ui.Main:30 - Boogle is closing. Used for 0.9664666666666667 m
+2020-01-14 15:31:36 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:31:40 INFO  UIController:407 - loadFile::
 2020-01-14 15:31:43 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:31:48 INFO  SearchController:75 - Boogle Search page opened.
 2020-01-14 15:32:11 INFO  Model:74 - Start Searching
 2020-01-14 15:32:12 INFO  Model:79 - Sending Results
 2020-01-14 15:32:12 INFO  Model:90 - PROCESS DONE :: END Searching in 147.0 ms
-2020-01-14 15:32:29 INFO  Main:30 - Boogle is closing. Used for 0.8866833333333334 m
-2020-01-14 15:34:18 INFO  Main:27 - Boogle launched
+2020-01-14 15:32:29 INFO  ui.Main:30 - Boogle is closing. Used for 0.8866833333333334 m
+2020-01-14 15:34:18 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:34:22 INFO  UIController:407 - loadFile::
 2020-01-14 15:34:25 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:34:29 INFO  SearchController:75 - Boogle Search page opened.
@@ -1399,7 +1399,7 @@
 2020-01-14 15:35:17 INFO  Model:74 - Start Searching
 2020-01-14 15:35:17 INFO  Model:79 - Sending Results
 2020-01-14 15:35:17 INFO  Model:90 - PROCESS DONE :: END Searching in 87.0 ms
-2020-01-14 15:52:47 INFO  Main:27 - Boogle launched
+2020-01-14 15:52:47 INFO  ui.Main:27 - Boogle launched
 2020-01-14 15:52:51 INFO  UIController:407 - loadFile::
 2020-01-14 15:52:56 INFO  UIController:415 - Loaded::Out
 2020-01-14 15:53:01 INFO  SearchController:75 - Boogle Search page opened.
@@ -1407,7 +1407,7 @@
 2020-01-14 15:53:16 INFO  Model:79 - Sending Results
 2020-01-14 15:53:16 ERROR Model:83 - Boogle failed
 2020-01-14 15:53:16 INFO  Model:89 - PROCESS DONE :: (123.0 ms)
-2020-01-14 16:01:22 INFO  Main:27 - Boogle launched
+2020-01-14 16:01:22 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:01:25 INFO  UIController:407 - loadFile::
 2020-01-14 16:01:29 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:01:33 INFO  SearchController:76 - Boogle Search page opened.
@@ -1415,7 +1415,7 @@
 2020-01-14 16:01:46 INFO  Model:79 - Sending Results
 2020-01-14 16:01:46 ERROR Model:83 - Boogle failed
 2020-01-14 16:01:46 INFO  Model:89 - PROCESS DONE :: (128.0 ms)
-2020-01-14 16:07:04 INFO  Main:27 - Boogle launched
+2020-01-14 16:07:04 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:07:12 INFO  UIController:407 - loadFile::
 2020-01-14 16:07:16 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:07:30 INFO  SearchController:77 - Boogle Search page opened.
@@ -1423,7 +1423,7 @@
 2020-01-14 16:07:47 INFO  Model:79 - Sending Results
 2020-01-14 16:07:47 ERROR Model:83 - Boogle failed
 2020-01-14 16:07:49 INFO  Model:89 - PROCESS DONE :: (1827.0 ms)
-2020-01-14 16:13:44 INFO  Main:27 - Boogle launched
+2020-01-14 16:13:44 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:13:50 INFO  UIController:407 - loadFile::
 2020-01-14 16:13:54 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:14:00 INFO  SearchController:77 - Boogle Search page opened.
@@ -1431,7 +1431,7 @@
 2020-01-14 16:14:12 INFO  Model:79 - Sending Results
 2020-01-14 16:14:12 ERROR Model:83 - Boogle failed
 2020-01-14 16:14:12 INFO  Model:89 - PROCESS DONE :: (180.0 ms)
-2020-01-14 16:15:54 INFO  Main:27 - Boogle launched
+2020-01-14 16:15:54 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:15:59 INFO  UIController:407 - loadFile::
 2020-01-14 16:16:02 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:16:06 INFO  SearchController:77 - Boogle Search page opened.
@@ -1439,14 +1439,14 @@
 2020-01-14 16:16:21 INFO  Model:79 - Sending Results
 2020-01-14 16:16:21 ERROR Model:83 - Boogle failed
 2020-01-14 16:16:21 INFO  Model:89 - PROCESS DONE :: (177.0 ms)
-2020-01-14 16:21:01 INFO  Main:27 - Boogle launched
+2020-01-14 16:21:01 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:21:04 INFO  UIController:407 - loadFile::
 2020-01-14 16:21:11 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:21:15 INFO  SearchController:77 - Boogle Search page opened.
 2020-01-14 16:21:25 INFO  Model:74 - Start Searching
 2020-01-14 16:21:26 ERROR Model:83 - Boogle failed
 2020-01-14 16:21:26 INFO  Model:89 - PROCESS DONE :: (1000.0 ms)
-2020-01-14 16:22:08 INFO  Main:27 - Boogle launched
+2020-01-14 16:22:08 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:22:12 INFO  UIController:407 - loadFile::
 2020-01-14 16:22:14 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:22:19 INFO  SearchController:77 - Boogle Search page opened.
@@ -1454,7 +1454,7 @@
 2020-01-14 16:22:27 INFO  Model:79 - Sending Results
 2020-01-14 16:22:27 ERROR Model:83 - Boogle failed
 2020-01-14 16:22:27 INFO  Model:89 - PROCESS DONE :: (179.0 ms)
-2020-01-14 16:25:34 INFO  Main:27 - Boogle launched
+2020-01-14 16:25:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:25:37 INFO  UIController:407 - loadFile::
 2020-01-14 16:25:40 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:25:44 INFO  SearchController:77 - Boogle Search page opened.
@@ -1462,7 +1462,7 @@
 2020-01-14 16:25:54 INFO  Model:79 - Sending Results
 2020-01-14 16:25:54 ERROR Model:83 - Boogle failed
 2020-01-14 16:25:54 INFO  Model:89 - PROCESS DONE :: (143.0 ms)
-2020-01-14 16:33:53 INFO  Main:27 - Boogle launched
+2020-01-14 16:33:53 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:33:57 INFO  UIController:407 - loadFile::
 2020-01-14 16:34:00 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:34:08 INFO  SearchController:77 - Boogle Search page opened.
@@ -1470,7 +1470,7 @@
 2020-01-14 16:34:20 INFO  Model:79 - Sending Results
 2020-01-14 16:34:20 ERROR Model:83 - Boogle failed
 2020-01-14 16:34:20 INFO  Model:89 - PROCESS DONE :: (2393.0 ms)
-2020-01-14 16:36:02 INFO  Main:27 - Boogle launched
+2020-01-14 16:36:02 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:36:09 INFO  UIController:407 - loadFile::
 2020-01-14 16:36:12 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:36:18 INFO  SearchController:77 - Boogle Search page opened.
@@ -1478,7 +1478,7 @@
 2020-01-14 16:36:27 INFO  Model:79 - Sending Results
 2020-01-14 16:36:27 ERROR Model:83 - Boogle failed
 2020-01-14 16:36:27 INFO  Model:89 - PROCESS DONE :: (1909.0 ms)
-2020-01-14 16:49:38 INFO  Main:27 - Boogle launched
+2020-01-14 16:49:38 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:49:42 INFO  UIController:407 - loadFile::
 2020-01-14 16:49:45 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:49:49 INFO  SearchController:77 - Boogle Search page opened.
@@ -1486,7 +1486,7 @@
 2020-01-14 16:49:58 INFO  Model:79 - Sending Results
 2020-01-14 16:49:58 ERROR Model:83 - Boogle failed
 2020-01-14 16:49:58 INFO  Model:89 - PROCESS DONE :: (1761.0 ms)
-2020-01-14 16:55:57 INFO  Main:27 - Boogle launched
+2020-01-14 16:55:57 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:56:03 INFO  UIController:407 - loadFile::
 2020-01-14 16:56:07 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:56:13 INFO  SearchController:77 - Boogle Search page opened.
@@ -1494,7 +1494,7 @@
 2020-01-14 16:56:22 INFO  Model:79 - Sending Results
 2020-01-14 16:56:22 ERROR Model:83 - Boogle failed
 2020-01-14 16:56:22 INFO  Model:89 - PROCESS DONE :: (2007.0 ms)
-2020-01-14 16:56:48 INFO  Main:27 - Boogle launched
+2020-01-14 16:56:48 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:56:52 INFO  UIController:407 - loadFile::
 2020-01-14 16:56:55 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:57:00 INFO  SearchController:77 - Boogle Search page opened.
@@ -1514,7 +1514,7 @@
 2020-01-14 16:57:41 INFO  Model:79 - Sending Results
 2020-01-14 16:57:41 ERROR Model:83 - Boogle failed
 2020-01-14 16:57:41 INFO  Model:89 - PROCESS DONE :: (882.0 ms)
-2020-01-14 16:57:56 INFO  Main:27 - Boogle launched
+2020-01-14 16:57:56 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:57:59 INFO  UIController:407 - loadFile::
 2020-01-14 16:58:03 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:58:07 INFO  SearchController:77 - Boogle Search page opened.
@@ -1522,7 +1522,7 @@
 2020-01-14 16:58:15 INFO  Model:79 - Sending Results
 2020-01-14 16:58:15 ERROR Model:83 - Boogle failed
 2020-01-14 16:58:15 INFO  Model:89 - PROCESS DONE :: (1979.0 ms)
-2020-01-14 16:58:42 INFO  Main:27 - Boogle launched
+2020-01-14 16:58:42 INFO  ui.Main:27 - Boogle launched
 2020-01-14 16:58:53 INFO  UIController:407 - loadFile::
 2020-01-14 16:58:56 INFO  UIController:415 - Loaded::Out
 2020-01-14 16:59:02 INFO  SearchController:77 - Boogle Search page opened.
@@ -1530,7 +1530,7 @@
 2020-01-14 16:59:15 INFO  Model:79 - Sending Results
 2020-01-14 17:00:48 ERROR Model:83 - Boogle failed
 2020-01-14 17:00:48 INFO  Model:89 - PROCESS DONE :: (95275.0 ms)
-2020-01-14 17:00:52 INFO  Main:27 - Boogle launched
+2020-01-14 17:00:52 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:00:55 INFO  UIController:407 - loadFile::
 2020-01-14 17:00:59 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:01:04 INFO  SearchController:86 - Boogle Search page opened.
@@ -1538,7 +1538,7 @@
 2020-01-14 17:01:12 INFO  Model:79 - Sending Results
 2020-01-14 17:01:12 ERROR Model:83 - Boogle failed
 2020-01-14 17:01:12 INFO  Model:89 - PROCESS DONE :: (1831.0 ms)
-2020-01-14 17:06:42 INFO  Main:27 - Boogle launched
+2020-01-14 17:06:42 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:06:48 INFO  UIController:407 - loadFile::
 2020-01-14 17:06:51 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:06:55 INFO  SearchController:68 - Boogle Search page opened.
@@ -1546,7 +1546,7 @@
 2020-01-14 17:07:02 INFO  Model:79 - Sending Results
 2020-01-14 17:07:02 ERROR Model:83 - Boogle failed
 2020-01-14 17:07:02 INFO  Model:89 - PROCESS DONE :: (1993.0 ms)
-2020-01-14 17:07:50 INFO  Main:27 - Boogle launched
+2020-01-14 17:07:50 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:07:54 INFO  UIController:407 - loadFile::
 2020-01-14 17:07:57 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:08:02 INFO  SearchController:68 - Boogle Search page opened.
@@ -1556,30 +1556,30 @@
 2020-01-14 17:08:33 INFO  Model:74 - Start Searching
 2020-01-14 17:08:34 INFO  Model:79 - Sending Results
 2020-01-14 17:08:34 INFO  Model:89 - PROCESS DONE :: (905.0 ms)
-2020-01-14 17:09:50 INFO  Main:30 - Boogle is closing. Used for 1.98665 m
-2020-01-14 17:10:34 INFO  Main:27 - Boogle launched
+2020-01-14 17:09:50 INFO  ui.Main:30 - Boogle is closing. Used for 1.98665 m
+2020-01-14 17:10:34 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:10:40 INFO  UIController:407 - loadFile::
 2020-01-14 17:10:43 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:10:50 INFO  SearchController:68 - Boogle Search page opened.
 2020-01-14 17:10:55 INFO  Model:74 - Start Searching
 2020-01-14 17:10:57 INFO  Model:79 - Sending Results
-2020-01-14 17:15:45 INFO  Main:27 - Boogle launched
+2020-01-14 17:15:45 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:15:48 INFO  UIController:407 - loadFile::
 2020-01-14 17:15:54 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:15:58 INFO  SearchController:68 - Boogle Search page opened.
 2020-01-14 17:16:04 INFO  Model:74 - Start Searching
 2020-01-14 17:16:05 INFO  Model:79 - Sending Results
 2020-01-14 17:16:05 INFO  Model:89 - PROCESS DONE :: (1752.0 ms)
-2020-01-14 17:16:23 INFO  Main:30 - Boogle is closing. Used for 0.6307 m
-2020-01-14 17:17:13 INFO  Main:27 - Boogle launched
+2020-01-14 17:16:23 INFO  ui.Main:30 - Boogle is closing. Used for 0.6307 m
+2020-01-14 17:17:13 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:17:17 INFO  UIController:407 - loadFile::
 2020-01-14 17:17:20 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:17:24 INFO  SearchController:68 - Boogle Search page opened.
 2020-01-14 17:17:28 INFO  Model:74 - Start Searching
 2020-01-14 17:17:30 INFO  Model:79 - Sending Results
 2020-01-14 17:17:30 INFO  Model:89 - PROCESS DONE :: (1849.0 ms)
-2020-01-14 17:17:51 INFO  Main:30 - Boogle is closing. Used for 0.6420333333333333 m
-2020-01-14 17:21:53 INFO  Main:27 - Boogle launched
+2020-01-14 17:17:51 INFO  ui.Main:30 - Boogle is closing. Used for 0.6420333333333333 m
+2020-01-14 17:21:53 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:21:56 INFO  UIController:407 - loadFile::
 2020-01-14 17:21:59 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:22:03 INFO  SearchController:65 - Boogle Search page opened.
@@ -1587,45 +1587,45 @@
 2020-01-14 17:22:14 INFO  Model:79 - Sending Results
 2020-01-14 17:22:14 ERROR Model:83 - Boogle failed
 2020-01-14 17:22:14 INFO  Model:89 - PROCESS DONE :: (1750.0 ms)
-2020-01-14 17:23:58 INFO  Main:27 - Boogle launched
+2020-01-14 17:23:58 INFO  ui.Main:27 - Boogle launched
 2020-01-14 17:24:01 INFO  UIController:407 - loadFile::
 2020-01-14 17:24:03 INFO  UIController:415 - Loaded::Out
 2020-01-14 17:24:07 INFO  SearchController:65 - Boogle Search page opened.
 2020-01-14 17:24:13 INFO  Model:74 - Start Searching
 2020-01-14 17:24:15 INFO  Model:79 - Sending Results
 2020-01-14 17:24:15 INFO  Model:89 - PROCESS DONE :: (1808.0 ms)
-2020-01-14 17:24:50 INFO  Main:30 - Boogle is closing. Used for 0.8681833333333333 m
-2020-01-14 18:24:00 INFO  Main:27 - Boogle launched
+2020-01-14 17:24:50 INFO  ui.Main:30 - Boogle is closing. Used for 0.8681833333333333 m
+2020-01-14 18:24:00 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:24:04 INFO  SearchController:71 - Boogle Search page opened.
-2020-01-14 18:24:13 INFO  Main:30 - Boogle is closing. Used for 0.21796666666666667 m
-2020-01-14 18:24:38 INFO  Main:27 - Boogle launched
+2020-01-14 18:24:13 INFO  ui.Main:30 - Boogle is closing. Used for 0.21796666666666667 m
+2020-01-14 18:24:38 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:24:41 INFO  SearchController:71 - Boogle Search page opened.
-2020-01-14 18:24:46 INFO  Main:30 - Boogle is closing. Used for 0.14681666666666668 m
-2020-01-14 18:25:07 INFO  Main:27 - Boogle launched
+2020-01-14 18:24:46 INFO  ui.Main:30 - Boogle is closing. Used for 0.14681666666666668 m
+2020-01-14 18:25:07 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:25:10 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 18:25:17 INFO  Model:74 - Start Searching
 2020-01-14 18:25:18 INFO  Model:79 - Sending Results
 2020-01-14 18:25:18 INFO  Model:89 - PROCESS DONE :: (112.0 ms)
-2020-01-14 18:25:51 INFO  Main:27 - Boogle launched
+2020-01-14 18:25:51 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:25:57 INFO  UIController:407 - loadFile::
 2020-01-14 18:26:02 INFO  UIController:415 - Loaded::Out
 2020-01-14 18:26:06 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 18:26:10 INFO  Model:74 - Start Searching
 2020-01-14 18:26:12 INFO  Model:79 - Sending Results
 2020-01-14 18:26:12 INFO  Model:89 - PROCESS DONE :: (1782.0 ms)
-2020-01-14 18:26:27 INFO  Main:30 - Boogle is closing. Used for 0.5951333333333333 m
-2020-01-14 18:29:40 INFO  Main:27 - Boogle launched
+2020-01-14 18:26:27 INFO  ui.Main:30 - Boogle is closing. Used for 0.5951333333333333 m
+2020-01-14 18:29:40 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:29:44 INFO  SearchController:71 - Boogle Search page opened.
-2020-01-14 18:30:37 INFO  Main:30 - Boogle is closing. Used for 0.9558 m
-2020-01-14 18:38:18 INFO  Main:27 - Boogle launched
+2020-01-14 18:30:37 INFO  ui.Main:30 - Boogle is closing. Used for 0.9558 m
+2020-01-14 18:38:18 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:38:22 INFO  UIController:407 - loadFile::
 2020-01-14 18:38:25 INFO  UIController:415 - Loaded::Out
 2020-01-14 18:38:34 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 18:38:40 INFO  Model:74 - Start Searching
 2020-01-14 18:38:42 INFO  Model:79 - Sending Results
 2020-01-14 18:38:42 INFO  Model:89 - PROCESS DONE :: (1812.0 ms)
-2020-01-14 18:39:17 INFO  Main:30 - Boogle is closing. Used for 0.9845333333333334 m
-2020-01-14 18:42:57 INFO  Main:27 - Boogle launched
+2020-01-14 18:39:17 INFO  ui.Main:30 - Boogle is closing. Used for 0.9845333333333334 m
+2020-01-14 18:42:57 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:43:05 INFO  UIController:407 - loadFile::
 2020-01-14 18:43:10 INFO  UIController:415 - Loaded::Out
 2020-01-14 18:43:15 INFO  SearchController:71 - Boogle Search page opened.
@@ -1633,38 +1633,38 @@
 2020-01-14 18:43:29 INFO  Model:79 - Sending Results
 2020-01-14 18:43:29 INFO  Model:89 - PROCESS DONE :: (1791.0 ms)
 2020-01-14 18:44:12 INFO  SearchController:71 - Boogle Search page opened.
-2020-01-14 18:44:27 INFO  Main:30 - Boogle is closing. Used for 1.5127166666666667 m
-2020-01-14 18:45:50 INFO  Main:27 - Boogle launched
+2020-01-14 18:44:27 INFO  ui.Main:30 - Boogle is closing. Used for 1.5127166666666667 m
+2020-01-14 18:45:50 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:45:56 INFO  UIController:407 - loadFile::
 2020-01-14 18:45:59 INFO  UIController:415 - Loaded::Out
 2020-01-14 18:46:59 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 18:47:06 INFO  Model:74 - Start Searching
 2020-01-14 18:47:08 INFO  Model:79 - Sending Results
 2020-01-14 18:50:44 INFO  Model:89 - PROCESS DONE :: (218030.0 ms)
-2020-01-14 18:56:54 INFO  Main:27 - Boogle launched
-2020-01-14 18:57:21 INFO  Main:27 - Boogle launched
+2020-01-14 18:56:54 INFO  ui.Main:27 - Boogle launched
+2020-01-14 18:57:21 INFO  ui.Main:27 - Boogle launched
 2020-01-14 18:57:25 INFO  UIController:407 - loadFile::
 2020-01-14 18:57:29 INFO  UIController:415 - Loaded::Out
 2020-01-14 18:57:34 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 18:57:41 INFO  Model:74 - Start Searching
-2020-01-14 19:13:12 INFO  Main:27 - Boogle launched
+2020-01-14 19:13:12 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:13:17 INFO  UIController:407 - loadFile::
 2020-01-14 19:13:20 INFO  UIController:415 - Loaded::Out
 2020-01-14 19:13:26 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 19:13:32 INFO  Model:74 - Start Searching
 2020-01-14 19:13:34 INFO  Model:79 - Sending Results
 2020-01-14 19:13:34 INFO  Model:89 - PROCESS DONE :: (2222.0 ms)
-2020-01-14 19:17:43 INFO  Main:27 - Boogle launched
+2020-01-14 19:17:43 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:17:48 INFO  UIController:407 - loadFile::
 2020-01-14 19:17:51 INFO  UIController:415 - Loaded::Out
 2020-01-14 19:17:56 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 19:18:09 INFO  Model:74 - Start Searching
 2020-01-14 19:18:12 INFO  Model:88 - PROCESS DONE :: (2152.0 ms)
-2020-01-14 19:18:55 INFO  Main:30 - Boogle is closing. Used for 1.2152833333333333 m
-2020-01-14 19:28:41 INFO  Main:27 - Boogle launched
+2020-01-14 19:18:55 INFO  ui.Main:30 - Boogle is closing. Used for 1.2152833333333333 m
+2020-01-14 19:28:41 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:28:45 INFO  UIController:407 - loadFile::
-2020-01-14 19:29:04 INFO  Main:30 - Boogle is closing. Used for 0.3841333333333333 m
-2020-01-14 19:39:23 INFO  Main:27 - Boogle launched
+2020-01-14 19:29:04 INFO  ui.Main:30 - Boogle is closing. Used for 0.3841333333333333 m
+2020-01-14 19:39:23 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:39:26 INFO  UIController:407 - loadFile::
 2020-01-14 19:39:30 INFO  UIController:415 - Loaded::QA
 2020-01-14 19:39:34 INFO  UIController:407 - loadFile::
@@ -1672,324 +1672,324 @@
 2020-01-14 19:40:06 INFO  SearchController:71 - Boogle Search page opened.
 2020-01-14 19:40:18 INFO  Model:74 - Start Searching
 2020-01-14 19:40:20 INFO  Model:88 - PROCESS DONE :: (2497.0 ms)
-2020-01-14 19:50:29 INFO  Main:27 - Boogle launched
+2020-01-14 19:50:29 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:50:33 INFO  SearchController:71 - Search Tab Switch
-2020-01-14 19:50:40 INFO  Main:30 - Boogle is closing. Used for 0.17238333333333333 m
-2020-01-14 19:51:00 INFO  Main:27 - Boogle launched
+2020-01-14 19:50:40 INFO  ui.Main:30 - Boogle is closing. Used for 0.17238333333333333 m
+2020-01-14 19:51:00 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:51:03 INFO  SearchController:71 - Search Tab Switch
-2020-01-14 19:51:09 INFO  Main:30 - Boogle is closing. Used for 0.15588333333333335 m
-2020-01-14 19:51:39 INFO  Main:27 - Boogle launched
+2020-01-14 19:51:09 INFO  ui.Main:30 - Boogle is closing. Used for 0.15588333333333335 m
+2020-01-14 19:51:39 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:51:42 INFO  SearchController:71 - Search Tab Switch
-2020-01-14 19:51:53 INFO  Main:30 - Boogle is closing. Used for 0.22735 m
-2020-01-14 19:52:44 INFO  Main:27 - Boogle launched
+2020-01-14 19:51:53 INFO  ui.Main:30 - Boogle is closing. Used for 0.22735 m
+2020-01-14 19:52:44 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:52:47 INFO  SearchController:71 - Search Tab Switch
-2020-01-14 19:53:11 INFO  Main:30 - Boogle is closing. Used for 0.453 m
-2020-01-14 19:54:03 INFO  Main:27 - Boogle launched
+2020-01-14 19:53:11 INFO  ui.Main:30 - Boogle is closing. Used for 0.453 m
+2020-01-14 19:54:03 INFO  ui.Main:27 - Boogle launched
 2020-01-14 19:54:10 INFO  UIController:414 - Loaded::Out
 2020-01-14 19:54:18 INFO  SearchController:71 - Search Tab Switch
 2020-01-14 19:54:25 INFO  Model:74 - Start Searching
 2020-01-14 19:54:27 INFO  Model:88 - DONE::(2615.0 ms)
-2020-01-14 19:56:17 INFO  Main:30 - Boogle is closing. Used for 2.242766666666667 m
-2020-01-14 20:00:09 INFO  Main:27 - Boogle launched
+2020-01-14 19:56:17 INFO  ui.Main:30 - Boogle is closing. Used for 2.242766666666667 m
+2020-01-14 20:00:09 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:00:17 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:00:21 INFO  SearchController:71 - Search Tab Switch
 2020-01-14 20:00:27 INFO  Model:74 - Start Searching
 2020-01-14 20:00:29 INFO  Model:88 - DONE::(2413.0 ms)
-2020-01-14 20:00:47 INFO  Main:30 - Boogle is closing. Used for 0.6371833333333333 m
-2020-01-14 20:01:37 INFO  Main:27 - Boogle launched
+2020-01-14 20:00:47 INFO  ui.Main:30 - Boogle is closing. Used for 0.6371833333333333 m
+2020-01-14 20:01:37 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:01:45 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:01:50 INFO  SearchController:71 - Search Tab Switch
 2020-01-14 20:01:56 INFO  Model:74 - Start Searching
 2020-01-14 20:09:37 INFO  Model:88 - DONE::(460686.0 ms)
-2020-01-14 20:10:21 INFO  Main:27 - Boogle launched
+2020-01-14 20:10:21 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:10:32 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:10:38 INFO  SearchController:71 - Search Tab Switch
 2020-01-14 20:10:44 INFO  Model:74 - Start Searching
 2020-01-14 20:10:47 INFO  Model:88 - DONE::(2438.0 ms)
 2020-01-14 20:11:14 INFO  Model:74 - Start Searching
 2020-01-14 20:11:15 INFO  Model:88 - DONE::(1553.0 ms)
-2020-01-14 20:16:23 INFO  Main:27 - Boogle launched
+2020-01-14 20:16:23 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:16:31 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:16:34 INFO  SearchController:70 - Search Tab Switch
 2020-01-14 20:16:41 INFO  Model:74 - Start Searching
 2020-01-14 20:16:43 INFO  Model:88 - DONE::(2314.0 ms)
-2020-01-14 20:16:56 INFO  Main:30 - Boogle is closing. Used for 0.54805 m
-2020-01-14 20:25:35 INFO  Main:27 - Boogle launched
+2020-01-14 20:16:56 INFO  ui.Main:30 - Boogle is closing. Used for 0.54805 m
+2020-01-14 20:25:35 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:25:41 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:25:49 INFO  SearchController:70 - Search Tab Switch
 2020-01-14 20:25:53 INFO  Model:74 - Start Searching
 2020-01-14 20:25:55 INFO  Model:87 - DONE::(2383.0 ms)
-2020-01-14 20:41:59 INFO  Main:27 - Boogle launched
+2020-01-14 20:41:59 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:42:09 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:42:12 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 20:42:17 INFO  Model:74 - Start Searching
 2020-01-14 20:42:19 INFO  Model:87 - DONE::(2507.0 ms)
-2020-01-14 20:42:35 INFO  Main:30 - Boogle is closing. Used for 0.6115 m
-2020-01-14 20:49:08 INFO  Main:27 - Boogle launched
+2020-01-14 20:42:35 INFO  ui.Main:30 - Boogle is closing. Used for 0.6115 m
+2020-01-14 20:49:08 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:49:11 INFO  SearchController:73 - Search Tab Switch
-2020-01-14 20:50:07 INFO  Main:30 - Boogle is closing. Used for 0.9807666666666667 m
-2020-01-14 20:53:25 INFO  Main:27 - Boogle launched
+2020-01-14 20:50:07 INFO  ui.Main:30 - Boogle is closing. Used for 0.9807666666666667 m
+2020-01-14 20:53:25 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:53:32 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:53:38 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 20:53:42 INFO  Model:74 - Start Searching
 2020-01-14 20:53:44 INFO  Model:87 - DONE::(2638.0 ms)
-2020-01-14 20:54:39 INFO  Main:27 - Boogle launched
+2020-01-14 20:54:39 INFO  ui.Main:27 - Boogle launched
 2020-01-14 20:54:46 INFO  UIController:414 - Loaded::Out
 2020-01-14 20:54:52 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 20:54:57 INFO  Model:74 - Start Searching
 2020-01-14 20:54:58 INFO  Model:87 - DONE::(1699.0 ms)
-2020-01-14 20:55:22 INFO  Main:30 - Boogle is closing. Used for 0.7197333333333333 m
-2020-01-14 21:10:48 INFO  Main:27 - Boogle launched
+2020-01-14 20:55:22 INFO  ui.Main:30 - Boogle is closing. Used for 0.7197333333333333 m
+2020-01-14 21:10:48 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:10:54 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:10:59 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:11:05 INFO  Model:74 - Start Searching
 2020-01-14 21:11:07 INFO  Model:87 - DONE::(2398.0 ms)
-2020-01-14 21:12:20 INFO  Main:27 - Boogle launched
+2020-01-14 21:12:20 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:13:02 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:13:05 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:13:10 INFO  Model:74 - Start Searching
 2020-01-14 21:13:13 INFO  Model:87 - DONE::(2567.0 ms)
-2020-01-14 21:13:30 INFO  Main:30 - Boogle is closing. Used for 1.1671166666666666 m
-2020-01-14 21:13:49 INFO  Main:27 - Boogle launched
+2020-01-14 21:13:30 INFO  ui.Main:30 - Boogle is closing. Used for 1.1671166666666666 m
+2020-01-14 21:13:49 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:14:43 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:14:47 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:14:51 INFO  Model:74 - Start Searching
 2020-01-14 21:14:54 INFO  Model:87 - DONE::(2548.0 ms)
-2020-01-14 21:23:33 INFO  Main:27 - Boogle launched
+2020-01-14 21:23:33 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:23:41 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:23:45 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:23:50 INFO  Model:74 - Start Searching
 2020-01-14 21:23:52 INFO  Model:87 - DONE::(2353.0 ms)
-2020-01-14 21:24:36 INFO  Main:27 - Boogle launched
+2020-01-14 21:24:36 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:24:46 INFO  UIController:414 - Loaded::QA
 2020-01-14 21:24:51 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:24:54 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:25:00 INFO  Model:74 - Start Searching
 2020-01-14 21:25:03 INFO  Model:87 - DONE::(2615.0 ms)
-2020-01-14 21:25:22 INFO  Main:30 - Boogle is closing. Used for 0.77015 m
-2020-01-14 21:34:30 INFO  Main:27 - Boogle launched
+2020-01-14 21:25:22 INFO  ui.Main:30 - Boogle is closing. Used for 0.77015 m
+2020-01-14 21:34:30 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:35:17 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:35:34 INFO  SearchController:73 - Search Tab Switch
-2020-01-14 21:39:36 INFO  Main:27 - Boogle launched
+2020-01-14 21:39:36 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:39:43 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:39:48 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:39:54 INFO  Model:74 - Start Searching
 2020-01-14 21:39:56 INFO  Model:87 - DONE::(2423.0 ms)
-2020-01-14 21:42:37 INFO  Main:30 - Boogle is closing. Used for 3.0215666666666667 m
-2020-01-14 21:45:08 INFO  Main:27 - Boogle launched
+2020-01-14 21:42:37 INFO  ui.Main:30 - Boogle is closing. Used for 3.0215666666666667 m
+2020-01-14 21:45:08 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:45:15 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:45:19 INFO  SearchController:73 - Search Tab Switch
-2020-01-14 21:45:56 INFO  Main:27 - Boogle launched
+2020-01-14 21:45:56 INFO  ui.Main:27 - Boogle launched
 2020-01-14 21:46:02 INFO  UIController:414 - Loaded::Out
 2020-01-14 21:46:06 INFO  SearchController:73 - Search Tab Switch
 2020-01-14 21:46:16 INFO  Model:74 - Start Searching
 2020-01-14 21:46:18 INFO  Model:87 - DONE::(2453.0 ms)
-2020-01-14 21:47:13 INFO  Main:30 - Boogle is closing. Used for 1.2839166666666666 m
-2020-01-15 10:42:29 INFO  Main:27 - Boogle launched
+2020-01-14 21:47:13 INFO  ui.Main:30 - Boogle is closing. Used for 1.2839166666666666 m
+2020-01-15 10:42:29 INFO  ui.Main:27 - Boogle launched
 2020-01-15 10:42:37 INFO  UIController:414 - Loaded::Out
 2020-01-15 10:42:42 INFO  SearchController:72 - Search Tab Switch
 2020-01-15 10:42:49 INFO  Model:74 - Start Searching
 2020-01-15 10:42:54 INFO  Model:87 - DONE::(4954.0 ms)
-2020-01-15 11:04:28 INFO  Main:27 - Boogle launched
+2020-01-15 11:04:28 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:04:34 INFO  UIController:414 - Loaded::Out
 2020-01-15 11:04:39 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 11:04:44 INFO  Model:74 - Start Searching
 2020-01-15 11:04:47 INFO  Model:87 - DONE::(2599.0 ms)
-2020-01-15 11:18:16 INFO  Main:27 - Boogle launched
+2020-01-15 11:18:16 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:18:19 INFO  SearchController:69 - Search Tab Switch
-2020-01-15 11:18:44 INFO  Main:30 - Boogle is closing. Used for 0.4676 m
-2020-01-15 11:27:18 INFO  Main:27 - Boogle launched
+2020-01-15 11:18:44 INFO  ui.Main:30 - Boogle is closing. Used for 0.4676 m
+2020-01-15 11:27:18 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:27:23 INFO  SearchController:68 - Search Tab Switch
 2020-01-15 11:27:30 INFO  UIController:414 - Loaded::Out
 2020-01-15 11:27:36 INFO  SearchController:68 - Search Tab Switch
 2020-01-15 11:27:46 INFO  Model:74 - Start Searching
 2020-01-15 11:27:49 INFO  Model:87 - DONE::(2427.0 ms)
-2020-01-15 11:28:54 INFO  Main:27 - Boogle launched
-2020-01-15 11:29:27 INFO  Main:27 - Boogle launched
+2020-01-15 11:28:54 INFO  ui.Main:27 - Boogle launched
+2020-01-15 11:29:27 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:29:35 INFO  UIController:414 - Loaded::Out
 2020-01-15 11:29:40 INFO  SearchController:68 - Search Tab Switch
 2020-01-15 11:29:49 INFO  Model:74 - Start Searching
 2020-01-15 11:29:51 INFO  Model:87 - DONE::(2367.0 ms)
-2020-01-15 11:30:18 INFO  Main:30 - Boogle is closing. Used for 0.8421833333333333 m
-2020-01-15 11:38:11 INFO  Main:27 - Boogle launched
+2020-01-15 11:30:18 INFO  ui.Main:30 - Boogle is closing. Used for 0.8421833333333333 m
+2020-01-15 11:38:11 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:38:18 INFO  UIController:414 - Loaded::Out
 2020-01-15 11:38:22 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 11:38:28 INFO  Model:74 - Start Searching
 2020-01-15 11:38:31 INFO  Model:87 - DONE::(2517.0 ms)
-2020-01-15 11:56:15 INFO  Main:27 - Boogle launched
+2020-01-15 11:56:15 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:56:21 INFO  UIController:413 - Loaded::Out
 2020-01-15 11:56:26 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 11:56:33 INFO  Model:74 - Start Searching
 2020-01-15 11:56:36 INFO  Model:87 - DONE::(2854.0 ms)
-2020-01-15 11:57:44 INFO  Main:27 - Boogle launched
+2020-01-15 11:57:44 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:57:55 INFO  UIController:413 - Loaded::Out
 2020-01-15 11:58:00 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 11:58:06 INFO  Model:74 - Start Searching
 2020-01-15 11:58:09 INFO  Model:87 - DONE::(2572.0 ms)
-2020-01-15 11:58:23 INFO  Main:30 - Boogle is closing. Used for 0.65425 m
-2020-01-15 11:59:22 INFO  Main:27 - Boogle launched
+2020-01-15 11:58:23 INFO  ui.Main:30 - Boogle is closing. Used for 0.65425 m
+2020-01-15 11:59:22 INFO  ui.Main:27 - Boogle launched
 2020-01-15 11:59:30 INFO  UIController:413 - Loaded::Out
 2020-01-15 11:59:36 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 11:59:42 INFO  Model:74 - Start Searching
 2020-01-15 11:59:44 INFO  Model:87 - DONE::(2675.0 ms)
-2020-01-15 12:00:06 INFO  Main:30 - Boogle is closing. Used for 0.7262666666666666 m
-2020-01-15 12:23:09 INFO  Main:27 - Boogle launched
+2020-01-15 12:00:06 INFO  ui.Main:30 - Boogle is closing. Used for 0.7262666666666666 m
+2020-01-15 12:23:09 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:23:17 INFO  UIController:411 - Loaded::Out
-2020-01-15 12:23:50 INFO  Main:27 - Boogle launched
+2020-01-15 12:23:50 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:23:58 INFO  UIController:411 - Loaded::Out
 2020-01-15 12:24:03 INFO  SearchController:75 - Search Tab Switch
 2020-01-15 12:24:08 INFO  Model:74 - Start Searching
 2020-01-15 12:24:11 INFO  Model:87 - DONE::(2460.0 ms)
-2020-01-15 12:24:26 INFO  Main:30 - Boogle is closing. Used for 0.5873833333333334 m
-2020-01-15 12:36:10 INFO  Main:27 - Boogle launched
+2020-01-15 12:24:26 INFO  ui.Main:30 - Boogle is closing. Used for 0.5873833333333334 m
+2020-01-15 12:36:10 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:36:20 INFO  UIController:411 - Loaded::Out
 2020-01-15 12:36:25 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 12:36:31 INFO  Model:74 - Start Searching
 2020-01-15 12:36:34 INFO  Model:87 - DONE::(2555.0 ms)
-2020-01-15 12:42:46 INFO  Main:27 - Boogle launched
+2020-01-15 12:42:46 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:42:56 INFO  UIController:411 - Loaded::Out
 2020-01-15 12:42:59 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 12:43:04 INFO  Model:74 - Start Searching
 2020-01-15 12:43:06 INFO  Model:87 - DONE::(2526.0 ms)
-2020-01-15 12:53:21 INFO  Main:27 - Boogle launched
+2020-01-15 12:53:21 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:53:27 INFO  SearchController:67 - Search Tab Switch
-2020-01-15 12:55:06 INFO  Main:27 - Boogle launched
+2020-01-15 12:55:06 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:55:09 INFO  SearchController:67 - Search Tab Switch
-2020-01-15 12:55:47 INFO  Main:27 - Boogle launched
+2020-01-15 12:55:47 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:55:51 INFO  SearchController:67 - Search Tab Switch
-2020-01-15 12:56:12 INFO  Main:30 - Boogle is closing. Used for 0.4049 m
-2020-01-15 12:59:46 INFO  Main:27 - Boogle launched
-2020-01-15 12:59:53 INFO  Main:27 - Boogle launched
+2020-01-15 12:56:12 INFO  ui.Main:30 - Boogle is closing. Used for 0.4049 m
+2020-01-15 12:59:46 INFO  ui.Main:27 - Boogle launched
+2020-01-15 12:59:53 INFO  ui.Main:27 - Boogle launched
 2020-01-15 12:59:59 INFO  UIController:411 - Loaded::Out
 2020-01-15 13:00:06 INFO  SearchController:67 - Search Tab Switch
 2020-01-15 13:00:11 INFO  Model:74 - Start Searching
 2020-01-15 13:00:13 INFO  Model:87 - DONE::(2476.0 ms)
-2020-01-15 13:12:14 INFO  Main:27 - Boogle launched
+2020-01-15 13:12:14 INFO  ui.Main:27 - Boogle launched
 2020-01-15 13:12:26 INFO  SearchController:70 - Search Tab Switch
 2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
 2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
 2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
 2020-01-15 13:12:27 INFO  SearchController:70 - Search Tab Switch
-2020-01-15 13:12:34 INFO  Main:30 - Boogle is closing. Used for 0.3258 m
-2020-01-15 13:12:57 INFO  Main:27 - Boogle launched
+2020-01-15 13:12:34 INFO  ui.Main:30 - Boogle is closing. Used for 0.3258 m
+2020-01-15 13:12:57 INFO  ui.Main:27 - Boogle launched
 2020-01-15 13:13:05 INFO  UIController:412 - Loaded::Out
 2020-01-15 13:13:08 INFO  SearchController:70 - Search Tab Switch
-2020-01-15 13:51:54 INFO  Main:27 - Boogle launched
+2020-01-15 13:51:54 INFO  ui.Main:27 - Boogle launched
 2020-01-15 13:51:58 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 13:52:08 INFO  Main:30 - Boogle is closing. Used for 0.2314 m
-2020-01-15 13:52:58 INFO  Main:27 - Boogle launched
+2020-01-15 13:52:08 INFO  ui.Main:30 - Boogle is closing. Used for 0.2314 m
+2020-01-15 13:52:58 INFO  ui.Main:27 - Boogle launched
 2020-01-15 13:53:02 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 13:53:09 INFO  Main:30 - Boogle is closing. Used for 0.18511666666666668 m
-2020-01-15 13:55:16 INFO  Main:27 - Boogle launched
+2020-01-15 13:53:09 INFO  ui.Main:30 - Boogle is closing. Used for 0.18511666666666668 m
+2020-01-15 13:55:16 INFO  ui.Main:27 - Boogle launched
 2020-01-15 13:55:20 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 13:55:26 INFO  Main:30 - Boogle is closing. Used for 0.16208333333333333 m
-2020-01-15 14:01:52 INFO  Main:27 - Boogle launched
+2020-01-15 13:55:26 INFO  ui.Main:30 - Boogle is closing. Used for 0.16208333333333333 m
+2020-01-15 14:01:52 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:01:56 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 14:08:07 INFO  Main:27 - Boogle launched
+2020-01-15 14:08:07 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:08:14 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:08:21 INFO  SearchController:70 - Search Tab Switch
 2020-01-15 14:08:36 INFO  Model:74 - Start Searching
 2020-01-15 14:08:39 INFO  Model:87 - DONE::(2779.0 ms)
-2020-01-15 14:12:53 INFO  Main:27 - Boogle launched
+2020-01-15 14:12:53 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:13:00 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:13:05 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:13:10 INFO  Model:74 - Start Searching
 2020-01-15 14:13:12 INFO  Model:87 - DONE::(2695.0 ms)
-2020-01-15 14:14:02 INFO  Main:27 - Boogle launched
+2020-01-15 14:14:02 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:14:08 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:14:11 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:14:16 INFO  Model:74 - Start Searching
 2020-01-15 14:14:19 INFO  Model:87 - DONE::(2648.0 ms)
-2020-01-15 14:14:42 INFO  Main:30 - Boogle is closing. Used for 0.6607166666666666 m
-2020-01-15 14:18:37 INFO  Main:27 - Boogle launched
+2020-01-15 14:14:42 INFO  ui.Main:30 - Boogle is closing. Used for 0.6607166666666666 m
+2020-01-15 14:18:37 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:18:44 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:18:48 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:18:54 INFO  Model:74 - Start Searching
 2020-01-15 14:18:57 INFO  Model:87 - DONE::(2435.0 ms)
-2020-01-15 14:19:22 INFO  Main:30 - Boogle is closing. Used for 0.7534666666666666 m
-2020-01-15 14:28:38 INFO  Main:27 - Boogle launched
+2020-01-15 14:19:22 INFO  ui.Main:30 - Boogle is closing. Used for 0.7534666666666666 m
+2020-01-15 14:28:38 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:28:45 INFO  SearchController:72 - Search Tab Switch
-2020-01-15 14:33:39 INFO  Main:27 - Boogle launched
+2020-01-15 14:33:39 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:33:47 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:33:56 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 14:34:00 INFO  Model:74 - Start Searching
 2020-01-15 14:34:02 INFO  Model:87 - DONE::(1853.0 ms)
-2020-01-15 14:38:59 INFO  Main:27 - Boogle launched
+2020-01-15 14:38:59 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:39:07 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:39:11 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 14:39:16 INFO  Model:74 - Start Searching
 2020-01-15 14:39:19 INFO  Model:87 - DONE::(2588.0 ms)
-2020-01-15 14:41:20 INFO  Main:27 - Boogle launched
+2020-01-15 14:41:20 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:41:25 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 14:41:34 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:41:38 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 14:41:42 INFO  Model:74 - Start Searching
 2020-01-15 14:41:44 INFO  Model:87 - DONE::(2328.0 ms)
-2020-01-15 14:41:56 INFO  Main:30 - Boogle is closing. Used for 0.6103333333333333 m
-2020-01-15 14:43:51 INFO  Main:27 - Boogle launched
+2020-01-15 14:41:56 INFO  ui.Main:30 - Boogle is closing. Used for 0.6103333333333333 m
+2020-01-15 14:43:51 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:44:01 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:44:06 INFO  SearchController:73 - Search Tab Switch
 2020-01-15 14:44:16 INFO  Model:74 - Start Searching
 2020-01-15 14:44:19 INFO  Model:87 - DONE::(2563.0 ms)
-2020-01-15 14:45:35 INFO  Main:27 - Boogle launched
+2020-01-15 14:45:35 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:45:42 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:45:46 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:45:50 INFO  Model:74 - Start Searching
 2020-01-15 14:45:53 INFO  Model:87 - DONE::(2804.0 ms)
-2020-01-15 14:46:38 INFO  Main:27 - Boogle launched
+2020-01-15 14:46:38 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:46:43 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:46:51 INFO  Model:74 - Start Searching
 2020-01-15 14:46:51 ERROR Model:81 - Boogle failed
 2020-01-15 14:46:51 INFO  Model:87 - DONE::(130.0 ms)
-2020-01-15 14:47:18 INFO  Main:27 - Boogle launched
+2020-01-15 14:47:18 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:47:25 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:47:29 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:47:38 INFO  Model:74 - Start Searching
 2020-01-15 14:47:40 INFO  Model:87 - DONE::(1806.0 ms)
-2020-01-15 14:48:10 INFO  Main:30 - Boogle is closing. Used for 0.8698166666666667 m
-2020-01-15 14:51:31 INFO  Main:27 - Boogle launched
+2020-01-15 14:48:10 INFO  ui.Main:30 - Boogle is closing. Used for 0.8698166666666667 m
+2020-01-15 14:51:31 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:51:40 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:51:43 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:51:48 INFO  Model:74 - Start Searching
 2020-01-15 14:51:51 INFO  Model:87 - DONE::(2442.0 ms)
-2020-01-15 14:52:08 INFO  Main:30 - Boogle is closing. Used for 0.6230333333333333 m
-2020-01-15 14:57:33 INFO  Main:27 - Boogle launched
+2020-01-15 14:52:08 INFO  ui.Main:30 - Boogle is closing. Used for 0.6230333333333333 m
+2020-01-15 14:57:33 INFO  ui.Main:27 - Boogle launched
 2020-01-15 14:57:47 INFO  UIController:412 - Loaded::Out
 2020-01-15 14:57:52 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:58:01 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 14:58:06 INFO  Model:74 - Start Searching
 2020-01-15 14:58:08 INFO  Model:87 - DONE::(2483.0 ms)
-2020-01-15 15:03:15 INFO  Main:27 - Boogle launched
+2020-01-15 15:03:15 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:03:24 INFO  UIController:412 - Loaded::Out
 2020-01-15 15:03:27 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:03:32 INFO  Model:74 - Start Searching
 2020-01-15 15:03:34 INFO  Model:87 - DONE::(1766.0 ms)
-2020-01-15 15:15:20 INFO  Main:27 - Boogle launched
+2020-01-15 15:15:20 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:15:30 INFO  UIController:412 - Loaded::Out
 2020-01-15 15:15:36 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:15:42 INFO  Model:74 - Start Searching
 2020-01-15 15:15:45 INFO  Model:87 - DONE::(2595.0 ms)
-2020-01-15 15:17:25 INFO  Main:27 - Boogle launched
+2020-01-15 15:17:25 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:17:29 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 15:17:53 INFO  Main:27 - Boogle launched
+2020-01-15 15:17:53 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:17:57 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 15:18:44 INFO  Main:27 - Boogle launched
+2020-01-15 15:18:44 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:18:50 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:19:10 INFO  UIController:412 - Loaded::Out
 2020-01-15 15:19:15 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:19:19 INFO  Model:74 - Start Searching
 2020-01-15 15:19:22 INFO  Model:87 - DONE::(2384.0 ms)
-2020-01-15 15:20:35 INFO  Main:27 - Boogle launched
+2020-01-15 15:20:35 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:20:40 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 15:21:16 INFO  Main:27 - Boogle launched
+2020-01-15 15:21:16 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:21:20 INFO  SearchController:71 - Search Tab Switch
-2020-01-15 15:21:29 INFO  Main:30 - Boogle is closing. Used for 0.21268333333333334 m
-2020-01-15 15:22:03 INFO  Main:27 - Boogle launched
+2020-01-15 15:21:29 INFO  ui.Main:30 - Boogle is closing. Used for 0.21268333333333334 m
+2020-01-15 15:22:03 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:22:12 INFO  UIController:412 - Loaded::Out
 2020-01-15 15:22:16 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:22:26 INFO  Model:74 - Start Searching
 2020-01-15 15:22:28 INFO  Model:87 - DONE::(2599.0 ms)
-2020-01-15 15:24:09 INFO  Main:27 - Boogle launched
+2020-01-15 15:24:09 INFO  ui.Main:27 - Boogle launched
 2020-01-15 15:24:18 INFO  UIController:412 - Loaded::Out
 2020-01-15 15:24:22 INFO  SearchController:71 - Search Tab Switch
 2020-01-15 15:24:27 INFO  Model:74 - Start Searching
@@ -2122,13 +2122,13 @@
 2020-01-15 16:48:27 INFO  TimeExpressionExtractorImpl:88 - Using following SUTime rules: edu/stanford/nlp/models/sutime/defs.sutime.txt,edu/stanford/nlp/models/sutime/english.sutime.txt,edu/stanford/nlp/models/sutime/english.holidays.sutime.txt
 2020-01-15 17:05:56 INFO  Model:178 - Start merge Method :: single
 2020-01-15 17:13:13 INFO  Model:67 - PROCESS DONE :: END INDEXING in 24.88 minutes
-2020-01-15 17:14:43 INFO  Main:30 - Boogle is closing. Used for 27.337 m
-2020-01-15 17:36:01 INFO  Main:27 - Boogle launched
+2020-01-15 17:14:43 INFO  ui.Main:30 - Boogle is closing. Used for 27.337 m
+2020-01-15 17:36:01 INFO  ui.Main:27 - Boogle launched
 2020-01-15 17:36:39 INFO  Model:44 - Start Parsing and Indexing
 2020-01-15 17:36:39 INFO  Model:132 - Start manager Method :: runnable
 2020-01-15 17:52:57 INFO  Model:178 - Start merge Method :: single
 2020-01-15 17:55:30 INFO  Model:67 - PROCESS DONE :: END INDEXING in 18.85 minutes
-2020-01-15 18:43:46 INFO  Main:27 - Boogle launched
+2020-01-15 18:43:46 INFO  ui.Main:27 - Boogle launched
 2020-01-15 18:44:11 INFO  Model:44 - Start Parsing and Indexing
 2020-01-15 18:44:11 INFO  Model:132 - Start manager Method :: runnable
 2020-01-15 19:00:21 INFO  Model:172 - Start merge Method :: single
@@ -2136,64 +2136,64 @@
 2020-01-15 19:06:05 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:08:05 INFO  Model:74 - Start Searching
 2020-01-15 19:10:27 INFO  Model:87 - DONE::(142274.0 ms)
-2020-01-15 19:12:35 INFO  Main:30 - Boogle is closing. Used for 28.81365 m
-2020-01-15 19:16:46 INFO  Main:27 - Boogle launched
+2020-01-15 19:12:35 INFO  ui.Main:30 - Boogle is closing. Used for 28.81365 m
+2020-01-15 19:16:46 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:17:39 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:18:08 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:18:59 INFO  Model:74 - Start Searching
 2020-01-15 19:19:01 ERROR Model:81 - Boogle failed
 2020-01-15 19:19:02 INFO  Model:87 - DONE::(2104.0 ms)
-2020-01-15 19:20:16 INFO  Main:27 - Boogle launched
+2020-01-15 19:20:16 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:20:25 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:20:38 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:20:43 INFO  Model:74 - Start Searching
-2020-01-15 19:25:40 INFO  Main:27 - Boogle launched
+2020-01-15 19:25:40 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:25:55 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:26:06 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:26:24 INFO  Model:74 - Start Searching
 2020-01-15 19:26:28 INFO  Model:87 - DONE::(4028.0 ms)
-2020-01-15 19:33:23 INFO  Main:27 - Boogle launched
+2020-01-15 19:33:23 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:33:35 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:35:03 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:35:22 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:35:28 INFO  Model:74 - Start Searching
 2020-01-15 19:35:32 INFO  Model:87 - DONE::(3728.0 ms)
-2020-01-15 19:37:48 INFO  Main:27 - Boogle launched
+2020-01-15 19:37:48 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:39:47 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:39:58 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:40:33 INFO  Model:72 - Start Searching
 2020-01-15 19:40:39 INFO  Model:85 - DONE::(5390.0 ms)
-2020-01-15 19:40:59 INFO  Main:30 - Boogle is closing. Used for 3.1822666666666666 m
-2020-01-15 19:47:10 INFO  Main:27 - Boogle launched
+2020-01-15 19:40:59 INFO  ui.Main:30 - Boogle is closing. Used for 3.1822666666666666 m
+2020-01-15 19:47:10 INFO  ui.Main:27 - Boogle launched
 2020-01-15 19:47:28 INFO  UIController:411 - Loaded::allOut
 2020-01-15 19:47:39 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 19:47:45 INFO  Model:72 - Start Searching
 2020-01-15 19:48:30 INFO  Model:85 - DONE::(44549.0 ms)
-2020-01-15 19:49:52 INFO  Main:30 - Boogle is closing. Used for 2.7055166666666666 m
-2020-01-15 20:00:22 INFO  Main:27 - Boogle launched
+2020-01-15 19:49:52 INFO  ui.Main:30 - Boogle is closing. Used for 2.7055166666666666 m
+2020-01-15 20:00:22 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:00:34 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:01:00 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:01:09 INFO  Model:72 - Start Searching
-2020-01-15 20:21:50 INFO  Main:27 - Boogle launched
+2020-01-15 20:21:50 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:22:13 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:22:29 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:22:42 INFO  Model:72 - Start Searching
 2020-01-15 20:23:09 INFO  Model:85 - DONE::(27068.0 ms)
-2020-01-15 20:25:33 INFO  Main:27 - Boogle launched
+2020-01-15 20:25:33 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:25:46 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:26:03 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:26:10 INFO  Model:72 - Start Searching
 2020-01-15 20:26:18 INFO  Model:85 - DONE::(8556.0 ms)
-2020-01-15 20:26:45 INFO  Main:30 - Boogle is closing. Used for 1.19775 m
-2020-01-15 20:42:44 INFO  Main:27 - Boogle launched
+2020-01-15 20:26:45 INFO  ui.Main:30 - Boogle is closing. Used for 1.19775 m
+2020-01-15 20:42:44 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:42:52 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:43:03 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:43:16 INFO  Model:75 - Start Searching
-2020-01-15 20:44:14 INFO  Main:27 - Boogle launched
+2020-01-15 20:44:14 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:44:25 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:44:34 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:44:40 INFO  Model:75 - Start Searching
-2020-01-15 20:46:04 INFO  Main:27 - Boogle launched
+2020-01-15 20:46:04 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:46:13 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:46:23 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:46:28 INFO  Model:75 - Start Searching
@@ -2202,88 +2202,88 @@
 2020-01-15 20:47:06 INFO  Model:75 - Start Searching
 2020-01-15 20:47:17 ERROR Model:82 - Boogle failed
 2020-01-15 20:47:17 INFO  Model:88 - DONE::(10937.0 ms)
-2020-01-15 20:48:16 INFO  Main:30 - Boogle is closing. Used for 2.1872166666666666 m
-2020-01-15 20:48:26 INFO  Main:27 - Boogle launched
+2020-01-15 20:48:16 INFO  ui.Main:30 - Boogle is closing. Used for 2.1872166666666666 m
+2020-01-15 20:48:26 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:48:36 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:48:45 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:48:52 INFO  Model:75 - Start Searching
 2020-01-15 20:49:05 INFO  Model:88 - DONE::(13230.0 ms)
-2020-01-15 20:51:17 INFO  Main:27 - Boogle launched
+2020-01-15 20:51:17 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:51:23 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:51:31 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:51:38 INFO  Model:75 - Start Searching
 2020-01-15 20:51:48 ERROR Model:82 - Boogle failed
 2020-01-15 20:51:48 INFO  Model:88 - DONE::(9994.0 ms)
-2020-01-15 20:51:54 INFO  Main:30 - Boogle is closing. Used for 0.6159333333333333 m
-2020-01-15 20:52:49 INFO  Main:27 - Boogle launched
+2020-01-15 20:51:54 INFO  ui.Main:30 - Boogle is closing. Used for 0.6159333333333333 m
+2020-01-15 20:52:49 INFO  ui.Main:27 - Boogle launched
 2020-01-15 20:52:56 INFO  UIController:411 - Loaded::allOut
 2020-01-15 20:53:06 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 20:53:11 INFO  Model:75 - Start Searching
 2020-01-15 20:53:17 INFO  Model:88 - DONE::(6201.0 ms)
-2020-01-15 20:54:13 INFO  Main:30 - Boogle is closing. Used for 1.4092333333333333 m
-2020-01-15 21:02:28 INFO  Main:27 - Boogle launched
+2020-01-15 20:54:13 INFO  ui.Main:30 - Boogle is closing. Used for 1.4092333333333333 m
+2020-01-15 21:02:28 INFO  ui.Main:27 - Boogle launched
 2020-01-15 21:02:41 INFO  UIController:411 - Loaded::allOut
 2020-01-15 21:02:51 INFO  SearchController:76 - Search Tab Switch
 2020-01-15 21:02:59 INFO  Model:75 - Start Searching
 2020-01-15 21:03:30 INFO  Model:88 - DONE::(30845.0 ms)
-2020-01-15 21:04:08 INFO  Main:30 - Boogle is closing. Used for 1.6656333333333333 m
-2020-01-16 09:35:18 INFO  Main:27 - Boogle launched
+2020-01-15 21:04:08 INFO  ui.Main:30 - Boogle is closing. Used for 1.6656333333333333 m
+2020-01-16 09:35:18 INFO  ui.Main:27 - Boogle launched
 2020-01-16 09:35:56 INFO  UIController:411 - Loaded::allOut
-2020-01-16 09:37:32 INFO  Main:27 - Boogle launched
+2020-01-16 09:37:32 INFO  ui.Main:27 - Boogle launched
 2020-01-16 09:37:45 INFO  UIController:411 - Loaded::allOut
-2020-01-16 09:41:21 INFO  Main:27 - Boogle launched
+2020-01-16 09:41:21 INFO  ui.Main:27 - Boogle launched
 2020-01-16 09:41:32 INFO  UIController:411 - Loaded::allOut
-2020-01-16 09:52:22 INFO  Main:27 - Boogle launched
+2020-01-16 09:52:22 INFO  ui.Main:27 - Boogle launched
 2020-01-16 09:52:36 INFO  UIController:411 - Loaded::allOut
 2020-01-16 09:52:50 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 09:53:11 INFO  Model:75 - Start Searching
 2020-01-16 09:54:11 INFO  Model:88 - DONE::(60255.0 ms)
-2020-01-16 09:57:09 INFO  Main:30 - Boogle is closing. Used for 4.7949166666666665 m
-2020-01-16 10:07:51 INFO  Main:27 - Boogle launched
+2020-01-16 09:57:09 INFO  ui.Main:30 - Boogle is closing. Used for 4.7949166666666665 m
+2020-01-16 10:07:51 INFO  ui.Main:27 - Boogle launched
 2020-01-16 10:08:01 INFO  UIController:411 - Loaded::DEC
 2020-01-16 10:09:30 INFO  UIController:411 - Loaded::allOut
-2020-01-16 10:26:27 INFO  Main:30 - Boogle is closing. Used for 18.5959 m
-2020-01-16 10:32:35 INFO  Main:27 - Boogle launched
+2020-01-16 10:26:27 INFO  ui.Main:30 - Boogle is closing. Used for 18.5959 m
+2020-01-16 10:32:35 INFO  ui.Main:27 - Boogle launched
 2020-01-16 10:32:47 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 10:33:09 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 10:33:17 INFO  Model:75 - Start Searching
 2020-01-16 10:34:22 INFO  Model:88 - DONE::(64876.0 ms)
-2020-01-16 10:43:11 INFO  Main:27 - Boogle launched
+2020-01-16 10:43:11 INFO  ui.Main:27 - Boogle launched
 2020-01-16 10:43:25 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 10:43:38 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 10:43:46 INFO  Model:75 - Start Searching
 2020-01-16 10:44:04 INFO  Model:88 - DONE::(17600.0 ms)
-2020-01-16 10:49:08 INFO  Main:30 - Boogle is closing. Used for 5.95075 m
-2020-01-16 11:00:37 INFO  Main:27 - Boogle launched
+2020-01-16 10:49:08 INFO  ui.Main:30 - Boogle is closing. Used for 5.95075 m
+2020-01-16 11:00:37 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:00:52 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:01:02 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:01:26 INFO  Model:75 - Start Searching
-2020-01-16 11:04:32 INFO  Main:27 - Boogle launched
+2020-01-16 11:04:32 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:04:40 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:04:50 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:05:06 INFO  Model:75 - Start Searching
-2020-01-16 11:06:59 INFO  Main:27 - Boogle launched
+2020-01-16 11:06:59 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:07:13 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:07:20 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:07:25 INFO  Model:75 - Start Searching
 2020-01-16 11:07:25 INFO  Model:88 - DONE::(101.0 ms)
 2020-01-16 11:08:31 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:08:43 INFO  Model:75 - Start Searching
-2020-01-16 11:14:26 INFO  Main:27 - Boogle launched
+2020-01-16 11:14:26 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:14:33 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:14:41 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:14:50 INFO  Model:75 - Start Searching
 2020-01-16 11:14:50 INFO  Model:88 - DONE::(207.0 ms)
-2020-01-16 11:16:17 INFO  Main:30 - Boogle is closing. Used for 1.8532166666666667 m
-2020-01-16 11:16:22 INFO  Main:27 - Boogle launched
+2020-01-16 11:16:17 INFO  ui.Main:30 - Boogle is closing. Used for 1.8532166666666667 m
+2020-01-16 11:16:22 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:16:29 INFO  UIController:411 - Loaded::newPosting
-2020-01-16 11:17:49 INFO  Main:27 - Boogle launched
+2020-01-16 11:17:49 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:17:56 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:18:05 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:18:11 INFO  Model:75 - Start Searching
 2020-01-16 11:18:11 INFO  Model:88 - DONE::(250.0 ms)
-2020-01-16 11:18:20 INFO  Main:30 - Boogle is closing. Used for 0.5060333333333333 m
-2020-01-16 11:19:59 INFO  Main:27 - Boogle launched
+2020-01-16 11:18:20 INFO  ui.Main:30 - Boogle is closing. Used for 0.5060333333333333 m
+2020-01-16 11:19:59 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:20:07 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:20:15 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:20:22 INFO  Model:75 - Start Searching
@@ -2291,37 +2291,37 @@
 2020-01-16 11:23:06 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:23:18 INFO  Model:75 - Start Searching
 2020-01-16 11:28:36 INFO  Model:88 - DONE::(318190.0 ms)
-2020-01-16 11:31:19 INFO  Main:30 - Boogle is closing. Used for 11.331983333333334 m
-2020-01-16 11:53:54 INFO  Main:27 - Boogle launched
-2020-01-16 11:54:03 INFO  Main:30 - Boogle is closing. Used for 0.1409 m
-2020-01-16 11:54:43 INFO  Main:27 - Boogle launched
+2020-01-16 11:31:19 INFO  ui.Main:30 - Boogle is closing. Used for 11.331983333333334 m
+2020-01-16 11:53:54 INFO  ui.Main:27 - Boogle launched
+2020-01-16 11:54:03 INFO  ui.Main:30 - Boogle is closing. Used for 0.1409 m
+2020-01-16 11:54:43 INFO  ui.Main:27 - Boogle launched
 2020-01-16 11:54:52 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 11:55:04 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 11:55:16 INFO  Model:76 - Start Searching
 2020-01-16 11:55:45 INFO  Model:89 - DONE::(29012.0 ms)
-2020-01-16 12:01:00 INFO  Main:27 - Boogle launched
+2020-01-16 12:01:00 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:01:32 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:01:40 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 12:01:59 INFO  Model:76 - Start Searching
 2020-01-16 12:02:49 INFO  Model:89 - DONE::(49899.0 ms)
-2020-01-16 12:03:38 INFO  Main:30 - Boogle is closing. Used for 2.6275833333333334 m
-2020-01-16 12:10:34 INFO  Main:27 - Boogle launched
+2020-01-16 12:03:38 INFO  ui.Main:30 - Boogle is closing. Used for 2.6275833333333334 m
+2020-01-16 12:10:34 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:10:46 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:10:57 INFO  SearchController:76 - Search Tab Switch
 2020-01-16 12:11:09 INFO  Model:74 - Start Searching
 2020-01-16 12:14:23 INFO  Model:86 - DONE::(194177.0 ms)
-2020-01-16 12:28:37 INFO  Main:27 - Boogle launched
+2020-01-16 12:28:37 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:28:43 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:29:05 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:29:15 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:29:24 INFO  Model:74 - Start Searching
 2020-01-16 12:30:20 INFO  Model:86 - DONE::(55570.0 ms)
-2020-01-16 12:30:44 INFO  Main:30 - Boogle is closing. Used for 2.1252 m
-2020-01-16 12:34:08 INFO  Main:27 - Boogle launched
+2020-01-16 12:30:44 INFO  ui.Main:30 - Boogle is closing. Used for 2.1252 m
+2020-01-16 12:34:08 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:34:18 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:34:28 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:34:36 INFO  Model:74 - Start Searching
-2020-01-16 12:35:34 INFO  Main:27 - Boogle launched
+2020-01-16 12:35:34 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:35:42 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:35:51 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:35:57 INFO  Model:74 - Start Searching
@@ -2329,29 +2329,47 @@
 2020-01-16 12:38:07 INFO  Model:74 - Start Searching
 2020-01-16 12:38:13 INFO  Model:86 - DONE::(5406.0 ms)
 2020-01-16 12:39:07 INFO  SearchController:77 - Search Tab Switch
-2020-01-16 12:44:43 INFO  Main:27 - Boogle launched
+2020-01-16 12:44:43 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:44:48 INFO  SearchController:77 - Search Tab Switch
-2020-01-16 12:45:08 INFO  Main:30 - Boogle is closing. Used for 0.4252 m
-2020-01-16 12:45:39 INFO  Main:27 - Boogle launched
+2020-01-16 12:45:08 INFO  ui.Main:30 - Boogle is closing. Used for 0.4252 m
+2020-01-16 12:45:39 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:45:42 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:45:58 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:46:10 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:46:20 INFO  Model:74 - Start Searching
 2020-01-16 12:46:49 INFO  Model:86 - DONE::(29183.0 ms)
-2020-01-16 12:49:34 INFO  Main:27 - Boogle launched
+2020-01-16 12:49:34 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:49:41 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:49:51 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:49:57 INFO  Model:74 - Start Searching
 2020-01-16 12:50:27 INFO  Model:86 - DONE::(30141.0 ms)
-2020-01-16 12:51:44 INFO  Main:27 - Boogle launched
+2020-01-16 12:51:44 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:51:51 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:52:01 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:52:09 INFO  Model:74 - Start Searching
 2020-01-16 12:52:53 INFO  Model:86 - DONE::(44185.0 ms)
-2020-01-16 12:54:22 INFO  Main:27 - Boogle launched
+2020-01-16 12:54:22 INFO  ui.Main:27 - Boogle launched
 2020-01-16 12:54:35 INFO  UIController:411 - Loaded::newPosting
 2020-01-16 12:54:46 INFO  SearchController:77 - Search Tab Switch
 2020-01-16 12:54:53 INFO  Model:74 - Start Searching
 2020-01-16 12:55:29 INFO  Model:86 - DONE::(35766.0 ms)
 2020-01-16 12:56:20 INFO  SearchController:77 - Search Tab Switch
-2020-01-16 12:56:33 INFO  Main:30 - Boogle is closing. Used for 2.1826166666666666 m
+2020-01-16 12:56:33 INFO  ui.Main:30 - Boogle is closing. Used for 2.1826166666666666 m
+2020-01-16 13:25:43 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:27:24 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:28:22 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:28:29 INFO  ui.Main:30 - Boogle is closing. Used for 0.11988333333333333 m
+2020-01-16 13:30:26 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:30:30 INFO  ui.Main:30 - Boogle is closing. Used for 0.0716 m
+2020-01-16 13:32:19 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:32:22 INFO  SearchController:77 - Search Tab Switch
+2020-01-16 13:43:41 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:43:46 INFO  SearchController:77 - Search Tab Switch
+2020-01-16 13:43:55 INFO  ui.Main:30 - Boogle is closing. Used for 0.23313333333333333 m
+2020-01-16 13:49:17 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:49:21 INFO  ui.Main:30 - Boogle is closing. Used for 0.06896666666666666 m
+2020-01-16 13:51:38 INFO  ui.Main:27 - Boogle launched
+2020-01-16 13:51:44 INFO  SearchController:77 - Search Tab Switch
+2020-01-16 13:51:50 INFO  ui.Main:30 - Boogle is closing. Used for 0.1901 m
+2020-01-16 14:00:33 INFO  ui.Main:27 - Boogle launched
+2020-01-16 14:00:37 INFO  ui.Main:30 - Boogle is closing. Used for 0.07483333333333334 m

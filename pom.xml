@@ -60,19 +60,6 @@
             <artifactId>boxable</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- main library coreNLP dependency -->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
-        </dependency>
-        <!--Stanford coreNLP 3.9.2 data dependency-->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
-            <classifier>models</classifier>
-        </dependency>
 
         <!-- Core DL4J functionality -->
         <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
@@ -86,12 +73,6 @@
             <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native-platform</artifactId>
             <version>${nd4j.version}</version>
-        </dependency>
-
-        <!-- ND4J backend. You need one in every DL4J project. Normally define artifactId as either "nd4j-native-platform" or "nd4j-cuda-7.5-platform" -->
-        <dependency>
-            <groupId>org.nd4j</groupId>
-            <artifactId>${nd4j.backend}</artifactId>
         </dependency>
         <!-- Core DL4J functionality -->
         <dependency>
@@ -114,22 +95,7 @@
             <groupId>org.apache.cassandra</groupId>
             <artifactId>cassandra-all</artifactId>
             <version>0.8.1</version>
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <groupId>org.slf4j</groupId>-->
-            <!--                    <artifactId>slf4j-log4j12</artifactId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-nop -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.slf4j</groupId>-->
-        <!--            <artifactId>slf4j-nop</artifactId>-->
-        <!--            <version>2.0.0-alpha1</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
