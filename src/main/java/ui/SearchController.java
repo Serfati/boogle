@@ -87,6 +87,7 @@ public class SearchController implements Observer, Initializable {
     public void onSearchBoogleClick() {
         btn_show_data.setDisable(true);
         btn_save_res.setDisable(true);
+        btn_export_pdf.setDisable(true);
         if (!google_txt.getText().equalsIgnoreCase("")) {
             openGoogle(google_txt.getText());
             AlertMaker.showSimpleAlert("Congratulation", "Good Choice");
@@ -99,6 +100,7 @@ public class SearchController implements Observer, Initializable {
             viewModel.onSearchBoogleClick(corpusField_txt.getText(), query, corpusField_txt.getText(), stem_checkbox.isSelected(), semantic_checkbox.isSelected(), offline_checkbox.isSelected()); //transfer to the view Model
             btn_show_data.setDisable(false);
             btn_save_res.setDisable(false);
+            btn_export_pdf.setDisable(false);
         }
     }
 
@@ -208,7 +210,7 @@ public class SearchController implements Observer, Initializable {
         String destinationForAnswers = "";
         DirectoryChooser fileChooser = new DirectoryChooser();
         fileChooser.setTitle("Load Destination Path");
-        File defaultDirectory = new File("/home/serfati/Desktop");
+        File defaultDirectory = new File("/home");
         fileChooser.setInitialDirectory(defaultDirectory);
         File chosen = fileChooser.showDialog(new Stage());
         if (chosen != null)
@@ -223,6 +225,7 @@ public class SearchController implements Observer, Initializable {
             AlertMaker.showSimpleAlert(Alert.AlertType.INFORMATION.name(), "results saved to ->\n "+destinationForAnswers);
         else AlertMaker.showErrorMessage(Alert.AlertType.ERROR.name(), "Something went wrong");
         btn_save_res.setDisable(true);
+        btn_export_pdf.setDisable(true);
     }
 
     /**

@@ -83,7 +83,7 @@ public class Model extends Observable implements IModel {
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
         LOGGER.log(Level.INFO, "DONE::"+"("+RUNTIME+" ms)");
-        AlertMaker.showSimpleAlert("DONE PROCCESS", "Runtime: "+RUNTIME+"ms");
+        AlertMaker.showSimpleAlert("DONE PROCCESS", "Runtime: "+RUNTIME / 60000.0+" m");
         setChanged();
         notifyObservers();
     }
