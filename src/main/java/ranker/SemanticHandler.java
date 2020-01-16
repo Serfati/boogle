@@ -36,12 +36,12 @@ public class SemanticHandler {
      * @param originalQueryWords list of the query words
      * @return realted words for a given query
      */
-    public StringBuilder getTwoBestMatches(List<String> originalQueryWords) throws IOException {
+    public String getTwoBestMatches(List<String> originalQueryWords) {
         StringBuilder allSynonyms = new StringBuilder();
         DatamuseAPI datamuseAPI = new DatamuseAPI();
         for(String entry : originalQueryWords)
             allSynonyms.append(useOffline ? new GloVe(wordVectors).synonyms(entry) : datamuseAPI.synonyms(entry));
-        return allSynonyms;
+        return allSynonyms.toString();
     }
 
     public class GloVe {
@@ -84,11 +84,16 @@ public class SemanticHandler {
             return new JSONObject(sb.toString());
         }
 
-        public String synonyms(String wordToSyn) throws IOException {
+        public String synonyms(String wordToSyn) {
             StringBuilder backSynonyms = new StringBuilder();
             backSynonyms.append(" ");
             DatamuseAPI request = new DatamuseAPI();
-            JSONObject details = request.post(URL+wordToSyn);
+            JSONObject details = null;
+            try {
+                details = request.post(URL+wordToSyn);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
             JSONArray result = details.getJSONArray("result");
 
             for(int i = 0; i < result.length() && i < 2; i++) {

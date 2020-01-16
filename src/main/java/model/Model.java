@@ -18,6 +18,7 @@ import ranker.ResultDisplay;
 import ranker.Searcher;
 import rw.ReadFile;
 import rw.WriteFile;
+import ui.AlertMaker;
 
 import java.io.*;
 import java.util.*;
@@ -70,10 +71,9 @@ public class Model extends Observable implements IModel {
     @Override
     public void startBoogleSearch(String postingPath, String queries, String outLocation, boolean stem, boolean semantic, boolean offline) {
         LOGGER.log(Level.INFO, "Start Searching");
-        String[] paths = pathAreValid(postingPath, outLocation); // checks if the paths entered are valid
         double startEngine = System.currentTimeMillis();
         try {
-            HashMap<String, LinkedList<String>> results = m_results = boogleMainLogic(postingPath, queries, stem, semantic, offline);
+            m_results = boogleMainLogic(postingPath, queries, stem, semantic, offline);
         } catch(Exception e) {
             String[] update = {"Fail", "Boogle failed"};
             LOGGER.log(Level.ERROR, "Boogle failed");
@@ -83,15 +83,9 @@ public class Model extends Observable implements IModel {
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
         LOGGER.log(Level.INFO, "DONE::"+"("+RUNTIME+" ms)");
+        AlertMaker.showSimpleAlert("DONE PROCCESS", "Runtime: "+RUNTIME+"ms");
         setChanged();
         notifyObservers();
-    }
-
-    public static String getPostingLineNumber(String word) {
-        String lineNumber = invertedIndex.getPostingLink(word.toLowerCase());
-        if (lineNumber.equals(""))
-            lineNumber = invertedIndex.getPostingLink(word.toUpperCase());
-        return lineNumber;
     }
 
     synchronized HashMap<String, LinkedList<String>> boogleMainLogic(String postingPath, String queryField, boolean stem, boolean semantic, boolean offline) {
@@ -99,11 +93,10 @@ public class Model extends Observable implements IModel {
         LinkedList<Query> queriesList = new LinkedList<>();
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
         else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
-
         ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         HashMap<String, LinkedList<String>> queryResults = new HashMap<>();
         try {
-            LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(q, postingPath, offline, stem, semantic)))).collect(Collectors.toCollection(LinkedList::new));
+            LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(postingPath, stem, semantic, q, offline)))).collect(Collectors.toCollection(LinkedList::new));
 
             for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
                 queryResults.put(f.getKey(), getLimited(f.getValue().get()));
@@ -121,7 +114,8 @@ public class Model extends Observable implements IModel {
      */
     private LinkedList<String> getLimited(LinkedList<String> queryResults) {
         LinkedList<String> limited = new LinkedList<>();
-        queryResults.stream().filter(s -> !queryResults.isEmpty() && limited.size() < 50).forEach(limited::add);
+        for(int i = 0; i < 50 && !queryResults.isEmpty(); i++)
+            limited.add(queryResults.pollFirst());
         return limited;
     }
 

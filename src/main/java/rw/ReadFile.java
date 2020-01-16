@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ReadFile {
-    private static Mutex m = new Mutex();
-
     /**
      * this function reads a bunch of files
      * @param pathOfDocs the path of the corpus
@@ -117,10 +115,6 @@ public class ReadFile {
                 int startDescIndex = descWithOtherData.indexOf(description)+description.length();
                 int endDescIndex = descWithOtherData.indexOf("Narrative");
                 String desc = descWithOtherData.substring(startDescIndex, endDescIndex-3);
-
-                String narrWithOtherData = element.getElementsByTag("narr").text();
-                String narrative = "Narrative: \n";
-                String narr = narrWithOtherData.substring(narrWithOtherData.indexOf(narrative)+narrative.length());
                 queryList.add(new Query(queryNum, title, desc));
                 fis.close();
             }
@@ -131,6 +125,7 @@ public class ReadFile {
     }
 
     public static LinkedList<String> readPostingLineAtIndex(String path, char c, List<Integer> indexes, boolean stem) {
+        Mutex m = new Mutex();
         try {
             m.acquire();
         } catch(InterruptedException e) {

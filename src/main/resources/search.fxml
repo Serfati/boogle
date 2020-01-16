@@ -44,7 +44,7 @@
                                             </VBox.margin>
                                         </JFXTextField>
                                         <JFXCheckBox fx:id="semantic_checkbox" prefHeight="17.0" prefWidth="239.0"
-                                                     styleClass="checkbox-main"
+                                                     selected="true" styleClass="checkbox-main"
                                                      text="Enable Semantics"/>
                                         <JFXCheckBox fx:id="stem_checkbox" prefHeight="17.0" prefWidth="239.0"
                                                      selected="true" styleClass="checkbox-main" text="Enable Stemming"/>
@@ -74,8 +74,9 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="600.0">
                             <children>
                                 <JFXButton fx:id="btn_show_data" layoutX="508.0" layoutY="200.0" text="Show Data"
-                                           onAction="#showDataClick"/>
-                                <JFXButton onAction="#saveResults" layoutX="500.0" layoutY="150.0" text="Save Results"/>
+                                           disable="true" onAction="#showDataClick"/>
+                                <JFXButton fx:id="btn_save_res" onAction="#saveResults" layoutX="500.0" layoutY="150.0"
+                                           text="Save Results" disable="true"/>
                                 <Label fx:id="lbl_docSpecialWords" layoutX="450.0" layoutY="150.0" text="SW"/>
                                 <TableView fx:id="table_showResults" layoutX="24.0" layoutY="20.0" prefHeight="350.0"
                                            prefWidth="212.0">
