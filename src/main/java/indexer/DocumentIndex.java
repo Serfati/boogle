@@ -31,6 +31,10 @@ public class DocumentIndex {
         return docLength;
     }
 
+    public String getMaxFreq_word() {
+        return maxFreq_word;
+    }
+
     public Pair<String, Integer>[] getFiveEntities() {
         return mainEntities;
     }

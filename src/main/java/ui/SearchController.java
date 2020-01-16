@@ -209,8 +209,8 @@ public class SearchController implements Observer, Initializable {
         //open a choose folder dialog
         String destinationForAnswers = "";
         DirectoryChooser fileChooser = new DirectoryChooser();
-        fileChooser.setTitle("Load Destination Path");
-        File defaultDirectory = new File("/home");
+        fileChooser.setTitle("Results Destination Path");
+        File defaultDirectory = new File(System.getProperty("user.dir"));
         fileChooser.setInitialDirectory(defaultDirectory);
         File chosen = fileChooser.showDialog(new Stage());
         if (chosen != null)
@@ -228,9 +228,7 @@ public class SearchController implements Observer, Initializable {
         btn_export_pdf.setDisable(true);
     }
 
-    /**
-     * transfers a request to show the dictionary of the current indexing
-     */
+    /* transfers a request to show the dictionary of the current indexing*/
     public void showDataClick() {
         viewModel.showDataClick();
     }

@@ -15,7 +15,7 @@ import static ranker.Searcher.addToScore;
 public class Ranker {
 
     double BM_25_B = 0.7, BM_25_K = 1.5;
-    double TITLE_WEIGHT = 0.15, POSITIONS_WEIGHT = 0.08, BM25_WEIGHT = 0.75, POS_PERCENT = 15, CONTAINING_WEIGHT = 0.4;
+    double TITLE_WEIGHT = 0.15, POSITIONS_WEIGHT = 0.08, BM25_WEIGHT = 0.78, POS_PERCENT = 15, CONTAINING_WEIGHT = 0.4;
     double averageDocumentLength;
     private HashMap<String, Integer> wordsCountInQuery;
 
@@ -54,17 +54,27 @@ public class Ranker {
      * @param wordsInQuery words of query
      */
     void containingAlgorithm(HashMap<String, Double> score, Set<String> wordsInQuery) {
-        score.keySet().stream().filter(docName -> Model.documentDictionary.get(docName).getFiveEntities() != null).forEach(docName -> Arrays.stream(Model.documentDictionary.get(docName).getFiveEntities()).filter(aFive -> aFive != null && wordsInQuery.contains(aFive.getKey())).forEach(aFive -> addToScore(score, docName, CONTAINING_WEIGHT * 0.1)));
+        for(String docName : score.keySet()) {
+            if (Model.documentDictionary.get(docName).getFiveEntities() != null) {
+                for(Pair<String, Integer> aFive : Model.documentDictionary.get(docName).getFiveEntities()) {
+                    if (aFive != null && wordsInQuery.contains(aFive.getKey())) {
+                        addToScore(score, docName, CONTAINING_WEIGHT * 0.1);
+                    }
+                }
+                if (wordsInQuery.contains(Model.documentDictionary.get(docName).getMaxFreq_word()))
+                    addToScore(score, docName, CONTAINING_WEIGHT * 0.5);
+            }
+        }
     }
 
 
     double positionsAlgorithm(HashMap<String, Double> score, Set<String> wordsInQuery) {
         double rank = 0;
-        for(String docName : score.keySet()) {
-            Pair<String, Integer>[] five = Model.documentDictionary.get(docName).getFiveEntities();
-            if (five != null)
-                rank += Arrays.stream(five).filter(aFive -> aFive != null && wordsInQuery.contains(aFive.getKey())).mapToDouble(aFive -> 0.1).sum();
-        }
+//        for(String docName : score.keySet()) {
+//            if (Model.documentDictionary.get(docName). != null) {
+//
+//            }
+//        }
         return POSITIONS_WEIGHT * rank;
     }
 

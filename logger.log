@@ -94,3 +94,16 @@
 2020-01-16 15:18:31 INFO  Main:27 - Boogle is closing. Used for 0.07565 m
 2020-01-16 15:20:54 INFO  Main:24 - Boogle launched
 2020-01-16 15:20:58 INFO  Main:27 - Boogle is closing. Used for 0.06585 m
+2020-01-16 21:12:13 INFO  Main:24 - Boogle launched
+2020-01-16 21:12:19 INFO  SearchController:77 - Search Tab Switch
+2020-01-16 21:12:49 INFO  Main:27 - Boogle is closing. Used for 0.60145 m
+2020-01-16 21:13:01 INFO  Main:24 - Boogle launched
+2020-01-16 21:14:03 INFO  Model:43 - Start Parsing and Indexing
+2020-01-16 21:14:04 INFO  Model:124 - Start manager Method :: runnable
+2020-01-16 21:31:45 INFO  Model:164 - Start merge Method :: single
+2020-01-16 21:35:19 INFO  Model:66 - PROCESS DONE :: END INDEXING in 21.26 minutes
+2020-01-16 21:35:33 INFO  SearchController:77 - Search Tab Switch
+2020-01-16 21:36:15 INFO  Model:73 - Start Searching
+2020-01-16 21:36:16 INFO  Model:85 - DONE::(370.0 ms)
+2020-01-16 21:36:37 INFO  Model:73 - Start Searching
+2020-01-16 21:36:53 INFO  Model:85 - DONE::(15785.0 ms)
