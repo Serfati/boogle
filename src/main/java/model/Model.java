@@ -83,7 +83,7 @@ public class Model extends Observable implements IModel {
         }
         final double RUNTIME = Double.parseDouble(String.format(Locale.US, "%.2f", (System.currentTimeMillis()-startEngine)));
         LOGGER.log(Level.INFO, "DONE::"+"("+RUNTIME+" ms)");
-        AlertMaker.showSimpleAlert("DONE PROCCESS", "Runtime: "+RUNTIME / 60000.0+" m");
+        AlertMaker.showSimpleAlert("DONE PROCCESS", "Runtime: "+RUNTIME / 60000.0+"m");
         setChanged();
         notifyObservers();
     }
@@ -93,15 +93,19 @@ public class Model extends Observable implements IModel {
         LinkedList<Query> queriesList = new LinkedList<>();
         if (queryField.endsWith(".txt")) queriesList = ReadFile.readQueries(new File(queryField));
         else queriesList.add(new Query(""+Math.abs(r.nextInt(899)+100), queryField, ""));
-        ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+        ExecutorService pool = Executors.newSingleThreadExecutor();
         HashMap<String, LinkedList<String>> queryResults = new HashMap<>();
-        try {
-            LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = queriesList.stream().map(q -> new Pair<>(q.getQueryNum(), pool.submit(new Searcher(postingPath, stem, semantic, q, offline)))).collect(Collectors.toCollection(LinkedList::new));
-
-            for(Pair<String, Future<LinkedList<String>>> f : queryFuture)
+        LinkedList<Pair<String, Future<LinkedList<String>>>> queryFuture = new LinkedList<>();
+        for(Query q : queriesList) {
+            Searcher searcher = new Searcher(postingPath, stem, semantic, q, offline);
+            queryFuture.add(new Pair<>(q.getQueryNum(), pool.submit(searcher)));
+        }
+        for(Pair<String, Future<LinkedList<String>>> f : queryFuture) {
+            try {
                 queryResults.put(f.getKey(), getLimited(f.getValue().get()));
-
-        } catch(InterruptedException | ExecutionException ignored) {
+            } catch(InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
         return queryResults;
     }
