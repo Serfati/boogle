@@ -34,9 +34,10 @@ public class Main extends Application {
         model.addObserver(viewModel);
         //------------------------------//
         primaryStage.setTitle("BOOGLE");
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../ui.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ui.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 620, 700);
+        scene.getStylesheets().add(getClass().getResource("/dark-style.css").toExternalForm());
         primaryStage.setResizable(false);
         //------------ui---------------//
         UIController viewController = fxmlLoader.getController();

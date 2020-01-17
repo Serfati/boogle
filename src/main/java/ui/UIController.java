@@ -246,14 +246,14 @@ public class UIController implements IView, Observer, Initializable {
         Stage searchStage = new Stage();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../search.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/search.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
         }
         searchStage.setTitle("BOOGLE");
         Scene scene = new Scene(root, 720, 456);
-        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/dark-style.css").toExternalForm());
         searchStage.setScene(scene);
         searchStage.initModality(Modality.WINDOW_MODAL);
         searchStage.show();
@@ -266,7 +266,7 @@ public class UIController implements IView, Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../help.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/help.fxml"));
         } catch(IOException e) {
             e.printStackTrace();
             showAlert();
@@ -274,7 +274,7 @@ public class UIController implements IView, Observer, Initializable {
         helpStage.setTitle("Help");
         assert root != null;
         Scene scene = new Scene(root, 520, 495);
-        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/dark-style.css").toExternalForm());
         helpStage.setScene(scene);
         helpStage.initModality(Modality.WINDOW_MODAL);
         helpStage.show();
@@ -287,7 +287,7 @@ public class UIController implements IView, Observer, Initializable {
 
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("../about.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/about.fxml"));
         } catch(IOException e) {
             showAlert();
         }

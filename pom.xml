@@ -60,20 +60,6 @@
             <artifactId>boxable</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- main library coreNLP dependency -->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
-        </dependency>
-        <!--Stanford coreNLP 3.9.2 data dependency-->
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.9.2</version>
-            <classifier>models</classifier>
-        </dependency>
-
         <!-- Core DL4J functionality -->
         <!-- https://mvnrepository.com/artifact/org.apache.pdfbox/pdfbox -->
         <dependency>
@@ -89,11 +75,16 @@
         </dependency>
 
         <!-- ND4J backend. You need one in every DL4J project. Normally define artifactId as either "nd4j-native-platform" or "nd4j-cuda-7.5-platform" -->
-        <dependency>
-            <groupId>org.nd4j</groupId>
-            <artifactId>${nd4j.backend}</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.nd4j</groupId>-->
+        <!--            <artifactId>${nd4j.backend}</artifactId>-->
+        <!--        </dependency>-->
         <!-- Core DL4J functionality -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-core</artifactId>
+            <version>6.6.5</version>
+        </dependency>
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-core</artifactId>

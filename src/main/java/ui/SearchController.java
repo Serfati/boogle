@@ -166,7 +166,7 @@ public class SearchController implements Observer, Initializable {
         stage.setTitle("Query List");
         root.getChildren().add(table_showResults);
         Scene scene = new Scene(root, 225, 350);
-        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/dark-style.css").toExternalForm());
         stage.setScene(scene);
 
         stage.show();
@@ -199,7 +199,7 @@ public class SearchController implements Observer, Initializable {
         root.getChildren().add(table_showDocs);
         stage.setTitle("Query Results");
         Scene scene = new Scene(root, 225, 350);
-        scene.getStylesheets().add(getClass().getResource("../dark-style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/dark-style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
