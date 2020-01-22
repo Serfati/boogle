@@ -1,17 +1,24 @@
 package ranker;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.nd4j.linalg.io.ClassPathResource;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+
 
 /**
  * A class used to handle semantics.
@@ -23,9 +30,24 @@ public class SemanticHandler {
     public WordVectors wordVectors;
     public boolean useOffline;
 
+    private final static Logger LOGGER = LogManager.getLogger(SemanticHandler.class.getName());
+
     public SemanticHandler(boolean useOffline) {
-        wordVectors = useOffline ? WordVectorSerializer.readWord2VecModel(new File("src/main/resources/glove.6B.50d.txt")) : null;
+        try {
+            InputStream inputStream = new ClassPathResource("glove.6B.50d.txt").getInputStream();
+            File file = new File("gloVe.txt");
+            // commons-io
+            FileUtils.copyInputStreamToFile(inputStream, file);
+            wordVectors = useOffline ? WordVectorSerializer.readWord2VecModel(file) : null;
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
         this.useOffline = useOffline;
+        LOGGER.log(Level.INFO, "GloVe :: model loaded");
+    }
+
+    public static void main(String[] args) {
+        SemanticHandler sh = new SemanticHandler(true);
     }
 
     //-------------------------------------------------------------------//

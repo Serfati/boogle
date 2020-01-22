@@ -104,7 +104,7 @@ public class Model extends Observable implements IModel {
             try {
                 queryResults.put(f.getKey(), getLimited(f.getValue().get()));
             } catch(InterruptedException | ExecutionException e) {
-                e.printStackTrace();
+                AlertMaker.showErrorMessage(InterruptedException.class.getName(), e.getCause().getMessage());
             }
         }
         return queryResults;
