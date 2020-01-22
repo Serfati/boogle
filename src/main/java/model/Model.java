@@ -103,8 +103,7 @@ public class Model extends Observable implements IModel {
         for(Pair<String, Future<LinkedList<String>>> f : queryFuture) {
             try {
                 queryResults.put(f.getKey(), getLimited(f.getValue().get()));
-            } catch(InterruptedException | ExecutionException e) {
-                AlertMaker.showErrorMessage(InterruptedException.class.getName(), e.getCause().getMessage());
+            } catch(InterruptedException | ExecutionException ignored) {
             }
         }
         return queryResults;

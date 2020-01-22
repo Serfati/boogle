@@ -28,6 +28,7 @@ public class SemanticHandler {
     public boolean useOffline;
 
     public SemanticHandler(boolean useOffline) {
+        System.out.println("q_semantic");
         try {
             if (wordVectors == null && useOffline) {
                 InputStream inputStream = new ClassPathResource("glove.6B.50d.txt").getInputStream();
