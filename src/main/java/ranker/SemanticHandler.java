@@ -1,9 +1,6 @@
 package ranker;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.json.JSONArray;
@@ -30,20 +27,18 @@ public class SemanticHandler {
     public WordVectors wordVectors;
     public boolean useOffline;
 
-    private final static Logger LOGGER = LogManager.getLogger(SemanticHandler.class.getName());
-
     public SemanticHandler(boolean useOffline) {
         try {
             InputStream inputStream = new ClassPathResource("glove.6B.50d.txt").getInputStream();
             File file = new File("gloVe.txt");
             // commons-io
             FileUtils.copyInputStreamToFile(inputStream, file);
-            wordVectors = useOffline ? WordVectorSerializer.readWord2VecModel(file) : null;
-        } catch(IOException e) {
-            e.printStackTrace();
+            if (inputStream != null) inputStream.close();
+            if (wordVectors == null || this.useOffline != useOffline)
+                wordVectors = useOffline ? WordVectorSerializer.readWord2VecModel(file) : null;
+        } catch(IOException ignored) {
         }
         this.useOffline = useOffline;
-        LOGGER.log(Level.INFO, "GloVe :: model loaded");
     }
 
     public static void main(String[] args) {

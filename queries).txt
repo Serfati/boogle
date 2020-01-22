@@ -1,0 +1,139 @@
+<top>
+
+<num> Number: 351 
+<title> Falkland petroleum exploration 
+
+<desc> Description: 
+What information is available on petroleum exploration in 
+the South Atlantic near the Falkland Islands?
+
+<narr> Narrative: 
+Any document discussing petroleum exploration in the
+South Atlantic near the Falkland Islands is considered
+relevant.  Documents discussing petroleum exploration in 
+continental South America are not relevant.
+
+</top>
+
+
+<top>
+
+<num> Number: 352 
+<title> British Chunnel impact  
+
+<desc> Description: 
+What impact has the Chunnel had on the British economy and/or 
+the life style of the British?
+
+<narr> Narrative: 
+Documents discussing the following issues are relevant:
+
+ - projected and actual impact on the life styles of the British 
+ - Long term changes to economic policy and relations
+ - major changes to other transportation systems linked with 
+   the Continent
+
+Documents discussing the following issues are not relevant:
+
+ - expense and construction schedule 
+ - routine marketing ploys by other channel crossers (i.e.,
+   schedule changes, price drops, etc.) 
+ 
+</top>
+
+
+<top>
+
+<num> Number: 358
+<title> blood-alcohol fatalities
+
+<desc> Description: 
+What role does blood-alcohol level play in 
+automobile accident fatalities?
+
+<narr> Narrative: 
+Relevant documents must contain information
+on automobile accidents in which there was a 
+fatality and the blood-alcohol level of the
+driver of the vehicle must be identified.
+ 
+</top>
+
+
+<top>
+
+<num> Number: 359
+<title> mutual fund predictors 
+
+<desc> Description: 
+Are there reliable and consistent predictors of
+mutual fund performance?
+
+<narr> Narrative: 
+A document must contain at least one factor 
+such as: rankings, risks, yields, or costs,
+and fund performance to be relevant.  
+Documents that discuss mutual fund rankings 
+are considered relevant.  
+
+</top>
+
+
+<top>
+
+<num> Number: 362
+<title> human smuggling 
+
+<desc> Description: 
+Identify incidents of human smuggling.
+
+<narr> Narrative: 
+A relevant document shows an incident of humans 
+(at least ten) being smuggled.  The smugglers 
+would have to realize a monetary gain for their 
+actions, while the people being smuggled may or 
+may not be willing participants.
+
+</top>
+
+
+<top>
+
+<num> Number: 367
+<title> piracy 
+
+<desc> Description: 
+What modern instances have there been of old fashioned
+piracy, the boarding or taking control of boats? 
+ 
+<narr> Narrative: 
+Documents discussing piracy on any body of water are
+relevant.  Documents discussing the legal taking of 
+ships or their contents by a national authority are 
+non-relevant.  Clashes between fishing vessels over
+fishing are not relevant, unless one vessel is 
+boarded.  
+
+</top>
+
+
+<top>
+
+<num> Number: 373
+<title> encryption equipment export 
+
+<desc> Description: 
+Identify documents that discuss the concerns of
+the United States regarding the export of 
+encryption equipment.
+
+<narr> Narrative: 
+Documents that merely mention the name of a company
+or group that produces encryption equipment but does
+not mention the exportation and/or commercial exploitation
+of the encryption equipment are not relevant.  Documents 
+which refer to governmental access into the encryption 
+systems for the purposes of counter-intelligence or 
+anti-crime activities are relevant. 
+
+</top>

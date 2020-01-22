@@ -33,3 +33,310 @@
 2020-01-17 11:44:36 INFO  Main:25 - Boogle launched
 2020-01-17 11:44:39 INFO  SearchController:77 - Search Tab Switch
 2020-01-17 11:44:43 INFO  Main:28 - Boogle is closing. Used for 0.10953333333333333 m
+2020-01-21 11:19:06 INFO  Main:24 - Boogle launched
+2020-01-21 11:19:16 INFO  UIController:411 - Loaded::with_stemming
+2020-01-21 11:20:11 INFO  SearchController:77 - Search Tab Switch
+2020-01-21 11:20:34 INFO  Model:73 - Start Searching
+2020-01-21 11:20:35 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-21 11:20:35 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-21 11:20:35 INFO  Reflections:229 - Reflections took 104 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-21 11:20:35 ERROR Model:79 - Boogle failed
+2020-01-21 11:20:35 INFO  Model:85 - DONE::(932.0 ms)
+2020-01-21 11:21:19 INFO  Model:73 - Start Searching
+2020-01-21 11:21:23 INFO  Model:85 - DONE::(3351.0 ms)
+2020-01-21 11:21:53 INFO  Main:24 - Boogle launched
+2020-01-21 11:22:07 INFO  UIController:411 - Loaded::with_stemming
+2020-01-21 11:22:16 INFO  SearchController:77 - Search Tab Switch
+2020-01-21 11:22:36 INFO  Model:73 - Start Searching
+2020-01-21 11:22:38 INFO  Model:85 - DONE::(1343.0 ms)
+2020-01-21 11:23:47 INFO  Main:27 - Boogle is closing. Used for 1.8983 m
+2020-01-21 11:24:22 INFO  Main:24 - Boogle launched
+2020-01-21 11:24:43 INFO  UIController:411 - Loaded::with_stemming
+2020-01-21 11:24:53 INFO  SearchController:77 - Search Tab Switch
+2020-01-21 11:25:08 INFO  Model:73 - Start Searching
+2020-01-21 11:25:18 INFO  Model:85 - DONE::(9688.0 ms)
+2020-01-21 11:26:24 INFO  Model:73 - Start Searching
+2020-01-21 11:26:30 INFO  Model:85 - DONE::(5831.0 ms)
+2020-01-21 11:32:31 INFO  Main:27 - Boogle is closing. Used for 8.136633333333334 m
+2020-01-21 11:44:26 INFO  Main:24 - Boogle launched
+2020-01-21 11:44:36 INFO  Main:27 - Boogle is closing. Used for 0.1654 m
+2020-01-21 11:44:51 INFO  Main:24 - Boogle launched
+2020-01-21 11:45:03 INFO  Main:27 - Boogle is closing. Used for 0.20608333333333334 m
+2020-01-21 11:45:21 INFO  Main:24 - Boogle launched
+2020-01-21 11:45:30 INFO  Main:27 - Boogle is closing. Used for 0.15333333333333332 m
+2020-01-21 11:50:59 INFO  Main:24 - Boogle launched
+2020-01-21 11:52:34 INFO  Main:24 - Boogle launched
+2020-01-21 11:52:48 INFO  UIController:411 - Loaded::with_stemming
+2020-01-21 11:55:22 INFO  SearchController:77 - Search Tab Switch
+2020-01-21 11:56:08 INFO  Model:73 - Start Searching
+2020-01-21 11:56:13 INFO  Model:85 - DONE::(4096.0 ms)
+2020-01-21 12:00:49 INFO  Model:73 - Start Searching
+2020-01-21 12:00:57 INFO  Model:85 - DONE::(8304.0 ms)
+2020-01-21 12:09:19 INFO  Main:27 - Boogle is closing. Used for 16.746016666666666 m
+2020-01-22 15:24:27 INFO  Main:24 - Boogle launched
+2020-01-22 15:24:37 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:24:50 INFO  Model:73 - Start Searching
+2020-01-22 15:24:51 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:24:51 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:24:52 INFO  Reflections:229 - Reflections took 164 ms to scan 1 urls, producing 29 keys and 176 values 
+2020-01-22 15:24:52 ERROR Model:79 - Boogle failed
+2020-01-22 15:24:52 INFO  Model:85 - DONE::(1489.0 ms)
+2020-01-22 15:27:00 INFO  Main:24 - Boogle launched
+2020-01-22 15:28:34 INFO  Main:24 - Boogle launched
+2020-01-22 15:28:39 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:28:49 INFO  Model:73 - Start Searching
+2020-01-22 15:28:49 ERROR Model:79 - Boogle failed
+2020-01-22 15:28:49 INFO  Model:85 - DONE::(45.0 ms)
+2020-01-22 15:29:55 INFO  Main:24 - Boogle launched
+2020-01-22 15:29:59 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:30:10 INFO  Model:73 - Start Searching
+2020-01-22 15:30:10 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:30:10 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:30:10 INFO  Reflections:229 - Reflections took 101 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 15:30:25 INFO  Main:24 - Boogle launched
+2020-01-22 15:30:31 INFO  UIController:411 - Loaded::with_stemming
+2020-01-22 15:30:40 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:30:51 INFO  Model:73 - Start Searching
+2020-01-22 15:30:51 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:30:51 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:30:52 INFO  Reflections:229 - Reflections took 92 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 15:31:11 INFO  Reflections:229 - Reflections took 351 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-22 15:31:12 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-22 15:31:23 INFO  Model:85 - DONE::(31281.0 ms)
+2020-01-22 15:31:46 INFO  Main:27 - Boogle is closing. Used for 1.3405666666666667 m
+2020-01-22 15:43:10 INFO  Main:24 - Boogle launched
+2020-01-22 15:43:16 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:43:27 INFO  Model:73 - Start Searching
+2020-01-22 15:43:27 ERROR Model:79 - Boogle failed
+2020-01-22 15:43:27 INFO  Model:85 - DONE::(25.0 ms)
+2020-01-22 15:44:00 INFO  Main:24 - Boogle launched
+2020-01-22 15:44:04 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:44:23 INFO  Model:73 - Start Searching
+2020-01-22 15:44:23 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:44:23 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:44:24 INFO  Reflections:229 - Reflections took 145 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 15:44:33 INFO  Reflections:229 - Reflections took 225 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-22 15:44:34 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-22 15:44:34 INFO  Model:85 - DONE::(10969.0 ms)
+2020-01-22 15:47:45 INFO  Main:24 - Boogle launched
+2020-01-22 15:47:48 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:47:58 INFO  Model:73 - Start Searching
+2020-01-22 15:47:58 ERROR Model:79 - Boogle failed
+2020-01-22 15:47:58 INFO  Model:85 - DONE::(4.0 ms)
+2020-01-22 15:48:13 INFO  Main:24 - Boogle launched
+2020-01-22 15:48:19 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:48:33 INFO  Model:73 - Start Searching
+2020-01-22 15:48:33 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:48:33 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:48:34 INFO  Reflections:229 - Reflections took 80 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 15:52:55 INFO  Main:24 - Boogle launched
+2020-01-22 15:53:01 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:53:10 INFO  Model:73 - Start Searching
+2020-01-22 15:53:10 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:53:10 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:53:10 INFO  Reflections:229 - Reflections took 92 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 15:53:10 ERROR Model:79 - Boogle failed
+2020-01-22 15:53:10 INFO  Model:85 - DONE::(489.0 ms)
+2020-01-22 15:56:42 INFO  Main:24 - Boogle launched
+2020-01-22 15:56:47 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 15:56:58 INFO  Model:73 - Start Searching
+2020-01-22 15:56:58 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 15:56:58 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 15:56:58 INFO  Reflections:229 - Reflections took 78 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:04:18 INFO  Main:24 - Boogle launched
+2020-01-22 16:04:28 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:04:37 INFO  Model:73 - Start Searching
+2020-01-22 16:04:37 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:04:37 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:04:37 INFO  Reflections:229 - Reflections took 95 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:13:50 INFO  Main:24 - Boogle launched
+2020-01-22 16:13:59 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:14:11 INFO  Model:73 - Start Searching
+2020-01-22 16:14:11 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:14:12 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:14:12 INFO  Reflections:229 - Reflections took 100 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:14:12 ERROR Model:79 - Boogle failed
+2020-01-22 16:14:12 INFO  Model:85 - DONE::(596.0 ms)
+2020-01-22 16:14:48 INFO  Main:24 - Boogle launched
+2020-01-22 16:14:52 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:15:03 INFO  Model:73 - Start Searching
+2020-01-22 16:15:03 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:15:03 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:15:03 INFO  Reflections:229 - Reflections took 97 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:15:03 ERROR Model:79 - Boogle failed
+2020-01-22 16:15:03 INFO  Model:85 - DONE::(427.0 ms)
+2020-01-22 16:16:14 INFO  Main:24 - Boogle launched
+2020-01-22 16:16:18 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:16:31 INFO  Model:73 - Start Searching
+2020-01-22 16:16:31 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:16:31 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:16:31 INFO  Reflections:229 - Reflections took 88 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:16:31 ERROR Model:79 - Boogle failed
+2020-01-22 16:16:31 INFO  Model:85 - DONE::(409.0 ms)
+2020-01-22 16:17:36 INFO  Main:24 - Boogle launched
+2020-01-22 16:17:45 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:17:56 INFO  Model:73 - Start Searching
+2020-01-22 16:17:56 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:17:56 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:17:57 INFO  Reflections:229 - Reflections took 87 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:22:44 INFO  Main:24 - Boogle launched
+2020-01-22 16:22:51 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:23:01 INFO  Model:73 - Start Searching
+2020-01-22 16:23:01 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:23:01 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:23:02 INFO  Reflections:229 - Reflections took 112 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:23:02 ERROR Model:79 - Boogle failed
+2020-01-22 16:23:02 INFO  Model:85 - DONE::(539.0 ms)
+2020-01-22 16:25:52 INFO  Main:24 - Boogle launched
+2020-01-22 16:25:56 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 16:26:09 INFO  Model:73 - Start Searching
+2020-01-22 16:26:09 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:26:09 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:26:09 INFO  Reflections:229 - Reflections took 75 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:26:09 ERROR Model:79 - Boogle failed
+2020-01-22 16:26:09 INFO  Model:85 - DONE::(375.0 ms)
+2020-01-22 16:29:03 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:29:03 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:29:03 INFO  Reflections:229 - Reflections took 158 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:30:09 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:30:09 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:30:10 INFO  Reflections:229 - Reflections took 197 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:42:42 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:42:43 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:42:44 INFO  Reflections:229 - Reflections took 363 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:43:21 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:43:21 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:43:21 INFO  Reflections:229 - Reflections took 191 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:44:28 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:44:29 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:44:30 INFO  Reflections:229 - Reflections took 274 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:47:43 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:47:43 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:47:44 INFO  Reflections:229 - Reflections took 171 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 16:58:38 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 16:58:38 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 16:58:39 INFO  Reflections:229 - Reflections took 151 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:12:25 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:12:27 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:12:27 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:12:27 INFO  Reflections:229 - Reflections took 155 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:22:25 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:22:25 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:22:25 INFO  Reflections:229 - Reflections took 130 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:26:47 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:26:47 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:26:48 INFO  Reflections:229 - Reflections took 650 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:31:30 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:31:30 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:31:30 INFO  Reflections:229 - Reflections took 154 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:31:41 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:31:41 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:31:41 INFO  Reflections:229 - Reflections took 160 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:35:57 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:35:57 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:35:57 INFO  Reflections:229 - Reflections took 165 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:36:08 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:36:08 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:36:08 INFO  Reflections:229 - Reflections took 146 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:36:18 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:36:19 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:36:19 INFO  Reflections:229 - Reflections took 156 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:37:15 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:37:15 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:37:16 INFO  Reflections:229 - Reflections took 158 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:37:41 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:37:42 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:37:42 INFO  Reflections:229 - Reflections took 159 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:38:47 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:38:47 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:38:48 INFO  Reflections:229 - Reflections took 156 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:48:13 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:48:13 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:48:13 INFO  Reflections:229 - Reflections took 153 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:51:41 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:51:42 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:51:42 INFO  Reflections:229 - Reflections took 147 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:52:00 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:52:00 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:52:00 INFO  Reflections:229 - Reflections took 161 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:56:59 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:56:59 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:56:59 INFO  Reflections:229 - Reflections took 156 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 17:57:06 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 17:57:06 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 17:57:07 INFO  Reflections:229 - Reflections took 169 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:03:25 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:03:25 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:03:25 INFO  Reflections:229 - Reflections took 159 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:04:25 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:04:25 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:04:25 INFO  Reflections:229 - Reflections took 174 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:10:28 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:10:28 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:10:29 INFO  Reflections:229 - Reflections took 166 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:16:51 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:16:52 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:16:53 INFO  Reflections:229 - Reflections took 254 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:24:04 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:24:05 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:24:05 INFO  Reflections:229 - Reflections took 376 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:32:34 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:32:35 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:32:35 INFO  Reflections:229 - Reflections took 201 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:34:33 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:34:33 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:34:33 INFO  Reflections:229 - Reflections took 146 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:35:16 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:35:16 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:35:16 INFO  Reflections:229 - Reflections took 172 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:37:48 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:37:49 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:37:49 INFO  Reflections:229 - Reflections took 160 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:39:01 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:39:01 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:39:02 INFO  Reflections:229 - Reflections took 153 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:39:26 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:39:27 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:39:27 INFO  Reflections:229 - Reflections took 146 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:39:50 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:39:50 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:39:50 INFO  Reflections:229 - Reflections took 166 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:40:36 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:40:36 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:40:36 INFO  Reflections:229 - Reflections took 154 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:41:05 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:41:05 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:41:06 INFO  Reflections:229 - Reflections took 167 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:41:11 INFO  Main:24 - Boogle launched
+2020-01-22 18:41:25 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 18:41:43 INFO  Model:73 - Start Searching
+2020-01-22 18:41:43 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:41:43 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:41:43 INFO  Reflections:229 - Reflections took 81 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 18:41:52 INFO  Reflections:229 - Reflections took 151 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-22 18:41:52 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-22 18:41:53 INFO  Model:85 - DONE::(10325.0 ms)
+2020-01-22 18:44:47 INFO  Main:27 - Boogle is closing. Used for 3.6122833333333335 m
+2020-01-22 18:45:15 INFO  Main:24 - Boogle launched
+2020-01-22 18:45:22 INFO  Main:27 - Boogle is closing. Used for 0.1198 m
+2020-01-22 18:47:04 INFO  Main:24 - Boogle launched
+2020-01-22 18:47:09 INFO  Main:27 - Boogle is closing. Used for 0.07796666666666667 m
+2020-01-22 18:47:14 INFO  Main:24 - Boogle launched
+2020-01-22 18:47:17 INFO  Main:27 - Boogle is closing. Used for 0.0598 m
+2020-01-22 18:47:30 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 18:47:30 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 18:47:31 INFO  Reflections:229 - Reflections took 333 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 19:04:49 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 19:04:50 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 19:04:51 INFO  Reflections:229 - Reflections took 475 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 19:10:27 INFO  Main:24 - Boogle launched
+2020-01-22 19:10:40 INFO  UIController:411 - Loaded::with_stemming
+2020-01-22 19:10:52 INFO  SearchController:77 - Search Tab Switch
+2020-01-22 19:11:12 INFO  Model:73 - Start Searching
+2020-01-22 19:11:15 INFO  Nd4jBackend:194 - Loaded [CpuBackend] backend
+2020-01-22 19:11:16 INFO  NativeOpsHolder:38 - Number of threads used for NativeOps: 4
+2020-01-22 19:11:16 INFO  Reflections:229 - Reflections took 341 ms to scan 12 urls, producing 29 keys and 176 values 
+2020-01-22 19:11:30 INFO  Reflections:229 - Reflections took 399 ms to scan 12 urls, producing 368 keys and 1424 values 
+2020-01-22 19:11:30 INFO  Nd4jBlas:38 - Number of threads used for BLAS: 4
+2020-01-22 19:11:40 INFO  Model:85 - DONE::(28004.0 ms)
+2020-01-22 19:12:01 INFO  Main:27 - Boogle is closing. Used for 1.5654666666666666 m
