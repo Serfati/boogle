@@ -29,20 +29,17 @@ public class SemanticHandler {
 
     public SemanticHandler(boolean useOffline) {
         try {
-            InputStream inputStream = new ClassPathResource("glove.6B.50d.txt").getInputStream();
-            File file = new File("gloVe.txt");
-            // commons-io
-            FileUtils.copyInputStreamToFile(inputStream, file);
-            if (inputStream != null) inputStream.close();
-            if (wordVectors == null || this.useOffline != useOffline)
+            if (wordVectors == null && useOffline) {
+                InputStream inputStream = new ClassPathResource("glove.6B.50d.txt").getInputStream();
+                File file = new File("gloVe.txt");
+                // commons-io
+                FileUtils.copyInputStreamToFile(inputStream, file);
+                if (inputStream != null) inputStream.close();
                 wordVectors = useOffline ? WordVectorSerializer.readWord2VecModel(file) : null;
+            }
         } catch(IOException ignored) {
         }
         this.useOffline = useOffline;
-    }
-
-    public static void main(String[] args) {
-        SemanticHandler sh = new SemanticHandler(true);
     }
 
     //-------------------------------------------------------------------//

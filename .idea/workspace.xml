@@ -648,36 +648,6 @@
       <change afterPath="$PROJECT_DIR$/corpus/LA123089/LA123089" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/corpus/LA123189/LA123189" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/miniQuery.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/DocDic.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/IF.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_`.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_a.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_b.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_f.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_g.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_h.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_i.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_j.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_k.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_l.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_m.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_n.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_o.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_p.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_q.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_s.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_t.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_u.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_v.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_w.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_x.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_y.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/Unstemmed_z.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/no_stemming/results.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/queries).txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/glove.6B.50d.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/trec_eval-master/CHANGELOG" afterDir="false" />
@@ -786,37 +756,10 @@
       <change afterPath="$PROJECT_DIR$/trec_eval-master/trec_eval.h" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/trec_eval-master/trec_format.h" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/trec_eval-master/utility_pool.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/DocDic_PS.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/SIF.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_`.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_a.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_b.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_c.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_d.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_e.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_f.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_g.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_h.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_i.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_j.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_k.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_l.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_m.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_n.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_o.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_p.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_q.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_r.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_s.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_t.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_u.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_v.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_w.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_x.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_y.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/with_stemming/Stemmed_z.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/logger.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ranker/SemanticHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ranker/SemanticHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1111,6 +1054,7 @@
       <workItem from="1579699323918" duration="882000" />
       <workItem from="1579700549715" duration="12380000" />
       <workItem from="1579714383618" duration="763000" />
+      <workItem from="1579716006963" duration="277000" />
     </task>
     <task id="LOCAL-00009" summary="10.12">
       <created>1576069549237</created>
@@ -1571,15 +1515,15 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="741" y="422" width="493" height="261" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/65.27.1855.1053@65.27.1855.1053" timestamp="1578389187734" />
-    <state x="900" y="194" width="934" height="881" key="CommitChangelistDialog2" timestamp="1579714676892">
+    <state x="900" y="194" width="934" height="881" key="CommitChangelistDialog2" timestamp="1579716285094">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="503" y="146" key="CommitChangelistDialog2/65.27.1301.741@65.27.1301.741" timestamp="1576052559931" />
-    <state x="900" y="194" width="934" height="881" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1579714676892" />
-    <state x="217" y="208" width="1484" height="872" key="DiffContextDialog" timestamp="1579714671274">
+    <state x="900" y="194" width="934" height="881" key="CommitChangelistDialog2/65.27.1855.1053@65.27.1855.1053" timestamp="1579716285094" />
+    <state x="217" y="208" width="1484" height="872" key="DiffContextDialog" timestamp="1579716239165">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
-    <state x="217" y="208" width="1484" height="872" key="DiffContextDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1579714671274" />
+    <state x="217" y="208" width="1484" height="872" key="DiffContextDialog/65.27.1855.1053@65.27.1855.1053" timestamp="1579716239165" />
     <state x="1209" y="219" width="600" height="484" key="FileChooserDialogImpl" timestamp="1579214947675">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
@@ -1645,6 +1589,10 @@
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
     <state x="578" y="155" width="1024" height="845" key="SettingsEditor/65.27.1855.1053@65.27.1855.1053" timestamp="1579251456263" />
+    <state x="1218" y="546" width="288" height="176" key="VCS.ChangelistChooser" timestamp="1579716255214">
+      <screen x="65" y="27" width="1855" height="1053" />
+    </state>
+    <state x="1218" y="546" width="288" height="176" key="VCS.ChangelistChooser/65.27.1855.1053@65.27.1855.1053" timestamp="1579716255214" />
     <state x="682" y="280" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1579714721623">
       <screen x="65" y="27" width="1855" height="1053" />
     </state>
