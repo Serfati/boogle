@@ -35,10 +35,27 @@ The Model:
 
 - GUI (view) - reach User Interface see below
 
-![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/googleIcon.png "GUI")
+Screenshots:
+-------------
+- main index tab
 
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui1.png "GUI")
+- init query parameters can use online/ offline
 
-![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/googleIcon.png "GUI")
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui2.png "GUI")
+- search tab
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui3.png "GUI")
+- query results
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui4.png "GUI")
+- about
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui5.png "GUI")
+- exit
+
+![GUI](https://github.com/Serfati/Boogle/blob/master/src/main/resources/gui6.png "GUI")
+
 
 Licence:
 -------------
